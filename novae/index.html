@@ -1,1 +1,735 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NOVAÉ — Modern Essentials. Made for Everyday.</title>
+  <meta name="description" content="NOVAÉ is a contemporary fashion label creating modern essentials — considered fabrics, quiet colour, and pieces designed to move with everyday life.">
 
+  <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <div class="announcement">
+    <p class="announcement__track">Free shipping on orders over $150 &nbsp;—&nbsp; Easy 30-day returns</p>
+  </div>
+
+  <header class="site-header" data-site-header>
+    <div class="container site-header__inner">
+      <nav class="nav-group primary-nav" aria-label="Shop navigation">
+        <a class="nav-link" href="#new-arrivals">New Arrivals</a>
+        <a class="nav-link" href="shop.html?category=women">Women</a>
+        <a class="nav-link" href="shop.html?category=men">Men</a>
+      </nav>
+
+      <p class="logo"><a href="index.html">NOVAÉ</a></p>
+
+      <div class="nav-group nav-group--end">
+        <nav class="primary-nav" aria-label="Company navigation">
+          <a class="nav-link" href="shop.html?category=accessories">Accessories</a>
+          <a class="nav-link" href="about.html">About</a>
+        </nav>
+        <div class="header-icons">
+          <button type="button" class="icon-btn icon-btn--search" data-search-toggle aria-expanded="false" aria-controls="nav-search-panel" aria-label="Search">
+            <svg viewBox="0 0 24 24" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+          </button>
+          <button type="button" class="icon-btn" data-cart-toggle aria-label="Open shopping bag">
+            <svg viewBox="0 0 24 24" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 8h12l-1 12.5a1 1 0 0 1-1 .9H8a1 1 0 0 1-1-.9L6 8z"></path><path d="M9 8V6.5a3 3 0 0 1 6 0V8"></path></svg>
+            <span class="icon-btn__count" data-cart-count hidden>0</span>
+          </button>
+          <button type="button" class="icon-btn menu-toggle" data-menu-toggle aria-expanded="false" aria-controls="mobile-menu" aria-label="Open menu">
+            <span class="menu-toggle__box" aria-hidden="true"><span></span><span></span><span></span></span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="search-panel" data-search-panel id="nav-search-panel">
+      <form class="search-panel__form" role="search" data-search-form>
+        <label class="visually-hidden" for="nav-search-input">Search products</label>
+        <input id="nav-search-input" type="search" name="q" placeholder="Search products, styles, collections…" autocomplete="off">
+        <button type="submit" class="btn btn--outline btn--sm">Search</button>
+      </form>
+    </div>
+  </header>
+
+  <div class="mobile-menu" data-mobile-menu id="mobile-menu" role="dialog" aria-modal="true" aria-label="Site menu">
+    <div class="mobile-menu__header">
+      <p class="logo"><a href="index.html">NOVAÉ</a></p>
+      <button type="button" class="icon-btn" data-menu-close aria-label="Close menu">
+        <svg viewBox="0 0 24 24" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><line x1="5" y1="5" x2="19" y2="19"></line><line x1="19" y1="5" x2="5" y2="19"></line></svg>
+      </button>
+    </div>
+    <div class="mobile-menu__body">
+      <nav class="mobile-menu__links" aria-label="Primary">
+        <a href="#new-arrivals">New Arrivals</a>
+        <a href="shop.html?category=women">Women</a>
+        <a href="shop.html?category=men">Men</a>
+        <a href="shop.html?category=accessories">Accessories</a>
+        <a href="about.html">About</a>
+      </nav>
+
+      <form class="search-panel__form" role="search" data-search-form>
+        <label class="visually-hidden" for="mobile-search-input">Search products</label>
+        <input id="mobile-search-input" type="search" name="q" placeholder="Search products…" autocomplete="off">
+        <button type="submit" class="btn btn--outline btn--sm">Search</button>
+      </form>
+
+      <div class="mobile-menu__utility">
+        <a href="contact.html">Contact</a>
+        <a href="#lookbook">Lookbook</a>
+      </div>
+
+      <p class="mobile-menu__meta">NOVAÉ — Modern essentials. Made for everyday.</p>
+    </div>
+  </div>
+
+  <main id="main">
+    <!-- ============================== HERO ============================== -->
+    <section class="hero" aria-label="Featured collection">
+      <div class="hero__media">
+        <img
+          src="https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=1800&q=80"
+          alt="Model wearing a tailored neutral-tone coat from the NOVAÉ new collection"
+          onerror="this.onerror=null;this.src='images/placeholder.svg';this.classList.add('img-fallback')"
+        >
+        <div class="hero__scrim"></div>
+      </div>
+      <div class="hero__content">
+        <p class="hero__eyebrow">New Collection</p>
+        <h1>The Everyday Edit</h1>
+        <p class="hero__sub">Modern essentials designed for everyday life.</p>
+        <div class="hero__actions">
+          <a class="btn btn--primary" href="shop.html?category=women">Shop Women</a>
+          <a class="btn btn--ghost-light" href="shop.html?category=men">Shop Men</a>
+        </div>
+      </div>
+      <div class="hero__scroll-cue" aria-hidden="true">
+        <span>Scroll</span>
+        <span class="line"></span>
+      </div>
+    </section>
+
+    <!-- ========================== NEW ARRIVALS =========================== -->
+    <section class="section" id="new-arrivals" aria-labelledby="new-arrivals-heading">
+      <div class="container">
+        <div class="section-head" data-reveal>
+          <div class="section-head__text">
+            <p class="eyebrow">Just Landed</p>
+            <h2 id="new-arrivals-heading">New Arrivals</h2>
+            <p>Fresh silhouettes and considered fabrics, arriving weekly — built to move from the studio to the street.</p>
+          </div>
+          <a class="link-underline" href="shop.html?sort=new">View All</a>
+        </div>
+
+        <div class="product-grid" data-reveal-group>
+
+          <article class="product-card" data-product-id="tailored-wool-coat" data-name="The Tailored Wool Coat" data-category="Outerwear" data-price="328" data-image="https://images.unsplash.com/photo-1445205170230-053b83016050?auto=format&fit=crop&w=900&q=80" data-colors='[{"name":"Charcoal","hex":"#2E2B26"},{"name":"Beige","hex":"#EDE4D3"}]' data-sizes="XS,S,M,L,XL">
+            <div class="product-card__frame">
+              <span class="product-card__badge">New</span>
+              <button type="button" class="product-card__wishlist" data-wishlist-toggle aria-label="Add The Tailored Wool Coat to wishlist" aria-pressed="false">
+                <svg viewBox="0 0 24 24" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7.5-4.7-10-9.6C.4 7.7 2 4 5.6 4c2 0 3.6 1.3 4.6 2.9C11.2 5.3 12.8 4 14.8 4 18.4 4 20 7.7 22 11.4 19.5 16.3 12 21 12 21z"></path></svg>
+              </button>
+              <img src="https://images.unsplash.com/photo-1445205170230-053b83016050?auto=format&fit=crop&w=900&q=80" alt="The Tailored Wool Coat in charcoal, styled open over a knit" loading="lazy" onerror="this.onerror=null;this.src='images/placeholder.svg';this.classList.add('img-fallback')">
+              <div class="product-card__quickview">
+                <button type="button" data-quickview-open>Quick View</button>
+              </div>
+            </div>
+            <div class="product-card__body">
+              <div>
+                <p class="product-card__name"><a href="shop.html?product=tailored-wool-coat">The Tailored Wool Coat</a></p>
+                <p class="product-card__category">Outerwear</p>
+                <div class="product-card__swatches" aria-hidden="true">
+                  <span class="swatch" style="background:#2E2B26"></span>
+                  <span class="swatch" style="background:#EDE4D3"></span>
+                </div>
+              </div>
+              <p class="product-card__price">$328</p>
+            </div>
+          </article>
+
+          <article class="product-card" data-product-id="relaxed-cotton-shirt" data-name="Relaxed Cotton Shirt" data-category="Tops" data-price="98" data-image="https://images.unsplash.com/photo-1551803091-e20673f15770?auto=format&fit=crop&w=900&q=80" data-colors='[{"name":"Warm White","hex":"#FAF7F1"},{"name":"Olive","hex":"#6B6B4F"},{"name":"Black","hex":"#16140F"}]' data-sizes="XS,S,M,L,XL">
+            <div class="product-card__frame">
+              <span class="product-card__badge">New</span>
+              <button type="button" class="product-card__wishlist" data-wishlist-toggle aria-label="Add Relaxed Cotton Shirt to wishlist" aria-pressed="false">
+                <svg viewBox="0 0 24 24" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7.5-4.7-10-9.6C.4 7.7 2 4 5.6 4c2 0 3.6 1.3 4.6 2.9C11.2 5.3 12.8 4 14.8 4 18.4 4 20 7.7 22 11.4 19.5 16.3 12 21 12 21z"></path></svg>
+              </button>
+              <img src="https://images.unsplash.com/photo-1551803091-e20673f15770?auto=format&fit=crop&w=900&q=80" alt="Relaxed Cotton Shirt in warm white, worn loosely tucked" loading="lazy" onerror="this.onerror=null;this.src='images/placeholder.svg';this.classList.add('img-fallback')">
+              <div class="product-card__quickview">
+                <button type="button" data-quickview-open>Quick View</button>
+              </div>
+            </div>
+            <div class="product-card__body">
+              <div>
+                <p class="product-card__name"><a href="shop.html?product=relaxed-cotton-shirt">Relaxed Cotton Shirt</a></p>
+                <p class="product-card__category">Tops</p>
+                <div class="product-card__swatches" aria-hidden="true">
+                  <span class="swatch" style="background:#FAF7F1"></span>
+                  <span class="swatch" style="background:#6B6B4F"></span>
+                  <span class="swatch" style="background:#16140F"></span>
+                </div>
+              </div>
+              <p class="product-card__price">$98</p>
+            </div>
+          </article>
+
+          <article class="product-card" data-product-id="ribbed-knit-sweater" data-name="Ribbed Knit Sweater" data-category="Knitwear" data-price="118" data-image="https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=900&q=80" data-colors='[{"name":"Beige","hex":"#EDE4D3"},{"name":"Charcoal","hex":"#2E2B26"}]' data-sizes="XS,S,M,L,XL">
+            <div class="product-card__frame">
+              <button type="button" class="product-card__wishlist" data-wishlist-toggle aria-label="Add Ribbed Knit Sweater to wishlist" aria-pressed="false">
+                <svg viewBox="0 0 24 24" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7.5-4.7-10-9.6C.4 7.7 2 4 5.6 4c2 0 3.6 1.3 4.6 2.9C11.2 5.3 12.8 4 14.8 4 18.4 4 20 7.7 22 11.4 19.5 16.3 12 21 12 21z"></path></svg>
+              </button>
+              <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=900&q=80" alt="Ribbed Knit Sweater in beige, close-up texture detail" loading="lazy" onerror="this.onerror=null;this.src='images/placeholder.svg';this.classList.add('img-fallback')">
+              <div class="product-card__quickview">
+                <button type="button" data-quickview-open>Quick View</button>
+              </div>
+            </div>
+            <div class="product-card__body">
+              <div>
+                <p class="product-card__name"><a href="shop.html?product=ribbed-knit-sweater">Ribbed Knit Sweater</a></p>
+                <p class="product-card__category">Knitwear</p>
+                <div class="product-card__swatches" aria-hidden="true">
+                  <span class="swatch" style="background:#EDE4D3"></span>
+                  <span class="swatch" style="background:#2E2B26"></span>
+                </div>
+              </div>
+              <p class="product-card__price">$118</p>
+            </div>
+          </article>
+
+          <article class="product-card" data-product-id="wide-leg-trousers" data-name="Wide-Leg Trousers" data-category="Bottoms" data-price="148" data-image="https://images.unsplash.com/photo-1516257984-b1b4d707412e?auto=format&fit=crop&w=900&q=80" data-colors='[{"name":"Black","hex":"#16140F"},{"name":"Brown","hex":"#9C7A54"}]' data-sizes="XS,S,M,L,XL">
+            <div class="product-card__frame">
+              <button type="button" class="product-card__wishlist" data-wishlist-toggle aria-label="Add Wide-Leg Trousers to wishlist" aria-pressed="false">
+                <svg viewBox="0 0 24 24" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7.5-4.7-10-9.6C.4 7.7 2 4 5.6 4c2 0 3.6 1.3 4.6 2.9C11.2 5.3 12.8 4 14.8 4 18.4 4 20 7.7 22 11.4 19.5 16.3 12 21 12 21z"></path></svg>
+              </button>
+              <img src="https://images.unsplash.com/photo-1516257984-b1b4d707412e?auto=format&fit=crop&w=900&q=80" alt="Wide-Leg Trousers in black, full-length styled shot" loading="lazy" onerror="this.onerror=null;this.src='images/placeholder.svg';this.classList.add('img-fallback')">
+              <div class="product-card__quickview">
+                <button type="button" data-quickview-open>Quick View</button>
+              </div>
+            </div>
+            <div class="product-card__body">
+              <div>
+                <p class="product-card__name"><a href="shop.html?product=wide-leg-trousers">Wide-Leg Trousers</a></p>
+                <p class="product-card__category">Bottoms</p>
+                <div class="product-card__swatches" aria-hidden="true">
+                  <span class="swatch" style="background:#16140F"></span>
+                  <span class="swatch" style="background:#9C7A54"></span>
+                </div>
+              </div>
+              <p class="product-card__price">$148</p>
+            </div>
+          </article>
+
+          <article class="product-card" data-product-id="silk-slip-dress" data-name="Silk Slip Dress" data-category="Dresses" data-price="168" data-image="https://images.unsplash.com/photo-1495385794356-15371f348c31?auto=format&fit=crop&w=900&q=80" data-colors='[{"name":"Warm White","hex":"#FAF7F1"},{"name":"Black","hex":"#16140F"}]' data-sizes="XS,S,M,L">
+            <div class="product-card__frame">
+              <span class="product-card__badge">New</span>
+              <button type="button" class="product-card__wishlist" data-wishlist-toggle aria-label="Add Silk Slip Dress to wishlist" aria-pressed="false">
+                <svg viewBox="0 0 24 24" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7.5-4.7-10-9.6C.4 7.7 2 4 5.6 4c2 0 3.6 1.3 4.6 2.9C11.2 5.3 12.8 4 14.8 4 18.4 4 20 7.7 22 11.4 19.5 16.3 12 21 12 21z"></path></svg>
+              </button>
+              <img src="https://images.unsplash.com/photo-1495385794356-15371f348c31?auto=format&fit=crop&w=900&q=80" alt="Silk Slip Dress in warm white, editorial studio shot" loading="lazy" onerror="this.onerror=null;this.src='images/placeholder.svg';this.classList.add('img-fallback')">
+              <div class="product-card__quickview">
+                <button type="button" data-quickview-open>Quick View</button>
+              </div>
+            </div>
+            <div class="product-card__body">
+              <div>
+                <p class="product-card__name"><a href="shop.html?product=silk-slip-dress">Silk Slip Dress</a></p>
+                <p class="product-card__category">Dresses</p>
+                <div class="product-card__swatches" aria-hidden="true">
+                  <span class="swatch" style="background:#FAF7F1"></span>
+                  <span class="swatch" style="background:#16140F"></span>
+                </div>
+              </div>
+              <p class="product-card__price">$168</p>
+            </div>
+          </article>
+
+          <article class="product-card" data-product-id="structured-blazer" data-name="Structured Blazer" data-category="Outerwear" data-price="228" data-image="https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&w=900&q=80" data-colors='[{"name":"Black","hex":"#16140F"},{"name":"Charcoal","hex":"#2E2B26"}]' data-sizes="XS,S,M,L,XL">
+            <div class="product-card__frame">
+              <button type="button" class="product-card__wishlist" data-wishlist-toggle aria-label="Add Structured Blazer to wishlist" aria-pressed="false">
+                <svg viewBox="0 0 24 24" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7.5-4.7-10-9.6C.4 7.7 2 4 5.6 4c2 0 3.6 1.3 4.6 2.9C11.2 5.3 12.8 4 14.8 4 18.4 4 20 7.7 22 11.4 19.5 16.3 12 21 12 21z"></path></svg>
+              </button>
+              <img src="https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&w=900&q=80" alt="Structured Blazer in black, tailored fit styled shot" loading="lazy" onerror="this.onerror=null;this.src='images/placeholder.svg';this.classList.add('img-fallback')">
+              <div class="product-card__quickview">
+                <button type="button" data-quickview-open>Quick View</button>
+              </div>
+            </div>
+            <div class="product-card__body">
+              <div>
+                <p class="product-card__name"><a href="shop.html?product=structured-blazer">Structured Blazer</a></p>
+                <p class="product-card__category">Outerwear</p>
+                <div class="product-card__swatches" aria-hidden="true">
+                  <span class="swatch" style="background:#16140F"></span>
+                  <span class="swatch" style="background:#2E2B26"></span>
+                </div>
+              </div>
+              <p class="product-card__price">$228</p>
+            </div>
+          </article>
+
+          <article class="product-card" data-product-id="essential-crewneck-tee" data-name="Essential Crewneck Tee" data-category="Tops" data-price="48" data-image="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=900&q=80" data-colors='[{"name":"Black","hex":"#16140F"},{"name":"Warm White","hex":"#FAF7F1"},{"name":"Olive","hex":"#6B6B4F"}]' data-sizes="XS,S,M,L,XL">
+            <div class="product-card__frame">
+              <button type="button" class="product-card__wishlist" data-wishlist-toggle aria-label="Add Essential Crewneck Tee to wishlist" aria-pressed="false">
+                <svg viewBox="0 0 24 24" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7.5-4.7-10-9.6C.4 7.7 2 4 5.6 4c2 0 3.6 1.3 4.6 2.9C11.2 5.3 12.8 4 14.8 4 18.4 4 20 7.7 22 11.4 19.5 16.3 12 21 12 21z"></path></svg>
+              </button>
+              <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=900&q=80" alt="Essential Crewneck Tee in black, minimal studio shot" loading="lazy" onerror="this.onerror=null;this.src='images/placeholder.svg';this.classList.add('img-fallback')">
+              <div class="product-card__quickview">
+                <button type="button" data-quickview-open>Quick View</button>
+              </div>
+            </div>
+            <div class="product-card__body">
+              <div>
+                <p class="product-card__name"><a href="shop.html?product=essential-crewneck-tee">Essential Crewneck Tee</a></p>
+                <p class="product-card__category">Tops</p>
+                <div class="product-card__swatches" aria-hidden="true">
+                  <span class="swatch" style="background:#16140F"></span>
+                  <span class="swatch" style="background:#FAF7F1"></span>
+                  <span class="swatch" style="background:#6B6B4F"></span>
+                </div>
+              </div>
+              <p class="product-card__price">$48</p>
+            </div>
+          </article>
+
+          <article class="product-card" data-product-id="leather-crossbody-bag" data-name="Leather Crossbody Bag" data-category="Accessories" data-price="198" data-image="https://images.unsplash.com/photo-1523381210434-271e8be1f52b?auto=format&fit=crop&w=900&q=80" data-colors='[{"name":"Brown","hex":"#9C7A54"},{"name":"Black","hex":"#16140F"}]' data-sizes="One Size">
+            <div class="product-card__frame">
+              <span class="product-card__badge">New</span>
+              <button type="button" class="product-card__wishlist" data-wishlist-toggle aria-label="Add Leather Crossbody Bag to wishlist" aria-pressed="false">
+                <svg viewBox="0 0 24 24" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7.5-4.7-10-9.6C.4 7.7 2 4 5.6 4c2 0 3.6 1.3 4.6 2.9C11.2 5.3 12.8 4 14.8 4 18.4 4 20 7.7 22 11.4 19.5 16.3 12 21 12 21z"></path></svg>
+              </button>
+              <img src="https://images.unsplash.com/photo-1523381210434-271e8be1f52b?auto=format&fit=crop&w=900&q=80" alt="Leather Crossbody Bag in brown, flat-lay product detail" loading="lazy" onerror="this.onerror=null;this.src='images/placeholder.svg';this.classList.add('img-fallback')">
+              <div class="product-card__quickview">
+                <button type="button" data-quickview-open>Quick View</button>
+              </div>
+            </div>
+            <div class="product-card__body">
+              <div>
+                <p class="product-card__name"><a href="shop.html?product=leather-crossbody-bag">Leather Crossbody Bag</a></p>
+                <p class="product-card__category">Accessories</p>
+                <div class="product-card__swatches" aria-hidden="true">
+                  <span class="swatch" style="background:#9C7A54"></span>
+                  <span class="swatch" style="background:#16140F"></span>
+                </div>
+              </div>
+              <p class="product-card__price">$198</p>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================= SHOP BY CATEGORY ========================= -->
+    <section class="section section--alt" id="shop-by-category" aria-labelledby="category-heading">
+      <div class="container">
+        <div class="section-head" data-reveal>
+          <div class="section-head__text">
+            <p class="eyebrow">Explore</p>
+            <h2 id="category-heading">Shop by Category</h2>
+          </div>
+        </div>
+
+        <div class="category-grid" data-reveal-group>
+          <a class="category-tile" href="shop.html?category=women">
+            <img src="https://images.unsplash.com/photo-1441984904996-e0b6ba687e04?auto=format&fit=crop&w=1000&q=80" alt="Woman wearing a NOVAÉ tailored outfit, walking city street" loading="lazy" onerror="this.onerror=null;this.src='images/placeholder.svg';this.classList.add('img-fallback')">
+            <div class="category-tile__content">
+              <h3>Women</h3>
+              <span class="link-underline">Shop Now</span>
+            </div>
+          </a>
+          <a class="category-tile" href="shop.html?category=men">
+            <img src="https://images.unsplash.com/photo-1552374196-c4e7ffc6e126?auto=format&fit=crop&w=1000&q=80" alt="Man wearing a NOVAÉ neutral-tone layered outfit" loading="lazy" onerror="this.onerror=null;this.src='images/placeholder.svg';this.classList.add('img-fallback')">
+            <div class="category-tile__content">
+              <h3>Men</h3>
+              <span class="link-underline">Shop Now</span>
+            </div>
+          </a>
+          <a class="category-tile" href="shop.html?category=accessories">
+            <img src="https://images.unsplash.com/photo-1523381210434-271e8be1f52b?auto=format&fit=crop&w=1000&q=80" alt="Flat lay of NOVAÉ leather accessories" loading="lazy" onerror="this.onerror=null;this.src='images/placeholder.svg';this.classList.add('img-fallback')">
+            <div class="category-tile__content">
+              <h3>Accessories</h3>
+              <span class="link-underline">Shop Now</span>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================ EDITORIAL ============================ -->
+    <section class="section" aria-label="Editorial features">
+      <div class="container">
+        <div class="editorial" data-reveal>
+          <div class="editorial__media">
+            <img src="https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?auto=format&fit=crop&w=1200&q=80" alt="Model wearing layered NOVAÉ outerwear in a muted autumn palette" loading="lazy" onerror="this.onerror=null;this.src='images/placeholder.svg';this.classList.add('img-fallback')">
+          </div>
+          <div class="editorial__text">
+            <p class="eyebrow">The Edit</p>
+            <h2>Considered Layers for Cooler Days</h2>
+            <p>Autumn calls for pieces that do more with less — outerwear cut for movement, knits that hold their shape, and a palette pulled straight from the season itself.</p>
+            <a class="link-underline" href="shop.html?collection=layers">Discover the Edit</a>
+          </div>
+        </div>
+
+        <div class="editorial" data-reveal>
+          <div class="editorial__media">
+            <img src="https://images.unsplash.com/photo-1516762689617-e1cffcef479d?auto=format&fit=crop&w=1200&q=80" alt="Close-up detail of natural fabric texture on a NOVAÉ garment" loading="lazy" onerror="this.onerror=null;this.src='images/placeholder.svg';this.classList.add('img-fallback')">
+          </div>
+          <div class="editorial__text">
+            <p class="eyebrow">In the Studio</p>
+            <h2>Fabric First, Always</h2>
+            <p>We start every piece with the hand-feel of the fabric — natural fibres, considered weights, finishes that soften with wear. It's a slower way to build a wardrobe, and it shows.</p>
+            <a class="link-underline" href="about.html">Our Approach</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================== BEST SELLERS =========================== -->
+    <section class="section section--alt" id="best-sellers" aria-labelledby="bestsellers-heading">
+      <div class="container">
+        <div class="section-head" data-reveal>
+          <div class="section-head__text">
+            <p class="eyebrow">Customer Favourites</p>
+            <h2 id="bestsellers-heading">Best Sellers</h2>
+            <p>The pieces our community keeps coming back for — quietly versatile, endlessly wearable.</p>
+          </div>
+          <a class="link-underline" href="shop.html?sort=best-sellers">Shop Best Sellers</a>
+        </div>
+
+        <div class="product-grid" data-reveal-group>
+
+          <article class="product-card" data-product-id="tailored-wool-coat-bs" data-name="The Tailored Wool Coat" data-category="Outerwear" data-price="328" data-image="https://images.unsplash.com/photo-1445205170230-053b83016050?auto=format&fit=crop&w=900&q=80" data-colors='[{"name":"Charcoal","hex":"#2E2B26"},{"name":"Beige","hex":"#EDE4D3"}]' data-sizes="XS,S,M,L,XL">
+            <div class="product-card__frame">
+              <span class="product-card__badge">Bestseller</span>
+              <button type="button" class="product-card__wishlist" data-wishlist-toggle aria-label="Add The Tailored Wool Coat to wishlist" aria-pressed="false">
+                <svg viewBox="0 0 24 24" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7.5-4.7-10-9.6C.4 7.7 2 4 5.6 4c2 0 3.6 1.3 4.6 2.9C11.2 5.3 12.8 4 14.8 4 18.4 4 20 7.7 22 11.4 19.5 16.3 12 21 12 21z"></path></svg>
+              </button>
+              <img src="https://images.unsplash.com/photo-1445205170230-053b83016050?auto=format&fit=crop&w=900&q=80" alt="The Tailored Wool Coat in charcoal, styled open over a knit" loading="lazy" onerror="this.onerror=null;this.src='images/placeholder.svg';this.classList.add('img-fallback')">
+              <div class="product-card__quickview">
+                <button type="button" data-quickview-open>Quick View</button>
+              </div>
+            </div>
+            <div class="product-card__body">
+              <div>
+                <p class="product-card__name"><a href="shop.html?product=tailored-wool-coat">The Tailored Wool Coat</a></p>
+                <p class="product-card__category">Outerwear</p>
+                <div class="product-card__swatches" aria-hidden="true">
+                  <span class="swatch" style="background:#2E2B26"></span>
+                  <span class="swatch" style="background:#EDE4D3"></span>
+                </div>
+              </div>
+              <p class="product-card__price">$328</p>
+            </div>
+          </article>
+
+          <article class="product-card" data-product-id="ribbed-knit-sweater-bs" data-name="Ribbed Knit Sweater" data-category="Knitwear" data-price="118" data-image="https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=900&q=80" data-colors='[{"name":"Beige","hex":"#EDE4D3"},{"name":"Charcoal","hex":"#2E2B26"}]' data-sizes="XS,S,M,L,XL">
+            <div class="product-card__frame">
+              <span class="product-card__badge">Bestseller</span>
+              <button type="button" class="product-card__wishlist" data-wishlist-toggle aria-label="Add Ribbed Knit Sweater to wishlist" aria-pressed="false">
+                <svg viewBox="0 0 24 24" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7.5-4.7-10-9.6C.4 7.7 2 4 5.6 4c2 0 3.6 1.3 4.6 2.9C11.2 5.3 12.8 4 14.8 4 18.4 4 20 7.7 22 11.4 19.5 16.3 12 21 12 21z"></path></svg>
+              </button>
+              <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=900&q=80" alt="Ribbed Knit Sweater in beige, close-up texture detail" loading="lazy" onerror="this.onerror=null;this.src='images/placeholder.svg';this.classList.add('img-fallback')">
+              <div class="product-card__quickview">
+                <button type="button" data-quickview-open>Quick View</button>
+              </div>
+            </div>
+            <div class="product-card__body">
+              <div>
+                <p class="product-card__name"><a href="shop.html?product=ribbed-knit-sweater">Ribbed Knit Sweater</a></p>
+                <p class="product-card__category">Knitwear</p>
+                <div class="product-card__swatches" aria-hidden="true">
+                  <span class="swatch" style="background:#EDE4D3"></span>
+                  <span class="swatch" style="background:#2E2B26"></span>
+                </div>
+              </div>
+              <p class="product-card__price">$118</p>
+            </div>
+          </article>
+
+          <article class="product-card" data-product-id="wide-leg-trousers-bs" data-name="Wide-Leg Trousers" data-category="Bottoms" data-price="148" data-image="https://images.unsplash.com/photo-1516257984-b1b4d707412e?auto=format&fit=crop&w=900&q=80" data-colors='[{"name":"Black","hex":"#16140F"},{"name":"Brown","hex":"#9C7A54"}]' data-sizes="XS,S,M,L,XL">
+            <div class="product-card__frame">
+              <span class="product-card__badge">Bestseller</span>
+              <button type="button" class="product-card__wishlist" data-wishlist-toggle aria-label="Add Wide-Leg Trousers to wishlist" aria-pressed="false">
+                <svg viewBox="0 0 24 24" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7.5-4.7-10-9.6C.4 7.7 2 4 5.6 4c2 0 3.6 1.3 4.6 2.9C11.2 5.3 12.8 4 14.8 4 18.4 4 20 7.7 22 11.4 19.5 16.3 12 21 12 21z"></path></svg>
+              </button>
+              <img src="https://images.unsplash.com/photo-1516257984-b1b4d707412e?auto=format&fit=crop&w=900&q=80" alt="Wide-Leg Trousers in black, full-length styled shot" loading="lazy" onerror="this.onerror=null;this.src='images/placeholder.svg';this.classList.add('img-fallback')">
+              <div class="product-card__quickview">
+                <button type="button" data-quickview-open>Quick View</button>
+              </div>
+            </div>
+            <div class="product-card__body">
+              <div>
+                <p class="product-card__name"><a href="shop.html?product=wide-leg-trousers">Wide-Leg Trousers</a></p>
+                <p class="product-card__category">Bottoms</p>
+                <div class="product-card__swatches" aria-hidden="true">
+                  <span class="swatch" style="background:#16140F"></span>
+                  <span class="swatch" style="background:#9C7A54"></span>
+                </div>
+              </div>
+              <p class="product-card__price">$148</p>
+            </div>
+          </article>
+
+          <article class="product-card" data-product-id="essential-crewneck-tee-bs" data-name="Essential Crewneck Tee" data-category="Tops" data-price="48" data-image="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=900&q=80" data-colors='[{"name":"Black","hex":"#16140F"},{"name":"Warm White","hex":"#FAF7F1"},{"name":"Olive","hex":"#6B6B4F"}]' data-sizes="XS,S,M,L,XL">
+            <div class="product-card__frame">
+              <span class="product-card__badge">Bestseller</span>
+              <button type="button" class="product-card__wishlist" data-wishlist-toggle aria-label="Add Essential Crewneck Tee to wishlist" aria-pressed="false">
+                <svg viewBox="0 0 24 24" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7.5-4.7-10-9.6C.4 7.7 2 4 5.6 4c2 0 3.6 1.3 4.6 2.9C11.2 5.3 12.8 4 14.8 4 18.4 4 20 7.7 22 11.4 19.5 16.3 12 21 12 21z"></path></svg>
+              </button>
+              <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=900&q=80" alt="Essential Crewneck Tee in black, minimal studio shot" loading="lazy" onerror="this.onerror=null;this.src='images/placeholder.svg';this.classList.add('img-fallback')">
+              <div class="product-card__quickview">
+                <button type="button" data-quickview-open>Quick View</button>
+              </div>
+            </div>
+            <div class="product-card__body">
+              <div>
+                <p class="product-card__name"><a href="shop.html?product=essential-crewneck-tee">Essential Crewneck Tee</a></p>
+                <p class="product-card__category">Tops</p>
+                <div class="product-card__swatches" aria-hidden="true">
+                  <span class="swatch" style="background:#16140F"></span>
+                  <span class="swatch" style="background:#FAF7F1"></span>
+                  <span class="swatch" style="background:#6B6B4F"></span>
+                </div>
+              </div>
+              <p class="product-card__price">$48</p>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================ BRAND STORY ============================ -->
+    <section class="section section--dark brand-story" id="brand-story" aria-labelledby="story-heading">
+      <div class="container">
+        <div class="brand-story__grid" data-reveal>
+          <div class="brand-story__media">
+            <img src="https://images.unsplash.com/photo-1489987707025-afc232f7ea0f?auto=format&fit=crop&w=1200&q=80" alt="NOVAÉ design studio, fabric swatches and sketches on a worktable" loading="lazy" onerror="this.onerror=null;this.src='images/placeholder.svg';this.classList.add('img-fallback')">
+          </div>
+          <div class="brand-story__text">
+            <p class="eyebrow">Our Story</p>
+            <h2 class="visually-hidden" id="story-heading">Designed for the Life You Actually Live</h2>
+            <blockquote>“NOVAÉ began with a simple idea — that everyday clothing deserves the same care as occasionwear.”</blockquote>
+            <cite>Design Journal, NOVAÉ Studio</cite>
+            <p class="brand-story__lede">We design in small batches, choose fabric over fast trends, and build pieces meant to outlast a season.</p>
+            <a class="btn btn--ghost-light" href="about.html">Read Our Story</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================== LOOKBOOK ============================== -->
+    <section class="section" id="lookbook" aria-labelledby="lookbook-heading">
+      <div class="container">
+        <div class="section-head" data-reveal>
+          <div class="section-head__text">
+            <p class="eyebrow">Lookbook</p>
+            <h2 id="lookbook-heading">The Autumn Edit, Styled</h2>
+          </div>
+        </div>
+
+        <div class="lookbook-grid" data-reveal-group>
+          <div class="lookbook-item">
+            <img src="https://images.unsplash.com/photo-1487222477894-8943e31ef7b2?auto=format&fit=crop&w=1600&q=80" alt="Look 01 — tailored coat styled over a relaxed knit" loading="lazy" onerror="this.onerror=null;this.src='images/placeholder.svg';this.classList.add('img-fallback')">
+            <span class="lookbook-item__caption">Look 01 — Tailored &amp; Relaxed</span>
+          </div>
+          <div class="lookbook-item">
+            <img src="https://images.unsplash.com/photo-1554568218-0f1715e72254?auto=format&fit=crop&w=900&q=80" alt="Look 02 — neutral studio look in beige and charcoal" loading="lazy" onerror="this.onerror=null;this.src='images/placeholder.svg';this.classList.add('img-fallback')">
+            <span class="lookbook-item__caption">Look 02 — Studio Neutrals</span>
+          </div>
+          <div class="lookbook-item">
+            <img src="https://images.unsplash.com/photo-1560243563-062bfc001d68?auto=format&fit=crop&w=900&q=80" alt="Look 03 — evening styling in black" loading="lazy" onerror="this.onerror=null;this.src='images/placeholder.svg';this.classList.add('img-fallback')">
+            <span class="lookbook-item__caption">Look 03 — After Hours</span>
+          </div>
+          <div class="lookbook-item">
+            <img src="https://images.unsplash.com/photo-1509909756405-be0199881695?auto=format&fit=crop&w=900&q=80" alt="Look 04 — weekend layers in warm tones" loading="lazy" onerror="this.onerror=null;this.src='images/placeholder.svg';this.classList.add('img-fallback')">
+            <span class="lookbook-item__caption">Look 04 — Weekend Layers</span>
+          </div>
+          <div class="lookbook-item">
+            <img src="https://images.unsplash.com/photo-1544022613-e87ca75a784a?auto=format&fit=crop&w=1600&q=80" alt="Look 05 — the capsule wardrobe, full outfit" loading="lazy" onerror="this.onerror=null;this.src='images/placeholder.svg';this.classList.add('img-fallback')">
+            <span class="lookbook-item__caption">Look 05 — The Capsule</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================= INSTAGRAM / SOCIAL ========================= -->
+    <section class="section section--alt" aria-labelledby="social-heading">
+      <div class="container">
+        <div class="social-head" data-reveal>
+          <p class="eyebrow">@novae.co</p>
+          <h2 id="social-heading">Styled by You</h2>
+          <p>Tag @novae.co to be featured across our channels.</p>
+        </div>
+
+        <div class="social-grid" data-reveal-group>
+          <div class="social-item">
+            <img src="https://images.unsplash.com/photo-1445205170230-053b83016050?auto=format&fit=crop&w=600&q=80" alt="Customer styled photo featuring NOVAÉ outerwear" loading="lazy" onerror="this.onerror=null;this.src='images/placeholder.svg';this.classList.add('img-fallback')">
+            <span class="social-item__icon" aria-hidden="true"><svg viewBox="0 0 24 24" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.3" cy="6.7" r="1"></circle></svg></span>
+          </div>
+          <div class="social-item">
+            <img src="https://images.unsplash.com/photo-1516257984-b1b4d707412e?auto=format&fit=crop&w=600&q=80" alt="Customer styled photo featuring NOVAÉ trousers" loading="lazy" onerror="this.onerror=null;this.src='images/placeholder.svg';this.classList.add('img-fallback')">
+            <span class="social-item__icon" aria-hidden="true"><svg viewBox="0 0 24 24" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.3" cy="6.7" r="1"></circle></svg></span>
+          </div>
+          <div class="social-item">
+            <img src="https://images.unsplash.com/photo-1554568218-0f1715e72254?auto=format&fit=crop&w=600&q=80" alt="Customer styled photo, neutral tone outfit" loading="lazy" onerror="this.onerror=null;this.src='images/placeholder.svg';this.classList.add('img-fallback')">
+            <span class="social-item__icon" aria-hidden="true"><svg viewBox="0 0 24 24" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.3" cy="6.7" r="1"></circle></svg></span>
+          </div>
+          <div class="social-item">
+            <img src="https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?auto=format&fit=crop&w=600&q=80" alt="Customer styled photo, layered autumn look" loading="lazy" onerror="this.onerror=null;this.src='images/placeholder.svg';this.classList.add('img-fallback')">
+            <span class="social-item__icon" aria-hidden="true"><svg viewBox="0 0 24 24" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.3" cy="6.7" r="1"></circle></svg></span>
+          </div>
+          <div class="social-item">
+            <img src="https://images.unsplash.com/photo-1495385794356-15371f348c31?auto=format&fit=crop&w=600&q=80" alt="Customer styled photo featuring NOVAÉ dress" loading="lazy" onerror="this.onerror=null;this.src='images/placeholder.svg';this.classList.add('img-fallback')">
+            <span class="social-item__icon" aria-hidden="true"><svg viewBox="0 0 24 24" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.3" cy="6.7" r="1"></circle></svg></span>
+          </div>
+          <div class="social-item">
+            <img src="https://images.unsplash.com/photo-1509909756405-be0199881695?auto=format&fit=crop&w=600&q=80" alt="Customer styled photo, weekend look" loading="lazy" onerror="this.onerror=null;this.src='images/placeholder.svg';this.classList.add('img-fallback')">
+            <span class="social-item__icon" aria-hidden="true"><svg viewBox="0 0 24 24" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.3" cy="6.7" r="1"></circle></svg></span>
+          </div>
+        </div>
+
+        <p class="social-cta">Follow @novae.co on Instagram</p>
+      </div>
+    </section>
+
+    <!-- ============================== NEWSLETTER ============================== -->
+    <section class="section section--tight newsletter" aria-labelledby="newsletter-heading">
+      <div class="container">
+        <div class="newsletter__inner" data-reveal>
+          <h2 id="newsletter-heading">Stay in the Loop</h2>
+          <p>Be first to know about new arrivals, restocks and studio updates. No spam — just the good stuff.</p>
+          <form class="newsletter-form" data-newsletter-form novalidate>
+            <div class="newsletter-form__row">
+              <label class="visually-hidden" for="newsletter-email">Email address</label>
+              <input id="newsletter-email" type="email" name="email" placeholder="Your email address" required>
+              <button type="submit" class="btn btn--ghost-light">Subscribe</button>
+            </div>
+            <p class="newsletter-form__status" data-newsletter-status role="status" aria-live="polite"></p>
+            <p class="newsletter-form__note">By subscribing you agree to receive marketing emails. Unsubscribe anytime.</p>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-top">
+      <div class="footer-brand">
+        <p class="logo"><a href="index.html">NOVAÉ</a></p>
+        <p>Modern essentials. Made for everyday. Considered fabrics, quiet colour, and pieces designed to last beyond a season.</p>
+        <div class="footer-social" aria-hidden="true">
+          <span class="footer-social__icon" title="Instagram">
+            <svg viewBox="0 0 24 24" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.3" cy="6.7" r="1"></circle></svg>
+          </span>
+          <span class="footer-social__icon" title="Pinterest">
+            <svg viewBox="0 0 24 24" stroke-width="1.6"><circle cx="12" cy="12" r="9"></circle><path d="M9.5 17c1-3.5 1.2-6.2 1.2-6.2a2.6 2.6 0 1 1 2.6 2.6c-.9 0-1.6-.4-1.9-1"></path></svg>
+          </span>
+          <span class="footer-social__icon" title="TikTok">
+            <svg viewBox="0 0 24 24" stroke-width="1.6"><path d="M14 4v10.8a3.3 3.3 0 1 1-3.3-3.3"></path><path d="M14 4c.4 2.6 2.1 4.3 4.6 4.6"></path></svg>
+          </span>
+        </div>
+      </div>
+
+      <div class="footer-cols">
+        <div class="footer-col">
+          <h4>Shop</h4>
+          <ul>
+            <li><a href="#new-arrivals">New Arrivals</a></li>
+            <li><a href="#best-sellers">Best Sellers</a></li>
+            <li><a href="shop.html?category=women">Women</a></li>
+            <li><a href="shop.html?category=men">Men</a></li>
+            <li><a href="shop.html?category=accessories">Accessories</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="about.html">About NOVAÉ</a></li>
+            <li><a href="#lookbook">Lookbook</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="container footer-bottom">
+      <p>&copy; <span data-year>2026</span> NOVAÉ. All rights reserved. — A portfolio concept by AJAK.WEB.</p>
+    </div>
+  </footer>
+
+  <!-- ============================== QUICK VIEW ============================== -->
+  <div class="overlay-backdrop" data-quickview-backdrop></div>
+  <div class="quickview" data-quickview role="dialog" aria-modal="true" aria-label="Quick view">
+    <button type="button" class="quickview__close" data-quickview-close aria-label="Close quick view">
+      <svg viewBox="0 0 24 24" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><line x1="5" y1="5" x2="19" y2="19"></line><line x1="19" y1="5" x2="5" y2="19"></line></svg>
+    </button>
+    <div class="quickview__grid">
+      <div class="quickview__media">
+        <img data-qv-image src="images/placeholder.svg" alt="" loading="lazy" onerror="this.onerror=null;this.src='images/placeholder.svg';this.classList.add('img-fallback')">
+      </div>
+      <div class="quickview__body">
+        <p class="quickview__category" data-qv-category></p>
+        <h3 class="quickview__name" data-qv-name></h3>
+        <p class="quickview__price" data-qv-price></p>
+
+        <form data-qv-form>
+          <div class="quickview__field">
+            <p class="quickview__field-label">Colour <span class="selected" data-qv-selected-color></span></p>
+            <div class="quickview__swatches" data-qv-swatches></div>
+          </div>
+
+          <div class="quickview__field">
+            <p class="quickview__field-label">Size</p>
+            <div class="quickview__sizes" data-qv-sizes></div>
+          </div>
+
+          <div class="quickview__field">
+            <p class="quickview__field-label">Quantity</p>
+            <div class="qty-stepper">
+              <button type="button" data-qty-step="down" aria-label="Decrease quantity">&minus;</button>
+              <output data-qv-qty>1</output>
+              <button type="button" data-qty-step="up" aria-label="Increase quantity">&#43;</button>
+            </div>
+          </div>
+
+          <div class="quickview__actions">
+            <button type="submit" class="btn btn--primary quickview__addtobag">
+              <svg viewBox="0 0 24 24" width="16" height="16" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" stroke="currentColor" fill="none" aria-hidden="true"><path d="M6 8h12l-1 12.5a1 1 0 0 1-1 .9H8a1 1 0 0 1-1-.9L6 8z"></path><path d="M9 8V6.5a3 3 0 0 1 6 0V8"></path></svg>
+              Add to Bag
+            </button>
+            <a class="link-underline" href="shop.html">View Full Details</a>
+          </div>
+          <p class="quickview__note" data-qv-note role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================== CART DRAWER ============================== -->
+  <div class="overlay-backdrop" data-cart-backdrop></div>
+  <aside class="cart-drawer" data-cart-drawer role="dialog" aria-modal="true" aria-label="Shopping bag">
+    <div class="cart-drawer__header">
+      <h2>Your Bag</h2>
+      <button type="button" class="cart-drawer__close" data-cart-close aria-label="Close bag">
+        <svg viewBox="0 0 24 24" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><line x1="5" y1="5" x2="19" y2="19"></line><line x1="19" y1="5" x2="5" y2="19"></line></svg>
+      </button>
+    </div>
+    <div class="cart-drawer__body" data-cart-body></div>
+    <div class="cart-drawer__footer">
+      <div class="cart-drawer__subtotal">
+        <span>Subtotal</span>
+        <span data-cart-subtotal>$0.00</span>
+      </div>
+      <a class="btn btn--primary btn--block" href="cart.html">Checkout</a>
+    </div>
+  </aside>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

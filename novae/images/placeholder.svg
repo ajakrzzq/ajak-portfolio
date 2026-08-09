@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1000" preserveAspectRatio="xMidYMid slice" role="img" aria-label="NOVAÉ placeholder image">
+  <defs>
+    <linearGradient id="novae-ph-bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#EDE4D3"/>
+      <stop offset="100%" stop-color="#DCCFB5"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="1000" fill="url(#novae-ph-bg)"/>
+  <rect x="24" y="24" width="752" height="952" fill="none" stroke="#B9A98A" stroke-width="1"/>
+  <text x="400" y="486" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="56" letter-spacing="10" fill="#6B6B4F">NOVAÉ</text>
+  <text x="400" y="530" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="15" letter-spacing="4" fill="#948E82">IMAGE COMING SOON</text>
+</svg>
