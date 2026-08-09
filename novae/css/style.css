@@ -1044,6 +1044,50 @@ p {
   gap: 1.75rem 1.5rem;
 }
 
+.product-grid[hidden] {
+  display: none;
+}
+
+/* Shop page — department filter pills & empty state (shop.html) */
+.shop-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-bottom: clamp(2rem, 4vw, 3rem);
+}
+
+.shop-filter {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.6rem 1.25rem;
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  transition: border-color var(--dur-fast) var(--ease), color var(--dur-fast) var(--ease),
+    background-color var(--dur-fast) var(--ease);
+}
+
+.shop-filter:hover {
+  border-color: var(--novae-black);
+  color: var(--novae-black);
+}
+
+.shop-filter.is-active {
+  background: var(--novae-black);
+  border-color: var(--novae-black);
+  color: var(--novae-white);
+}
+
+.shop-empty {
+  padding-block: 3rem;
+  text-align: center;
+  color: var(--color-text-muted);
+}
+
 /* 15. Shop by category
    ========================================================================== */
 .category-grid {
@@ -1353,11 +1397,16 @@ p {
   color: rgba(250, 247, 241, 0.85);
 }
 
-.newsletter-form {
+.newsletter-form,
+.about-cta-actions {
   margin-top: 2.25rem;
   display: flex;
   flex-direction: column;
   gap: 0.85rem;
+}
+
+.about-cta-actions {
+  align-items: center;
 }
 
 .newsletter-form__row {
@@ -1395,6 +1444,80 @@ p {
   font-size: 0.85rem;
   font-weight: 600;
   min-height: 1.3em;
+}
+
+/* Contact page — form + studio info (contact.html) */
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(2.5rem, 5vw, 4rem);
+  align-items: start;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.contact-form__field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.contact-form__field label {
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+.contact-form__field input,
+.contact-form__field textarea {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  padding: 0.85rem 1rem;
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  color: var(--color-text);
+  background: var(--color-bg);
+  resize: vertical;
+}
+
+.contact-form__field input:focus,
+.contact-form__field textarea:focus {
+  outline: none;
+  border-color: var(--novae-black);
+}
+
+.contact-form .btn {
+  align-self: flex-start;
+}
+
+.contact-form__status {
+  font-size: 0.85rem;
+  font-weight: 600;
+  min-height: 1.3em;
+  color: var(--color-accent);
+}
+
+.contact-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.contact-info__block h3 {
+  margin-top: 0.5rem;
+  font-size: 1.15rem;
+}
+
+.contact-info__block p:last-child {
+  margin-top: 0.5rem;
+  color: var(--color-text-muted);
+  font-size: 0.92rem;
 }
 
 /* 21. Footer
@@ -1854,6 +1977,39 @@ p {
   margin-bottom: 1rem;
 }
 
+/* Cart page — page-level bag view (cart.html), reuses .cart-drawer__items
+   and .cart-item styles from the drawer since renderCart() in main.js
+   populates both from the same data. */
+.cart-page {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(2rem, 4vw, 3rem);
+  align-items: start;
+}
+
+.cart-page__body .cart-drawer__empty {
+  padding-block: 4rem 2rem;
+}
+
+.cart-page__body .cart-drawer__items {
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+}
+
+.cart-page__summary {
+  padding: 1.75rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-bg-alt);
+}
+
+.cart-page__note {
+  margin-bottom: 1.25rem;
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+}
+
 /* 24. Scroll reveal
    ========================================================================== */
 [data-reveal] {
@@ -1928,6 +2084,14 @@ img.img-fallback {
 
   .brand-story__grid {
     grid-template-columns: 1fr 1fr;
+  }
+
+  .contact-grid {
+    grid-template-columns: 1.3fr 1fr;
+  }
+
+  .cart-page {
+    grid-template-columns: 2fr 1fr;
   }
 
   .hero__scroll-cue {

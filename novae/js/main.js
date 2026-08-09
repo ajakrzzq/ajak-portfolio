@@ -227,8 +227,11 @@
   var cartDrawer = document.querySelector('[data-cart-drawer]');
   var cartBackdrop = document.querySelector('[data-cart-backdrop]');
   var cartCountEls = document.querySelectorAll('[data-cart-count]');
-  var cartBody = document.querySelector('[data-cart-body]');
-  var cartSubtotalEl = document.querySelector('[data-cart-subtotal]');
+  /* Plural on purpose: most pages have one cart body (the drawer), but a
+     dedicated cart page can render a second, page-level copy alongside it
+     using the same data attributes — both stay in sync automatically. */
+  var cartBodyEls = document.querySelectorAll('[data-cart-body]');
+  var cartSubtotalEls = document.querySelectorAll('[data-cart-subtotal]');
 
   function readCart() {
     try {
@@ -251,37 +254,23 @@
     return '$' + Number(n).toFixed(2);
   }
 
-  function renderCart() {
-    var items = readCart();
-    var count = items.reduce(function (sum, item) { return sum + item.qty; }, 0);
-
-    cartCountEls.forEach(function (el) {
-      el.textContent = String(count);
-      el.hidden = count === 0;
-    });
-
-    if (!cartBody) return;
-
+  function renderCartBody(body, items) {
     if (!items.length) {
-      cartBody.innerHTML =
+      body.innerHTML =
         '<div class="cart-drawer__empty">' +
         '<p>Your bag is empty.</p>' +
         '<a class="btn btn--outline btn--sm" data-cart-close-link href="shop.html">Continue Shopping</a>' +
         '</div>';
-      var closeLink = cartBody.querySelector('[data-cart-close-link]');
+      var closeLink = body.querySelector('[data-cart-close-link]');
       if (closeLink && cartDialogRef) {
         closeLink.addEventListener('click', function () {
           cartDialogRef.close();
         });
       }
-      if (cartSubtotalEl) cartSubtotalEl.textContent = formatPrice(0);
       return;
     }
 
-    var subtotal = items.reduce(function (sum, item) { return sum + item.price * item.qty; }, 0);
-    if (cartSubtotalEl) cartSubtotalEl.textContent = formatPrice(subtotal);
-
-    cartBody.innerHTML =
+    body.innerHTML =
       '<ul class="cart-drawer__items">' +
       items
         .map(function (item, index) {
@@ -304,7 +293,7 @@
         .join('') +
       '</ul>';
 
-    cartBody.querySelectorAll('[data-cart-remove]').forEach(function (btn) {
+    body.querySelectorAll('[data-cart-remove]').forEach(function (btn) {
       btn.addEventListener('click', function () {
         var idx = Number(btn.getAttribute('data-cart-remove'));
         var current = readCart();
@@ -312,6 +301,25 @@
         writeCart(current);
         renderCart();
       });
+    });
+  }
+
+  function renderCart() {
+    var items = readCart();
+    var count = items.reduce(function (sum, item) { return sum + item.qty; }, 0);
+    var subtotal = items.reduce(function (sum, item) { return sum + item.price * item.qty; }, 0);
+
+    cartCountEls.forEach(function (el) {
+      el.textContent = String(count);
+      el.hidden = count === 0;
+    });
+
+    cartSubtotalEls.forEach(function (el) {
+      el.textContent = formatPrice(subtotal);
+    });
+
+    cartBodyEls.forEach(function (body) {
+      renderCartBody(body, items);
     });
   }
 
@@ -543,6 +551,33 @@
 
       if (newsletterStatus) newsletterStatus.textContent = 'Thank you — you’re on the list.';
       newsletterForm.reset();
+    });
+  }
+
+  /* ------------------------------------------------------------------ *
+   * Contact form (no backend — front-end only confirmation state)
+   * ------------------------------------------------------------------ */
+  var contactForm = document.querySelector('[data-contact-form]');
+  if (contactForm) {
+    var contactStatus = contactForm.querySelector('[data-contact-status]');
+    contactForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var nameInput = contactForm.querySelector('input[name="name"]');
+      var emailInput = contactForm.querySelector('input[type="email"]');
+      var messageInput = contactForm.querySelector('textarea[name="message"]');
+
+      var name = nameInput ? nameInput.value.trim() : '';
+      var email = emailInput ? emailInput.value.trim() : '';
+      var message = messageInput ? messageInput.value.trim() : '';
+      var isEmailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+
+      if (!name || !isEmailValid || !message) {
+        if (contactStatus) contactStatus.textContent = 'Please fill in your name, a valid email, and a message.';
+        return;
+      }
+
+      if (contactStatus) contactStatus.textContent = 'Thank you, ' + name + ' — we’ll be in touch shortly.';
+      contactForm.reset();
     });
   }
 

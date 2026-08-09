@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your Bag — NOVAÉ</title>
+  <meta name="description" content="Review the items in your NOVAÉ shopping bag.">
+
+  <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <div class="announcement">
+    <p class="announcement__track">Free shipping on orders over $150 &nbsp;—&nbsp; Easy 30-day returns</p>
+  </div>
+
+  <header class="site-header" data-site-header>
+    <div class="container site-header__inner">
+      <nav class="nav-group primary-nav" aria-label="Shop navigation">
+        <a class="nav-link" href="index.html#new-arrivals">New Arrivals</a>
+        <a class="nav-link" href="shop.html?category=women">Women</a>
+        <a class="nav-link" href="shop.html?category=men">Men</a>
+      </nav>
+
+      <p class="logo"><a href="index.html">NOVAÉ</a></p>
+
+      <div class="nav-group nav-group--end">
+        <nav class="primary-nav" aria-label="Company navigation">
+          <a class="nav-link" href="shop.html?category=accessories">Accessories</a>
+          <a class="nav-link" href="about.html">About</a>
+        </nav>
+        <div class="header-icons">
+          <button type="button" class="icon-btn icon-btn--search" data-search-toggle aria-expanded="false" aria-controls="nav-search-panel" aria-label="Search">
+            <svg viewBox="0 0 24 24" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+          </button>
+          <button type="button" class="icon-btn" data-cart-toggle aria-label="Open shopping bag">
+            <svg viewBox="0 0 24 24" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 8h12l-1 12.5a1 1 0 0 1-1 .9H8a1 1 0 0 1-1-.9L6 8z"></path><path d="M9 8V6.5a3 3 0 0 1 6 0V8"></path></svg>
+            <span class="icon-btn__count" data-cart-count hidden>0</span>
+          </button>
+          <button type="button" class="icon-btn menu-toggle" data-menu-toggle aria-expanded="false" aria-controls="mobile-menu" aria-label="Open menu">
+            <span class="menu-toggle__box" aria-hidden="true"><span></span><span></span><span></span></span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="search-panel" data-search-panel id="nav-search-panel">
+      <form class="search-panel__form" role="search" data-search-form>
+        <label class="visually-hidden" for="nav-search-input">Search products</label>
+        <input id="nav-search-input" type="search" name="q" placeholder="Search products, styles, collections…" autocomplete="off">
+        <button type="submit" class="btn btn--outline btn--sm">Search</button>
+      </form>
+    </div>
+  </header>
+
+  <div class="mobile-menu" data-mobile-menu id="mobile-menu" role="dialog" aria-modal="true" aria-label="Site menu">
+    <div class="mobile-menu__header">
+      <p class="logo"><a href="index.html">NOVAÉ</a></p>
+      <button type="button" class="icon-btn" data-menu-close aria-label="Close menu">
+        <svg viewBox="0 0 24 24" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><line x1="5" y1="5" x2="19" y2="19"></line><line x1="19" y1="5" x2="5" y2="19"></line></svg>
+      </button>
+    </div>
+    <div class="mobile-menu__body">
+      <nav class="mobile-menu__links" aria-label="Primary">
+        <a href="index.html#new-arrivals">New Arrivals</a>
+        <a href="shop.html?category=women">Women</a>
+        <a href="shop.html?category=men">Men</a>
+        <a href="shop.html?category=accessories">Accessories</a>
+        <a href="about.html">About</a>
+      </nav>
+
+      <form class="search-panel__form" role="search" data-search-form>
+        <label class="visually-hidden" for="mobile-search-input">Search products</label>
+        <input id="mobile-search-input" type="search" name="q" placeholder="Search products…" autocomplete="off">
+        <button type="submit" class="btn btn--outline btn--sm">Search</button>
+      </form>
+
+      <div class="mobile-menu__utility">
+        <a href="contact.html">Contact</a>
+        <a href="index.html#lookbook">Lookbook</a>
+      </div>
+
+      <p class="mobile-menu__meta">NOVAÉ — Modern essentials. Made for everyday.</p>
+    </div>
+  </div>
+
+  <main id="main">
+    <section class="section" aria-labelledby="cart-heading">
+      <div class="container">
+        <div class="section-head" data-reveal>
+          <div class="section-head__text">
+            <p class="eyebrow">Your Bag</p>
+            <h1 id="cart-heading">Shopping Bag</h1>
+          </div>
+        </div>
+
+        <div class="cart-page">
+          <div class="cart-page__body" data-cart-body></div>
+          <div class="cart-page__summary">
+            <div class="cart-drawer__subtotal">
+              <span>Subtotal</span>
+              <span data-cart-subtotal>$0.00</span>
+            </div>
+            <p class="cart-page__note">This is a portfolio concept — checkout isn't connected to real payment processing.</p>
+            <a class="btn btn--outline btn--block" href="shop.html">Continue Shopping</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-top">
+      <div class="footer-brand">
+        <p class="logo"><a href="index.html">NOVAÉ</a></p>
+        <p>Modern essentials. Made for everyday. Considered fabrics, quiet colour, and pieces designed to last beyond a season.</p>
+        <div class="footer-social" aria-hidden="true">
+          <span class="footer-social__icon" title="Instagram">
+            <svg viewBox="0 0 24 24" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.3" cy="6.7" r="1"></circle></svg>
+          </span>
+          <span class="footer-social__icon" title="Pinterest">
+            <svg viewBox="0 0 24 24" stroke-width="1.6"><circle cx="12" cy="12" r="9"></circle><path d="M9.5 17c1-3.5 1.2-6.2 1.2-6.2a2.6 2.6 0 1 1 2.6 2.6c-.9 0-1.6-.4-1.9-1"></path></svg>
+          </span>
+          <span class="footer-social__icon" title="TikTok">
+            <svg viewBox="0 0 24 24" stroke-width="1.6"><path d="M14 4v10.8a3.3 3.3 0 1 1-3.3-3.3"></path><path d="M14 4c.4 2.6 2.1 4.3 4.6 4.6"></path></svg>
+          </span>
+        </div>
+      </div>
+
+      <div class="footer-cols">
+        <div class="footer-col">
+          <h4>Shop</h4>
+          <ul>
+            <li><a href="index.html#new-arrivals">New Arrivals</a></li>
+            <li><a href="index.html#best-sellers">Best Sellers</a></li>
+            <li><a href="shop.html?category=women">Women</a></li>
+            <li><a href="shop.html?category=men">Men</a></li>
+            <li><a href="shop.html?category=accessories">Accessories</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="about.html">About NOVAÉ</a></li>
+            <li><a href="index.html#lookbook">Lookbook</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="container footer-bottom">
+      <p>&copy; <span data-year>2026</span> NOVAÉ. All rights reserved. — A portfolio concept by AJAK.WEB.</p>
+    </div>
+  </footer>
+
+  <!-- ============================== QUICK VIEW ============================== -->
+  <div class="overlay-backdrop" data-quickview-backdrop></div>
+  <div class="quickview" data-quickview role="dialog" aria-modal="true" aria-label="Quick view">
+    <button type="button" class="quickview__close" data-quickview-close aria-label="Close quick view">
+      <svg viewBox="0 0 24 24" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><line x1="5" y1="5" x2="19" y2="19"></line><line x1="19" y1="5" x2="5" y2="19"></line></svg>
+    </button>
+    <div class="quickview__grid">
+      <div class="quickview__media">
+        <img data-qv-image src="images/placeholder.svg" alt="" loading="lazy" onerror="this.onerror=null;this.src='images/placeholder.svg';this.classList.add('img-fallback')">
+      </div>
+      <div class="quickview__body">
+        <p class="quickview__category" data-qv-category></p>
+        <h3 class="quickview__name" data-qv-name></h3>
+        <p class="quickview__price" data-qv-price></p>
+
+        <form data-qv-form>
+          <div class="quickview__field">
+            <p class="quickview__field-label">Colour <span class="selected" data-qv-selected-color></span></p>
+            <div class="quickview__swatches" data-qv-swatches></div>
+          </div>
+
+          <div class="quickview__field">
+            <p class="quickview__field-label">Size</p>
+            <div class="quickview__sizes" data-qv-sizes></div>
+          </div>
+
+          <div class="quickview__field">
+            <p class="quickview__field-label">Quantity</p>
+            <div class="qty-stepper">
+              <button type="button" data-qty-step="down" aria-label="Decrease quantity">&minus;</button>
+              <output data-qv-qty>1</output>
+              <button type="button" data-qty-step="up" aria-label="Increase quantity">&#43;</button>
+            </div>
+          </div>
+
+          <div class="quickview__actions">
+            <button type="submit" class="btn btn--primary quickview__addtobag">
+              <svg viewBox="0 0 24 24" width="16" height="16" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" stroke="currentColor" fill="none" aria-hidden="true"><path d="M6 8h12l-1 12.5a1 1 0 0 1-1 .9H8a1 1 0 0 1-1-.9L6 8z"></path><path d="M9 8V6.5a3 3 0 0 1 6 0V8"></path></svg>
+              Add to Bag
+            </button>
+            <a class="link-underline" href="shop.html">View Full Details</a>
+          </div>
+          <p class="quickview__note" data-qv-note role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================== CART DRAWER ============================== -->
+  <div class="overlay-backdrop" data-cart-backdrop></div>
+  <aside class="cart-drawer" data-cart-drawer role="dialog" aria-modal="true" aria-label="Shopping bag">
+    <div class="cart-drawer__header">
+      <h2>Your Bag</h2>
+      <button type="button" class="cart-drawer__close" data-cart-close aria-label="Close bag">
+        <svg viewBox="0 0 24 24" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><line x1="5" y1="5" x2="19" y2="19"></line><line x1="19" y1="5" x2="5" y2="19"></line></svg>
+      </button>
+    </div>
+    <div class="cart-drawer__body" data-cart-body></div>
+    <div class="cart-drawer__footer">
+      <div class="cart-drawer__subtotal">
+        <span>Subtotal</span>
+        <span data-cart-subtotal>$0.00</span>
+      </div>
+      <a class="btn btn--primary btn--block" href="cart.html">Checkout</a>
+    </div>
+  </aside>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
