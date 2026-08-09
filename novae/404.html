@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Your Bag — NOVAÉ</title>
-  <meta name="description" content="Review the items in your NOVAÉ shopping bag.">
+  <title>Page Not Found — NOVAÉ</title>
+  <meta name="description" content="This page isn't in our collection. Find your way back to NOVAÉ modern essentials.">
   <meta name="robots" content="noindex">
 
   <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
@@ -92,25 +92,28 @@
   </div>
 
   <main id="main">
-    <section class="section" aria-labelledby="cart-heading">
-      <div class="container">
-        <div class="section-head" data-reveal>
-          <div class="section-head__text">
-            <p class="eyebrow">Your Bag</p>
-            <h1 id="cart-heading">Shopping Bag</h1>
-          </div>
+    <section class="section error-page" aria-labelledby="error-heading">
+      <div class="container error-page__inner">
+        <p class="eyebrow">Error 404</p>
+        <h1 id="error-heading">This Page Isn't in Our Collection</h1>
+        <p class="error-page__lede">The link you followed may be broken, or the page may have moved. Let's get you back to something worth wearing.</p>
+
+        <form class="search-panel__form error-page__search" role="search" data-search-form>
+          <label class="visually-hidden" for="error-search-input">Search products</label>
+          <input id="error-search-input" type="search" name="q" placeholder="Search products, styles, collections…" autocomplete="off">
+          <button type="submit" class="btn btn--outline btn--sm">Search</button>
+        </form>
+
+        <div class="error-page__actions">
+          <a class="btn btn--primary" href="index.html">Back to Home</a>
+          <a class="btn btn--outline" href="shop.html">Shop All Products</a>
         </div>
 
-        <div class="cart-page">
-          <div class="cart-page__body" data-cart-body></div>
-          <div class="cart-page__summary">
-            <div class="cart-drawer__subtotal">
-              <span>Subtotal</span>
-              <span data-cart-subtotal>$0.00</span>
-            </div>
-            <p class="cart-page__note">This is a portfolio concept — checkout isn't connected to real payment processing.</p>
-            <a class="btn btn--outline btn--block" href="shop.html">Continue Shopping</a>
-          </div>
+        <div class="error-page__links">
+          <a class="link-underline" href="shop.html?category=women">Women</a>
+          <a class="link-underline" href="shop.html?category=men">Men</a>
+          <a class="link-underline" href="shop.html?category=accessories">Accessories</a>
+          <a class="link-underline" href="contact.html">Contact Us</a>
         </div>
       </div>
     </section>
