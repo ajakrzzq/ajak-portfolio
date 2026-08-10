@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Kings Hall Cafe favicon">
+  <rect width="64" height="64" rx="12" fill="#1D1A16"/>
+  <path d="M18 26h22v11a11 11 0 0 1-11 11 11 11 0 0 1-11-11V26z" fill="none" stroke="#E9DFCC" stroke-width="2.4"/>
+  <path d="M40 29h3.5a5 5 0 0 1 0 10H40" fill="none" stroke="#E9DFCC" stroke-width="2.4"/>
+  <path d="M23 21c0-2 2-2 2-4s-2-2-2-4" fill="none" stroke="#B9895A" stroke-width="2" stroke-linecap="round"/>
+  <path d="M29 21c0-2 2-2 2-4s-2-2-2-4" fill="none" stroke="#B9895A" stroke-width="2" stroke-linecap="round"/>
+</svg>
