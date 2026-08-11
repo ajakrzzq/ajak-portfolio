@@ -1322,17 +1322,49 @@ a.card:hover, .card.is-hoverable:hover {
   .work-project--reverse .work-project__body { order: 1; }
 }
 
-.work-project__visual {
+.work-project__frame {
   border-radius: var(--radius-lg);
   overflow: hidden;
   box-shadow: var(--shadow-lg);
   transition: transform 0.4s var(--ease);
 }
 
-.work-project__visual:hover { transform: translateY(-4px); }
-.work-project__visual .browser-frame { border-radius: 0; border: none; box-shadow: none; }
-.work-project__visual img { transition: transform 0.6s var(--ease); }
-.work-project__visual:hover img { transform: scale(1.03); }
+.work-project__frame:hover { transform: translateY(-4px); }
+.work-project__frame .browser-frame { border-radius: 0; border: none; box-shadow: none; }
+.work-project__frame img { transition: transform 0.6s var(--ease); }
+.work-project__frame:hover img { transform: scale(1.03); }
+
+/* ---------- Selected-project secondary thumbnail strip (lighter than the flagship's visual story) ---------- */
+.work-project__strip {
+  margin-top: var(--space-4);
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(84px, 1fr));
+  gap: var(--space-3);
+}
+
+.work-project__strip button.browser-frame {
+  padding: 0;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border);
+  background: var(--surface);
+  box-shadow: none;
+  cursor: zoom-in;
+  text-align: left;
+  width: 100%;
+  overflow: hidden;
+  transition: box-shadow var(--speed) var(--ease), transform var(--speed) var(--ease);
+}
+
+.work-project__strip button.browser-frame:hover {
+  box-shadow: var(--shadow-sm);
+  transform: translateY(-2px);
+}
+
+.work-project__strip .browser-frame__bar { padding: 6px 9px; }
+.work-project__strip .browser-frame__dots span { width: 5px; height: 5px; }
+.work-project__strip .browser-frame__url { font-size: 0.52rem; padding: 3px 7px; }
+.work-project__strip img { transition: transform 0.5s var(--ease); }
+.work-project__strip button.browser-frame:hover img { transform: scale(1.04); }
 
 .work-project__label {
   display: inline-flex;
