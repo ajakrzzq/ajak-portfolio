@@ -25,25 +25,47 @@ document.addEventListener("DOMContentLoaded", function () {
   var toggle = document.querySelector(".nav__toggle");
   var mobileMenu = document.querySelector(".mobile-menu");
   if (toggle && mobileMenu) {
-    var closeMenu = function () {
+    var closeMenu = function (returnFocus) {
       toggle.setAttribute("aria-expanded", "false");
+      toggle.setAttribute("aria-label", "Open menu");
       mobileMenu.classList.remove("is-open");
       document.body.style.overflow = "";
+      if (returnFocus) toggle.focus();
     };
     var openMenu = function () {
       toggle.setAttribute("aria-expanded", "true");
+      toggle.setAttribute("aria-label", "Close menu");
       mobileMenu.classList.add("is-open");
       document.body.style.overflow = "hidden";
+      var firstLink = mobileMenu.querySelector("a");
+      if (firstLink) firstLink.focus();
     };
     toggle.addEventListener("click", function () {
       var isOpen = toggle.getAttribute("aria-expanded") === "true";
-      isOpen ? closeMenu() : openMenu();
+      isOpen ? closeMenu(true) : openMenu();
     });
     mobileMenu.querySelectorAll("a").forEach(function (link) {
-      link.addEventListener("click", closeMenu);
+      link.addEventListener("click", function () { closeMenu(false); });
     });
     window.addEventListener("keydown", function (e) {
-      if (e.key === "Escape") closeMenu();
+      if (e.key === "Escape" && mobileMenu.classList.contains("is-open")) {
+        closeMenu(true);
+        return;
+      }
+      if (e.key === "Tab" && mobileMenu.classList.contains("is-open")) {
+        var focusables = [toggle].concat(
+          Array.prototype.slice.call(mobileMenu.querySelectorAll("a, button"))
+        );
+        var first = focusables[0];
+        var last = focusables[focusables.length - 1];
+        if (e.shiftKey && document.activeElement === first) {
+          e.preventDefault();
+          last.focus();
+        } else if (!e.shiftKey && document.activeElement === last) {
+          e.preventDefault();
+          first.focus();
+        }
+      }
     });
   }
 
