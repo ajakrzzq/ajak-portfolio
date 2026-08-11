@@ -21,6 +21,24 @@ document.addEventListener("DOMContentLoaded", function () {
     window.addEventListener("scroll", onScroll, { passive: true });
   }
 
+  /* ---------- Hero showcase — very subtle scroll drift ---------- */
+  var heroBrowser = document.querySelector(".hero__browser-wrap");
+  var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (heroBrowser && !reduceMotion) {
+    var parallaxTicking = false;
+    var updateHeroParallax = function () {
+      var offset = Math.min(window.scrollY * 0.08, 24);
+      heroBrowser.style.transform = "translateY(-" + offset + "px)";
+      parallaxTicking = false;
+    };
+    window.addEventListener("scroll", function () {
+      if (!parallaxTicking) {
+        window.requestAnimationFrame(updateHeroParallax);
+        parallaxTicking = true;
+      }
+    }, { passive: true });
+  }
+
   /* ---------- Mobile menu ---------- */
   var toggle = document.querySelector(".nav__toggle");
   var mobileMenu = document.querySelector(".mobile-menu");
