@@ -7,6 +7,6 @@
   </defs>
   <rect width="800" height="1000" fill="url(#novae-ph-bg)"/>
   <rect x="24" y="24" width="752" height="952" fill="none" stroke="#B9A98A" stroke-width="1"/>
-  <text x="400" y="486" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="56" letter-spacing="10" fill="#6B6B4F">NOVAÉ</text>
-  <text x="400" y="530" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="15" letter-spacing="4" fill="#948E82">IMAGE COMING SOON</text>
+  <text x="400" y="480" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="40" letter-spacing="8" fill="#6B6B4F" fill-opacity="0.55">NOVAÉ</text>
+  <text x="400" y="518" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="15" letter-spacing="4" fill="#948E82">IMAGE COMING SOON</text>
 </svg>

@@ -241,6 +241,13 @@ p {
   padding-block: var(--section-py-sm);
 }
 
+/* Removes a section's top padding — for two stacked .section--tight blocks
+   (e.g. shop.html's filters + results) where the default padding-top would
+   double up with the previous section's padding-bottom. */
+.section--flush-top {
+  padding-top: 0;
+}
+
 .section--alt {
   background: var(--color-bg-alt);
 }
@@ -897,7 +904,7 @@ p {
   z-index: 2;
   background: var(--novae-white);
   color: var(--novae-black);
-  font-size: 0.66rem;
+  font-size: 0.72rem;
   font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -1058,7 +1065,7 @@ p {
   display: flex;
   flex-wrap: wrap;
   gap: 0.75rem;
-  margin-bottom: clamp(2rem, 4vw, 3rem);
+  margin-bottom: clamp(1.25rem, 2.5vw, 2rem);
 }
 
 .shop-filter {
