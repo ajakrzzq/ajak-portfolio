@@ -1351,6 +1351,9 @@ a.card:hover, .card.is-hoverable:hover {
   margin-bottom: var(--space-4);
 }
 
+.work-project__labels { display: flex; flex-wrap: wrap; gap: var(--space-2); margin-bottom: var(--space-4); }
+.work-project__labels .work-project__label { margin-bottom: 0; }
+
 .work-project__body h3 { font-size: var(--fs-h2); color: var(--navy); margin-bottom: var(--space-2); }
 
 .work-project__category {
@@ -1374,6 +1377,9 @@ a.card:hover, .card.is-hoverable:hover {
   flex-direction: column;
   gap: var(--space-2);
 }
+
+.work-project__story { margin-top: var(--space-6); }
+.work-project__story h4 { margin-bottom: var(--space-4); }
 
 .work-project__cta {
   margin-top: var(--space-6);
@@ -1439,7 +1445,12 @@ a.card:hover, .card.is-hoverable:hover {
 }
 
 .lightbox__inner img {
-  width: 100%;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 78vh;
+  display: block;
+  margin: 0 auto;
   border-radius: var(--radius-md);
   border: 1px solid var(--border-on-dark);
 }

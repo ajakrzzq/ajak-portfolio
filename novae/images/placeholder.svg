@@ -1,12 +1,19 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1000" preserveAspectRatio="xMidYMid slice" role="img" aria-label="NOVAÉ placeholder image">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" preserveAspectRatio="xMidYMid slice" role="img" aria-label="NOVAÉ — concept imagery placeholder">
   <defs>
     <linearGradient id="novae-ph-bg" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#EDE4D3"/>
       <stop offset="100%" stop-color="#DCCFB5"/>
     </linearGradient>
+    <pattern id="novae-ph-weave" width="46" height="46" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+      <line x1="0" y1="0" x2="0" y2="46" stroke="#B9A98A" stroke-width="1" stroke-opacity="0.16"/>
+    </pattern>
   </defs>
-  <rect width="800" height="1000" fill="url(#novae-ph-bg)"/>
-  <rect x="24" y="24" width="752" height="952" fill="none" stroke="#B9A98A" stroke-width="1"/>
-  <text x="400" y="486" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="56" letter-spacing="10" fill="#6B6B4F">NOVAÉ</text>
-  <text x="400" y="530" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="15" letter-spacing="4" fill="#948E82">IMAGE COMING SOON</text>
+
+  <rect width="1000" height="1000" fill="url(#novae-ph-bg)"/>
+  <rect width="1000" height="1000" fill="url(#novae-ph-weave)"/>
+  <rect x="28" y="28" width="944" height="944" fill="none" stroke="#B9A98A" stroke-width="1"/>
+
+  <circle cx="500" cy="460" r="64" fill="none" stroke="#6B6B4F" stroke-width="1.25"/>
+  <text x="500" y="478" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="42" fill="#6B6B4F">N</text>
+  <text x="500" y="562" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="13" letter-spacing="3.5" fill="#8A8371">CONCEPT IMAGERY</text>
 </svg>
