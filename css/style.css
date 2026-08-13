@@ -1157,6 +1157,17 @@ a.card:hover, .card.is-hoverable:hover {
 .project__gallery button.browser-frame img { transition: transform 0.5s var(--ease); }
 .project__gallery button.browser-frame:hover img { transform: scale(1.03); }
 
+/* ---------- NOVAÉ gallery: mixed landscape/portrait screenshots, scoped so Madani's gallery is unaffected ---------- */
+#novae .project__gallery {
+  align-items: start;
+}
+
+@media (min-width: 720px) {
+  #novae .project__gallery {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
 .work-story-item__label {
   display: block;
   margin-bottom: var(--space-3);
