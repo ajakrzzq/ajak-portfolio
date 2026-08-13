@@ -1274,6 +1274,8 @@ a.card:hover, .card.is-hoverable:hover {
 
 .work-feature__summary h3 { font-size: var(--fs-h3); margin-bottom: var(--space-4); color: var(--navy); }
 
+.work-feature__ctas { display: flex; flex-wrap: wrap; gap: var(--space-5); }
+
 /* ---------- Numbered key-features list (shared: flagship + selected projects) ---------- */
 .numbered-list {
   display: grid;
