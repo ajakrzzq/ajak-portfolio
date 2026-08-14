@@ -119,17 +119,27 @@ document.addEventListener("DOMContentLoaded", function () {
   if (lightbox) {
     var lightboxImg = lightbox.querySelector("img");
     var lightboxCaption = lightbox.querySelector(".lightbox__caption");
+    var lightboxClose = lightbox.querySelector(".lightbox__close");
+    var lightboxTrigger = null;
     var openLightbox = function (src, caption) {
+      if (document.activeElement instanceof HTMLElement) {
+        lightboxTrigger = document.activeElement;
+      }
       lightboxImg.src = src;
       lightboxImg.alt = caption || "";
       lightboxCaption.textContent = caption || "";
       lightbox.classList.add("is-open");
       document.body.style.overflow = "hidden";
+      lightboxClose.focus();
     };
     var closeLightbox = function () {
       lightbox.classList.remove("is-open");
       lightboxImg.src = "";
       document.body.style.overflow = "";
+      if (lightboxTrigger && typeof lightboxTrigger.focus === "function") {
+        lightboxTrigger.focus();
+      }
+      lightboxTrigger = null;
     };
     document.querySelectorAll("[data-lightbox]").forEach(function (trigger) {
       trigger.addEventListener("click", function () {
@@ -142,7 +152,15 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     });
     window.addEventListener("keydown", function (e) {
-      if (e.key === "Escape") closeLightbox();
+      if (!lightbox.classList.contains("is-open")) return;
+      if (e.key === "Escape") {
+        closeLightbox();
+        return;
+      }
+      if (e.key === "Tab") {
+        e.preventDefault();
+        lightboxClose.focus();
+      }
     });
   }
 

@@ -9,7 +9,7 @@ and publish it with nothing more than a text editor and a web browser.
 ## 1. What each file does
 
 ```
-ajakweb/
+ajak-portfolio/
 ├── index.html          → Home page
 ├── about.html           → About page
 ├── services.html        → Services page
@@ -19,12 +19,17 @@ ajakweb/
 │   └── style.css          → ALL styling for every page (colors, fonts, spacing, layout)
 ├── js/
 │   └── script.js           → ALL interactivity (mobile menu, filters, lightbox, contact form)
-└── images/
-    ├── brand/favicon.svg      → The small icon shown in the browser tab
-    └── projects/                → Your sample project screenshots, sorted by project
-        ├── restaurant/
-        ├── oilgas/
-        └── furniture/
+├── images/
+│   ├── brand/favicon.svg      → The small icon shown in the browser tab
+│   └── projects/                → Your sample project screenshots, sorted by project
+│       ├── restaurant/
+│       ├── oilgas/
+│       ├── furniture/
+│       └── novae/
+├── demos/                  → Demo/alternate project pages currently stored in the repository
+│   └── madani/               → Standalone live-demo build of the Madani site
+├── novae/                  → NOVAÉ live demo website (linked from its "Live Demo" button)
+└── kingshallcafe/           → Existing project/demo directory (not currently linked from the main portfolio pages)
 ```
 
 Every page (`index.html`, `about.html`, etc.) links to the *same*
@@ -43,6 +48,9 @@ per project:
 - `images/projects/restaurant/` — Chicken Rice Syukran screenshots
 - `images/projects/oilgas/` — Madani Sdn. Bhd. screenshots
 - `images/projects/furniture/` — Royale Chesterfield screenshots
+- `images/projects/novae/` — NOVAÉ screenshots. NOVAÉ also has its own
+  standalone live-demo build in the `novae/` folder, linked from its
+  "Live Demo" button on `work.html`.
 
 Each image is referenced by filename inside `work.html` (and a couple
 also appear on `index.html` in the "Featured Work" cards). To swap a
@@ -62,17 +70,30 @@ Open `work.html` and:
    ```html
    <button class="filter-btn" data-filter="landing-page" aria-pressed="false">Landing Page</button>
    ```
-2. **Copy one whole `<article class="project reveal" ...>` block**
-   (search for `<!-- PROJECT 01 — RESTAURANT -->` to find where one
-   starts and ends) and paste it right before `</div>` that closes the
-   projects list.
-3. In your pasted copy, update:
+2. **Find the existing project section/article structure.** Each
+   project is a labelled HTML comment followed by an `<article
+   class="work-project" ...>` block — for example, search for
+   `<!-- CHICKEN RICE SYUKRAN -->` to find the Restaurant project.
+3. **Copy the block that most closely matches your new project**
+   (a `work-project` block, or the flagship `work-feature` block used
+   by Madani if you want its fuller Project Summary + gallery layout)
+   and paste your copy right before the `<!-- FINAL CTA -->` comment,
+   alongside the other project sections.
+4. In your pasted copy, update:
    - `id="restaurant"` → a new unique id, e.g. `id="landing-page"`
-   - `data-category="restaurant"` → matches the `data-filter` value
-     you used in step 1
-   - The title, category text, image paths, and description text
-4. Add a matching image folder under `images/projects/` and drop your
-   screenshots in.
+   - `data-category="food-beverage"` → matches the `data-filter` value
+     you used in step 1 (e.g. `data-category="landing-page"`)
+   - The title, category text, description text, and CTA links
+5. **Add a matching image folder** under
+   `images/projects/<project-name>/` and drop your screenshots in.
+6. **Update the gallery/image references** inside your pasted block so
+   every `src="..."` and `data-lightbox="..."` path points at your new
+   folder.
+7. If the project isn't real client work, keep the existing "Concept
+   Project" labelling convention (see "A couple of things worth
+   knowing" below) so the portfolio stays honest.
+8. **Preview the page locally** (see "How to preview the website"
+   below) and check it before publishing.
 
 ---
 
@@ -128,21 +149,28 @@ phone/tablet icon to preview different screen sizes.
 
 ---
 
-## 7. How to publish it online
+## 7. Where it's currently published
 
-The whole `ajakweb` folder is a complete, ready-to-host static
-website. A few beginner-friendly free options:
+This portfolio is already live, deployed on **[Vercel](https://vercel.com/)**, at:
+
+**https://ajakweb.vercel.app/**
+
+That's also the canonical URL used in each page's SEO metadata
+(`<link rel="canonical">` and `og:url`). No custom domain is currently
+configured — the site runs on Vercel's default `.vercel.app` address.
+
+If you ever need to redeploy or move hosts, the whole repository is a
+complete, ready-to-host static site. A couple of other beginner-friendly
+free options:
 
 - **[Netlify Drop](https://app.netlify.com/drop)** — drag the whole
-  `ajakweb` folder onto the page, and it's live in seconds with a free
+  project folder onto the page, and it's live in seconds with a free
   `.netlify.app` address.
 - **[GitHub Pages](https://pages.github.com/)** — upload the folder
   contents to a GitHub repository and turn on Pages in the repo
   settings.
-- **[Vercel](https://vercel.com/)** — similar drag-and-drop / GitHub
-  import flow to Netlify.
 
-Whichever you choose, make sure `index.html` stays in the **top
+Whichever host you use, make sure `index.html` stays in the **top
 level** of whatever you upload (not inside an extra subfolder), since
 that's the file every host looks for first.
 
@@ -162,7 +190,7 @@ Once you own a domain (e.g. `ajakweb.my`), every host above has a
 
 ---
 
-## A couple of things worth knowing
+## 9. A couple of things worth knowing
 
 - **The contact form** doesn't have a backend — hitting "Send
   Enquiry" opens WhatsApp with the message pre-filled instead. This
@@ -176,3 +204,9 @@ Once you own a domain (e.g. `ajakweb.my`), every host above has a
   labels ("Sample Project," placeholder pricing, placeholder reviews)
   exactly as you specified — nothing was presented as real client
   work.
+- **"Concept Project" entries** — every case study in `work.html`
+  (Madani, Restaurant, Furniture and NOVAÉ) is labelled a "Concept
+  Project" in its Project Summary or project tag. These are presented
+  to demonstrate design, structure and implementation capabilities,
+  and should not be interpreted as claims of work completed for the
+  named business unless explicitly stated.
