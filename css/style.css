@@ -1274,6 +1274,7 @@ a.card:hover, .card.is-hoverable:hover {
 
 .work-feature__summary {
   padding-top: var(--space-7);
+  margin-bottom: var(--space-9);
   border-top: 1px solid var(--border);
   display: grid;
   gap: var(--space-6);
