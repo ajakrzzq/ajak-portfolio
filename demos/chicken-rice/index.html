@@ -1,421 +1,795 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Chicken Rice Syukran | Authentic Malaysian Chicken Rice (Website Concept)</title>
-  <meta name="description" content="Chicken Rice Syukran — a Hainanese &amp; Singapore-style chicken rice concept in Shah Alam, Seksyen 13. Browse the menu and order via WhatsApp. A live website demo by ajak.Web.">
-  <meta name="robots" content="noindex, nofollow">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chicken Rice Syukran | Authentic Hainanese Chicken Rice in Shah Alam, Seksyen 13</title>
+<meta name="description" content="Chicken Rice Syukran serves authentic Hainanese and roasted chicken rice with Singapore-inspired flavours in Shah Alam, Seksyen 13. Dine-in, takeaway and WhatsApp reservations, open Mon–Sat.">
+<meta name="keywords" content="Hainan Chicken Rice Shah Alam, Chicken Rice Seksyen 13 Shah Alam, Singapore Food Shah Alam, Best Chicken Rice Malaysia, Authentic Singapore Food Selangor">
+<meta name="robots" content="noindex, nofollow">
+<meta property="og:title" content="Chicken Rice Syukran | Shah Alam, Seksyen 13">
+<meta property="og:description" content="Authentic Hainanese chicken rice, roasted chicken rice, and Singapore-inspired favourites — serving Seksyen 13 for almost 7 years.">
+<meta property="og:type" content="restaurant.menu">
+<link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+<meta name="theme-color" content="#2E1C12">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,500;0,600;0,700;1,500;1,600&family=Manrope:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+  /* ============ TOKENS ============ */
+  :root{
+    --cream:#F3E8D3;
+    --paper:#FBF6EC;
+    --umber:#2E1C12;
+    --umber-2:#5B3A26;
+    --umber-soft:#7A5A44;
+    --lacquer:#A32F1F;
+    --lacquer-dark:#7E2216;
+    --gold:#C08A3E;
+    --white:#FFFFFF;
+    --font-display:'Fraunces', serif;
+    --font-body:'Manrope', sans-serif;
+    --font-mono:'Space Mono', monospace;
+    --shadow-soft:0 24px 48px -24px rgba(46,28,18,.4);
+    --shadow-card:0 14px 30px -18px rgba(46,28,18,.35);
+    --radius-lg:28px;
+    --radius-md:18px;
+    --radius-sm:10px;
+    --container:1200px;
+    --banner-h:36px;
+  }
 
-  <meta property="og:type" content="website">
-  <meta property="og:title" content="Chicken Rice Syukran | Authentic Malaysian Chicken Rice">
-  <meta property="og:description" content="A warm, appetite-led restaurant website concept — menu, story and WhatsApp ordering. Built as a live demo by ajak.Web.">
+  /* ============ RESET ============ */
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:var(--font-body);color:var(--umber);background:var(--paper);line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  img,svg{display:block;max-width:100%}
+  a{color:inherit;text-decoration:none}
+  ul{list-style:none}
+  button{font:inherit;cursor:pointer;border:none;background:none;color:inherit}
+  h1,h2,h3,h4{font-family:var(--font-display);line-height:1.15}
 
-  <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
-  <meta name="theme-color" content="#f5ead6">
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto}
+    *,*::before,*::after{animation-duration:.001ms !important;animation-iteration-count:1 !important;transition-duration:.001ms !important;scroll-behavior:auto !important}
+  }
+  a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid var(--gold);outline-offset:3px;border-radius:4px}
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  .skip-link{position:absolute;left:12px;top:-60px;background:var(--umber);color:var(--paper);padding:10px 16px;border-radius:8px;z-index:999;transition:top .2s}
+  .skip-link:focus{top:12px}
 
-  <link rel="stylesheet" href="css/style.css">
+  /* ============ LAYOUT HELPERS ============ */
+  .container{width:100%;max-width:var(--container);margin-inline:auto;padding-inline:20px}
+  @media(min-width:768px){.container{padding-inline:36px}}
+  .section{padding-block:64px}
+  @media(min-width:1024px){.section{padding-block:108px}}
+  .eyebrow{font-family:var(--font-mono);font-size:12px;letter-spacing:3px;text-transform:uppercase;color:var(--lacquer);display:inline-flex;align-items:center;gap:10px}
+  .eyebrow::before{content:"";width:22px;height:1.5px;background:var(--lacquer)}
+  .section-title{font-weight:600;font-size:clamp(28px,4.6vw,46px);color:var(--umber);margin-block:14px 18px;letter-spacing:-.01em}
+  .lede{font-size:clamp(15px,1.6vw,18px);color:var(--umber-soft);max-width:60ch}
+  .section-head{max-width:680px}
+  .section-head.center{margin-inline:auto;text-align:center}
+  .section-head.center .eyebrow::before{display:none}
+  .section-head.center .lede{margin-inline:auto}
+
+  /* reveal-on-scroll */
+  .reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease, transform .7s ease}
+  .reveal.in-view{opacity:1;transform:translateY(0)}
+
+  /* ============ BUTTONS ============ */
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:14px 28px;border-radius:999px;font-weight:700;font-size:15px;transition:transform .25s ease, box-shadow .25s ease, background .25s ease, color .25s ease;white-space:nowrap}
+  .btn-primary{background:var(--lacquer);color:var(--white);box-shadow:0 14px 26px -12px rgba(163,47,31,.6)}
+  .btn-primary:hover{background:var(--lacquer-dark);transform:translateY(-2px)}
+  .btn-outline{border:2px solid var(--umber-2);color:var(--umber)}
+  .btn-outline:hover{background:var(--umber);color:var(--paper);border-color:var(--umber)}
+  .btn-ghost{color:var(--umber);font-weight:700}
+  .btn-light{background:var(--paper);color:var(--umber)}
+  .btn-light:hover{background:var(--white);transform:translateY(-2px)}
+  .btn-block{width:100%}
+
+  /* ============ SPRITE (hidden) ============ */
+  .sprite{position:absolute;width:0;height:0;overflow:hidden}
+
+  /* ============ CONCEPT BANNER ============ */
+  .concept-banner{position:fixed;top:0;inset-inline:0;z-index:70;height:var(--banner-h);display:flex;align-items:center;justify-content:center;background:var(--umber);color:#D9C6AE;font-family:var(--font-mono);font-size:11px;letter-spacing:.5px;text-align:center;padding-inline:16px;white-space:nowrap;overflow:hidden}
+  .concept-banner strong{color:var(--paper)}
+  .concept-banner a{color:var(--gold);border-bottom:1px solid rgba(192,138,62,.5)}
+  .banner-text-short{display:none}
+  @media(max-width:600px){
+    .concept-banner{font-size:10px}
+    .banner-text-full{display:none}
+    .banner-text-short{display:inline}
+  }
+
+  /* ============ HEADER ============ */
+  .site-header{position:fixed;top:var(--banner-h);inset-inline:0;z-index:60;padding-block:18px;transition:background .3s ease, box-shadow .3s ease, padding .3s ease}
+  .site-header.scrolled{background:rgba(251,246,236,.94);backdrop-filter:blur(10px);box-shadow:0 10px 26px -20px rgba(46,28,18,.5);padding-block:12px}
+  .nav-row{display:flex;align-items:center;justify-content:space-between;gap:20px}
+  .brand{display:flex;align-items:center;gap:10px;font-family:var(--font-display);font-weight:700;font-size:20px;color:var(--umber)}
+  .brand .mark{width:38px;height:38px;border-radius:50%;background:var(--lacquer);color:var(--paper);display:flex;align-items:center;justify-content:center;font-size:16px;flex:none}
+  .brand small{display:block;font-family:var(--font-mono);font-weight:400;font-size:9px;letter-spacing:2px;color:var(--umber-soft);text-transform:uppercase}
+
+  .nav-links{display:flex;align-items:center;gap:30px}
+  .nav-links a{font-weight:600;font-size:14.5px;color:var(--umber-2);position:relative;padding-block:4px}
+  .nav-links a::after{content:"";position:absolute;left:0;bottom:-2px;width:0;height:2px;background:var(--lacquer);transition:width .25s ease}
+  .nav-links a:hover::after{width:100%}
+
+  .nav-actions{display:flex;align-items:center;gap:14px}
+  .hamburger{display:flex;flex-direction:column;gap:5px;width:26px;z-index:70}
+  .hamburger span{height:2.5px;background:var(--umber);border-radius:2px;transition:transform .3s ease, opacity .3s ease}
+
+  @media(max-width:920px){
+    .nav-links{position:fixed;top:0;right:0;height:100vh;width:min(320px,80vw);background:var(--paper);flex-direction:column;justify-content:center;align-items:flex-start;gap:26px;padding:100px 36px 40px;box-shadow:-20px 0 40px -20px rgba(46,28,18,.4);transform:translateX(100%);transition:transform .35s ease;}
+    body.nav-open .nav-links{transform:translateX(0)}
+    .nav-links a{font-size:18px}
+    .nav-actions .btn-primary.desktop-only{display:none}
+    body.nav-open .hamburger span:nth-child(1){transform:translateY(7.5px) rotate(45deg)}
+    body.nav-open .hamburger span:nth-child(2){opacity:0}
+    body.nav-open .hamburger span:nth-child(3){transform:translateY(-7.5px) rotate(-45deg)}
+  }
+  @media(min-width:921px){ .hamburger{display:none} }
+  .nav-scrim{position:fixed;inset:0;background:rgba(46,28,18,.45);opacity:0;pointer-events:none;transition:opacity .3s ease;z-index:55}
+  body.nav-open .nav-scrim{opacity:1;pointer-events:auto}
+
+  /* ============ HERO ============ */
+  .hero{padding-top:calc(150px + var(--banner-h));padding-bottom:70px;background:
+      radial-gradient(1200px 600px at 85% -10%, #FDF3E2 0%, transparent 60%),
+      linear-gradient(180deg, var(--cream) 0%, var(--paper) 100%);
+    position:relative;overflow:hidden}
+  .hero .container{display:grid;gap:50px;align-items:center}
+  @media(min-width:960px){ .hero .container{grid-template-columns:1.05fr .95fr} }
+
+  .hero-copy .headline{font-size:clamp(34px,5.6vw,60px);font-weight:600;margin-block:18px 20px;color:var(--umber);letter-spacing:-0.015em}
+  .hero-copy .headline em{font-style:italic;color:var(--lacquer);font-weight:500}
+  .hero-actions{display:flex;flex-wrap:wrap;gap:14px;margin-top:30px}
+  .hero-meta{display:flex;flex-wrap:wrap;gap:22px;margin-top:34px}
+  .hero-meta div{display:flex;align-items:center;gap:10px;font-size:13.5px;color:var(--umber-soft);font-weight:600}
+  .hero-meta i{color:var(--lacquer)}
+
+  .hero-art{position:relative;display:flex;justify-content:center}
+  .hero-art .plate-wrap{position:relative;width:min(420px,88vw)}
+  .hero-art .stamp-float{position:absolute;top:-6%;left:-8%;width:120px;filter:drop-shadow(0 10px 18px rgba(46,28,18,.25));transform:rotate(-10deg)}
+  @media(max-width:540px){ .hero-art .stamp-float{width:92px;left:-2%} }
+  .steam-line{transform-origin:center bottom;animation:steam 3.6s ease-in-out infinite}
+  .steam-line.s2{animation-delay:.5s}
+  .steam-line.s3{animation-delay:1s}
+  @keyframes steam{
+    0%{transform:translateY(6px) scaleY(.9);opacity:0}
+    30%{opacity:.55}
+    70%{opacity:.35}
+    100%{transform:translateY(-16px) scaleY(1.05);opacity:0}
+  }
+
+  /* ============ WHY US (chalkboard) ============ */
+  .why{background:var(--umber);color:var(--cream);position:relative;background-image:
+      radial-gradient(circle, rgba(243,232,211,.06) 1px, transparent 1.4px);
+    background-size:16px 16px;}
+  .why .section-head .eyebrow{color:var(--gold)}
+  .why .section-head .eyebrow::before{background:var(--gold)}
+  .why .section-title{color:var(--paper)}
+  .why .lede{color:#D9C6AE}
+  .why-grid{display:grid;gap:18px;margin-top:44px}
+  @media(min-width:680px){ .why-grid{grid-template-columns:repeat(2,1fr)} }
+  @media(min-width:1024px){ .why-grid{grid-template-columns:repeat(3,1fr)} }
+  .why-item{display:flex;gap:16px;align-items:flex-start;padding:18px 6px;border-bottom:1px dashed rgba(243,232,211,.25)}
+  .why-item i{color:var(--gold);font-size:20px;margin-top:3px;flex:none}
+  .why-item h4{font-family:var(--font-body);font-weight:700;font-size:16px;color:var(--paper);margin-bottom:4px}
+  .why-item p{font-size:14px;color:#C9B79C}
+
+  /* ============ ABOUT ============ */
+  .about .container{display:grid;gap:56px;align-items:start}
+  @media(min-width:960px){ .about .container{grid-template-columns:1fr .8fr} }
+  .about-story p{margin-top:16px;color:var(--umber-soft);font-size:15.5px;max-width:62ch}
+  .about-story .name-note{margin-top:22px;padding:16px 18px;background:var(--cream);border-radius:var(--radius-sm);border-left:4px solid var(--lacquer);font-size:14.5px;color:var(--umber-2)}
+  .about-story .name-note strong{color:var(--lacquer);font-family:var(--font-display);font-style:italic;font-weight:600}
+
+  .info-card{background:var(--white);border-radius:var(--radius-lg);padding:34px 30px;box-shadow:var(--shadow-card);border:1px solid #EFE2C9;position:relative}
+  .info-card .stamp-mini{width:74px;position:absolute;top:-24px;right:26px}
+  .info-list{margin-top:18px;display:flex;flex-direction:column;gap:16px}
+  .info-list li{display:flex;justify-content:space-between;gap:14px;padding-bottom:14px;border-bottom:1px dashed #E4D3B4;font-size:14px}
+  .info-list li span:first-child{color:var(--umber-soft);font-weight:600}
+  .info-list li span:last-child{font-family:var(--font-mono);color:var(--umber);text-align:right}
+
+  /* ============ MENU ============ */
+  .menu{background:var(--cream)}
+  .menu-tabs{display:flex;flex-wrap:wrap;gap:10px;margin-top:36px}
+  .menu-tab{padding:11px 20px;border-radius:999px;font-weight:700;font-size:13.5px;background:var(--white);color:var(--umber-2);border:1.5px solid #E4D3B4;display:inline-flex;align-items:center;gap:8px;transition:all .25s ease}
+  .menu-tab i{font-size:13px}
+  .menu-tab.active,.menu-tab:hover{background:var(--umber);color:var(--paper);border-color:var(--umber)}
+
+  .menu-grid{display:grid;gap:22px;margin-top:34px}
+  @media(min-width:680px){ .menu-grid{grid-template-columns:repeat(2,1fr)} }
+  @media(min-width:1024px){ .menu-grid{grid-template-columns:repeat(3,1fr)} }
+  .menu-panel{display:none}
+  .menu-panel.active{display:grid;grid-template-columns:inherit;gap:22px;grid-column:1/-1}
+
+  .dish-card{background:var(--white);border-radius:var(--radius-md);overflow:hidden;box-shadow:var(--shadow-card);display:flex;flex-direction:column;position:relative}
+  .dish-photo{height:150px;position:relative;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#F4E3C4,#E7CFA0)}
+  .dish-photo i{font-size:34px;color:rgba(46,28,18,.28)}
+  .dish-photo .tag{position:absolute;bottom:10px;left:10px;background:rgba(46,28,18,.55);color:var(--paper);font-family:var(--font-mono);font-size:9.5px;letter-spacing:1.5px;padding:4px 9px;border-radius:5px;text-transform:uppercase}
+  .dish-card.pick .dish-photo::after{content:"Chef's Pick";position:absolute;top:10px;right:-32px;background:var(--lacquer);color:var(--white);font-size:10px;font-weight:700;padding:4px 38px;transform:rotate(35deg);letter-spacing:.5px}
+  .dish-body{padding:18px 20px 20px;border-top:1px dashed #E4D3B4;flex:1;display:flex;flex-direction:column}
+  .dish-body h4{font-size:17px;font-weight:600;color:var(--umber)}
+  .dish-body p{font-size:13.5px;color:var(--umber-soft);margin-top:6px;flex:1}
+  .dish-price-row{display:flex;justify-content:space-between;align-items:center;margin-top:14px;padding-top:12px;border-top:1px dashed #E4D3B4}
+  .dish-price-row .price{font-family:var(--font-mono);font-weight:700;color:var(--lacquer);font-size:15px}
+  .dish-price-row .label{font-size:11px;color:var(--umber-soft);letter-spacing:.5px}
+
+  /* ============ GALLERY ============ */
+  .gallery-grid{display:grid;grid-template-columns:repeat(2,1fr);grid-auto-rows:150px;gap:14px;margin-top:40px}
+  @media(min-width:640px){ .gallery-grid{grid-template-columns:repeat(3,1fr);grid-auto-rows:170px} }
+  @media(min-width:1024px){ .gallery-grid{grid-template-columns:repeat(4,1fr);grid-auto-rows:190px} }
+  .g-tall{grid-row:span 2}
+  .g-wide{grid-column:span 2}
+  @media(max-width:639px){ .g-wide{grid-column:span 2} .g-tall{grid-row:span 1} }
+
+  .g-card{border-radius:var(--radius-sm);position:relative;overflow:hidden;display:flex;align-items:flex-end;padding:14px;box-shadow:var(--shadow-card);transition:transform .3s ease}
+  .g-card:hover{transform:translateY(-4px) scale(1.01)}
+  .g-card i.g-icon{position:absolute;top:50%;left:50%;transform:translate(-50%,-60%);font-size:30px;color:rgba(255,255,255,.55)}
+  .g-card span{position:relative;font-family:var(--font-mono);font-size:11px;letter-spacing:.5px;color:var(--paper);background:rgba(46,28,18,.4);padding:5px 10px;border-radius:6px}
+  .g1{background:linear-gradient(160deg,#B5502F,#7E2216)}
+  .g2{background:linear-gradient(160deg,#C9A24A,#8C6420)}
+  .g3{background:linear-gradient(160deg,#5B3A26,#2E1C12)}
+  .g4{background:linear-gradient(160deg,#D9A45C,#A6602A)}
+  .g5{background:linear-gradient(160deg,#7A9E5C,#4C6B37)}
+  .g6{background:linear-gradient(160deg,#A32F1F,#5B1B12)}
+  .g7{background:linear-gradient(160deg,#C08A3E,#7A5227)}
+  .g8{background:linear-gradient(160deg,#8C5B3A,#3E2717)}
+
+  /* ============ REVIEWS ============ */
+  .reviews-grid{display:grid;gap:22px;margin-top:40px}
+  @media(min-width:760px){ .reviews-grid{grid-template-columns:repeat(3,1fr)} }
+  .review-card{background:var(--white);border-radius:var(--radius-md);padding:26px 24px;box-shadow:var(--shadow-card);position:relative;border-top:3px solid var(--gold)}
+  .review-card .stars{color:var(--gold);font-size:13px;letter-spacing:2px}
+  .review-card p{margin-top:14px;font-size:14.5px;color:var(--umber-2);min-height:80px}
+  .review-card .who{margin-top:16px;display:flex;align-items:center;gap:10px;font-size:13.5px;font-weight:700;color:var(--umber)}
+  .review-card .who i{color:var(--umber-soft);font-size:12px;font-weight:400}
+  .reviews-note{margin-top:26px;font-size:13px;color:var(--umber-soft);display:flex;gap:8px;align-items:center}
+
+  /* ============ CONTACT ============ */
+  .contact{background:var(--cream)}
+  .contact .container{display:grid;gap:32px}
+  @media(min-width:960px){ .contact .container{grid-template-columns:1.1fr .9fr} }
+  .map-frame{border-radius:var(--radius-lg);overflow:hidden;box-shadow:var(--shadow-card);border:1px solid #E4D3B4;min-height:340px}
+  .map-frame iframe{width:100%;height:100%;min-height:340px;border:0}
+
+  .contact-card{background:var(--white);border-radius:var(--radius-lg);padding:32px 28px;box-shadow:var(--shadow-card)}
+  .contact-row{display:flex;gap:16px;padding-block:16px;border-bottom:1px dashed #E4D3B4}
+  .contact-row:first-of-type{padding-top:0}
+  .contact-row i{color:var(--lacquer);font-size:18px;margin-top:3px;flex:none;width:22px}
+  .contact-row h5{font-size:14.5px;font-weight:700;color:var(--umber)}
+  .contact-row p{font-size:13.5px;color:var(--umber-soft);margin-top:2px}
+  .hours-table{width:100%;margin-top:2px;font-size:13.5px}
+  .hours-table td{padding:2px 0;color:var(--umber-soft)}
+  .hours-table td:last-child{text-align:right;font-family:var(--font-mono);color:var(--umber)}
+  .contact-card .btn{margin-top:22px}
+  .social-row{display:flex;gap:12px;margin-top:20px}
+  .social-row a{width:40px;height:40px;border-radius:50%;background:var(--cream);display:flex;align-items:center;justify-content:center;color:var(--umber);transition:background .25s,color .25s}
+  .social-row a:hover{background:var(--lacquer);color:var(--white)}
+
+  /* ============ CTA BANNER ============ */
+  .cta-band{background:linear-gradient(135deg,var(--umber) 0%,#472C1B 100%);color:var(--paper);text-align:center;position:relative;overflow:hidden}
+  .cta-band::before{content:"";position:absolute;inset:0;background:radial-gradient(700px 300px at 50% 0%, rgba(192,138,62,.18), transparent 70%)}
+  .cta-band .container{position:relative}
+  .cta-band .eyebrow{color:var(--gold)}
+  .cta-band .eyebrow::before{background:var(--gold)}
+  .cta-band h2{font-style:italic;font-weight:500;font-size:clamp(26px,5vw,44px);margin-block:16px 26px;max-width:16ch;margin-inline:auto}
+  .cta-actions{display:flex;flex-wrap:wrap;justify-content:center;gap:14px}
+
+  /* ============ FOOTER ============ */
+  .site-footer{background:var(--umber);color:#C9B79C;padding-block:70px 30px;background-image:radial-gradient(circle, rgba(243,232,211,.05) 1px, transparent 1.4px);background-size:16px 16px}
+  .footer-grid{display:grid;gap:44px}
+  @media(min-width:760px){ .footer-grid{grid-template-columns:1.3fr 1fr 1fr} }
+  .footer-brand{display:flex;align-items:center;gap:10px;font-family:var(--font-display);font-weight:700;font-size:19px;color:var(--paper)}
+  .footer-brand .mark{width:34px;height:34px;border-radius:50%;background:var(--lacquer);display:flex;align-items:center;justify-content:center;font-size:14px}
+  .site-footer p.blurb{margin-top:14px;font-size:13.5px;max-width:38ch;color:#B7A388}
+  .site-footer h5{color:var(--paper);font-size:14px;letter-spacing:1px;text-transform:uppercase;margin-bottom:16px}
+  .footer-links{display:flex;flex-direction:column;gap:10px;font-size:13.5px}
+  .footer-links a:hover{color:var(--paper)}
+  .footer-social{display:flex;gap:10px;margin-top:18px}
+  .footer-social a{width:36px;height:36px;border-radius:50%;border:1px solid rgba(243,232,211,.25);display:flex;align-items:center;justify-content:center;transition:background .25s,border-color .25s}
+  .footer-social a:hover{background:var(--lacquer);border-color:var(--lacquer);color:var(--white)}
+  .footer-bottom{margin-top:54px;padding-top:22px;border-top:1px solid rgba(243,232,211,.12);display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between;font-size:12px;color:#8C7A63}
+  .footer-bottom a{color:#B7A388;border-bottom:1px solid rgba(183,163,136,.4)}
+  .footer-bottom a:hover{color:var(--paper)}
+
+  /* ============ WHATSAPP FLOAT ============ */
+  .wa-float{position:fixed;right:20px;bottom:20px;z-index:65;width:58px;height:58px;border-radius:50%;background:#25D366;color:#fff;display:flex;align-items:center;justify-content:center;font-size:26px;box-shadow:0 14px 26px -10px rgba(0,0,0,.4)}
+  .wa-float::before{content:"";position:absolute;inset:0;border-radius:50%;background:#25D366;animation:pulse 2.4s ease-out infinite;z-index:-1}
+  @keyframes pulse{0%{transform:scale(1);opacity:.55}100%{transform:scale(1.7);opacity:0}}
+
+  .divider-dashed{border:none;border-top:1px dashed #E4D3B4;margin-block:0}
+</style>
 </head>
 <body>
-  <a class="skip-link" href="#main">Skip to content</a>
+<a href="#home" class="skip-link">Skip to content</a>
 
-  <p class="concept-banner">
-    <strong>Concept Website</strong> — Demo by ajak.Web, not the official Chicken Rice Syukran site.
-  </p>
+<p class="concept-banner">
+  <span class="banner-text-full"><strong>Concept Website</strong>&nbsp;— Demo by <a href="../../work.html#restaurant">ajak.Web</a>, not the official Chicken Rice Syukran site.</span>
+  <span class="banner-text-short"><strong>Concept Website</strong>&nbsp;— Demo by <a href="../../work.html#restaurant">ajak.Web</a></span>
+</p>
 
-  <header class="site-header" data-site-header>
-    <div class="container site-header__inner">
-      <a href="#home" class="brand">
-        <span class="brand__mark" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 13a8 8 0 0 1 16 0Z"/><path d="M3 13h18"/><path d="M5 16.5h14"/><path d="M12 8V5"/><path d="M9.5 5.5 12 3l2.5 2.5"/></svg>
-        </span>
-        <span class="brand__text">
-          <span class="brand__name">Chicken Rice Syukran</span>
-          <span class="brand__sub">Shah Alam &middot; Seksyen 13</span>
-        </span>
-      </a>
+<!-- ===================== SVG SPRITE ===================== -->
+<svg class="sprite" aria-hidden="true">
+  <symbol id="heritage-stamp" viewBox="0 0 200 200">
+    <circle cx="100" cy="100" r="94" fill="none" stroke="currentColor" stroke-width="2" stroke-dasharray="3 7" opacity=".6"/>
+    <circle cx="100" cy="100" r="78" fill="none" stroke="#A32F1F" stroke-width="1.5"/>
+    <text x="100" y="78" text-anchor="middle" font-family="Space Mono, monospace" font-size="10.5" letter-spacing="3" fill="#5B3A26">SHAH ALAM</text>
+    <text x="100" y="106" text-anchor="middle" font-family="Fraunces, serif" font-style="italic" font-weight="600" font-size="24" fill="#A32F1F">Syukran</text>
+    <text x="100" y="126" text-anchor="middle" font-family="Space Mono, monospace" font-size="8.5" letter-spacing="2.5" fill="#5B3A26">EST. 2019 · SEKSYEN 13</text>
+    <path d="M70 145 q30 14 60 0" fill="none" stroke="#C08A3E" stroke-width="1.5"/>
+  </symbol>
 
-      <nav class="primary-nav" aria-label="Primary">
-        <a class="nav-link" href="#home">Home</a>
-        <a class="nav-link" href="#menu">Menu</a>
-        <a class="nav-link" href="#about">About</a>
-        <a class="nav-link" href="#gallery">Gallery</a>
-        <a class="nav-link" href="#contact">Contact</a>
-      </nav>
+  <symbol id="bowl-illustration" viewBox="0 0 420 420">
+    <ellipse cx="205" cy="330" rx="150" ry="24" fill="#2E1C12" opacity=".08"/>
+    <circle cx="205" cy="215" r="168" fill="none" stroke="#C08A3E" stroke-width="7"/>
+    <circle cx="205" cy="215" r="150" fill="#F3E8D3"/>
+    <circle cx="205" cy="215" r="128" fill="#FBF6EC"/>
+    <ellipse cx="178" cy="238" rx="76" ry="52" fill="#E7D9BE" opacity=".7"/>
+    <ellipse cx="172" cy="222" rx="74" ry="52" fill="#FDF8EE"/>
+    <ellipse cx="150" cy="205" rx="16" ry="9" fill="#F3E8D3" opacity=".8"/>
+    <ellipse cx="195" cy="238" rx="14" ry="8" fill="#F3E8D3" opacity=".8"/>
+    <g stroke="#8A5A2B" stroke-width="1.5">
+      <rect x="252" y="168" width="80" height="30" rx="15" fill="#DBA55E" transform="rotate(-11 292 183)"/>
+      <rect x="258" y="203" width="86" height="30" rx="15" fill="#CE9750" transform="rotate(7 301 218)"/>
+      <rect x="250" y="238" width="78" height="28" rx="14" fill="#DBA55E" transform="rotate(-6 289 252)"/>
+    </g>
+    <circle cx="238" cy="152" r="13" fill="#CFE0B8" stroke="#8FAE6B" stroke-width="2"/>
+    <circle cx="216" cy="138" r="12" fill="#CFE0B8" stroke="#8FAE6B" stroke-width="2"/>
+    <path d="M175 130 q6 -16 20 -16 q-10 10 -6 22 q-10 -2 -14 -6z" fill="#6B8E4E"/>
+    <circle cx="112" cy="300" r="34" fill="#FBF6EC" stroke="#C08A3E" stroke-width="3"/>
+    <circle cx="112" cy="300" r="25" fill="#A32F1F"/>
+    <circle cx="105" cy="293" r="2.4" fill="#5B1B12"/>
+    <circle cx="120" cy="304" r="2" fill="#5B1B12"/>
+    <circle cx="108" cy="309" r="1.8" fill="#5B1B12"/>
+    <g stroke="#5B3A26" stroke-width="6" stroke-linecap="round">
+      <line x1="315" y1="300" x2="345" y2="255"/>
+    </g>
+    <g fill="none" stroke="#7A5A44" stroke-width="4" stroke-linecap="round" opacity=".55">
+      <path class="steam-line s1" d="M165 155 C155 130 178 118 168 92"/>
+      <path class="steam-line s2" d="M188 150 C178 126 200 112 190 88"/>
+      <path class="steam-line s3" d="M210 156 C200 132 222 120 212 96"/>
+    </g>
+  </symbol>
+</svg>
 
-      <div class="header-actions">
-        <a class="btn btn--primary btn--sm" href="https://wa.me/60123456789?text=Hi%20Chicken%20Rice%20Syukran%2C%20I%27d%20like%20to%20place%20an%20order." target="_blank" rel="noopener">
-          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2c-5.5 0-9.96 4.46-9.96 9.96 0 1.76.46 3.42 1.26 4.86L2 22l5.31-1.29a9.9 9.9 0 0 0 4.73 1.2h.01c5.5 0 9.96-4.45 9.96-9.95S17.54 2 12.04 2zm0 18.2h-.01a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.15.77.84-3.07-.2-.32a8.17 8.17 0 0 1-1.26-4.34c0-4.53 3.69-8.22 8.24-8.22a8.16 8.16 0 0 1 8.21 8.22c0 4.53-3.69 8.29-8.18 8.29zm4.5-6.16c-.25-.12-1.46-.72-1.68-.8-.23-.08-.39-.12-.56.12-.16.25-.64.8-.78.96-.14.16-.29.18-.53.06-.25-.12-1.04-.38-1.99-1.22-.73-.66-1.23-1.46-1.37-1.71-.15-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.12-.15.16-.25.24-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.35-.77-1.85-.2-.48-.41-.42-.56-.43h-.48c-.16 0-.43.06-.66.31-.23.25-.86.85-.86 2.07 0 1.22.89 2.4 1.01 2.56.12.16 1.75 2.68 4.25 3.75.59.26 1.06.41 1.42.53.6.19 1.14.16 1.57.1.48-.07 1.46-.6 1.67-1.17.2-.58.2-1.07.14-1.17-.06-.11-.22-.17-.47-.29z"/></svg>
-          Order via WhatsApp
-        </a>
-        <button type="button" class="menu-toggle" data-menu-toggle aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
-          <span class="menu-toggle__box" aria-hidden="true"><span></span><span></span><span></span></span>
-        </button>
-      </div>
-    </div>
-  </header>
+<!-- ===================== HEADER ===================== -->
+<header class="site-header" id="siteHeader">
+  <div class="container nav-row">
+    <a href="#home" class="brand">
+      <span class="mark"><i class="fa-solid fa-bowl-rice"></i></span>
+      <span>Chicken Rice Syukran<small>Shah Alam · Seksyen 13</small></span>
+    </a>
 
-  <div class="mobile-menu" data-mobile-menu id="mobile-menu" role="dialog" aria-modal="true" aria-label="Site menu">
-    <nav class="mobile-menu__links" aria-label="Mobile">
+    <nav class="nav-links" id="navLinks" aria-label="Primary">
       <a href="#home">Home</a>
-      <a href="#menu">Menu</a>
       <a href="#about">About</a>
+      <a href="#menu">Menu</a>
       <a href="#gallery">Gallery</a>
+      <a href="#reviews">Reviews</a>
       <a href="#contact">Contact</a>
+      <a class="btn btn-primary" href="https://wa.me/60123456789?text=Hi%20Chicken%20Rice%20Syukran%2C%20I%27d%20like%20to%20make%20a%20reservation" target="_blank" rel="noopener">
+        <i class="fa-brands fa-whatsapp"></i> WhatsApp Us
+      </a>
     </nav>
-    <div class="mobile-menu__foot">
-      <a class="btn btn--primary btn--block" href="https://wa.me/60123456789?text=Hi%20Chicken%20Rice%20Syukran%2C%20I%27d%20like%20to%20place%20an%20order." target="_blank" rel="noopener">Order via WhatsApp</a>
-      <a href="../../work.html#restaurant">&larr; Back to ajak.Web portfolio</a>
+
+    <div class="nav-actions">
+      <a class="btn btn-primary desktop-only" href="https://wa.me/60123456789" target="_blank" rel="noopener" style="display:none">WhatsApp</a>
+      <button class="hamburger" id="hamburgerBtn" aria-label="Toggle menu" aria-expanded="false" aria-controls="navLinks">
+        <span></span><span></span><span></span>
+      </button>
     </div>
   </div>
+</header>
+<div class="nav-scrim" id="navScrim"></div>
 
-  <main id="main">
+<main id="home">
 
-    <!-- ============================== HERO ============================== -->
-    <section class="hero" id="home" aria-label="Chicken Rice Syukran introduction">
-      <div class="hero__bg" aria-hidden="true"></div>
-      <div class="container hero__inner">
-        <div class="hero__content">
-          <p class="eyebrow">Shah Alam &middot; Seksyen 13 &middot; Est. 2019</p>
-          <h1>Authentic Chicken Rice, Made Fresh Daily</h1>
-          <p class="hero__sub">Simple ingredients. Traditional flavour. A Malaysian favourite made for every meal.</p>
-          <div class="hero__actions">
-            <a class="btn btn--primary" href="https://wa.me/60123456789?text=Hi%20Chicken%20Rice%20Syukran%2C%20I%27d%20like%20to%20place%20an%20order." target="_blank" rel="noopener">
-              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2c-5.5 0-9.96 4.46-9.96 9.96 0 1.76.46 3.42 1.26 4.86L2 22l5.31-1.29a9.9 9.9 0 0 0 4.73 1.2h.01c5.5 0 9.96-4.45 9.96-9.95S17.54 2 12.04 2zm0 18.2h-.01a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.15.77.84-3.07-.2-.32a8.17 8.17 0 0 1-1.26-4.34c0-4.53 3.69-8.22 8.24-8.22a8.16 8.16 0 0 1 8.21 8.22c0 4.53-3.69 8.29-8.18 8.29zm4.5-6.16c-.25-.12-1.46-.72-1.68-.8-.23-.08-.39-.12-.56.12-.16.25-.64.8-.78.96-.14.16-.29.18-.53.06-.25-.12-1.04-.38-1.99-1.22-.73-.66-1.23-1.46-1.37-1.71-.15-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.12-.15.16-.25.24-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.35-.77-1.85-.2-.48-.41-.42-.56-.43h-.48c-.16 0-.43.06-.66.31-.23.25-.86.85-.86 2.07 0 1.22.89 2.4 1.01 2.56.12.16 1.75 2.68 4.25 3.75.59.26 1.06.41 1.42.53.6.19 1.14.16 1.57.1.48-.07 1.46-.6 1.67-1.17.2-.58.2-1.07.14-1.17-.06-.11-.22-.17-.47-.29z"/></svg>
-              Order via WhatsApp
-            </a>
-            <a class="btn btn--outline" href="#menu">View Menu</a>
-          </div>
+  <!-- ===================== HERO ===================== -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-copy reveal">
+        <span class="eyebrow">Shah Alam · Seksyen 13 · Est. 2019</span>
+        <h1 class="headline">Chicken rice, the way <em>Singapore</em> taught us.</h1>
+        <p class="lede">Hainanese and roasted chicken rice, poached and sliced to order, on rice steamed in the same broth. Cooked fresh every day in Seksyen 13 — almost seven years running.</p>
+        <div class="hero-actions">
+          <a href="#menu" class="btn btn-primary"><i class="fa-solid fa-bowl-rice"></i> View Menu</a>
+          <a href="https://wa.me/60123456789?text=Hi%20Chicken%20Rice%20Syukran%2C%20I%27d%20like%20to%20reserve%20a%20table" target="_blank" rel="noopener" class="btn btn-outline"><i class="fa-brands fa-whatsapp"></i> Reserve via WhatsApp</a>
+          <a href="#contact" class="btn btn-ghost">Find Us <i class="fa-solid fa-arrow-right"></i></a>
         </div>
-
-        <div class="hero__plate" aria-hidden="true">
-          <div class="hero__plate-ring">
-            <svg viewBox="0 0 200 200" class="hero__plate-svg">
-              <circle cx="100" cy="100" r="92" fill="#fffaf1"/>
-              <circle cx="100" cy="100" r="92" fill="none" stroke="#c48a34" stroke-width="3"/>
-              <ellipse cx="92" cy="104" rx="46" ry="28" fill="#f2e3c6"/>
-              <path d="M118 78c14 4 26 16 30 30-6 6-16 10-26 8-4-14-2-28-4-38Z" fill="#a9432f"/>
-              <path d="M120 82c10 4 18 13 21 24-5 4-12 6-19 5-3-11-1-21-2-29Z" fill="#8f3324"/>
-              <circle cx="66" cy="76" r="5" fill="#8fa15c"/>
-              <circle cx="76" cy="70" r="5" fill="#8fa15c"/>
-              <circle cx="60" cy="122" r="7" fill="#9c3327"/>
-              <path d="M55 60c6 2 10 8 8 16" stroke="#5c7a3a" stroke-width="3" fill="none" stroke-linecap="round"/>
-            </svg>
-          </div>
-          <span class="hero__plate-badge">Halal-Friendly</span>
+        <div class="hero-meta">
+          <div><i class="fa-solid fa-clock"></i> Mon–Sat, 9AM–10PM</div>
+          <div><i class="fa-solid fa-location-dot"></i> Seksyen 13, Shah Alam</div>
+          <div><i class="fa-solid fa-star"></i> Halal-friendly kitchen</div>
         </div>
       </div>
-    </section>
 
-    <!-- ============================== FEATURED MENU ============================== -->
-    <section class="section" id="menu" aria-labelledby="menu-heading">
-      <div class="container">
-        <div class="section-head" data-reveal>
-          <p class="eyebrow">What We Serve</p>
-          <h2 id="menu-heading">Featured Menu</h2>
-          <p>A short menu, cooked well. Every plate is made to order — ask our team for today&rsquo;s price on any item.</p>
-        </div>
-
-        <div class="menu-tabs" role="tablist" aria-label="Menu categories" data-reveal>
-          <button type="button" class="menu-tab is-active" data-menu-filter="rice" role="tab" aria-selected="true">Chicken Rice</button>
-          <button type="button" class="menu-tab" data-menu-filter="sets" role="tab" aria-selected="false">Sets &amp; Sides</button>
-          <button type="button" class="menu-tab" data-menu-filter="drinks" role="tab" aria-selected="false">Drinks</button>
-        </div>
-
-        <div class="menu-grid" data-menu-grid data-reveal-group>
-
-          <article class="menu-card" data-menu-category="rice">
-            <div class="menu-card__art menu-card__art--steamed" aria-hidden="true">
-              <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M8 22a16 16 0 0 1 32 0Z"/><path d="M6 22h36"/><path d="M9 26h30"/><path d="M17 12c-1.5 1.5-1.5 3 0 4.5M24 10c-1.5 1.5-1.5 3 0 4.5M31 12c-1.5 1.5-1.5 3 0 4.5"/></svg>
-            </div>
-            <span class="menu-card__tag">Signature</span>
-            <h3>Hainanese Chicken Rice</h3>
-            <p>Poached whole chicken, sliced to order, served over rice steamed in the same fragrant broth. With housemade chilli and dark soy.</p>
-            <span class="menu-card__price">Ask for today&rsquo;s price</span>
-          </article>
-
-          <article class="menu-card" data-menu-category="rice">
-            <div class="menu-card__art menu-card__art--roasted" aria-hidden="true">
-              <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14 12c8-4 14-4 20 2 4 4 4 10 0 16-4 5-10 7-16 5-6-2-9-8-8-14 .6-4 2-7 4-9Z"/><circle cx="19" cy="20" r="1.4" fill="currentColor" stroke="none"/><circle cx="27" cy="18" r="1.4" fill="currentColor" stroke="none"/></svg>
-            </div>
-            <span class="menu-card__tag">Roasted</span>
-            <h3>Roasted Chicken Rice</h3>
-            <p>Marinated overnight and roasted until the skin crackles, served on rice fragrant with garlic and pandan.</p>
-            <span class="menu-card__price">Ask for today&rsquo;s price</span>
-          </article>
-
-          <article class="menu-card" data-menu-category="rice">
-            <div class="menu-card__art menu-card__art--half" aria-hidden="true">
-              <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="24" cy="24" r="16"/><path d="M24 8v32"/></svg>
-            </div>
-            <span class="menu-card__tag">Chef&rsquo;s Pick</span>
-            <h3>Half-and-Half Chicken Rice</h3>
-            <p>Can&rsquo;t decide? Poached and roasted chicken, side by side on one plate.</p>
-            <span class="menu-card__price">Ask for today&rsquo;s price</span>
-          </article>
-
-          <article class="menu-card" data-menu-category="sets" hidden>
-            <div class="menu-card__art menu-card__art--set" aria-hidden="true">
-              <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="10" width="34" height="28" rx="3"/><path d="M7 26h34"/><circle cx="16" cy="18" r="3"/><path d="M28 16h8M28 21h8"/></svg>
-            </div>
-            <span class="menu-card__tag">Set</span>
-            <h3>Chicken Rice Set</h3>
-            <p>Chicken rice with a side dish and a drink included &mdash; our most popular order at lunchtime.</p>
-            <span class="menu-card__price">Ask for today&rsquo;s price</span>
-          </article>
-
-          <article class="menu-card" data-menu-category="sets" hidden>
-            <div class="menu-card__art menu-card__art--soup" aria-hidden="true">
-              <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M8 22h32l-2 6a13 13 0 0 1-26 0Z"/><path d="M14 22V14M20 22v-4M6 22h36"/></svg>
-            </div>
-            <span class="menu-card__tag">Side</span>
-            <h3>Side Dishes</h3>
-            <p>Beancurd soup and pickled achar, made to go alongside your rice.</p>
-            <span class="menu-card__price">Ask for today&rsquo;s price</span>
-          </article>
-
-          <article class="menu-card" data-menu-category="drinks" hidden>
-            <div class="menu-card__art menu-card__art--drink" aria-hidden="true">
-              <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M15 12h18l-2.5 26a3 3 0 0 1-3 2.5h-7a3 3 0 0 1-3-2.5Z"/><path d="M15 12l-2-4h22l-2 4"/><path d="M17 20h14"/></svg>
-            </div>
-            <span class="menu-card__tag">Drinks</span>
-            <h3>Iced Lemon Tea &amp; Barley</h3>
-            <p>Classic Malaysian iced lemon tea and lightly sweetened barley water, brewed fresh in-house.</p>
-            <span class="menu-card__price">Ask for today&rsquo;s price</span>
-          </article>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- ============================== WHY CHOOSE US ============================== -->
-    <section class="section section--alt" id="why" aria-labelledby="why-heading">
-      <div class="container">
-        <div class="section-head" data-reveal>
-          <p class="eyebrow">Why Choose Us</p>
-          <h2 id="why-heading">Cooked the way it should be</h2>
-        </div>
-
-        <div class="why-grid" data-reveal-group>
-          <article class="why-card">
-            <span class="why-card__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v6M8 5l1.5 4M16 5l-1.5 4"/><path d="M5 12a7 7 0 0 0 14 0Z"/><path d="M4 12h16"/></svg></span>
-            <h3>Freshly Prepared</h3>
-            <p>Cooked fresh daily, never held over from the day before.</p>
-          </article>
-          <article class="why-card">
-            <span class="why-card__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-6.4 7-11.5A7 7 0 0 0 5 9.5C5 14.6 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg></span>
-            <h3>Authentic Flavours</h3>
-            <p>Hainanese and Singapore-style recipes, cooked the traditional way.</p>
-          </article>
-          <article class="why-card">
-            <span class="why-card__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9 12h6M12 9v6"/></svg></span>
-            <h3>Generous Portions</h3>
-            <p>Plates sized for a proper meal, not a snack.</p>
-          </article>
-          <article class="why-card">
-            <span class="why-card__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg></span>
-            <h3>Easy WhatsApp Ordering</h3>
-            <p>Message us directly to order or check what&rsquo;s available today.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============================== ABOUT ============================== -->
-    <section class="section" id="about" aria-labelledby="about-heading">
-      <div class="container">
-        <div class="about-grid" data-reveal>
-          <div class="about__text">
-            <p class="eyebrow">Our Story</p>
-            <h2 id="about-heading">Seven years, one pot of chicken rice</h2>
-            <p>Chicken Rice Syukran is a concept restaurant in Seksyen 13, Shah Alam, built around one dish: silky Hainanese chicken rice, steamed in fragrant broth and served the way it&rsquo;s done across the Causeway. Over time the menu grew to include Singapore-style dishes and the Malaysian favourites regulars asked for &mdash; chicken rice stays at the centre of it all.</p>
-            <p class="about__note">This page is a website concept and live demo built by ajak.Web, showing what a professional, conversion-focused website could look like for a chicken rice business.</p>
-
-            <dl class="about__stats">
-              <div class="about__stat"><dt>Established</dt><dd>2019</dd></div>
-              <div class="about__stat"><dt>Cuisine</dt><dd>Hainanese &amp; Singapore-style</dd></div>
-              <div class="about__stat"><dt>Dietary</dt><dd>Halal-friendly</dd></div>
-            </dl>
-          </div>
-
-          <div class="about__card">
-            <p class="eyebrow">At a Glance</p>
-            <dl class="glance-list">
-              <div class="glance-row"><dt>Location</dt><dd>Seksyen 13, Shah Alam</dd></div>
-              <div class="glance-row"><dt>Best for</dt><dd>Lunch, dinner, family meals</dd></div>
-              <div class="glance-row"><dt>Dietary</dt><dd>Halal-friendly</dd></div>
-              <div class="glance-row"><dt>Ordering</dt><dd>Walk-in &amp; WhatsApp</dd></div>
-            </dl>
-            <a class="btn btn--primary btn--block" href="https://wa.me/60123456789?text=Hi%20Chicken%20Rice%20Syukran%2C%20I%27d%20like%20to%20place%20an%20order." target="_blank" rel="noopener">Chat With Us</a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============================== GALLERY ============================== -->
-    <section class="section section--alt" id="gallery" aria-labelledby="gallery-heading">
-      <div class="container">
-        <div class="section-head" data-reveal>
-          <p class="eyebrow">A Peek Inside</p>
-          <h2 id="gallery-heading">Gallery</h2>
-          <p>A look at what&rsquo;s on the table.</p>
-        </div>
-
-        <div class="gallery-grid" data-reveal-group>
-          <figure class="gallery-tile gallery-tile--a">
-            <svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="18" fill="#f2e3c6"/><ellipse cx="22" cy="26" rx="12" ry="8" fill="#fffaf1"/><path d="M30 18c5 2 9 7 10 12-2 3-6 4-9 3-2-5-1-10-1-15Z" fill="#a9432f"/></svg>
-            <figcaption>Hainanese Chicken Rice</figcaption>
-          </figure>
-          <figure class="gallery-tile gallery-tile--b">
-            <svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="18" fill="#eddcc0"/><path d="M14 16c8-4 14-4 20 2 4 4 4 10 0 16-4 5-10 7-16 5-6-2-9-8-8-14 .6-4 2-7 4-9Z" fill="#8f3324"/></svg>
-            <figcaption>Roasted Chicken Rice</figcaption>
-          </figure>
-          <figure class="gallery-tile gallery-tile--c">
-            <svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="18" fill="#f2e3c6"/><circle cx="16" cy="24" r="8" fill="#fffaf1"/><path d="M26 16c5 2 9 7 10 12-2 3-6 4-9 3-2-5-1-10-1-15Z" fill="#a9432f"/></svg>
-            <figcaption>Half-and-Half Plate</figcaption>
-          </figure>
-          <figure class="gallery-tile gallery-tile--d">
-            <svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="18" fill="#eddcc0"/><circle cx="24" cy="24" r="9" fill="#9c3327"/><circle cx="20" cy="21" r="2" fill="#c9503a"/></svg>
-            <figcaption>Housemade Chilli</figcaption>
-          </figure>
-          <figure class="gallery-tile gallery-tile--e">
-            <svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="18" fill="#f2e3c6"/><rect x="12" y="16" width="24" height="18" rx="2" fill="#fffaf1"/><circle cx="19" cy="24" r="3" fill="#a9432f"/><path d="M27 20h6M27 25h6M27 30h4" stroke="#8f6d3f" stroke-width="1.6" stroke-linecap="round"/></svg>
-            <figcaption>Chicken Rice Set</figcaption>
-          </figure>
-          <figure class="gallery-tile gallery-tile--f">
-            <svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="18" fill="#eddcc0"/><path d="M16 14h16l-3 22a3 3 0 0 1-3 2.6h-4a3 3 0 0 1-3-2.6Z" fill="#fffaf1"/><path d="M18 22h12" stroke="#c48a34" stroke-width="1.6"/></svg>
-            <figcaption>Fresh-Brewed Drinks</figcaption>
-          </figure>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============================== WHATSAPP CTA ============================== -->
-    <section class="cta-band" aria-labelledby="cta-heading">
-      <div class="container cta-band__inner">
-        <div>
-          <p class="eyebrow eyebrow--light">Ready When You Are</p>
-          <h2 id="cta-heading">Hungry? Let&rsquo;s get your order ready.</h2>
-          <p>Message us on WhatsApp &mdash; we&rsquo;ll confirm what&rsquo;s available and get your plate started.</p>
-        </div>
-        <a class="btn btn--light" href="https://wa.me/60123456789?text=Hi%20Chicken%20Rice%20Syukran%2C%20I%27d%20like%20to%20place%20an%20order." target="_blank" rel="noopener">
-          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2c-5.5 0-9.96 4.46-9.96 9.96 0 1.76.46 3.42 1.26 4.86L2 22l5.31-1.29a9.9 9.9 0 0 0 4.73 1.2h.01c5.5 0 9.96-4.45 9.96-9.95S17.54 2 12.04 2zm0 18.2h-.01a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.15.77.84-3.07-.2-.32a8.17 8.17 0 0 1-1.26-4.34c0-4.53 3.69-8.22 8.24-8.22a8.16 8.16 0 0 1 8.21 8.22c0 4.53-3.69 8.29-8.18 8.29zm4.5-6.16c-.25-.12-1.46-.72-1.68-.8-.23-.08-.39-.12-.56.12-.16.25-.64.8-.78.96-.14.16-.29.18-.53.06-.25-.12-1.04-.38-1.99-1.22-.73-.66-1.23-1.46-1.37-1.71-.15-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.12-.15.16-.25.24-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.35-.77-1.85-.2-.48-.41-.42-.56-.43h-.48c-.16 0-.43.06-.66.31-.23.25-.86.85-.86 2.07 0 1.22.89 2.4 1.01 2.56.12.16 1.75 2.68 4.25 3.75.59.26 1.06.41 1.42.53.6.19 1.14.16 1.57.1.48-.07 1.46-.6 1.67-1.17.2-.58.2-1.07.14-1.17-.06-.11-.22-.17-.47-.29z"/></svg>
-          Chat on WhatsApp
-        </a>
-      </div>
-    </section>
-
-    <!-- ============================== LOCATION / CONTACT ============================== -->
-    <section class="section" id="contact" aria-labelledby="contact-heading">
-      <div class="container">
-        <div class="section-head" data-reveal>
-          <p class="eyebrow">Visit Us</p>
-          <h2 id="contact-heading">Location &amp; Contact</h2>
-        </div>
-
-        <div class="contact-grid" data-reveal>
-          <div class="contact-card">
-            <h3>Chicken Rice Syukran</h3>
-
-            <div class="contact-item">
-              <span class="contact-item__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-6.4 7-11.5A7 7 0 0 0 5 9.5C5 14.6 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg></span>
-              <div>
-                <h4>Address</h4>
-                <p>Seksyen 13, 40100 Shah Alam, Selangor, Malaysia</p>
-                <p class="is-placeholder">(exact unit &amp; street number to be added)</p>
-              </div>
-            </div>
-
-            <div class="contact-item">
-              <span class="contact-item__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></span>
-              <div>
-                <h4>Operating Hours</h4>
-                <p>Monday &ndash; Saturday: 9:00 AM &ndash; 10:00 PM</p>
-                <p>Sunday: Closed</p>
-              </div>
-            </div>
-
-            <div class="contact-item">
-              <span class="contact-item__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg></span>
-              <div>
-                <h4>WhatsApp</h4>
-                <!-- Demo WhatsApp number placeholder — replace with the live business number before launch -->
-                <p><a href="https://wa.me/60123456789" target="_blank" rel="noopener">+60 12-345 6789</a> <span class="is-placeholder">(demo number)</span></p>
-              </div>
-            </div>
-
-            <a class="btn btn--primary btn--block" href="https://www.google.com/maps/search/?api=1&amp;query=Seksyen+13%2C+Shah+Alam%2C+Selangor%2C+Malaysia" target="_blank" rel="noopener">Get Directions</a>
-          </div>
-
-          <div class="contact-card contact-card--cta">
-            <p class="eyebrow">Order Now</p>
-            <h3>The fastest way to reach us</h3>
-            <p>Walk in any time we&rsquo;re open, or message us on WhatsApp to place an order or ask about today&rsquo;s menu.</p>
-            <a class="btn btn--primary" href="https://wa.me/60123456789?text=Hi%20Chicken%20Rice%20Syukran%2C%20I%27d%20like%20to%20place%20an%20order." target="_blank" rel="noopener">
-              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2c-5.5 0-9.96 4.46-9.96 9.96 0 1.76.46 3.42 1.26 4.86L2 22l5.31-1.29a9.9 9.9 0 0 0 4.73 1.2h.01c5.5 0 9.96-4.45 9.96-9.95S17.54 2 12.04 2zm0 18.2h-.01a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.15.77.84-3.07-.2-.32a8.17 8.17 0 0 1-1.26-4.34c0-4.53 3.69-8.22 8.24-8.22a8.16 8.16 0 0 1 8.21 8.22c0 4.53-3.69 8.29-8.18 8.29zm4.5-6.16c-.25-.12-1.46-.72-1.68-.8-.23-.08-.39-.12-.56.12-.16.25-.64.8-.78.96-.14.16-.29.18-.53.06-.25-.12-1.04-.38-1.99-1.22-.73-.66-1.23-1.46-1.37-1.71-.15-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.12-.15.16-.25.24-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.35-.77-1.85-.2-.48-.41-.42-.56-.43h-.48c-.16 0-.43.06-.66.31-.23.25-.86.85-.86 2.07 0 1.22.89 2.4 1.01 2.56.12.16 1.75 2.68 4.25 3.75.59.26 1.06.41 1.42.53.6.19 1.14.16 1.57.1.48-.07 1.46-.6 1.67-1.17.2-.58.2-1.07.14-1.17-.06-.11-.22-.17-.47-.29z"/></svg>
-              Chat on WhatsApp
-            </a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-  </main>
-
-  <footer class="site-footer">
-    <div class="container footer-top">
-      <div class="footer-brand">
-        <a href="#home" class="brand">
-          <span class="brand__mark" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 13a8 8 0 0 1 16 0Z"/><path d="M3 13h18"/><path d="M5 16.5h14"/></svg>
-          </span>
-          <span class="brand__text">
-            <span class="brand__name">Chicken Rice Syukran</span>
-            <span class="brand__sub">Shah Alam &middot; Seksyen 13</span>
-          </span>
-        </a>
-        <p>Hainanese &amp; Singapore-style chicken rice, cooked fresh daily. Halal-friendly.</p>
-      </div>
-
-      <div class="footer-cols">
-        <div class="footer-col">
-          <h4>Navigate</h4>
-          <ul>
-            <li><a href="#home">Home</a></li>
-            <li><a href="#menu">Menu</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#gallery">Gallery</a></li>
-            <li><a href="#contact">Contact</a></li>
-          </ul>
-        </div>
-        <div class="footer-col">
-          <h4>Contact</h4>
-          <ul>
-            <li><a href="https://wa.me/60123456789" target="_blank" rel="noopener">WhatsApp +60 12-345 6789</a></li>
-            <li>Mon&ndash;Sat, 9:00 AM&ndash;10:00 PM</li>
-          </ul>
+      <div class="hero-art reveal">
+        <div class="plate-wrap">
+          <svg viewBox="0 0 420 420" style="width:100%"><use href="#bowl-illustration"/></svg>
+          <svg class="stamp-float" viewBox="0 0 200 200"><use href="#heritage-stamp"/></svg>
         </div>
       </div>
     </div>
+  </section>
 
-    <p class="footer-disclosure">
-      This is a concept website created to demonstrate web design and development work. It does not represent an active restaurant, and no information here should be treated as an official Chicken Rice Syukran communication. See the full case study on the <a href="../../work.html#restaurant">ajak.Web portfolio</a>.
-    </p>
-
-    <div class="container footer-bottom">
-      <span>&copy; <span data-year>2026</span> Chicken Rice Syukran &mdash; Website Concept by ajak.Web</span>
-      <span>Status: Concept Project</span>
+  <!-- ===================== WHY US ===================== -->
+  <section class="why section" id="why">
+    <div class="container">
+      <div class="section-head center reveal">
+        <span class="eyebrow">Why Regulars Keep Coming Back</span>
+        <h2 class="section-title">Nothing fancy. Just done properly, every day.</h2>
+        <p class="lede">Six reasons Seksyen 13 keeps a table here.</p>
+      </div>
+      <div class="why-grid">
+        <div class="why-item reveal"><i class="fa-solid fa-check"></i><div><h4>Almost 7 years in Seksyen 13</h4><p>Same corner, same recipe, since 2019.</p></div></div>
+        <div class="why-item reveal"><i class="fa-solid fa-check"></i><div><h4>Chicken poached fresh, not frozen</h4><p>Cooked in small batches through the day.</p></div></div>
+        <div class="why-item reveal"><i class="fa-solid fa-check"></i><div><h4>Chilli pounded daily, never bottled</h4><p>Made fresh each morning, from scratch.</p></div></div>
+        <div class="why-item reveal"><i class="fa-solid fa-check"></i><div><h4>Halal-friendly, family-run kitchen</h4><p>Comfortable for families and office groups.</p></div></div>
+        <div class="why-item reveal"><i class="fa-solid fa-check"></i><div><h4>Lunch through dinner, 6 days a week</h4><p>Open 9AM–10PM, Monday to Saturday.</p></div></div>
+        <div class="why-item reveal"><i class="fa-solid fa-check"></i><div><h4>Minutes from Seksyen 13 offices</h4><p>An easy walk or drive for a lunch break.</p></div></div>
+      </div>
     </div>
-  </footer>
+  </section>
 
-  <a class="mobile-whatsapp" href="https://wa.me/60123456789?text=Hi%20Chicken%20Rice%20Syukran%2C%20I%27d%20like%20to%20place%20an%20order." target="_blank" rel="noopener" aria-label="Order via WhatsApp">
-    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2c-5.5 0-9.96 4.46-9.96 9.96 0 1.76.46 3.42 1.26 4.86L2 22l5.31-1.29a9.9 9.9 0 0 0 4.73 1.2h.01c5.5 0 9.96-4.45 9.96-9.95S17.54 2 12.04 2zm0 18.2h-.01a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.15.77.84-3.07-.2-.32a8.17 8.17 0 0 1-1.26-4.34c0-4.53 3.69-8.22 8.24-8.22a8.16 8.16 0 0 1 8.21 8.22c0 4.53-3.69 8.29-8.18 8.29zm4.5-6.16c-.25-.12-1.46-.72-1.68-.8-.23-.08-.39-.12-.56.12-.16.25-.64.8-.78.96-.14.16-.29.18-.53.06-.25-.12-1.04-.38-1.99-1.22-.73-.66-1.23-1.46-1.37-1.71-.15-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.12-.15.16-.25.24-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.35-.77-1.85-.2-.48-.41-.42-.56-.43h-.48c-.16 0-.43.06-.66.31-.23.25-.86.85-.86 2.07 0 1.22.89 2.4 1.01 2.56.12.16 1.75 2.68 4.25 3.75.59.26 1.06.41 1.42.53.6.19 1.14.16 1.57.1.48-.07 1.46-.6 1.67-1.17.2-.58.2-1.07.14-1.17-.06-.11-.22-.17-.47-.29z"/></svg>
-  </a>
+  <!-- ===================== ABOUT ===================== -->
+  <section class="about section" id="about">
+    <div class="container">
+      <div class="about-story reveal">
+        <span class="eyebrow">Our Story</span>
+        <h2 class="section-title">Seven years, one pot of chicken rice.</h2>
+        <p>Chicken Rice Syukran opened in Seksyen 13 with one dish on the menu: silky Hainanese chicken rice, steamed in fragrant broth and served the way it's done across the Causeway. Almost seven years on, the pot still simmers the same way it did on day one.</p>
+        <p>Singapore taught us the method. Shah Alam taught us who we're cooking for — the regulars who've been coming since the first month, the office crowd who shape the lunch queue, and the families who've made Saturday dinner a small tradition here.</p>
+        <p>Over time, the menu grew to include the Singapore-style dishes we grew up on and the Malaysian favourites our neighbours asked for — chicken rice at the centre, everything else built around it.</p>
+        <div class="name-note">The name <strong>Syukran</strong> — Arabic for "thank you" — was chosen on purpose. Every plate that leaves the kitchen carries a little of that gratitude, to the customers who keep this table full.</div>
+      </div>
 
-  <script src="js/main.js"></script>
+      <div class="info-card reveal">
+        <svg class="stamp-mini" viewBox="0 0 200 200"><use href="#heritage-stamp"/></svg>
+        <span class="eyebrow">At a Glance</span>
+        <ul class="info-list">
+          <li><span>Established</span><span>2019 · ~7 years</span></li>
+          <li><span>Cuisine</span><span>Hainanese &amp; Singapore-style</span></li>
+          <li><span>Location</span><span>Seksyen 13, Shah Alam</span></li>
+          <li><span>Best for</span><span>Lunch, dinner, family meals</span></li>
+          <li><span>Dietary</span><span>Halal-friendly</span></li>
+          <li><span>Reservations</span><span>Walk-in &amp; WhatsApp</span></li>
+        </ul>
+        <a href="https://wa.me/60123456789" target="_blank" rel="noopener" class="btn btn-primary btn-block"><i class="fa-brands fa-whatsapp"></i> Chat With Us</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== MENU ===================== -->
+  <section class="menu section" id="menu">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">The Menu</span>
+        <h2 class="section-title">Signature chicken rice, and everything alongside it.</h2>
+        <p class="lede">Prices shown are placeholders — swap in your final pricing before publishing.</p>
+      </div>
+
+      <div class="menu-tabs reveal" role="tablist" aria-label="Menu categories">
+        <button class="menu-tab active" data-tab="signature" role="tab" aria-selected="true"><i class="fa-solid fa-bowl-rice"></i> Signature Chicken Rice</button>
+        <button class="menu-tab" data-tab="singapore" role="tab" aria-selected="false"><i class="fa-solid fa-drumstick-bite"></i> Singapore-Inspired</button>
+        <button class="menu-tab" data-tab="malaysian" role="tab" aria-selected="false"><i class="fa-solid fa-pepper-hot"></i> Malaysian Favourites</button>
+        <button class="menu-tab" data-tab="drinks" role="tab" aria-selected="false"><i class="fa-solid fa-mug-hot"></i> Drinks</button>
+      </div>
+
+      <div class="menu-grid">
+        <div class="menu-panel active" data-panel="signature">
+          <div class="dish-card pick">
+            <div class="dish-photo"><i class="fa-solid fa-bowl-rice"></i><span class="tag">Photo pending</span></div>
+            <div class="dish-body"><h4>Hainanese Chicken Rice</h4><p>Poached whole, sliced to order, laid over rice steamed in the same broth. Served with housemade chilli and dark soy.</p>
+              <div class="dish-price-row"><span class="label">Regular plate</span><span class="price">RM 8.90</span></div>
+            </div>
+          </div>
+          <div class="dish-card">
+            <div class="dish-photo"><i class="fa-solid fa-drumstick-bite"></i><span class="tag">Photo pending</span></div>
+            <div class="dish-body"><h4>Roasted Chicken Rice</h4><p>Marinated overnight and roasted until the skin cracks, served on rice fragrant with garlic and pandan.</p>
+              <div class="dish-price-row"><span class="label">Regular plate</span><span class="price">RM 9.90</span></div>
+            </div>
+          </div>
+          <div class="dish-card">
+            <div class="dish-photo"><i class="fa-solid fa-utensils"></i><span class="tag">Photo pending</span></div>
+            <div class="dish-body"><h4>Half-and-Half Chicken Rice</h4><p>Can't decide? Poached and roasted chicken, side by side on one plate.</p>
+              <div class="dish-price-row"><span class="label">Regular plate</span><span class="price">RM 10.90</span></div>
+            </div>
+          </div>
+          <div class="dish-card">
+            <div class="dish-photo"><i class="fa-solid fa-mug-saucer"></i><span class="tag">Photo pending</span></div>
+            <div class="dish-body"><h4>Chicken Rice Set</h4><p>Any chicken rice plate, paired with a bowl of our daily double-boiled soup.</p>
+              <div class="dish-price-row"><span class="label">Set</span><span class="price">RM 12.90</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="menu-panel" data-panel="singapore">
+          <div class="dish-card">
+            <div class="dish-photo"><i class="fa-solid fa-bowl-food"></i><span class="tag">Photo pending</span></div>
+            <div class="dish-body"><h4>Hainanese Curry Chicken</h4><p>Slow-simmered in coconut curry, spooned over rice or scooped up with bread.</p>
+              <div class="dish-price-row"><span class="label">Regular</span><span class="price">RM 11.90</span></div>
+            </div>
+          </div>
+          <div class="dish-card">
+            <div class="dish-photo"><i class="fa-solid fa-fire-burner"></i><span class="tag">Photo pending</span></div>
+            <div class="dish-body"><h4>Chicken Satay (6 sticks)</h4><p>Charcoal-grilled, served with peanut sauce, ketupat and cucumber.</p>
+              <div class="dish-price-row"><span class="label">6 skewers</span><span class="price">RM 9.90</span></div>
+            </div>
+          </div>
+          <div class="dish-card">
+            <div class="dish-photo"><i class="fa-solid fa-egg"></i><span class="tag">Photo pending</span></div>
+            <div class="dish-body"><h4>Kaya Toast Set</h4><p>Charcoal-toasted bread, kaya and butter, two soft-boiled eggs, with kopi or teh.</p>
+              <div class="dish-price-row"><span class="label">Set</span><span class="price">RM 7.90</span></div>
+            </div>
+          </div>
+          <div class="dish-card">
+            <div class="dish-photo"><i class="fa-solid fa-drumstick-bite"></i><span class="tag">Photo pending</span></div>
+            <div class="dish-body"><h4>Singapore Chicken Wings</h4><p>Marinated in a five-spice glaze, deep-fried until crisp.</p>
+              <div class="dish-price-row"><span class="label">6 pieces</span><span class="price">RM 10.90</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="menu-panel" data-panel="malaysian">
+          <div class="dish-card">
+            <div class="dish-photo"><i class="fa-solid fa-plate-wheat"></i><span class="tag">Photo pending</span></div>
+            <div class="dish-body"><h4>Nasi Lemak Ayam Goreng</h4><p>Coconut rice, sambal, anchovies and egg, with crispy fried chicken.</p>
+              <div class="dish-price-row"><span class="label">Regular</span><span class="price">RM 10.90</span></div>
+            </div>
+          </div>
+          <div class="dish-card">
+            <div class="dish-photo"><i class="fa-solid fa-pepper-hot"></i><span class="tag">Photo pending</span></div>
+            <div class="dish-body"><h4>Curry Mee</h4><p>Noodles in a rich curry broth with tofu puff, cockles and chicken.</p>
+              <div class="dish-price-row"><span class="label">Regular</span><span class="price">RM 9.90</span></div>
+            </div>
+          </div>
+          <div class="dish-card">
+            <div class="dish-photo"><i class="fa-solid fa-leaf"></i><span class="tag">Photo pending</span></div>
+            <div class="dish-body"><h4>Sayur Campur</h4><p>Stir-fried mixed vegetables, wok-tossed to order.</p>
+              <div class="dish-price-row"><span class="label">Plate</span><span class="price">RM 6.90</span></div>
+            </div>
+          </div>
+          <div class="dish-card">
+            <div class="dish-photo"><i class="fa-solid fa-seedling"></i><span class="tag">Photo pending</span></div>
+            <div class="dish-body"><h4>Ulam &amp; Sambal Belacan</h4><p>A plate of fresh local herbs with our house-pounded sambal.</p>
+              <div class="dish-price-row"><span class="label">Plate</span><span class="price">RM 5.90</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="menu-panel" data-panel="drinks">
+          <div class="dish-card">
+            <div class="dish-photo"><i class="fa-solid fa-mug-hot"></i><span class="tag">Photo pending</span></div>
+            <div class="dish-body"><h4>Kopi / Teh</h4><p>O, C, ais or panas — the classic kopitiam way.</p>
+              <div class="dish-price-row"><span class="label">Cup</span><span class="price">RM 2.50</span></div>
+            </div>
+          </div>
+          <div class="dish-card">
+            <div class="dish-photo"><i class="fa-solid fa-mug-saucer"></i><span class="tag">Photo pending</span></div>
+            <div class="dish-body"><h4>Teh Tarik</h4><p>Hand-pulled for a frothy top, served hot.</p>
+              <div class="dish-price-row"><span class="label">Cup</span><span class="price">RM 3.50</span></div>
+            </div>
+          </div>
+          <div class="dish-card">
+            <div class="dish-photo"><i class="fa-solid fa-glass-water"></i><span class="tag">Photo pending</span></div>
+            <div class="dish-body"><h4>Soya Bean</h4><p>Hot or iced, lightly sweetened.</p>
+              <div class="dish-price-row"><span class="label">Cup</span><span class="price">RM 3.00</span></div>
+            </div>
+          </div>
+          <div class="dish-card">
+            <div class="dish-photo"><i class="fa-solid fa-cubes-stacked"></i><span class="tag">Photo pending</span></div>
+            <div class="dish-body"><h4>Barley Ais</h4><p>Cool and lightly sweet, a lunch favourite.</p>
+              <div class="dish-price-row"><span class="label">Cup</span><span class="price">RM 3.50</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== GALLERY ===================== -->
+  <section class="section" id="gallery">
+    <div class="container">
+      <div class="section-head center reveal">
+        <span class="eyebrow">A Peek Inside</span>
+        <h2 class="section-title">The kitchen, the counter, the crowd.</h2>
+        <p class="lede">Photo placeholders below — swap in your own restaurant photography for the real gallery.</p>
+      </div>
+      <div class="gallery-grid">
+        <div class="g-card g1 g-tall reveal"><i class="fa-solid fa-bowl-rice g-icon"></i><span>Hainanese Chicken Rice</span></div>
+        <div class="g-card g2 reveal"><i class="fa-solid fa-drumstick-bite g-icon"></i><span>Roasted Chicken</span></div>
+        <div class="g-card g3 g-tall reveal"><i class="fa-solid fa-knife g-icon"></i><span>Sliced to Order</span></div>
+        <div class="g-card g4 g-wide reveal"><i class="fa-solid fa-people-roof g-icon"></i><span>Our Dining Area</span></div>
+        <div class="g-card g5 reveal"><i class="fa-solid fa-users g-icon"></i><span>Weekend Family Table</span></div>
+        <div class="g-card g6 reveal"><i class="fa-solid fa-pepper-hot g-icon"></i><span>House Chilli, Pounded Daily</span></div>
+        <div class="g-card g7 g-tall reveal"><i class="fa-solid fa-fire-burner g-icon"></i><span>The Lunch Rush</span></div>
+        <div class="g-card g8 g-wide reveal"><i class="fa-solid fa-box g-icon"></i><span>Ready for Takeaway</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== REVIEWS ===================== -->
+  <section class="section" id="reviews" style="background:var(--cream)">
+    <div class="container">
+      <div class="section-head center reveal">
+        <span class="eyebrow">What Regulars Say</span>
+        <h2 class="section-title">Sample reviews — connect Google to show your real ones.</h2>
+      </div>
+      <div class="reviews-grid">
+        <div class="review-card reveal">
+          <div class="stars">★★★★★</div>
+          <p>"The roasted chicken here doesn't taste like anywhere else in Shah Alam. We drive in from Section 7 just for this."</p>
+          <div class="who"><i class="fa-solid fa-quote-left"></i> Aina R.</div>
+        </div>
+        <div class="review-card reveal">
+          <div class="stars">★★★★★</div>
+          <p>"Lunch crowd from the office comes here almost every Wednesday. Portions are generous and never overpriced."</p>
+          <div class="who"><i class="fa-solid fa-quote-left"></i> Farid H.</div>
+        </div>
+        <div class="review-card reveal">
+          <div class="stars">★★★★★</div>
+          <p>"Brought my parents in for the curry chicken. Reminded them of the Hainanese stalls they grew up eating at."</p>
+          <div class="who"><i class="fa-solid fa-quote-left"></i> Ms. Tan</div>
+        </div>
+      </div>
+      <p class="reviews-note reveal"><i class="fa-solid fa-circle-info"></i> These are placeholder reviews for layout purposes — replace with real Google Business Profile reviews before launch.</p>
+    </div>
+  </section>
+
+  <!-- ===================== CONTACT ===================== -->
+  <section class="contact section" id="contact">
+    <div class="container">
+      <div class="map-frame reveal">
+        <iframe src="https://www.google.com/maps?q=Seksyen+13,+Shah+Alam,+Selangor,+Malaysia&output=embed" title="Map to Chicken Rice Syukran, Seksyen 13 Shah Alam" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+
+      <div class="contact-card reveal">
+        <span class="eyebrow">Visit Us</span>
+        <h3 class="section-title" style="font-size:26px;margin-block:10px 4px">Chicken Rice Syukran</h3>
+
+        <div class="contact-row">
+          <i class="fa-solid fa-location-dot"></i>
+          <div><h5>Address</h5><p>Seksyen 13, 40100 Shah Alam, Selangor, Malaysia<br><em style="color:#B79D7A">(add exact unit &amp; street number)</em></p></div>
+        </div>
+        <div class="contact-row">
+          <i class="fa-solid fa-clock"></i>
+          <div>
+            <h5>Operating Hours</h5>
+            <table class="hours-table">
+              <tr><td>Monday – Saturday</td><td>9:00 AM – 10:00 PM</td></tr>
+              <tr><td>Sunday</td><td>Closed</td></tr>
+            </table>
+          </div>
+        </div>
+        <div class="contact-row">
+          <i class="fa-brands fa-whatsapp"></i>
+          <div><h5>WhatsApp</h5><p>+60 12-345 6789 <em style="color:#B79D7A">(placeholder)</em></p></div>
+        </div>
+
+        <a href="https://wa.me/60123456789?text=Hi%20Chicken%20Rice%20Syukran%2C%20I%27d%20like%20to%20reserve%20a%20table" target="_blank" rel="noopener" class="btn btn-primary btn-block"><i class="fa-brands fa-whatsapp"></i> Reserve Your Table</a>
+
+        <div class="social-row">
+          <a href="#" aria-label="Facebook" target="_blank" rel="noopener"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="#" aria-label="Instagram" target="_blank" rel="noopener"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#" aria-label="TikTok" target="_blank" rel="noopener"><i class="fa-brands fa-tiktok"></i></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== CTA BAND ===================== -->
+  <section class="cta-band section">
+    <div class="container">
+      <span class="eyebrow">Hungry Yet?</span>
+      <h2>Craving authentic Hainanese chicken rice tonight?</h2>
+      <div class="cta-actions">
+        <a href="https://wa.me/60123456789?text=Hi%20Chicken%20Rice%20Syukran%2C%20I%27d%20like%20to%20order" target="_blank" rel="noopener" class="btn btn-light"><i class="fa-brands fa-whatsapp"></i> WhatsApp Now</a>
+        <a href="https://www.google.com/maps?q=Seksyen+13,+Shah+Alam,+Selangor,+Malaysia" target="_blank" rel="noopener" class="btn btn-outline" style="border-color:#C9B79C;color:var(--paper)"><i class="fa-solid fa-diamond-turn-right"></i> Get Directions</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ===================== FOOTER ===================== -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand"><span class="mark"><i class="fa-solid fa-bowl-rice"></i></span> Chicken Rice Syukran</div>
+        <p class="blurb">Authentic Hainanese and roasted chicken rice, Singapore-inspired, served with Malaysian hospitality in Shah Alam Seksyen 13 since 2019.</p>
+        <div class="footer-social">
+          <a href="#" aria-label="Facebook" target="_blank" rel="noopener"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="#" aria-label="Instagram" target="_blank" rel="noopener"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#" aria-label="TikTok" target="_blank" rel="noopener"><i class="fa-brands fa-tiktok"></i></a>
+          <a href="https://wa.me/60123456789" aria-label="WhatsApp" target="_blank" rel="noopener"><i class="fa-brands fa-whatsapp"></i></a>
+        </div>
+      </div>
+      <div>
+        <h5>Explore</h5>
+        <div class="footer-links">
+          <a href="#about">About Us</a>
+          <a href="#menu">Menu</a>
+          <a href="#gallery">Gallery</a>
+          <a href="#reviews">Reviews</a>
+          <a href="#contact">Contact</a>
+        </div>
+      </div>
+      <div>
+        <h5>Contact</h5>
+        <div class="footer-links">
+          <span>Seksyen 13, 40100 Shah Alam, Selangor</span>
+          <span>+60 12-345 6789</span>
+          <span>Mon–Sat, 9AM–10PM · Closed Sunday</span>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 Chicken Rice Syukran. All rights reserved.</span>
+      <span>Website design template — replace placeholder details before launch.</span>
+      <span>Concept Website by <a href="../../work.html#restaurant">ajak.Web</a></span>
+    </div>
+  </div>
+</footer>
+
+<a href="https://wa.me/60123456789?text=Hi%20Chicken%20Rice%20Syukran%2C%20I%27d%20like%20to%20order" target="_blank" rel="noopener" class="wa-float" aria-label="Chat on WhatsApp">
+  <i class="fa-brands fa-whatsapp"></i>
+</a>
+
+<script>
+  // Header scroll state
+  const header = document.getElementById('siteHeader');
+  const onScroll = () => header.classList.toggle('scrolled', window.scrollY > 12);
+  document.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  // Mobile nav toggle
+  const hamburgerBtn = document.getElementById('hamburgerBtn');
+  const navScrim = document.getElementById('navScrim');
+  const navLinks = document.getElementById('navLinks');
+  function closeNav(){
+    document.body.classList.remove('nav-open');
+    hamburgerBtn.setAttribute('aria-expanded','false');
+  }
+  hamburgerBtn.addEventListener('click', () => {
+    const isOpen = document.body.classList.toggle('nav-open');
+    hamburgerBtn.setAttribute('aria-expanded', String(isOpen));
+  });
+  navScrim.addEventListener('click', closeNav);
+  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', closeNav));
+
+  // Menu tabs
+  const tabs = document.querySelectorAll('.menu-tab');
+  const panels = document.querySelectorAll('.menu-panel');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => { t.classList.remove('active'); t.setAttribute('aria-selected','false'); });
+      tab.classList.add('active'); tab.setAttribute('aria-selected','true');
+      const target = tab.dataset.tab;
+      panels.forEach(p => p.classList.toggle('active', p.dataset.panel === target));
+    });
+  });
+
+  // Scroll reveal
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const revealEls = document.querySelectorAll('.reveal');
+  if (reduceMotion) {
+    revealEls.forEach(el => el.classList.add('in-view'));
+  } else if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in-view');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+    revealEls.forEach(el => io.observe(el));
+  } else {
+    revealEls.forEach(el => el.classList.add('in-view'));
+  }
+</script>
 </body>
 </html>
