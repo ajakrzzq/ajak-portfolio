@@ -16,6 +16,16 @@
        To go live, replace WHATSAPP_NUMBER in js/main.js and the matching href="https://wa.me/60123456789"
        fallback on every [data-whatsapp] element in this file. -->
 
+  <!-- VISUAL ASSETS: the SVG skyline illustrations below (images/hero-skyline.svg,
+       makkah-panel.svg, madinah-panel.svg, cta-skyline.svg) are placeholder concept
+       artwork, not photography. Swap them for licensed photos when available:
+         hero-skyline.svg  -> premium Makkah / Kaaba photography
+         makkah-panel.svg  -> Masjid al-Haram photography
+         madinah-panel.svg -> Masjid an-Nabawi photography
+         cta-skyline.svg   -> cinematic Makkah/Madinah photography
+       Each <img> tag already uses object-fit: cover, so a same-aspect JPG/WebP
+       drop-in needs no other markup or layout changes. -->
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Jost:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -95,6 +105,7 @@
     <!-- ============================== HERO ============================== -->
     <section class="hero" id="home" aria-label="Safwa Umrah &amp; Travel introduction">
       <div class="hero__media">
+        <!-- Placeholder concept artwork — replace with licensed Makkah / Kaaba photography -->
         <img src="images/hero-skyline.svg" alt="Illustrated sunrise skyline of the Holy Mosque with its minarets, watercolour-style concept artwork" loading="eager" fetchpriority="high">
       </div>
       <div class="hero__scrim" aria-hidden="true"></div>
@@ -409,6 +420,7 @@
     <section class="holy-split" aria-label="Makkah and Madinah">
       <div class="holy-panel" data-reveal>
         <div class="holy-panel__media">
+          <!-- Placeholder concept artwork — replace with licensed Masjid al-Haram photography -->
           <img src="images/makkah-panel.svg" alt="Illustrated dawn view of the Grand Mosque and its minarets, watercolour-style concept artwork" loading="lazy">
         </div>
         <div class="holy-panel__scrim" aria-hidden="true"></div>
@@ -421,6 +433,7 @@
       </div>
       <div class="holy-panel" data-reveal>
         <div class="holy-panel__media">
+          <!-- Placeholder concept artwork — replace with licensed Masjid an-Nabawi photography -->
           <img src="images/madinah-panel.svg" alt="Illustrated dusk view of the Prophet's Mosque with its green dome and minarets, watercolour-style concept artwork" loading="lazy">
         </div>
         <div class="holy-panel__scrim" aria-hidden="true"></div>
@@ -671,6 +684,7 @@
     <!-- ============================== FINAL CTA ============================== -->
     <section class="section final-cta" aria-labelledby="final-cta-heading">
       <div class="final-cta__media" aria-hidden="true">
+        <!-- Placeholder concept artwork — replace with cinematic licensed Makkah/Madinah photography -->
         <img src="images/cta-skyline.svg" alt="" loading="lazy">
       </div>
       <div class="final-cta__scrim" aria-hidden="true"></div>
