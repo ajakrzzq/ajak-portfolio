@@ -1,0 +1,770 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Safwa Umrah &amp; Travel | Premium Umrah Packages (Concept Website)</title>
+  <meta name="description" content="Safwa Umrah &amp; Travel — a concept website for a premium Malaysian Umrah travel agency. Private preview demo, not a real operating business.">
+  <meta name="robots" content="noindex, nofollow">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Safwa Umrah &amp; Travel | Premium Umrah Packages (Concept Website)">
+  <meta property="og:description" content="Your Sacred Journey, Guided With Care. A private-preview concept website for a fictional premium Malaysian Umrah travel agency.">
+  <meta property="og:image" content="images/hero-skyline.svg">
+
+  <!-- WhatsApp number used throughout this page is a placeholder: +60 12-345 6789.
+       To go live, replace WHATSAPP_NUMBER in js/main.js and the matching href="https://wa.me/60123456789"
+       fallback on every [data-whatsapp] element in this file. -->
+
+  <!-- VISUAL ASSETS: the SVG skyline illustrations below (images/hero-skyline.svg,
+       makkah-panel.svg, madinah-panel.svg, cta-skyline.svg) are placeholder concept
+       artwork, not photography. Swap them for licensed photos when available:
+         hero-skyline.svg  -> premium Makkah / Kaaba photography
+         makkah-panel.svg  -> Masjid al-Haram photography
+         madinah-panel.svg -> Masjid an-Nabawi photography
+         cta-skyline.svg   -> cinematic Makkah/Madinah photography
+       Each <img> tag already uses object-fit: cover, so a same-aspect JPG/WebP
+       drop-in needs no other markup or layout changes. -->
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Jost:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+  <meta name="theme-color" content="#0a2119">
+
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- ============================== ANNOUNCEMENT BAR ============================== -->
+  <p class="announcement-bar">
+    <strong>2026 Umrah Packages Now Available</strong>
+    <a href="#packages">Explore Packages
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+    </a>
+  </p>
+
+  <!-- ============================== HEADER ============================== -->
+  <header class="site-header" data-site-header>
+    <div class="container site-header__inner">
+      <a href="#home" class="brand">
+        <span class="brand__mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 16v-5a5 5 0 0 1 10 0v5"/><line x1="5.5" y1="16" x2="18.5" y2="16"/><circle cx="12" cy="6" r="1"/></svg>
+        </span>
+        <span class="brand__text">
+          <span class="brand__name">SAFWA</span>
+          <span class="brand__sub">Umrah &amp; Travel</span>
+        </span>
+      </a>
+
+      <nav class="primary-nav" aria-label="Primary">
+        <a class="nav-link" href="#home">Home</a>
+        <a class="nav-link" href="#packages">Umrah Packages</a>
+        <a class="nav-link" href="#journey">Umrah Journey</a>
+        <a class="nav-link" href="#guide">Guide</a>
+        <a class="nav-link" href="#about">About</a>
+        <a class="nav-link" href="#faq">FAQ</a>
+      </nav>
+
+      <div class="header-actions">
+        <a class="btn btn--gold btn--sm" href="https://wa.me/60123456789" data-whatsapp="Hi, I would like to know more about your Umrah packages.">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+          WhatsApp Us
+        </a>
+        <a class="whatsapp-icon-btn" href="https://wa.me/60123456789" data-whatsapp="Hi, I would like to know more about your Umrah packages." aria-label="WhatsApp Us">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+        </a>
+        <button type="button" class="menu-toggle" data-menu-toggle aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
+          <span class="menu-toggle__box" aria-hidden="true"><span></span><span></span><span></span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <div class="mobile-menu" data-mobile-menu id="mobile-menu" role="dialog" aria-modal="true" aria-label="Site menu">
+    <nav class="mobile-menu__links" aria-label="Mobile">
+      <a href="#home">Home</a>
+      <a href="#packages">Umrah Packages</a>
+      <a href="#journey">Umrah Journey</a>
+      <a href="#guide">Guide</a>
+      <a href="#about">About</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <div class="mobile-menu__foot">
+      <a class="btn btn--gold" href="https://wa.me/60123456789" data-whatsapp="Hi, I would like to know more about your Umrah packages.">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+        WhatsApp Us
+      </a>
+    </div>
+  </div>
+
+  <main id="main">
+
+    <!-- ============================== HERO ============================== -->
+    <section class="hero" id="home" aria-label="Safwa Umrah &amp; Travel introduction">
+      <div class="hero__media">
+        <!-- Placeholder concept artwork — replace with licensed Makkah / Kaaba photography -->
+        <img src="images/hero-skyline.svg" alt="Illustrated sunrise skyline of the Holy Mosque with its minarets, watercolour-style concept artwork" loading="eager" fetchpriority="high">
+      </div>
+      <div class="hero__scrim" aria-hidden="true"></div>
+      <div class="hero__content">
+        <p class="eyebrow hero__eyebrow">Safwa Umrah &amp; Travel</p>
+        <svg class="divider-arch" viewBox="0 0 240 28" fill="none" aria-hidden="true" style="margin-bottom: 1.1rem;">
+          <path d="M2 26 Q2 4 20 4 Q38 4 38 26 M42 26 Q42 4 60 4 Q78 4 78 26 M82 26 Q82 4 100 4 Q118 4 118 26" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+          <circle cx="130" cy="14" r="2" fill="currentColor"/>
+          <path d="M140 26 Q140 4 158 4 Q176 4 176 26 M180 26 Q180 4 198 4 Q216 4 216 26 M220 26 Q220 4 238 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+        </svg>
+        <h1>Your Sacred Journey<br><em>Begins Here.</em></h1>
+        <p class="hero__sub">Thoughtfully planned Umrah journeys with trusted guidance, comfortable stays and dedicated support from Malaysia to the Holy Land.</p>
+        <div class="hero__actions">
+          <a class="btn btn--gold btn--lg" href="#packages">Explore Umrah Packages</a>
+          <a class="btn btn--outline-light btn--lg" href="https://wa.me/60123456789" data-whatsapp="Hi, I would like to speak to a consultant about planning my Umrah journey.">Speak to a Consultant</a>
+        </div>
+        <p class="hero__trust">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          Guided journeys. Meaningful moments. Peace of mind.
+        </p>
+      </div>
+    </section>
+
+    <!-- ============================== QUICK PACKAGE FINDER ============================== -->
+    <section class="finder" aria-labelledby="finder-heading">
+      <div class="container">
+        <div class="finder-card" data-reveal>
+          <div class="finder-card__head">
+            <h2 id="finder-heading">Find the Umrah Journey That Fits You</h2>
+            <p>Tell us your budget, duration and preferred travel period — we'll highlight the packages that fit.</p>
+          </div>
+          <form data-finder-form>
+            <div class="finder-fields">
+              <div class="finder-field">
+                <label for="finder-budget">Budget</label>
+                <select id="finder-budget" name="budget">
+                  <option value="">Any Budget</option>
+                  <option value="under-6000">Under RM6,000</option>
+                  <option value="6000-8000">RM6,000 &ndash; RM8,000</option>
+                  <option value="8000-10000">RM8,000 &ndash; RM10,000</option>
+                  <option value="10000-plus">RM10,000+</option>
+                </select>
+              </div>
+              <div class="finder-field">
+                <label for="finder-duration">Duration</label>
+                <select id="finder-duration" name="duration">
+                  <option value="">Any Duration</option>
+                  <option value="9">9 Days</option>
+                  <option value="12">12 Days</option>
+                  <option value="14">14 Days</option>
+                </select>
+              </div>
+              <div class="finder-field">
+                <label for="finder-period">Travel Period</label>
+                <select id="finder-period" name="period">
+                  <option value="">Any Period</option>
+                  <option value="regular">Regular Season</option>
+                  <option value="school-holidays">School Holidays</option>
+                  <option value="ramadan">Ramadan</option>
+                  <option value="premium-season">Premium Season</option>
+                </select>
+              </div>
+              <div class="finder-field finder-field--action finder-actions">
+                <button type="submit" class="btn btn--primary btn--block">Find My Package</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================== TRUST STATISTICS ============================== -->
+    <section class="section section--tight section--dark stats" aria-labelledby="stats-heading">
+      <div class="container">
+        <div class="section-head section-head--center" data-reveal>
+          <span class="badge badge--outline" style="border-color: var(--em-line); color: var(--gold-400);">Demo Statistics — Illustrative Only</span>
+          <h2 id="stats-heading" class="visually-hidden">Safwa in numbers (concept figures)</h2>
+        </div>
+        <div class="stats-grid" data-reveal-group>
+          <div class="stat">
+            <p class="stat__value"><span data-count-to="15" data-count-suffix="+">0+</span></p>
+            <p class="stat__label">Years Experience</p>
+          </div>
+          <div class="stat">
+            <p class="stat__value"><span data-count-to="10" data-count-suffix="K+">0K+</span></p>
+            <p class="stat__label">Pilgrims Served</p>
+          </div>
+          <div class="stat">
+            <p class="stat__value"><span data-count-to="50" data-count-suffix="+">0+</span></p>
+            <p class="stat__label">Experienced Guides</p>
+          </div>
+          <div class="stat">
+            <p class="stat__value"><span data-count-to="4.9" data-count-decimals="1" data-count-suffix="/5">0/5</span></p>
+            <p class="stat__label">Demo Rating</p>
+          </div>
+        </div>
+        <p class="stats-note">Concept figures for demonstration purposes — not real company statistics.</p>
+      </div>
+    </section>
+
+    <!-- ============================== FEATURED PACKAGES ============================== -->
+    <section class="section" id="packages" aria-labelledby="packages-heading">
+      <div class="container">
+        <div class="section-head section-head--center" data-reveal>
+          <div class="section-head__text">
+            <p class="eyebrow">Umrah Packages</p>
+            <h2 id="packages-heading">Choose Your Journey</h2>
+            <p>Flexible packages designed around comfort, convenience and your spiritual journey.</p>
+          </div>
+        </div>
+
+        <div class="package-grid" data-reveal-group>
+
+          <!-- Package 01 — Economy -->
+          <article class="package-card" data-package-card data-budget="under-6000" data-duration="9" data-periods="regular,school-holidays">
+            <div class="package-card__head">
+              <p class="package-card__tier">Package 01 &mdash; Economy</p>
+              <h3 class="package-card__name">Economy</h3>
+              <p class="package-card__duration">9 Days / 7 Nights</p>
+            </div>
+            <div class="package-card__price">
+              <p class="package-card__price-label">From</p>
+              <p class="package-card__price-value">RM5,990 <span>per pax</span></p>
+            </div>
+            <div class="package-card__body">
+              <ul class="package-card__list">
+                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Return flight</li>
+                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Selected hotel</li>
+                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Airport transfer</li>
+                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Mutawwif guidance</li>
+                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Basic ziarah</li>
+              </ul>
+              <div class="package-card__foot">
+                <a class="btn btn--outline btn--block" href="https://wa.me/60123456789" data-whatsapp="Hi, I'm interested in the Safwa Economy package (9 Days / 7 Nights, from RM5,990). Could you share more details?">View Package</a>
+                <p class="package-card__concept">Concept / Demo Package &mdash; pricing is illustrative.</p>
+              </div>
+            </div>
+          </article>
+
+          <!-- Package 02 — Comfort -->
+          <article class="package-card is-featured" data-package-card data-budget="6000-8000" data-duration="12" data-periods="regular,school-holidays,ramadan">
+            <span class="package-card__ribbon">Most Popular</span>
+            <div class="package-card__head">
+              <p class="package-card__tier">Package 02 &mdash; Comfort</p>
+              <h3 class="package-card__name">Comfort</h3>
+              <p class="package-card__duration">12 Days / 10 Nights</p>
+            </div>
+            <div class="package-card__price">
+              <p class="package-card__price-label">From</p>
+              <p class="package-card__price-value">RM7,490 <span>per pax</span></p>
+            </div>
+            <div class="package-card__body">
+              <ul class="package-card__list">
+                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Return flight</li>
+                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>4-star accommodation</li>
+                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Airport transfer</li>
+                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Mutawwif guidance</li>
+                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Makkah &amp; Madinah ziarah</li>
+                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Group assistance</li>
+              </ul>
+              <div class="package-card__foot">
+                <a class="btn btn--primary btn--block" href="https://wa.me/60123456789" data-whatsapp="Hi, I'm interested in the Safwa Comfort package (12 Days / 10 Nights, from RM7,490). Could you share more details?">View Package</a>
+                <p class="package-card__concept">Concept / Demo Package &mdash; pricing is illustrative.</p>
+              </div>
+            </div>
+          </article>
+
+          <!-- Package 03 — Premium -->
+          <article class="package-card" data-package-card data-budget="8000-10000" data-duration="12" data-periods="regular,ramadan,premium-season">
+            <div class="package-card__head">
+              <p class="package-card__tier">Package 03 &mdash; Premium</p>
+              <h3 class="package-card__name">Premium</h3>
+              <p class="package-card__duration">12 Days / 10 Nights</p>
+            </div>
+            <div class="package-card__price">
+              <p class="package-card__price-label">From</p>
+              <p class="package-card__price-value">RM9,990 <span>per pax</span></p>
+            </div>
+            <div class="package-card__body">
+              <ul class="package-card__list">
+                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Premium return flight</li>
+                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>5-star accommodation</li>
+                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Private/group transfer</li>
+                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Dedicated guidance</li>
+                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Premium ziarah experience</li>
+                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Enhanced support</li>
+              </ul>
+              <div class="package-card__foot">
+                <a class="btn btn--outline btn--block" href="https://wa.me/60123456789" data-whatsapp="Hi, I'm interested in the Safwa Premium package (12 Days / 10 Nights, from RM9,990). Could you share more details?">View Package</a>
+                <p class="package-card__concept">Concept / Demo Package &mdash; pricing is illustrative.</p>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================== WHY TRAVEL WITH SAFWA ============================== -->
+    <section class="section section--alt" id="about" aria-labelledby="why-heading">
+      <div class="container">
+        <div class="section-head section-head--center" data-reveal>
+          <div class="section-head__text">
+            <p class="eyebrow">About Safwa</p>
+            <h2 id="why-heading">Why Travel With Safwa</h2>
+            <p>A premium Malaysian Umrah travel agency built around trust, comfort and complete peace of mind.</p>
+          </div>
+        </div>
+
+        <div class="feature-grid" data-reveal-group>
+          <article class="feature-card">
+            <span class="feature-card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg>
+            </span>
+            <h3>Experienced Guidance</h3>
+            <p>Be supported by experienced mutawwif throughout your journey.</p>
+          </article>
+          <article class="feature-card">
+            <span class="feature-card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+            </span>
+            <h3>Carefully Selected Hotels</h3>
+            <p>Comfortable accommodation selected with your convenience in mind.</p>
+          </article>
+          <article class="feature-card">
+            <span class="feature-card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/></svg>
+            </span>
+            <h3>Complete Assistance</h3>
+            <p>From preparation in Malaysia to your return home.</p>
+          </article>
+          <article class="feature-card">
+            <span class="feature-card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            </span>
+            <h3>Family Friendly</h3>
+            <p>Thoughtfully planned for couples, families and senior pilgrims.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================== UMRAH JOURNEY TIMELINE ============================== -->
+    <section class="section" id="journey" aria-labelledby="journey-heading">
+      <div class="container">
+        <div class="section-head section-head--center" data-reveal>
+          <div class="section-head__text">
+            <p class="eyebrow">Umrah Journey</p>
+            <h2 id="journey-heading">From Malaysia to the Holy Land</h2>
+            <p>A guided path from your first briefing in Malaysia to your safe return home.</p>
+          </div>
+        </div>
+
+        <div class="timeline">
+          <div class="timeline-track" data-reveal-group>
+            <div class="timeline-step">
+              <div class="timeline-step__rail">
+                <span class="timeline-step__num">01</span>
+                <span class="timeline-step__line" aria-hidden="true"></span>
+              </div>
+              <div class="timeline-step__body">
+                <h3>Prepare</h3>
+                <p>Briefing, documentation and pre-departure preparation.</p>
+              </div>
+            </div>
+            <div class="timeline-step">
+              <div class="timeline-step__rail">
+                <span class="timeline-step__num">02</span>
+                <span class="timeline-step__line" aria-hidden="true"></span>
+              </div>
+              <div class="timeline-step__body">
+                <h3>Depart</h3>
+                <p>Airport assistance and organised departure.</p>
+              </div>
+            </div>
+            <div class="timeline-step">
+              <div class="timeline-step__rail">
+                <span class="timeline-step__num">03</span>
+                <span class="timeline-step__line" aria-hidden="true"></span>
+              </div>
+              <div class="timeline-step__body">
+                <h3>Makkah</h3>
+                <p>Umrah performance and spiritual guidance.</p>
+              </div>
+            </div>
+            <div class="timeline-step">
+              <div class="timeline-step__rail">
+                <span class="timeline-step__num">04</span>
+                <span class="timeline-step__line" aria-hidden="true"></span>
+              </div>
+              <div class="timeline-step__body">
+                <h3>Madinah</h3>
+                <p>Visit Madinah and experience the peaceful atmosphere of the Prophet's Mosque.</p>
+              </div>
+            </div>
+            <div class="timeline-step">
+              <div class="timeline-step__rail">
+                <span class="timeline-step__num">05</span>
+                <span class="timeline-step__line" aria-hidden="true"></span>
+              </div>
+              <div class="timeline-step__body">
+                <h3>Return</h3>
+                <p>Complete assistance until the journey home.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================== MAKKAH & MADINAH FEATURE ============================== -->
+    <section class="holy-split" aria-label="Makkah and Madinah">
+      <div class="holy-panel" data-reveal>
+        <div class="holy-panel__media">
+          <!-- Placeholder concept artwork — replace with licensed Masjid al-Haram photography -->
+          <img src="images/makkah-panel.svg" alt="Illustrated dawn view of the Grand Mosque and its minarets, watercolour-style concept artwork" loading="lazy">
+        </div>
+        <div class="holy-panel__scrim" aria-hidden="true"></div>
+        <div class="holy-panel__content">
+          <p class="holy-panel__eyebrow">Makkah</p>
+          <h3 class="holy-panel__title">Makkah</h3>
+          <p class="holy-panel__text">The beginning of your sacred journey.</p>
+          <a class="btn btn--outline-light holy-panel__cta" href="https://wa.me/60123456789" data-whatsapp="Hi, I would like to know more about the Makkah portion of your Umrah packages.">Explore Makkah</a>
+        </div>
+      </div>
+      <div class="holy-panel" data-reveal>
+        <div class="holy-panel__media">
+          <!-- Placeholder concept artwork — replace with licensed Masjid an-Nabawi photography -->
+          <img src="images/madinah-panel.svg" alt="Illustrated dusk view of the Prophet's Mosque with its green dome and minarets, watercolour-style concept artwork" loading="lazy">
+        </div>
+        <div class="holy-panel__scrim" aria-hidden="true"></div>
+        <div class="holy-panel__content">
+          <p class="holy-panel__eyebrow">Madinah</p>
+          <h3 class="holy-panel__title">Madinah</h3>
+          <p class="holy-panel__text">Peace, reflection and moments to remember.</p>
+          <a class="btn btn--outline-light holy-panel__cta" href="https://wa.me/60123456789" data-whatsapp="Hi, I would like to know more about the Madinah portion of your Umrah packages.">Explore Madinah</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================== PREPARATION GUIDE ============================== -->
+    <section class="section section--alt" id="guide" aria-labelledby="guide-heading">
+      <div class="container">
+        <div class="section-head section-head--center" data-reveal>
+          <div class="section-head__text">
+            <p class="eyebrow">Umrah Guide</p>
+            <h2 id="guide-heading">Prepare With Confidence</h2>
+            <p>Everything you need to feel ready for your journey, in one place.</p>
+          </div>
+        </div>
+
+        <div class="guide-grid" data-reveal-group>
+          <a class="guide-card" href="#" data-demo-inert="This guide is a preview card in this concept demo — full guide pages haven't been built yet.">
+            <span class="badge badge--outline guide-card__tag">Preview</span>
+            <span class="guide-card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+            </span>
+            <h3>First-Time Umrah Guide</h3>
+            <p>Everything you should know before your first journey.</p>
+          </a>
+          <a class="guide-card" href="#" data-demo-inert="This guide is a preview card in this concept demo — full guide pages haven't been built yet.">
+            <span class="badge badge--outline guide-card__tag">Preview</span>
+            <span class="guide-card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="1" ry="1"/><polyline points="9 14 11 16 15 12"/></svg>
+            </span>
+            <h3>Umrah Checklist</h3>
+            <p>Essential documents, clothing and travel items.</p>
+          </a>
+          <a class="guide-card" href="#" data-demo-inert="This guide is a preview card in this concept demo — full guide pages haven't been built yet.">
+            <span class="badge badge--outline guide-card__tag">Preview</span>
+            <span class="guide-card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+            </span>
+            <h3>What To Pack</h3>
+            <p>Practical packing guidance for Makkah and Madinah.</p>
+          </a>
+          <a class="guide-card" href="#" data-demo-inert="This guide is a preview card in this concept demo — full guide pages haven't been built yet.">
+            <span class="badge badge--outline guide-card__tag">Preview</span>
+            <span class="guide-card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+            </span>
+            <h3>Before You Depart</h3>
+            <p>Important preparation steps before leaving Malaysia.</p>
+          </a>
+        </div>
+
+        <div style="display: flex; justify-content: center; margin-top: 2.75rem;" data-reveal>
+          <a class="btn btn--outline" href="#" data-demo-inert="The full Umrah Guide section is a preview in this concept demo — individual guide pages haven't been built yet.">Explore Umrah Guide</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================== TESTIMONIALS ============================== -->
+    <section class="section" aria-labelledby="testimonials-heading">
+      <div class="container">
+        <div class="section-head section-head--center" data-reveal>
+          <div class="section-head__text">
+            <p class="eyebrow">Concept Testimonials</p>
+            <svg class="divider-arch" viewBox="0 0 240 28" fill="none" aria-hidden="true" style="margin: 0.9rem auto 0;">
+              <path d="M2 26 Q2 4 20 4 Q38 4 38 26 M42 26 Q42 4 60 4 Q78 4 78 26 M82 26 Q82 4 100 4 Q118 4 118 26" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+              <circle cx="130" cy="14" r="2" fill="currentColor"/>
+              <path d="M140 26 Q140 4 158 4 Q176 4 176 26 M180 26 Q180 4 198 4 Q216 4 216 26 M220 26 Q220 4 238 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+            </svg>
+            <h2 id="testimonials-heading">Stories From Our Pilgrims</h2>
+            <p>Fictional demonstration testimonials, written to illustrate tone and voice — not real customer reviews.</p>
+          </div>
+        </div>
+
+        <div class="testimonial-wrap" data-testimonial data-reveal aria-roledescription="carousel" aria-label="Concept testimonials">
+          <div class="testimonial-track">
+            <div class="testimonial-slides" data-testimonial-slides>
+
+              <div class="testimonial-slide" data-testimonial-slide>
+                <div class="testimonial-stars" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                  <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                  <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                  <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                  <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                </div>
+                <p class="testimonial-quote">"Every step was organised with so much care. Our mutawwif was patient with my parents, and the whole group felt looked after from Kuala Lumpur all the way to Madinah."</p>
+                <div class="testimonial-meta">
+                  <p class="testimonial-name">Aminah R.</p>
+                  <p class="testimonial-role">Concept testimonial &mdash; Comfort Package</p>
+                </div>
+              </div>
+
+              <div class="testimonial-slide" data-testimonial-slide>
+                <div class="testimonial-stars" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                  <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                  <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                  <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                  <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                </div>
+                <p class="testimonial-quote">"Travelling with young children can feel daunting, but the team planned around our pace and made sure our family always had what we needed."</p>
+                <div class="testimonial-meta">
+                  <p class="testimonial-name">Farid &amp; Family</p>
+                  <p class="testimonial-role">Concept testimonial &mdash; Premium Package</p>
+                </div>
+              </div>
+
+              <div class="testimonial-slide" data-testimonial-slide>
+                <div class="testimonial-stars" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                  <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                  <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                  <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                  <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                </div>
+                <p class="testimonial-quote">"What stayed with me most was the calm briefing before we departed. I felt genuinely prepared, not just for the airport but for the journey itself."</p>
+                <div class="testimonial-meta">
+                  <p class="testimonial-name">Nurul H.</p>
+                  <p class="testimonial-role">Concept testimonial &mdash; Economy Package</p>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <div class="testimonial-controls">
+            <button type="button" class="testimonial-arrow" data-testimonial-prev aria-label="Previous testimonial">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+            </button>
+            <div class="testimonial-dots" data-testimonial-dots role="tablist" aria-label="Choose testimonial"></div>
+            <button type="button" class="testimonial-arrow" data-testimonial-next aria-label="Next testimonial">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <div class="testimonial-flag">
+          <span class="concept-note">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+            These are fictional demonstration testimonials created for this concept preview, not statements from real customers.
+          </span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================== FAQ ============================== -->
+    <section class="section section--alt" id="faq" aria-labelledby="faq-heading">
+      <div class="container">
+        <div class="section-head section-head--center" data-reveal>
+          <div class="section-head__text">
+            <p class="eyebrow">Good To Know</p>
+            <h2 id="faq-heading">Frequently Asked Questions</h2>
+            <p>Common questions about preparing for and booking an Umrah journey with Safwa.</p>
+          </div>
+        </div>
+
+        <div class="faq-list" data-reveal>
+          <div class="faq-item" data-faq-item>
+            <button type="button" class="faq-question" data-faq-question aria-expanded="false" aria-controls="faq-answer-1" id="faq-question-1">
+              <span>What documents are required for Umrah?</span>
+              <span class="faq-question__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+            </button>
+            <div class="faq-answer" data-faq-answer id="faq-answer-1" role="region" aria-labelledby="faq-question-1">
+              <div class="faq-answer__inner">A valid passport with at least 6 months' validity, your Umrah visa (arranged as part of your package), recent passport photographs and proof of vaccination where required. Our team guides you through the full document checklist before departure.</div>
+            </div>
+          </div>
+
+          <div class="faq-item" data-faq-item>
+            <button type="button" class="faq-question" data-faq-question aria-expanded="false" aria-controls="faq-answer-2" id="faq-question-2">
+              <span>How early should I book?</span>
+              <span class="faq-question__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+            </button>
+            <div class="faq-answer" data-faq-answer id="faq-answer-2" role="region" aria-labelledby="faq-question-2">
+              <div class="faq-answer__inner">We recommend booking 2&ndash;3 months ahead for regular season travel, and 4&ndash;6 months ahead for peak periods such as school holidays or Ramadan, when flights and hotels fill up quickly.</div>
+            </div>
+          </div>
+
+          <div class="faq-item" data-faq-item>
+            <button type="button" class="faq-question" data-faq-question aria-expanded="false" aria-controls="faq-answer-3" id="faq-question-3">
+              <span>Are flights included?</span>
+              <span class="faq-question__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+            </button>
+            <div class="faq-answer" data-faq-answer id="faq-answer-3" role="region" aria-labelledby="faq-question-3">
+              <div class="faq-answer__inner">Yes. Every Safwa package includes return flights from Malaysia, with premium-cabin options available on our Premium package. Exact routing and airline depend on your travel dates.</div>
+            </div>
+          </div>
+
+          <div class="faq-item" data-faq-item>
+            <button type="button" class="faq-question" data-faq-question aria-expanded="false" aria-controls="faq-answer-4" id="faq-question-4">
+              <span>Are meals included?</span>
+              <span class="faq-question__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+            </button>
+            <div class="faq-answer" data-faq-answer id="faq-answer-4" role="region" aria-labelledby="faq-question-4">
+              <div class="faq-answer__inner">Daily breakfast is included across all packages, with additional meals included on our Comfort and Premium packages. Full meal inclusions are confirmed with your consultant at booking.</div>
+            </div>
+          </div>
+
+          <div class="faq-item" data-faq-item>
+            <button type="button" class="faq-question" data-faq-question aria-expanded="false" aria-controls="faq-answer-5" id="faq-question-5">
+              <span>Is mutawwif guidance provided?</span>
+              <span class="faq-question__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+            </button>
+            <div class="faq-answer" data-faq-answer id="faq-answer-5" role="region" aria-labelledby="faq-question-5">
+              <div class="faq-answer__inner">Yes, every package includes experienced mutawwif guidance throughout your Umrah rites, with dedicated support available on our Comfort and Premium packages.</div>
+            </div>
+          </div>
+
+          <div class="faq-item" data-faq-item>
+            <button type="button" class="faq-question" data-faq-question aria-expanded="false" aria-controls="faq-answer-6" id="faq-question-6">
+              <span>Can elderly family members join?</span>
+              <span class="faq-question__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+            </button>
+            <div class="faq-answer" data-faq-answer id="faq-answer-6" role="region" aria-labelledby="faq-question-6">
+              <div class="faq-answer__inner">Absolutely — our journeys are planned with a comfortable pace for senior pilgrims, and our team can advise on wheelchair assistance, nearby accommodation and other arrangements.</div>
+            </div>
+          </div>
+
+          <div class="faq-item" data-faq-item>
+            <button type="button" class="faq-question" data-faq-question aria-expanded="false" aria-controls="faq-answer-7" id="faq-question-7">
+              <span>What is included in the package?</span>
+              <span class="faq-question__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+            </button>
+            <div class="faq-answer" data-faq-answer id="faq-answer-7" role="region" aria-labelledby="faq-question-7">
+              <div class="faq-answer__inner">Typically, flights, accommodation, airport transfers, mutawwif guidance and ziarah visits. See each package card above for the specific inclusions, or reach out on WhatsApp for a full breakdown.</div>
+            </div>
+          </div>
+
+          <div class="faq-item" data-faq-item>
+            <button type="button" class="faq-question" data-faq-question aria-expanded="false" aria-controls="faq-answer-8" id="faq-question-8">
+              <span>How does payment work?</span>
+              <span class="faq-question__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+            </button>
+            <div class="faq-answer" data-faq-answer id="faq-answer-8" role="region" aria-labelledby="faq-question-8">
+              <div class="faq-answer__inner">A deposit secures your booking, with the balance payable in instalments ahead of departure. Our consultants can walk you through the payment schedule for your chosen package.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================== FINAL CTA ============================== -->
+    <section class="section final-cta" aria-labelledby="final-cta-heading">
+      <div class="final-cta__media" aria-hidden="true">
+        <!-- Placeholder concept artwork — replace with cinematic licensed Makkah/Madinah photography -->
+        <img src="images/cta-skyline.svg" alt="" loading="lazy">
+      </div>
+      <div class="final-cta__scrim" aria-hidden="true"></div>
+      <div class="container final-cta__content" data-reveal>
+        <p class="eyebrow" style="justify-content: center;">Plan Your Journey</p>
+        <h2 id="final-cta-heading">Your Journey Deserves Thoughtful Preparation.</h2>
+        <p>Let us help you find an Umrah package that suits your schedule, comfort and family.</p>
+        <div class="final-cta__actions">
+          <a class="btn btn--gold btn--lg" href="#packages">Explore Packages</a>
+          <a class="btn btn--outline-light btn--lg" href="https://wa.me/60123456789" data-whatsapp="Hi, I would like to speak to a consultant about planning my Umrah journey.">WhatsApp Consultant</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============================== FOOTER ============================== -->
+  <footer class="site-footer">
+    <div class="container footer-top">
+      <div class="footer-brand">
+        <a href="#home" class="brand">
+          <span class="brand__mark" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 16v-5a5 5 0 0 1 10 0v5"/><line x1="5.5" y1="16" x2="18.5" y2="16"/><circle cx="12" cy="6" r="1"/></svg>
+          </span>
+          <span class="brand__text">
+            <span class="brand__name">SAFWA</span>
+            <span class="brand__sub">Umrah &amp; Travel</span>
+          </span>
+        </a>
+        <p class="footer-brand__tag">"Your Sacred Journey, Guided With Care."</p>
+        <p class="footer-brand__desc">A concept Umrah travel agency brand, created to demonstrate premium Malaysian travel-agency web design.</p>
+        <div class="footer-socials" aria-label="Social links (concept placeholders, not connected)">
+          <a class="footer-social" href="#" data-demo-inert="Instagram is a concept placeholder in this preview — not a real, connected account." aria-label="Instagram (concept placeholder)">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg>
+          </a>
+          <a class="footer-social" href="#" data-demo-inert="Facebook is a concept placeholder in this preview — not a real, connected account." aria-label="Facebook (concept placeholder)">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+          </a>
+          <a class="footer-social" href="#" data-demo-inert="TikTok is a concept placeholder in this preview — not a real, connected account." aria-label="TikTok (concept placeholder)">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M16 3c.5 3 2.6 5 6 5.3V12c-2.1 0-4-.6-6-2v6.4a5.6 5.6 0 1 1-5.6-5.6c.4 0 .8 0 1.1.1V14a2.2 2.2 0 1 0 1.5 2.1V3z"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="footer-cols">
+        <div class="footer-col">
+          <h4>Navigate</h4>
+          <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#packages">Packages</a></li>
+            <li><a href="#journey">Umrah Journey</a></li>
+            <li><a href="#guide">Guide</a></li>
+            <li><a href="#faq">FAQ</a></li>
+            <li><a href="#footer-contact">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-col" id="footer-contact">
+          <h4>Contact</h4>
+          <address>
+            <span class="is-placeholder">+60 XX-XXXX XXXX (placeholder number)</span><br>
+            <a href="mailto:hello@safwaumrah.com">hello@safwaumrah.com</a>
+          </address>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <p class="footer-disclosure">
+        <strong>Concept Website &mdash; Private Preview.</strong> Safwa Umrah &amp; Travel is a fictional brand created for design demonstration purposes only. It does not represent a real, operating travel agency, and no statistics, testimonials, pricing, accreditation or partnerships shown here should be treated as genuine business claims.
+      </p>
+    </div>
+
+    <div class="container footer-bottom">
+      <span>&copy; <span data-year>2026</span> Safwa Umrah &amp; Travel &mdash; Concept Website, Private Preview Only</span>
+      <span>Status: Not for Public Indexing</span>
+    </div>
+  </footer>
+
+  <div class="toast" data-toast role="status" aria-live="polite"></div>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
