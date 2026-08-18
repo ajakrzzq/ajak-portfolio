@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1400" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Illustrated dawn view of the Grand Mosque and its minarets, representing Makkah">
+  <defs>
+    <linearGradient id="mkSky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0a1b15"/>
+      <stop offset="45%" stop-color="#1c4433"/>
+      <stop offset="75%" stop-color="#6b6b45"/>
+      <stop offset="100%" stop-color="#f2d59a"/>
+    </linearGradient>
+    <radialGradient id="mkGlow" cx="50%" cy="100%" r="65%">
+      <stop offset="0%" stop-color="#f9e2ad" stop-opacity="0.9"/>
+      <stop offset="60%" stop-color="#e3a95f" stop-opacity="0.28"/>
+      <stop offset="100%" stop-color="#e3a95f" stop-opacity="0"/>
+    </radialGradient>
+    <symbol id="mkMinaret" viewBox="0 0 40 260">
+      <rect x="14" y="60" width="12" height="200"/>
+      <polygon points="8,60 32,60 20,18"/>
+      <rect x="17" y="2" width="6" height="14"/>
+      <circle cx="20" cy="0" r="4"/>
+    </symbol>
+  </defs>
+
+  <rect width="1200" height="1400" fill="url(#mkSky)"/>
+  <circle cx="600" cy="1250" r="620" fill="url(#mkGlow)"/>
+
+  <g fill="#0b2118">
+    <use href="#mkMinaret" x="150" y="760" width="46" height="380"/>
+    <use href="#mkMinaret" x="1000" y="760" width="46" height="380"/>
+    <use href="#mkMinaret" x="330" y="840" width="34" height="300"/>
+    <use href="#mkMinaret" x="840" y="840" width="34" height="300"/>
+
+    <path d="M330 1140 Q330 940 600 890 Q870 940 870 1140 Z"/>
+    <circle cx="600" cy="880" r="9"/>
+    <rect x="480" y="1030" width="240" height="220"/>
+    <rect x="510" y="1090" width="180" height="18" fill="#c8a35f"/>
+    <rect x="555" y="1200" width="90" height="90" fill="#04100b"/>
+    <rect x="555" y="1224" width="90" height="14" fill="#c8a35f"/>
+  </g>
+
+  <linearGradient id="mkFade" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%" stop-color="#050e0a" stop-opacity="0"/>
+    <stop offset="100%" stop-color="#050e0a" stop-opacity="0.85"/>
+  </linearGradient>
+  <rect width="1200" height="1400" fill="url(#mkFade)"/>
+</svg>
