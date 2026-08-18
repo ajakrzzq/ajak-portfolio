@@ -1068,7 +1068,17 @@ body.menu-open { overflow: hidden; }
 .footer-col a { font-size: 0.9rem; color: #c3d3c8; transition: color var(--dur-fast) var(--ease); }
 .footer-col a:hover { color: #fff; }
 .footer-col address { font-style: normal; font-size: 0.9rem; line-height: 1.8; color: #c3d3c8; }
-.footer-col address .is-placeholder { color: #7f9488; font-style: italic; }
+
+.footer-whatsapp-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+  color: var(--gold-400);
+  font-weight: 600;
+}
+.footer-whatsapp-cta:hover { color: var(--gold-500); }
+.footer-whatsapp-cta svg { width: 16px; height: 16px; flex-shrink: 0; }
 
 .footer-socials { display: flex; gap: 0.65rem; margin-top: 1.1rem; }
 .footer-social {
@@ -1172,10 +1182,29 @@ body.menu-open { overflow: hidden; }
   .holy-split { grid-template-columns: repeat(2, 1fr); }
 }
 
+@media (max-width: 859px) {
+  /* On narrow/tall viewports object-fit: cover only shows a thin vertical
+     slice of the 1920px-wide hero artwork. 60% (tuned for wide desktop
+     crops) lands past the right edge of the central dome/Kaaba cluster,
+     which is actually centered at ~48% of the image width — cropping it
+     out and leaving the CTA buttons overlapping bare silhouette instead
+     of the monument. Re-centering on mobile keeps the cluster in frame. */
+  .hero__media img { object-position: 48% 100%; }
+}
+
 @media (min-width: 860px) {
   .finder-fields { grid-template-columns: repeat(3, 1fr) auto; align-items: end; }
   .finder-actions { margin-top: 0; }
   .finder-field--action { display: flex; align-items: flex-end; }
+}
+
+@media (min-width: 860px) and (max-width: 1179px) {
+  /* At tablet/small-laptop widths the hero text column and the cropped
+     artwork sit close enough that 60% (the wide-desktop value) lets the
+     "Speak to a Consultant" button graze the dome's left edge. Nudging
+     the crop left gives the button clear breathing room without touching
+     the artwork itself or the confirmed 1280px+/859px- ranges. */
+  .hero__media img { object-position: 50% 100%; }
 }
 
 @media (min-width: 900px) {
