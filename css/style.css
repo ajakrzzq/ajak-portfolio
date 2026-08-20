@@ -726,16 +726,17 @@ h1, h2, h3, h4 {
 /* ---------- Cards ---------- */
 .card {
   background: var(--surface);
-  border: 1px solid var(--border);
   border-radius: var(--radius-lg);
   padding: var(--space-6);
-  transition: transform var(--speed) var(--ease), box-shadow var(--speed) var(--ease), border-color var(--speed) var(--ease);
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--speed) var(--ease), box-shadow var(--speed) var(--ease);
 }
 
-a.card:hover, .card.is-hoverable:hover {
+.card:hover,
+a.card:hover,
+.card.is-hoverable:hover {
   transform: translateY(-4px);
   box-shadow: var(--shadow-md);
-  border-color: var(--border);
 }
 
 .card__icon {
