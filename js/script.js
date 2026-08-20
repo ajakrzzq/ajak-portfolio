@@ -21,10 +21,14 @@ document.addEventListener("DOMContentLoaded", function () {
     window.addEventListener("scroll", onScroll, { passive: true });
   }
 
-  /* ---------- Hero background — very subtle scroll drift ---------- */
+  /* ---------- Hero background — very subtle scroll drift ----------
+     Desktop/tablet only. Below 768px the listener isn't attached at
+     all (not just a no-op inside it), so mobile scroll never runs
+     this handler or schedules an rAF callback in the first place. */
   var heroMedia = document.querySelector(".hero__media");
   var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  if (heroMedia && !reduceMotion) {
+  var supportsHeroParallax = window.matchMedia("(min-width: 768px)").matches;
+  if (heroMedia && !reduceMotion && supportsHeroParallax) {
     var parallaxTicking = false;
     var updateHeroParallax = function () {
       var offset = Math.min(window.scrollY * 0.08, 24);

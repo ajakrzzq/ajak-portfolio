@@ -655,11 +655,21 @@ h1, h2, h3, h4 {
     background-image:
       linear-gradient(180deg, rgba(5, 7, 13, 0.92) 0%, rgba(5, 7, 13, 0.86) 32%, rgba(5, 7, 13, 0.68) 52%, rgba(5, 7, 13, 0.34) 68%, rgba(5, 7, 13, 0.16) 82%, rgba(5, 7, 13, 0.22) 100%),
       url("../images/hero/hero-web-designer-workspace.svg");
-    filter: blur(1.5px);
   }
 
   .hero__content { max-width: none; }
   .hero__lead { max-width: 40ch; }
+
+  /* backdrop-filter has to keep re-sampling whatever is moving behind
+     it — measured as the single largest contributor to mobile scroll
+     jank. A slightly more opaque flat background reads the same at
+     this size without the per-frame cost. Desktop (>=980px) keeps the
+     original glass effect untouched. */
+  .hero__chip {
+    background: rgba(11, 18, 32, 0.78);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
 }
 
 @media (max-width: 719px) {
