@@ -503,6 +503,13 @@ h1, h2, h3, h4 {
   to { opacity: 1; transform: scale(1); }
 }
 
+/* Between the mobile/tablet layout and the point where there's room to
+   spare (1280px), 60% center crops mid-shape through a card and the
+   phone. 40% keeps the monitor dominant and ends the crop cleanly. */
+@media (min-width: 980px) and (max-width: 1279px) {
+  .hero__media { background-position: 40% center; }
+}
+
 .hero__inner {
   position: relative;
   z-index: 1;
@@ -510,6 +517,13 @@ h1, h2, h3, h4 {
 }
 
 .hero__content { max-width: 600px; }
+
+/* From here up there's enough clearance before the artwork for the
+   headline to spread wider and settle into ~3 lines instead of the
+   same cramped 4-line shape it's forced into on a narrow viewport. */
+@media (min-width: 1440px) {
+  .hero__content { max-width: clamp(680px, 44vw, 760px); }
+}
 
 .hero__eyebrow { margin-bottom: var(--space-5); color: #9aa3ff; }
 .hero__eyebrow::before { background: #9aa3ff; }
@@ -580,7 +594,7 @@ h1, h2, h3, h4 {
 .hero__trust {
   margin-top: var(--space-6);
   font-size: 0.85rem;
-  color: rgba(250, 249, 245, 0.5);
+  color: rgba(250, 249, 245, 0.64);
 }
 
 .hero__chip {
@@ -625,9 +639,10 @@ h1, h2, h3, h4 {
    for the workspace visual to read clearly without colliding with it
    (the same threshold the original hero used for its two-column grid),
    so phones, small and large tablets all get the same deliberate
-   top-anchored composition: full-width text, a stronger scrim and a
-   soft blur that turns the workspace into an atmospheric backdrop
-   instead of hard-edged shapes fighting the headline. */
+   top-anchored composition: full-width text over a gradient that's
+   strong immediately behind the copy and lets go quickly below it, so
+   the monitor + phone stay clearly recognisable through the rest of
+   the frame instead of being washed into an abstract glow. */
 @media (max-width: 979px) {
   .hero--full {
     align-items: flex-start;
@@ -636,11 +651,11 @@ h1, h2, h3, h4 {
   }
 
   .hero__media {
-    background-position: 74% center;
+    background-position: 88% center;
     background-image:
-      linear-gradient(170deg, rgba(5, 7, 13, 0.86) 0%, rgba(5, 7, 13, 0.74) 32%, rgba(5, 7, 13, 0.68) 58%, rgba(5, 7, 13, 0.84) 100%),
+      linear-gradient(180deg, rgba(5, 7, 13, 0.92) 0%, rgba(5, 7, 13, 0.86) 32%, rgba(5, 7, 13, 0.68) 52%, rgba(5, 7, 13, 0.34) 68%, rgba(5, 7, 13, 0.16) 82%, rgba(5, 7, 13, 0.22) 100%),
       url("../images/hero/hero-web-designer-workspace.svg");
-    filter: blur(9px);
+    filter: blur(1.5px);
   }
 
   .hero__content { max-width: none; }
@@ -652,9 +667,10 @@ h1, h2, h3, h4 {
 }
 
 @media (max-width: 420px) {
-  .hero__actions { flex-direction: column; align-items: stretch; }
-  .hero__cta-primary,
-  .hero__cta-secondary { justify-content: center; }
+  /* Left-aligned and tightly stacked so the two CTAs read as one
+     group (button, then its lighter alternative directly under it)
+     rather than a button with an unrelated link floating below it. */
+  .hero__actions { flex-direction: column; align-items: flex-start; gap: var(--space-3); }
 }
 
 /* ---------- Browser-frame (signature element, reused in Hero & My Work) ---------- */
