@@ -683,6 +683,67 @@ h1, h2, h3, h4 {
   .hero__actions { flex-direction: column; align-items: flex-start; gap: var(--space-3); }
 }
 
+/* ---------- Trust strip (home page, directly under the hero) ----------
+   Compact credibility band, not a feature grid: a hairline seam under
+   the hero, four short icon+text facts, tighter padding than .section
+   so it reads as a quick reassurance beat rather than a new page section. */
+.trust-strip {
+  border-top: 1px solid var(--border);
+  padding-block: var(--space-6);
+}
+
+.trust-strip__list {
+  display: grid;
+  gap: var(--space-5) var(--space-6);
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 620px) {
+  .trust-strip__list { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (min-width: 980px) {
+  .trust-strip__list {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+  }
+
+  .trust-strip__item {
+    padding-inline: var(--space-5);
+    border-left: 1px solid var(--border);
+  }
+
+  .trust-strip__item:first-child { padding-left: 0; border-left: none; }
+  .trust-strip__item:last-child { padding-right: 0; }
+}
+
+.trust-strip__item {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+}
+
+.trust-strip__icon {
+  flex: none;
+  width: 20px;
+  height: 20px;
+  margin-top: 2px;
+  color: var(--accent);
+}
+
+.trust-strip__item span {
+  display: block;
+  min-width: 0;
+  font-size: var(--fs-small);
+  line-height: 1.5;
+  color: var(--muted);
+}
+
+.trust-strip__item strong {
+  color: var(--ink);
+  font-weight: 600;
+}
+
 /* ---------- Browser-frame (signature element, reused in Hero & My Work) ---------- */
 .browser-frame {
   background: var(--surface);
