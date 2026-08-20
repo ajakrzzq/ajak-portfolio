@@ -21,14 +21,14 @@ document.addEventListener("DOMContentLoaded", function () {
     window.addEventListener("scroll", onScroll, { passive: true });
   }
 
-  /* ---------- Hero showcase — very subtle scroll drift ---------- */
-  var heroBrowser = document.querySelector(".hero__browser-wrap");
+  /* ---------- Hero background — very subtle scroll drift ---------- */
+  var heroMedia = document.querySelector(".hero__media");
   var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  if (heroBrowser && !reduceMotion) {
+  if (heroMedia && !reduceMotion) {
     var parallaxTicking = false;
     var updateHeroParallax = function () {
       var offset = Math.min(window.scrollY * 0.08, 24);
-      heroBrowser.style.transform = "translateY(-" + offset + "px)";
+      heroMedia.style.transform = "translateY(-" + offset + "px)";
       parallaxTicking = false;
     };
     window.addEventListener("scroll", function () {
@@ -48,6 +48,7 @@ document.addEventListener("DOMContentLoaded", function () {
       toggle.setAttribute("aria-label", "Open menu");
       mobileMenu.classList.remove("is-open");
       document.body.style.overflow = "";
+      if (header) header.classList.remove("menu-open");
       if (returnFocus) toggle.focus();
     };
     var openMenu = function () {
@@ -55,6 +56,10 @@ document.addEventListener("DOMContentLoaded", function () {
       toggle.setAttribute("aria-label", "Close menu");
       mobileMenu.classList.add("is-open");
       document.body.style.overflow = "hidden";
+      // The mobile menu's own backdrop is always light, so while it's
+      // open the header needs its normal dark-on-light styling even if
+      // the page hasn't scrolled past the (dark) hero yet.
+      if (header) header.classList.add("menu-open");
       var firstLink = mobileMenu.querySelector("a");
       if (firstLink) firstLink.focus();
     };

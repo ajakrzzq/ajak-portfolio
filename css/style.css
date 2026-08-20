@@ -351,6 +351,52 @@ h1, h2, h3, h4 {
   .nav__toggle { display: none; }
 }
 
+/* ---------- Header, overlaid on the full-screen hero (home page only) ----------
+   Sits transparent and light-on-dark over the hero image until the page
+   scrolls, at which point the existing .is-scrolled rule above takes over
+   and gives it the same solid, dark-on-light bar every other page already
+   uses. Fixed (not sticky) so the hero image can run edge-to-edge behind
+   it — every other page keeps the original sticky header untouched. */
+.site-header--overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+.site-header--overlay:not(.is-scrolled) {
+  border-bottom-color: transparent;
+}
+
+.site-header--overlay:not(.is-scrolled) .brand,
+.site-header--overlay:not(.is-scrolled) .nav__links a,
+.site-header--overlay:not(.is-scrolled) .nav__toggle {
+  color: var(--paper);
+}
+
+.site-header--overlay:not(.is-scrolled) .brand__dot { color: #9aa3ff; }
+.site-header--overlay:not(.is-scrolled) .nav__links a[aria-current="page"] { color: var(--paper); }
+.site-header--overlay:not(.is-scrolled) .nav__links a::after { background: var(--paper); }
+
+.site-header--overlay:not(.is-scrolled) .nav__toggle {
+  border-color: rgba(250, 249, 245, 0.35);
+  background: rgba(250, 249, 245, 0.08);
+}
+
+/* the mobile menu's own backdrop is always light, so the header needs
+   its normal dark-on-light styling while it's open, even over the hero */
+.site-header--overlay.menu-open:not(.is-scrolled) .brand,
+.site-header--overlay.menu-open:not(.is-scrolled) .nav__toggle {
+  color: var(--ink);
+}
+
+.site-header--overlay.menu-open:not(.is-scrolled) .brand__dot { color: var(--accent); }
+
+.site-header--overlay.menu-open:not(.is-scrolled) .nav__toggle {
+  border-color: var(--border);
+  background: var(--surface);
+}
+
 .mobile-menu {
   position: fixed;
   inset: 0;
@@ -421,57 +467,68 @@ h1, h2, h3, h4 {
   .mobile-menu { display: none; }
 }
 
-/* ---------- Hero ---------- */
-.hero {
-  --hero-navy: #0b1220;
+/* ---------- Hero ----------
+   Full-screen cinematic hero: a single background image (see
+   .hero__media) carries a two-part gradient overlay baked into its own
+   background shorthand so the text on the left stays readable while the
+   workspace visual on the right stays clearly visible. The header
+   overlays this section directly (see .site-header--overlay above). */
+.hero--full {
   position: relative;
-  padding-top: var(--space-8);
-  padding-bottom: var(--space-9);
+  display: flex;
+  align-items: center;
+  min-height: 100vh;
+  min-height: 100svh;
   overflow: hidden;
+  padding-top: clamp(6.5rem, 5rem + 5vw, 8.5rem);
+  padding-bottom: var(--space-8);
 }
 
-.hero__bg {
+.hero__media {
   position: absolute;
-  inset: 0;
+  inset: -40px;
   z-index: 0;
-  pointer-events: none;
-  background-image: radial-gradient(rgba(11, 18, 32, 0.14) 1px, transparent 1px);
-  background-size: 28px 28px;
-  -webkit-mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0) 75%);
-  mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0) 75%);
-  opacity: 0.35;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 60% center;
+  background-image:
+    linear-gradient(90deg, rgba(5, 7, 13, 0.93) 0%, rgba(5, 7, 13, 0.85) 25%, rgba(5, 7, 13, 0.78) 40%, rgba(5, 7, 13, 0.54) 60%, rgba(5, 7, 13, 0.2) 80%, rgba(5, 7, 13, 0.05) 100%),
+    linear-gradient(180deg, rgba(5, 7, 13, 0.25) 0%, rgba(5, 7, 13, 0) 30%, rgba(5, 7, 13, 0) 66%, rgba(5, 7, 13, 0.6) 100%),
+    url("../images/hero/hero-web-designer-workspace.svg");
+  animation: hero-media-in 1.4s var(--ease) backwards;
 }
 
-.hero__grid {
+@keyframes hero-media-in {
+  from { opacity: 0; transform: scale(1.045); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.hero__inner {
   position: relative;
   z-index: 1;
-  display: grid;
-  gap: var(--space-8);
-  align-items: center;
+  width: 100%;
 }
 
-@media (min-width: 980px) {
-  .hero__grid { grid-template-columns: 1.2fr 1fr; gap: var(--space-8); align-items: start; }
-  .hero__showcase { margin-top: var(--space-7); }
-}
+.hero__content { max-width: 600px; }
 
-.hero__eyebrow { margin-bottom: var(--space-5); }
+.hero__eyebrow { margin-bottom: var(--space-5); color: #9aa3ff; }
+.hero__eyebrow::before { background: #9aa3ff; }
 
 .hero__headline {
   font-family: var(--font-display);
   font-weight: 700;
-  line-height: 1.04;
+  line-height: 1.06;
   letter-spacing: -0.02em;
-  font-size: clamp(2.6rem, 1.6rem + 3.6vw, 5rem);
-  color: var(--hero-navy);
+  font-size: clamp(2.5rem, 1.5rem + 3.4vw, 4.75rem);
+  color: var(--paper);
 }
 
-.hero__headline-accent { color: var(--accent); }
+.hero__headline-accent { color: #9aa3ff; }
 
 .hero__lead {
   margin-top: var(--space-5);
   font-size: var(--fs-lead);
-  color: var(--muted);
+  color: rgba(250, 249, 245, 0.76);
   max-width: 42ch;
 }
 
@@ -486,10 +543,10 @@ h1, h2, h3, h4 {
 .hero__cta-primary {
   padding: 1.05em 1.9em;
   font-size: 1rem;
-  box-shadow: 0 16px 32px -10px rgba(59, 70, 240, 0.5);
+  box-shadow: 0 16px 32px -10px rgba(59, 70, 240, 0.55);
 }
 
-.hero__cta-primary:hover { box-shadow: 0 20px 38px -10px rgba(59, 70, 240, 0.55); }
+.hero__cta-primary:hover { box-shadow: 0 20px 38px -10px rgba(59, 70, 240, 0.6); }
 
 .hero__cta-secondary {
   position: relative;
@@ -498,7 +555,7 @@ h1, h2, h3, h4 {
   gap: 0.5em;
   padding-block: 0.5em;
   font-weight: 600;
-  color: var(--hero-navy);
+  color: var(--paper);
   transition: color var(--speed) var(--ease);
 }
 
@@ -523,7 +580,81 @@ h1, h2, h3, h4 {
 .hero__trust {
   margin-top: var(--space-6);
   font-size: 0.85rem;
-  color: var(--muted-2);
+  color: rgba(250, 249, 245, 0.5);
+}
+
+.hero__chip {
+  position: absolute;
+  z-index: 1;
+  right: var(--space-5);
+  bottom: var(--space-6);
+  display: none;
+  align-items: center;
+  gap: 0.6em;
+  padding: 0.7em 1.1em;
+  border-radius: var(--radius-full);
+  background: rgba(11, 18, 32, 0.55);
+  border: 1px solid rgba(250, 249, 245, 0.16);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: rgba(250, 249, 245, 0.85);
+}
+
+.hero__chip-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #9aa3ff;
+  box-shadow: 0 0 0 3px rgba(154, 163, 255, 0.25);
+  flex: none;
+  animation: chip-pulse 2.4s ease-in-out infinite;
+}
+
+@keyframes chip-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.45; }
+}
+
+@media (min-width: 700px) {
+  .hero__chip { display: inline-flex; }
+}
+
+/* Below 980px there isn't enough room beside a 620px-wide text column
+   for the workspace visual to read clearly without colliding with it
+   (the same threshold the original hero used for its two-column grid),
+   so phones, small and large tablets all get the same deliberate
+   top-anchored composition: full-width text, a stronger scrim and a
+   soft blur that turns the workspace into an atmospheric backdrop
+   instead of hard-edged shapes fighting the headline. */
+@media (max-width: 979px) {
+  .hero--full {
+    align-items: flex-start;
+    padding-top: clamp(6rem, 14vw, 7.5rem);
+    padding-bottom: var(--space-7);
+  }
+
+  .hero__media {
+    background-position: 74% center;
+    background-image:
+      linear-gradient(170deg, rgba(5, 7, 13, 0.86) 0%, rgba(5, 7, 13, 0.74) 32%, rgba(5, 7, 13, 0.68) 58%, rgba(5, 7, 13, 0.84) 100%),
+      url("../images/hero/hero-web-designer-workspace.svg");
+    filter: blur(9px);
+  }
+
+  .hero__content { max-width: none; }
+  .hero__lead { max-width: 40ch; }
+}
+
+@media (max-width: 719px) {
+  .hero__lead { max-width: 32ch; }
+}
+
+@media (max-width: 420px) {
+  .hero__actions { flex-direction: column; align-items: stretch; }
+  .hero__cta-primary,
+  .hero__cta-secondary { justify-content: center; }
 }
 
 /* ---------- Browser-frame (signature element, reused in Hero & My Work) ---------- */
@@ -575,99 +706,6 @@ h1, h2, h3, h4 {
 
 .browser-frame img,
 .browser-frame svg { display: block; width: 100%; height: auto; }
-
-/* ---------- Hero showcase (project preview + featured-project tag) ---------- */
-.hero__showcase {
-  position: relative;
-  max-width: 460px;
-}
-
-@media (min-width: 980px) {
-  .hero__showcase { margin-inline-start: auto; }
-}
-
-.hero__browser-wrap {
-  position: relative;
-}
-
-.hero__showcase-decor {
-  position: absolute;
-  inset: 10% -6% -6% 10%;
-  border: 1px solid var(--border);
-  background: var(--accent-tint);
-  border-radius: var(--radius-lg);
-  transform: rotate(-2.5deg);
-  z-index: 0;
-}
-
-.hero__browser {
-  position: relative;
-  z-index: 1;
-}
-
-.hero__showcase-tag {
-  position: relative;
-  z-index: 2;
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-  width: fit-content;
-  max-width: calc(100% - 24px);
-  margin: -28px 0 0 28px;
-  padding: var(--space-4) var(--space-5);
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-md);
-  box-shadow: var(--shadow-md);
-  transition: transform var(--speed) var(--ease), border-color var(--speed) var(--ease), box-shadow var(--speed) var(--ease);
-}
-
-.hero__showcase-tag:hover {
-  transform: translateY(-2px);
-  border-color: var(--accent);
-}
-
-.hero__showcase-tag-label {
-  font-family: var(--font-mono);
-  font-size: 0.68rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--accent);
-}
-
-.hero__showcase-tag strong {
-  margin-top: 2px;
-  font-family: var(--font-display);
-  font-size: 1.05rem;
-  color: var(--ink);
-}
-
-.hero__showcase-tag-cat {
-  font-size: 0.85rem;
-  color: var(--muted);
-}
-
-.hero__showcase-tag-link {
-  margin-top: 8px;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4em;
-  font-size: 0.85rem;
-  font-weight: 600;
-  color: var(--ink);
-}
-
-.hero__showcase-tag-link svg {
-  width: 14px;
-  height: 14px;
-  transition: transform var(--speed) var(--ease);
-}
-
-.hero__showcase-tag:hover .hero__showcase-tag-link svg { transform: translateX(3px); }
-
-@media (prefers-reduced-motion: reduce) {
-  .hero__browser-wrap { transform: none !important; }
-}
 
 /* ---------- Cards ---------- */
 .card {
@@ -883,9 +921,9 @@ a.card:hover, .card.is-hoverable:hover {
 .hero__actions.reveal { animation-delay: 0.38s; }
 .hero__trust.reveal { animation-delay: 0.46s; }
 
-.hero__showcase.reveal {
+.hero__chip.reveal {
   animation-name: reveal-in-right;
-  animation-delay: 0.3s;
+  animation-delay: 0.5s;
 }
 
 @keyframes reveal-in-right {
