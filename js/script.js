@@ -30,9 +30,13 @@ document.addEventListener("DOMContentLoaded", function () {
   var supportsHeroParallax = window.matchMedia("(min-width: 768px)").matches;
   if (heroMedia && !reduceMotion && supportsHeroParallax) {
     var parallaxTicking = false;
+    var lastParallaxOffset = null;
     var updateHeroParallax = function () {
       var offset = Math.min(window.scrollY * 0.08, 24);
-      heroMedia.style.transform = "translateY(-" + offset + "px)";
+      if (offset !== lastParallaxOffset) {
+        heroMedia.style.transform = "translateY(-" + offset + "px)";
+        lastParallaxOffset = offset;
+      }
       parallaxTicking = false;
     };
     window.addEventListener("scroll", function () {
