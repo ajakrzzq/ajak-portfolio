@@ -488,6 +488,16 @@ h1, h2, h3, h4 {
   position: absolute;
   inset: -40px;
   z-index: 0;
+}
+
+/* The expensive background paint lives on this inner element, separate
+   from .hero__media itself — which is the element js/script.js applies
+   the scroll-driven parallax transform to. Keeping the two apart means
+   the parallax's per-frame transform write never has to repaint this
+   layer's gradients/SVG; the compositor can just reposition it. */
+.hero__media-bg {
+  position: absolute;
+  inset: 0;
   background-repeat: no-repeat;
   background-size: cover;
   background-position: 60% center;
@@ -507,7 +517,7 @@ h1, h2, h3, h4 {
    spare (1280px), 60% center crops mid-shape through a card and the
    phone. 40% keeps the monitor dominant and ends the crop cleanly. */
 @media (min-width: 980px) and (max-width: 1279px) {
-  .hero__media { background-position: 40% center; }
+  .hero__media-bg { background-position: 40% center; }
 }
 
 .hero__inner {
@@ -650,7 +660,7 @@ h1, h2, h3, h4 {
     padding-bottom: var(--space-7);
   }
 
-  .hero__media {
+  .hero__media-bg {
     background-position: 88% center;
     background-image:
       linear-gradient(180deg, rgba(5, 7, 13, 0.92) 0%, rgba(5, 7, 13, 0.86) 32%, rgba(5, 7, 13, 0.68) 52%, rgba(5, 7, 13, 0.34) 68%, rgba(5, 7, 13, 0.16) 82%, rgba(5, 7, 13, 0.22) 100%),
