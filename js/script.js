@@ -32,7 +32,7 @@ document.addEventListener("DOMContentLoaded", function () {
     var parallaxTicking = false;
     var lastParallaxOffset = null;
     var updateHeroParallax = function () {
-      var offset = Math.min(window.scrollY * 0.08, 24);
+      var offset = Math.min(Math.round(window.scrollY * 0.08 / 2) * 2, 24);
       if (offset !== lastParallaxOffset) {
         heroMedia.style.transform = "translateY(-" + offset + "px)";
         lastParallaxOffset = offset;
