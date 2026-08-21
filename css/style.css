@@ -494,7 +494,7 @@ h1, h2, h3, h4 {
   background-image:
     linear-gradient(90deg, rgba(5, 7, 13, 0.93) 0%, rgba(5, 7, 13, 0.85) 25%, rgba(5, 7, 13, 0.78) 40%, rgba(5, 7, 13, 0.54) 60%, rgba(5, 7, 13, 0.2) 80%, rgba(5, 7, 13, 0.05) 100%),
     linear-gradient(180deg, rgba(5, 7, 13, 0.25) 0%, rgba(5, 7, 13, 0) 30%, rgba(5, 7, 13, 0) 66%, rgba(5, 7, 13, 0.6) 100%),
-    url("../images/hero/hero-web-designer-workspace.svg");
+    url("../images/hero/hero-web-designer-workspace.webp");
   animation: hero-media-in 1.4s var(--ease) backwards;
 }
 
@@ -654,7 +654,7 @@ h1, h2, h3, h4 {
     background-position: 88% center;
     background-image:
       linear-gradient(180deg, rgba(5, 7, 13, 0.92) 0%, rgba(5, 7, 13, 0.86) 32%, rgba(5, 7, 13, 0.68) 52%, rgba(5, 7, 13, 0.34) 68%, rgba(5, 7, 13, 0.16) 82%, rgba(5, 7, 13, 0.22) 100%),
-      url("../images/hero/hero-web-designer-workspace.svg");
+      url("../images/hero/hero-web-designer-workspace.webp");
   }
 
   .hero__content { max-width: none; }
