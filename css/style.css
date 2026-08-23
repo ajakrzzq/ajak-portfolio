@@ -817,7 +817,7 @@ a.card:hover, .card.is-hoverable:hover {
 @media (min-width: 860px) {
   .services {
     grid-template-columns: 1.05fr 1fr;
-    align-items: stretch;
+    align-items: start;
   }
 }
 
