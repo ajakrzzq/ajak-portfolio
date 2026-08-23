@@ -468,62 +468,46 @@ h1, h2, h3, h4 {
 }
 
 /* ---------- Hero ----------
-   Full-screen cinematic hero: a single background image (see
-   .hero__media) carries a two-part gradient overlay baked into its own
-   background shorthand so the text on the left stays readable while the
-   workspace visual on the right stays clearly visible. The header
-   overlays this section directly (see .site-header--overlay above). */
+   Editorial proof-wall hero: warm paper background, left column is the
+   pitch, right column is real screenshots from finished projects (see
+   .hero__proof). No hero photography to art-direct, so the composition
+   sizes to its content instead of forcing a viewport-height section. */
 .hero--full {
   position: relative;
-  display: flex;
-  align-items: center;
-  min-height: 100vh;
-  min-height: 100svh;
-  overflow: hidden;
-  padding-top: clamp(6.5rem, 5rem + 5vw, 8.5rem);
-  padding-bottom: var(--space-8);
-}
-
-.hero__media {
-  position: absolute;
-  inset: -40px;
-  z-index: 0;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: 60% center;
-  background-image:
-    linear-gradient(90deg, rgba(5, 7, 13, 0.93) 0%, rgba(5, 7, 13, 0.85) 25%, rgba(5, 7, 13, 0.78) 40%, rgba(5, 7, 13, 0.54) 60%, rgba(5, 7, 13, 0.2) 80%, rgba(5, 7, 13, 0.05) 100%),
-    linear-gradient(180deg, rgba(5, 7, 13, 0.25) 0%, rgba(5, 7, 13, 0) 30%, rgba(5, 7, 13, 0) 66%, rgba(5, 7, 13, 0.6) 100%),
-    url("../images/hero/hero-web-designer-workspace.svg");
-  animation: hero-media-in 1.4s var(--ease) backwards;
-}
-
-@keyframes hero-media-in {
-  from { opacity: 0; transform: scale(1.045); }
-  to { opacity: 1; transform: scale(1); }
-}
-
-/* Between the mobile/tablet layout and the point where there's room to
-   spare (1280px), 60% center crops mid-shape through a card and the
-   phone. 40% keeps the monitor dominant and ends the crop cleanly. */
-@media (min-width: 980px) and (max-width: 1279px) {
-  .hero__media { background-position: 40% center; }
+  background: var(--paper-alt);
+  padding-top: var(--space-8);
+  padding-bottom: var(--space-9);
 }
 
 .hero__inner {
-  position: relative;
-  z-index: 1;
-  width: 100%;
+  display: grid;
+  gap: var(--space-8);
 }
 
-.hero__content { max-width: 600px; }
-
-/* From here up there's enough clearance before the artwork for the
-   headline to spread wider and settle into ~3 lines instead of the
-   same cramped 4-line shape it's forced into on a narrow viewport. */
-@media (min-width: 1440px) {
-  .hero__content { max-width: clamp(680px, 44vw, 760px); }
+/* Between 1024 and 1440 the proof column is at its narrowest (it's
+   sharing the row with the text column, unlike the single-column
+   stack below 1024), while the lead screenshot's height stays pinned
+   to its source pixel height via the img's width/height attributes.
+   That combination crops the lead image far more aggressively than
+   at any other tested width, cutting into the logo/nav/headline. This
+   override is the only place height:auto is set, so aspect-ratio can
+   finally size the box, and it's scoped to stop before 1440px so nothing
+   changes there or below 1024px. */
+@media (min-width: 1024px) and (max-width: 1439px) {
+  .hero__proof-item--lead img { height: auto; }
 }
+
+@media (min-width: 1024px) {
+  .hero__inner {
+    grid-template-columns: 1.05fr 1fr;
+    align-items: start;
+    gap: var(--space-7);
+  }
+
+  .hero__content { padding-top: var(--space-6); }
+}
+
+.hero__content { max-width: 560px; }
 
 .hero__headline {
   font-family: var(--font-display);
@@ -531,15 +515,15 @@ h1, h2, h3, h4 {
   line-height: 1.06;
   letter-spacing: -0.02em;
   font-size: clamp(2.5rem, 1.5rem + 3.4vw, 4.75rem);
-  color: var(--paper);
+  color: var(--ink);
 }
 
-.hero__headline-accent { color: #9aa3ff; }
+.hero__headline-accent { color: var(--accent); }
 
 .hero__lead {
   margin-top: var(--space-5);
   font-size: var(--fs-lead);
-  color: rgba(250, 249, 245, 0.76);
+  color: var(--muted);
   max-width: 42ch;
 }
 
@@ -566,7 +550,7 @@ h1, h2, h3, h4 {
   gap: 0.5em;
   padding-block: 0.5em;
   font-weight: 600;
-  color: var(--paper);
+  color: var(--ink);
   transition: color var(--speed) var(--ease);
 }
 
@@ -588,74 +572,57 @@ h1, h2, h3, h4 {
 .hero__cta-secondary-arrow { display: inline-block; transition: transform var(--speed) var(--ease); }
 .hero__cta-secondary:hover .hero__cta-secondary-arrow { transform: translateX(3px); }
 
-.hero__trust {
-  margin-top: var(--space-6);
-  font-size: 0.85rem;
-  color: rgba(250, 249, 245, 0.64);
+/* ---------- Hero proof cluster (real project screenshots) ----------
+   One lead screenshot plus a smaller pair below it: an asymmetric
+   grid sized to the number of screenshots, not a repeating card grid.
+   Thin hairline borders and a plain caption line stand in for the
+   browser-chrome treatment used in Featured Work below, so the hero
+   reads as a wall of finished work rather than app UI. */
+.hero__proof {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
 }
 
-.hero__chip {
-  position: absolute;
-  z-index: 1;
-  right: var(--space-5);
-  bottom: var(--space-6);
-  display: none;
-  align-items: center;
-  gap: 0.6em;
-  padding: 0.7em 1.1em;
-  border-radius: var(--radius-full);
-  background: rgba(11, 18, 32, 0.55);
-  border: 1px solid rgba(250, 249, 245, 0.16);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  font-size: 0.8rem;
-  font-weight: 500;
-  color: rgba(250, 249, 245, 0.85);
+.hero__proof-item {
+  display: block;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--surface);
+  overflow: hidden;
+  transition: border-color var(--speed) var(--ease);
 }
 
-@media (min-width: 700px) {
-  .hero__chip { display: inline-flex; }
+.hero__proof-item:hover { border-color: var(--muted-2); }
+
+.hero__proof-item img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  object-position: left top;
 }
 
-/* Below 980px there isn't enough room beside a 620px-wide text column
-   for the workspace visual to read clearly without colliding with it
-   (the same threshold the original hero used for its two-column grid),
-   so phones, small and large tablets all get the same deliberate
-   top-anchored composition: full-width text over a gradient that's
-   strong immediately behind the copy and lets go quickly below it, so
-   the monitor + phone stay clearly recognisable through the rest of
-   the frame instead of being washed into an abstract glow. */
-@media (max-width: 979px) {
-  .hero--full {
-    align-items: flex-start;
-    padding-top: clamp(6rem, 14vw, 7.5rem);
-    padding-bottom: var(--space-7);
-  }
-
-  .hero__media {
-    background-position: 88% center;
-    background-image:
-      linear-gradient(180deg, rgba(5, 7, 13, 0.92) 0%, rgba(5, 7, 13, 0.86) 32%, rgba(5, 7, 13, 0.68) 52%, rgba(5, 7, 13, 0.34) 68%, rgba(5, 7, 13, 0.16) 82%, rgba(5, 7, 13, 0.22) 100%),
-      url("../images/hero/hero-web-designer-workspace.svg");
-  }
-
-  .hero__content { max-width: none; }
-  .hero__lead { max-width: 40ch; }
-
-  /* backdrop-filter has to keep re-sampling whatever is moving behind
-     it — measured as the single largest contributor to mobile scroll
-     jank. A slightly more opaque flat background reads the same at
-     this size without the per-frame cost. Desktop (>=980px) keeps the
-     original glass effect untouched. */
-  .hero__chip {
-    background: rgba(11, 18, 32, 0.78);
-    backdrop-filter: none;
-    -webkit-backdrop-filter: none;
-  }
+.hero__proof-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-4);
 }
 
-@media (max-width: 719px) {
-  .hero__lead { max-width: 32ch; }
+.hero__proof-row .hero__proof-item img { aspect-ratio: 4 / 3; }
+
+.hero__proof-caption {
+  display: block;
+  padding: var(--space-3) var(--space-4);
+  border-top: 1px solid var(--border);
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  letter-spacing: 0.02em;
+  color: var(--muted);
+}
+
+@media (max-width: 479px) {
+  .hero__proof-row { grid-template-columns: 1fr; }
 }
 
 @media (max-width: 420px) {
@@ -1031,9 +998,9 @@ a.card:hover, .card.is-hoverable:hover {
 .hero__lead.reveal { animation-delay: 0.2s; }
 .hero__actions.reveal { animation-delay: 0.34s; }
 
-.hero__chip.reveal {
+.hero__proof.reveal {
   animation-name: reveal-in-right;
-  animation-delay: 0.5s;
+  animation-delay: 0.3s;
 }
 
 @keyframes reveal-in-right {
