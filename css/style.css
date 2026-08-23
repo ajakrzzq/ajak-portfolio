@@ -525,9 +525,6 @@ h1, h2, h3, h4 {
   .hero__content { max-width: clamp(680px, 44vw, 760px); }
 }
 
-.hero__eyebrow { margin-bottom: var(--space-5); color: #9aa3ff; }
-.hero__eyebrow::before { background: #9aa3ff; }
-
 .hero__headline {
   font-family: var(--font-display);
   font-weight: 700;
@@ -614,21 +611,6 @@ h1, h2, h3, h4 {
   font-size: 0.8rem;
   font-weight: 500;
   color: rgba(250, 249, 245, 0.85);
-}
-
-.hero__chip-dot {
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: #9aa3ff;
-  box-shadow: 0 0 0 3px rgba(154, 163, 255, 0.25);
-  flex: none;
-  animation: chip-pulse 2.4s ease-in-out infinite;
-}
-
-@keyframes chip-pulse {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.45; }
 }
 
 @media (min-width: 700px) {
@@ -826,6 +808,49 @@ a.card:hover, .card.is-hoverable:hover {
 .card h3 { margin-bottom: var(--space-2); }
 .card p { color: var(--muted); font-size: var(--fs-small); }
 
+/* ---------- Services (lead tile + divided list) ---------- */
+.services {
+  display: grid;
+  gap: var(--space-6);
+}
+
+@media (min-width: 860px) {
+  .services {
+    grid-template-columns: 1.05fr 1fr;
+    align-items: stretch;
+  }
+}
+
+.services__primary {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: var(--accent-tint);
+  border-color: var(--accent-tint);
+}
+
+.services__primary .card__icon { background: var(--surface); }
+
+.services__list {
+  display: flex;
+  flex-direction: column;
+}
+
+.services__row {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-4);
+  padding-block: var(--space-5);
+  border-top: 1px solid var(--border);
+}
+
+.services__row:first-child { border-top: none; padding-top: 0; }
+.services__row:last-child { padding-bottom: 0; }
+
+.services__row .card__icon { margin-bottom: 0; flex: none; }
+.services__row h3 { margin-bottom: var(--space-1); font-size: 1.05rem; }
+.services__row p { color: var(--muted); font-size: var(--fs-small); margin: 0; }
+
 /* Work / featured project card */
 .work-card {
   display: flex;
@@ -1002,11 +1027,9 @@ a.card:hover, .card.is-hoverable:hover {
 }
 
 /* ---------- Hero entrance sequence ---------- */
-.hero__eyebrow.reveal { animation-delay: 0.05s; }
-.hero__headline.reveal { animation-delay: 0.14s; }
-.hero__lead.reveal { animation-delay: 0.26s; }
-.hero__actions.reveal { animation-delay: 0.38s; }
-.hero__trust.reveal { animation-delay: 0.46s; }
+.hero__headline.reveal { animation-delay: 0.05s; }
+.hero__lead.reveal { animation-delay: 0.2s; }
+.hero__actions.reveal { animation-delay: 0.34s; }
 
 .hero__chip.reveal {
   animation-name: reveal-in-right;
