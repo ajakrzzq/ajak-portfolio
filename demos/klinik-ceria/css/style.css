@@ -75,6 +75,10 @@ svg {
   max-width: 100%;
 }
 
+[hidden] {
+  display: none;
+}
+
 button,
 input,
 textarea {
@@ -761,6 +765,17 @@ body.menu-open {
   height: 100%;
 }
 
+/* Prepared for real photography (not yet supplied): drop an <img> in place
+   of the <svg> above and it will fill this same frame. See the HTML
+   comment in the hero markup for the expected filename and attributes. */
+.hero__media-frame img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
 .hero__badge {
   position: absolute;
   left: 0.75rem;
@@ -894,6 +909,17 @@ a.quick-info__item:focus-visible {
 .about__media svg {
   width: 100%;
   height: 100%;
+}
+
+/* Prepared for real photography (not yet supplied): drop an <img> in place
+   of the <svg> above and it will fill this same frame. See the HTML
+   comment in the about markup for the expected filename and attributes. */
+.about__media img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
 }
 
 .about__text p {
@@ -1061,6 +1087,32 @@ a.quick-info__item:focus-visible {
   color: var(--color-text-muted);
 }
 
+.family-statement__media {
+  position: relative;
+  margin-top: 1.5rem;
+  width: 8.5rem;
+  aspect-ratio: 1 / 1;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  background: linear-gradient(160deg, var(--kc-primary-tint) 0%, var(--kc-accent-tint) 100%);
+}
+
+.family-statement__media svg,
+.family-statement__media img {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.family-statement__media svg[hidden] {
+  display: none;
+}
+
+.family-statement__media img {
+  object-fit: cover;
+  object-position: center;
+}
+
 .family-points {
   display: grid;
   grid-template-columns: 1fr;
@@ -1196,6 +1248,19 @@ a.quick-info__item:focus-visible {
   background: var(--kc-primary-tint);
 }
 
+/* Softens the cooler studio backdrop on the doctor portrait so it reads
+   as part of the same warm set as the other gallery photography. */
+.gallery-item--warm::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: var(--kc-accent);
+  opacity: 0.14;
+  mix-blend-mode: soft-light;
+  pointer-events: none;
+}
+
 .gallery-item:first-child {
   grid-column: span 2;
 }
@@ -1209,6 +1274,24 @@ a.quick-info__item:focus-visible {
 }
 
 .gallery-item:hover svg {
+  transform: scale(1.05);
+}
+
+/* Prepared for real photography (not yet supplied): drop an <img> in place
+   of the <svg> above (inside the same <figure class="gallery-item">) and
+   it will fill this same frame, including the hover-scale effect. See the
+   HTML comments in the gallery markup for expected filenames. */
+.gallery-item img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: transform var(--dur-slow) var(--ease);
+}
+
+.gallery-item:hover img {
   transform: scale(1.05);
 }
 
@@ -1786,5 +1869,13 @@ body.has-mobile-whatsapp {
   .footer-top {
     grid-template-columns: 1.1fr 1.9fr;
   }
+}
+
+/* Illustration SVGs are marked [hidden] wherever real photography has
+   replaced them as the visible image, so they stay in the DOM as a
+   non-destructive fallback without rendering. Placed last so it wins over
+   the component-level `display: block` rules above. */
+svg[hidden] {
+  display: none;
 }
 
