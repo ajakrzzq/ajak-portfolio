@@ -693,14 +693,18 @@ body.menu-open {
 /* 10. Hero
    ========================================================================== */
 .hero {
-  padding-block: clamp(2rem, 4vw, 3.25rem) clamp(2.5rem, 4.5vw, 3.75rem);
+  padding-block: clamp(2.5rem, 5vw, 4.5rem) clamp(2.25rem, 4vw, 3.25rem);
 }
 
 .hero__inner {
   display: grid;
-  gap: clamp(2.25rem, 5vw, 3.5rem);
+  gap: clamp(2.5rem, 5vw, 3.5rem);
   align-items: center;
   width: 100%;
+}
+
+.hero__content {
+  max-width: 34rem;
 }
 
 .hero__eyebrow {
@@ -740,6 +744,8 @@ body.menu-open {
 
 .hero__media {
   position: relative;
+  max-width: 27rem;
+  margin-inline: auto;
 }
 
 .hero__media-frame {
@@ -758,15 +764,15 @@ body.menu-open {
 .hero__badge {
   position: absolute;
   left: 0.75rem;
-  bottom: 0.75rem;
+  top: 0.6rem;
   display: flex;
   align-items: center;
-  gap: 0.7rem;
+  gap: 0.55rem;
   background: var(--kc-paper);
   border-radius: var(--radius-md);
-  padding: 0.85rem 1.15rem;
+  padding: 0.6rem 0.9rem;
   box-shadow: var(--shadow-pop);
-  max-width: 15rem;
+  max-width: 13rem;
 }
 
 .hero__badge-icon {
@@ -774,36 +780,35 @@ body.menu-open {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 38px;
-  height: 38px;
+  width: 32px;
+  height: 32px;
   border-radius: 50%;
   background: var(--kc-accent-tint);
   color: var(--kc-accent-dark);
 }
 
 .hero__badge-icon svg {
-  width: 19px;
-  height: 19px;
+  width: 16px;
+  height: 16px;
 }
 
 .hero__badge strong {
   display: block;
-  font-size: 0.85rem;
+  font-size: 0.78rem;
   font-family: var(--font-display);
 }
 
 .hero__badge span {
   display: block;
-  font-size: 0.76rem;
+  font-size: 0.7rem;
   color: var(--color-text-muted);
 }
 
 /* 11. Quick info strip
    ========================================================================== */
 .quick-info {
-  border-top: 1px solid var(--kc-line);
   border-bottom: 1px solid var(--kc-line);
-  background: var(--kc-paper);
+  background: var(--kc-bg);
 }
 
 .quick-info__inner {
@@ -821,21 +826,21 @@ body.menu-open {
 .quick-info__grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 0.9rem;
 }
 
 .quick-info__item {
   display: flex;
-  align-items: flex-start;
-  gap: 0.75rem;
-  padding: 0.9rem;
-  border-radius: var(--radius-md);
-  transition: background var(--dur-fast) var(--ease);
+  align-items: center;
+  gap: 0.7rem;
+  padding-block: 0.85rem;
+  padding-inline: 0.25rem;
+  border-top: 1px solid var(--kc-line);
+  transition: opacity var(--dur-fast) var(--ease);
 }
 
 a.quick-info__item:hover,
 a.quick-info__item:focus-visible {
-  background: var(--kc-bg-alt);
+  opacity: 0.72;
 }
 
 .quick-info__icon {
@@ -843,10 +848,8 @@ a.quick-info__item:focus-visible {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 42px;
-  height: 42px;
-  border-radius: 50%;
-  background: var(--kc-primary-tint);
+  width: 20px;
+  height: 20px;
   color: var(--kc-primary);
 }
 
@@ -875,13 +878,14 @@ a.quick-info__item:focus-visible {
    ========================================================================== */
 .about-grid {
   display: grid;
-  gap: clamp(2rem, 5vw, 4rem);
-  align-items: center;
+  gap: clamp(2rem, 5vw, 3.25rem);
+  align-items: start;
 }
 
 .about__media {
   position: relative;
   aspect-ratio: 4 / 5;
+  max-width: 23rem;
   border-radius: var(--radius-lg);
   overflow: hidden;
   background: linear-gradient(160deg, var(--kc-primary-tint) 0%, var(--kc-accent-tint) 100%);
@@ -1041,50 +1045,57 @@ a.quick-info__item:focus-visible {
 
 /* 14. Family care
    ========================================================================== */
-.family-grid {
+.family-layout {
   display: grid;
-  gap: 1.1rem;
+  gap: clamp(2rem, 4vw, 3rem);
+}
+
+.family-statement h2 {
+  margin-top: 0;
+  max-width: 18ch;
+}
+
+.family-statement p {
+  margin-top: 1.1rem;
+  max-width: 26rem;
+  color: var(--color-text-muted);
+}
+
+.family-points {
+  display: grid;
   grid-template-columns: 1fr;
 }
 
-.family-card {
-  background: var(--kc-paper);
-  border: 1px solid var(--kc-line);
-  border-radius: var(--radius-md);
-  padding: clamp(1.5rem, 2.5vw, 1.9rem);
-  transition: transform var(--dur-med) var(--ease), box-shadow var(--dur-med) var(--ease),
-    border-color var(--dur-med) var(--ease);
+.family-point {
+  display: flex;
+  gap: 1rem;
+  padding-block: 1.4rem;
+  border-top: 1px solid var(--kc-line);
 }
 
-.family-card:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-card);
-  border-color: var(--kc-primary-light);
-}
-
-.family-card__icon {
+.family-point__icon {
+  flex-shrink: 0;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 50px;
-  height: 50px;
+  width: 44px;
+  height: 44px;
   border-radius: 50%;
   background: var(--kc-accent-tint);
   color: var(--kc-accent-dark);
-  margin-bottom: 1.1rem;
 }
 
-.family-card__icon svg {
-  width: 23px;
-  height: 23px;
+.family-point__icon svg {
+  width: 21px;
+  height: 21px;
 }
 
-.family-card h3 {
-  font-size: 1.1rem;
+.family-point h3 {
+  font-size: 1.05rem;
 }
 
-.family-card p {
-  margin-top: 0.5rem;
+.family-point p {
+  margin-top: 0.4rem;
   font-size: 0.9rem;
   color: var(--color-text-muted);
 }
@@ -1107,11 +1118,25 @@ a.quick-info__item:focus-visible {
   position: relative;
 }
 
-.trust-grid {
+.trust-layout {
   display: grid;
-  gap: 1.5rem;
-  grid-template-columns: 1fr;
-  margin-top: clamp(2rem, 3.5vw, 3rem);
+  gap: clamp(2rem, 4vw, 3rem);
+}
+
+.trust-statement h2 {
+  margin-top: 0.5rem;
+  max-width: 16ch;
+}
+
+.trust-statement p {
+  margin-top: 1.1rem;
+  max-width: 26rem;
+  color: rgba(238, 246, 242, 0.78);
+}
+
+.trust-points {
+  display: flex;
+  flex-direction: column;
 }
 
 .trust-item {
@@ -1120,6 +1145,10 @@ a.quick-info__item:focus-visible {
   gap: 0.9rem;
   padding: 1.1rem 0;
   border-top: 1px solid var(--color-inverse-line);
+}
+
+.trust-points .trust-item:last-child {
+  border-bottom: 1px solid var(--color-inverse-line);
 }
 
 .trust-item__icon {
@@ -1165,6 +1194,10 @@ a.quick-info__item:focus-visible {
   border-radius: var(--radius-md);
   aspect-ratio: 4 / 3;
   background: var(--kc-primary-tint);
+}
+
+.gallery-item:first-child {
+  grid-column: span 2;
 }
 
 .gallery-item svg {
@@ -1612,12 +1645,20 @@ body.has-mobile-whatsapp {
     grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 
-  .family-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+  .quick-info__item {
+    border-top: none;
+    border-left: 1px solid var(--kc-line);
+    padding-inline: 1.25rem;
   }
 
-  .trust-grid {
+  .quick-info__item:first-child {
+    border-left: none;
+    padding-left: 0.25rem;
+  }
+
+  .family-points {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 2rem;
   }
 }
 
@@ -1633,16 +1674,73 @@ body.has-mobile-whatsapp {
 
 @media (min-width: 860px) {
   .hero__inner {
-    grid-template-columns: 1.05fr 0.95fr;
+    grid-template-columns: 1.4fr 1fr;
+    align-items: end;
+  }
+
+  .hero__content {
+    max-width: none;
+    padding-bottom: clamp(1rem, 3vw, 2.5rem);
+  }
+
+  .hero__media {
+    margin-inline: 0;
+    margin-left: auto;
   }
 
   .hero__badge {
     left: clamp(-0.5rem, -1vw, 0rem);
+    top: auto;
     bottom: clamp(-1rem, -2vw, -1.25rem);
+    gap: 0.7rem;
+    padding: 0.85rem 1.15rem;
+    max-width: 15rem;
+  }
+
+  .hero__badge-icon {
+    width: 38px;
+    height: 38px;
+  }
+
+  .hero__badge-icon svg {
+    width: 19px;
+    height: 19px;
+  }
+
+  .hero__badge strong {
+    font-size: 0.85rem;
+  }
+
+  .hero__badge span {
+    font-size: 0.76rem;
   }
 
   .about-grid {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 0.8fr 1fr;
+  }
+
+  .gallery-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-auto-rows: clamp(11rem, 14vw, 15rem);
+  }
+
+  .gallery-item {
+    aspect-ratio: auto;
+  }
+
+  .gallery-item:first-child {
+    grid-column: span 2;
+    grid-row: span 2;
+  }
+
+  .family-layout {
+    grid-template-columns: 0.85fr 1.15fr;
+    align-items: start;
+  }
+
+  .trust-layout {
+    grid-template-columns: 0.8fr 1.2fr;
+    align-items: start;
   }
 
   .services-layout {
@@ -1683,14 +1781,6 @@ body.has-mobile-whatsapp {
 
   body.has-mobile-whatsapp {
     padding-bottom: 0;
-  }
-
-  .family-grid {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-  }
-
-  .trust-grid {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 
   .footer-top {
