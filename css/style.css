@@ -595,7 +595,14 @@ h1, h2, h3, h4 {
 }
 
 @media (min-width: 1024px) {
-  .hero-portrait { margin-left: auto; margin-right: 0; }
+  .hero-portrait {
+    /* meaningfully larger visual anchor on desktop, still short of the
+       550px-wide source's native ceiling so it stays crisp — see the
+       hero refinement note above .hero--full */
+    max-width: 520px;
+    margin-left: auto;
+    margin-right: 0;
+  }
 }
 
 @media (max-width: 420px) {
