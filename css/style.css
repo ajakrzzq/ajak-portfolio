@@ -470,10 +470,9 @@ h1, h2, h3, h4 {
 /* ---------- Hero ----------
    Editorial hero: warm paper background keeps the left column (pitch)
    visually quiet, while the right column carries the visual weight as
-   a self-contained dark panel — a futuristic "design environment" of
-   layered browser frames and wireframe UI chips (see .hero__visual) —
-   floating on the light background rather than a full-bleed photo, so
-   nothing here needs to touch the header/overlay treatment. */
+   a real portrait (see .hero-portrait) — a straightened, tightly
+   cropped, colour-graded photograph rather than a generic rounded
+   card, so nothing here needs to touch the header/overlay treatment. */
 .hero--full {
   position: relative;
   background: var(--paper-alt);
@@ -561,198 +560,42 @@ h1, h2, h3, h4 {
 .hero__cta-secondary-arrow { display: inline-block; transition: transform var(--speed) var(--ease); }
 .hero__cta-secondary:hover .hero__cta-secondary-arrow { transform: translateX(3px); }
 
-/* ---------- Hero visual (futuristic design-environment panel) ----------
-   A dark, self-contained card — not full-bleed — so it reads as a
-   deliberate object floating on the light hero rather than a page
-   background. Inside: a faint blueprint grid, two soft accent/indigo
-   glows for depth, three real project screenshots staged as layered,
-   gently tilted browser frames (a perspective stack, not a flat grid),
-   and small wireframe "chips" (nav, type, image, layout) standing in
-   for UI/typography/navigation — decorative only, so the whole block
-   is aria-hidden and every image has alt=""; the real project links
-   live in Featured Work below. */
+/* ---------- Hero visual (portrait) ----------
+   The founder's actual photo, straightened and tightly cropped so the
+   subject reads as the dominant visual rather than a snapshot. Square
+   (unrounded) edges keep it reading as a photograph bleeding into the
+   page instead of a generic rounded card; the left edge softly masks
+   to transparent so it blends into the paper background behind the
+   headline instead of sitting in a hard box. Fixed aspect-ratio + explicit
+   width/height on the <img> reserve the space up front (no CLS). */
 .hero__visual { width: 100%; }
 
-.hero-visual__panel {
-  position: relative;
+.hero-portrait {
   width: 100%;
-  aspect-ratio: 6 / 5;
-  border-radius: var(--radius-lg);
-  overflow: hidden;
-  background: linear-gradient(160deg, #0b0e1c 0%, #12162f 48%, #171b3c 100%);
-  box-shadow: 0 45px 90px -35px rgba(59, 70, 240, 0.45), 0 25px 55px -25px rgba(19, 19, 22, 0.4);
+  /* capped relative to viewport (not just column width) so the portrait
+     stays a strong accent rather than stretching the hero tall on
+     narrow phones — see the "Mobile" responsive note above .hero--full */
+  max-width: min(320px, 62vw);
+  margin-inline: auto;
+  aspect-ratio: 550 / 820;
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 9%);
+  mask-image: linear-gradient(to right, transparent 0%, #000 9%);
+}
+
+.hero-portrait__img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+}
+
+@media (min-width: 640px) {
+  .hero-portrait { max-width: 460px; }
 }
 
 @media (min-width: 1024px) {
-  .hero-visual__panel { aspect-ratio: 1.08 / 1; }
-}
-
-.hero-visual__glow {
-  position: absolute;
-  border-radius: 50%;
-  filter: blur(70px);
-  pointer-events: none;
-}
-
-.hero-visual__glow--a {
-  width: 46%;
-  aspect-ratio: 1 / 1;
-  top: -12%;
-  right: -10%;
-  background: radial-gradient(circle, rgba(59, 70, 240, 0.55), transparent 70%);
-}
-
-.hero-visual__glow--b {
-  width: 40%;
-  aspect-ratio: 1 / 1;
-  bottom: -14%;
-  left: -10%;
-  background: radial-gradient(circle, rgba(154, 163, 255, 0.32), transparent 70%);
-}
-
-.hero-visual__grid {
-  position: absolute;
-  inset: 0;
-  background-image:
-    linear-gradient(rgba(255, 255, 255, 0.06) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.06) 1px, transparent 1px);
-  background-size: 28px 28px;
-  -webkit-mask-image: radial-gradient(ellipse 75% 65% at 62% 32%, #000 0%, transparent 75%);
-  mask-image: radial-gradient(ellipse 75% 65% at 62% 32%, #000 0%, transparent 75%);
-}
-
-.hero-visual__stack {
-  position: absolute;
-  inset: 0;
-}
-
-.hero-visual__frame {
-  position: absolute;
-  border-radius: var(--radius-md);
-  overflow: hidden;
-  background: #12162c;
-  border: 1px solid rgba(255, 255, 255, 0.09);
-}
-
-.hero-visual__frame-bar {
-  display: flex;
-  gap: 4px;
-  padding: 7px 10px;
-  background: rgba(255, 255, 255, 0.04);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
-}
-
-.hero-visual__frame-bar span {
-  width: 5px;
-  height: 5px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.28);
-}
-
-.hero-visual__frame img {
-  display: block;
-  width: 100%;
-  height: auto;
-  aspect-ratio: 16 / 9;
-  object-fit: cover;
-  object-position: left top;
-}
-
-.hero-visual__frame--back {
-  width: 42%;
-  top: 9%;
-  left: 7%;
-  z-index: 1;
-  transform: rotate(-7deg);
-  filter: brightness(0.62) saturate(0.85) blur(0.5px);
-  box-shadow: 0 20px 40px -18px rgba(0, 0, 0, 0.6);
-}
-
-.hero-visual__frame--mid {
-  width: 40%;
-  top: 7%;
-  right: 8%;
-  z-index: 2;
-  transform: rotate(6deg);
-  filter: brightness(0.8);
-  box-shadow: 0 24px 45px -16px rgba(0, 0, 0, 0.6);
-}
-
-.hero-visual__frame--front {
-  width: 50%;
-  bottom: 9%;
-  left: 27%;
-  z-index: 3;
-  transform: rotate(-2deg);
-  box-shadow: 0 34px 60px -16px rgba(0, 0, 0, 0.65);
-}
-
-.hero-visual__chip {
-  position: absolute;
-  z-index: 4;
-  background: rgba(18, 22, 45, 0.75);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: var(--radius-sm);
-  -webkit-backdrop-filter: blur(6px);
-  backdrop-filter: blur(6px);
-  box-shadow: 0 16px 30px -14px rgba(0, 0, 0, 0.55);
-}
-
-.hero-visual__chip--nav {
-  top: 5%;
-  left: 5%;
-  display: flex;
-  align-items: center;
-  gap: 5px;
-  padding: 9px 11px;
-}
-
-.hero-visual__chip--nav i { display: block; width: 12px; height: 2px; border-radius: 1px; background: rgba(255, 255, 255, 0.5); }
-.hero-visual__chip--nav i:first-child { width: 16px; background: var(--accent); }
-
-.hero-visual__chip--type {
-  bottom: 6%;
-  right: 5%;
-  width: 68px;
-  padding: 10px 12px;
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-}
-
-.hero-visual__chip--type i { display: block; height: 3px; border-radius: 2px; background: rgba(255, 255, 255, 0.5); }
-.hero-visual__chip--type i:first-child { width: 65%; height: 5px; background: #fdfdff; }
-.hero-visual__chip--type i:nth-child(2) { width: 100%; }
-.hero-visual__chip--type i:nth-child(3) { width: 50%; }
-
-.hero-visual__chip--swatch {
-  top: 52%;
-  left: 4%;
-  width: 13%;
-  aspect-ratio: 1 / 1;
-  border-radius: 10px;
-  background: linear-gradient(135deg, var(--accent), #9aa3ff);
-  box-shadow: 0 16px 30px -14px rgba(59, 70, 240, 0.65);
-}
-
-.hero-visual__chip--layout {
-  top: 44%;
-  right: 4%;
-  width: 42px;
-  height: 32px;
-  padding: 7px;
-  display: flex;
-  align-items: flex-end;
-  gap: 3px;
-}
-
-.hero-visual__chip--layout i { flex: 1; border-radius: 1px; background: rgba(255, 255, 255, 0.3); }
-.hero-visual__chip--layout i:nth-child(1) { height: 50%; }
-.hero-visual__chip--layout i:nth-child(2) { height: 100%; background: var(--accent); }
-.hero-visual__chip--layout i:nth-child(3) { height: 70%; }
-
-@media (min-width: 640px) and (max-width: 1023px) {
-  .hero__visual { max-width: 460px; margin-inline: auto; }
+  .hero-portrait { margin-left: auto; margin-right: 0; }
 }
 
 @media (max-width: 420px) {

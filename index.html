@@ -79,34 +79,23 @@
           </div>
         </div>
 
-        <div class="hero__visual reveal" aria-hidden="true">
-          <div class="hero-visual__panel">
-            <span class="hero-visual__glow hero-visual__glow--a"></span>
-            <span class="hero-visual__glow hero-visual__glow--b"></span>
-            <span class="hero-visual__grid"></span>
-
-            <div class="hero-visual__stack">
-              <figure class="hero-visual__frame hero-visual__frame--back">
-                <span class="hero-visual__frame-bar"><span></span><span></span><span></span></span>
-                <img src="images/projects/furniture/furniture-home.jpg" alt="" loading="lazy" width="1345" height="602">
-              </figure>
-
-              <figure class="hero-visual__frame hero-visual__frame--mid">
-                <span class="hero-visual__frame-bar"><span></span><span></span><span></span></span>
-                <img src="images/projects/oilgas/oilgas-home.jpg" alt="" loading="lazy" width="1344" height="606">
-              </figure>
-
-              <figure class="hero-visual__frame hero-visual__frame--front">
-                <span class="hero-visual__frame-bar"><span></span><span></span><span></span></span>
-                <img src="images/projects/restaurant/restaurant-home.jpg" alt="" loading="eager" width="1333" height="607">
-              </figure>
-
-              <span class="hero-visual__chip hero-visual__chip--nav"><i></i><i></i><i></i></span>
-              <span class="hero-visual__chip hero-visual__chip--type"><i></i><i></i><i></i></span>
-              <span class="hero-visual__chip hero-visual__chip--swatch"></span>
-              <span class="hero-visual__chip hero-visual__chip--layout"><i></i><i></i><i></i></span>
-            </div>
-          </div>
+        <div class="hero__visual reveal">
+          <figure class="hero-portrait">
+            <picture>
+              <source
+                type="image/webp"
+                srcset="images/hero/portrait-360.webp 360w, images/hero/portrait-550.webp 550w"
+                sizes="(min-width: 640px) 460px, 62vw">
+              <img
+                class="hero-portrait__img"
+                src="images/hero/portrait-550.jpg"
+                srcset="images/hero/portrait-360.jpg 360w, images/hero/portrait-550.jpg 550w"
+                sizes="(min-width: 640px) 460px, 62vw"
+                width="550" height="820"
+                alt="Ajak, founder of ajak.Web, laughing candidly"
+                fetchpriority="high" loading="eager" decoding="async">
+            </picture>
+          </figure>
         </div>
       </div>
     </section>
