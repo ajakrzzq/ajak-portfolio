@@ -830,11 +830,25 @@ a.card:hover, .card.is-hoverable:hover {
 
 .work-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-md); }
 
-.work-card__frame { padding: var(--space-4) var(--space-4) 0; }
+/* Screenshot bleeds flush to the card's own edges instead of sitting
+   inset in a second, smaller rounded box -- the card's existing border
+   + border-radius + overflow:hidden do the framing, so the browser-frame
+   itself needs none of its own here. Keeps the chrome (dots/url bar)
+   but drops the "box inside a box" feel so the screenshot reads as the
+   card's dominant surface. */
+.work-card__frame { padding: 0; }
 
-.work-card__frame .browser-frame { box-shadow: none; border-radius: var(--radius-md); }
+.work-card__frame .browser-frame { border: none; border-radius: 0; box-shadow: none; }
 
-.work-card__body { padding: var(--space-5); }
+.work-card__frame .browser-frame img { transition: transform 0.5s var(--ease); }
+.work-card:hover .work-card__frame .browser-frame img { transform: scale(1.035); }
+
+.work-card__body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: var(--space-5);
+}
 
 .work-card__tag {
   display: inline-block;
@@ -860,6 +874,13 @@ a.card:hover, .card.is-hoverable:hover {
   font-size: 0.9rem;
   color: var(--ink);
 }
+
+/* Pins "View Project" to the bottom of the card body so any extra height
+   a taller row-mate forces onto a shorter card (via the grid row stretch)
+   becomes breathing room above the link rather than dead space below it.
+   Scoped to the in-card usage only -- .work-card__link is also used for
+   two standalone links elsewhere that must stay untouched. */
+.work-card__body .work-card__link { margin-top: auto; }
 
 .work-card__link svg { width: 16px; height: 16px; transition: transform var(--speed) var(--ease); }
 .work-card:hover .work-card__link svg { transform: translateX(3px); }
