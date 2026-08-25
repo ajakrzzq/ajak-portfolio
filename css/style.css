@@ -613,12 +613,14 @@ h1, h2, h3, h4 {
 }
 
 /* ---------- Trust strip (home page, directly under the hero) ----------
-   Compact credibility band, not a feature grid: a hairline seam under
-   the hero, four short icon+text facts, tighter padding than .section
-   so it reads as a quick reassurance beat rather than a new page section. */
+   A quiet typographic bridge between the hero and Introduction, not a
+   feature grid: a hairline seam under the hero, four short facts led by
+   a small mono label (echoing .eyebrow) rather than a bold SaaS-style
+   icon strip, tighter padding than .section, muted rather than
+   accent-coloured icons so it never competes with the hero above it. */
 .trust-strip {
   border-top: 1px solid var(--border);
-  padding-block: var(--space-6);
+  padding-block: var(--space-5);
 }
 
 .trust-strip__list {
@@ -654,10 +656,10 @@ h1, h2, h3, h4 {
 
 .trust-strip__icon {
   flex: none;
-  width: 20px;
-  height: 20px;
-  margin-top: 2px;
-  color: var(--accent);
+  width: 16px;
+  height: 16px;
+  margin-top: 3px;
+  color: var(--muted-2);
 }
 
 .trust-strip__item span {
@@ -669,8 +671,14 @@ h1, h2, h3, h4 {
 }
 
 .trust-strip__item strong {
+  display: block;
+  margin-bottom: 2px;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
   color: var(--ink);
-  font-weight: 600;
+  font-weight: 500;
 }
 
 /* ---------- Browser-frame (signature element, reused in Hero & My Work) ---------- */
@@ -772,11 +780,22 @@ a.card:hover, .card.is-hoverable:hover {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  background: var(--accent-tint);
-  border-color: var(--accent-tint);
+  padding-block: var(--space-7);
 }
 
-.services__primary .card__icon { background: var(--surface); }
+.services__primary h3 { font-size: 1.4rem; }
+
+/* Restrained icon treatment for this section only: the shared .card__icon
+   box (filled accent-tint square) reads as a generic SaaS feature icon, so
+   within Services it's unboxed down to a plain glyph in accent ink. */
+.services .card__icon {
+  width: auto;
+  height: auto;
+  background: none;
+  color: var(--accent);
+}
+
+.services .card__icon svg { width: 26px; height: 26px; }
 
 .services__list {
   display: flex;
