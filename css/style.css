@@ -865,6 +865,21 @@ a.card:hover, .card.is-hoverable:hover {
 .work-card:hover .work-card__link svg { transform: translateX(3px); }
 
 /* ---------- Checklist ---------- */
+/* Founder line: a first-person statement inside the "Why Ajak" section
+   head, sitting between the h2 and the checklist. Deliberately not the
+   shared .section-head p (muted, same weight as every other section's
+   generic lead-in) -- darker and a touch heavier so it reads as Ajak
+   speaking, while staying well short of the h2's display-type weight.
+   Selector is ".section-head p.founder-line" (rather than bare
+   ".founder-line") so it outranks the generic ".section-head p" rule,
+   which otherwise wins on specificity and silently mutes it back down. */
+.section-head p.founder-line {
+  margin-top: var(--space-4);
+  font-size: 1.05rem;
+  font-weight: 500;
+  color: var(--ink-soft);
+}
+
 .checklist { display: grid; gap: var(--space-4); }
 
 @media (min-width: 720px) { .checklist { grid-template-columns: repeat(2, 1fr); } }
