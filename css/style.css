@@ -140,16 +140,6 @@ h1, h2, h3, h4 {
   gap: var(--space-6);
 }
 
-@media (min-width: 720px) {
-  .grid--2 { grid-template-columns: repeat(2, 1fr); }
-  .grid--3 { grid-template-columns: repeat(3, 1fr); }
-  .grid--4 { grid-template-columns: repeat(2, 1fr); }
-}
-
-@media (min-width: 980px) {
-  .grid--4 { grid-template-columns: repeat(4, 1fr); }
-}
-
 .stack { display: flex; flex-direction: column; }
 
 .eyebrow {
@@ -351,52 +341,6 @@ h1, h2, h3, h4 {
   .nav__toggle { display: none; }
 }
 
-/* ---------- Header, overlaid on the full-screen hero (home page only) ----------
-   Sits transparent and light-on-dark over the hero image until the page
-   scrolls, at which point the existing .is-scrolled rule above takes over
-   and gives it the same solid, dark-on-light bar every other page already
-   uses. Fixed (not sticky) so the hero image can run edge-to-edge behind
-   it — every other page keeps the original sticky header untouched. */
-.site-header--overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-}
-
-.site-header--overlay:not(.is-scrolled) {
-  border-bottom-color: transparent;
-}
-
-.site-header--overlay:not(.is-scrolled) .brand,
-.site-header--overlay:not(.is-scrolled) .nav__links a,
-.site-header--overlay:not(.is-scrolled) .nav__toggle {
-  color: var(--paper);
-}
-
-.site-header--overlay:not(.is-scrolled) .brand__dot { color: #9aa3ff; }
-.site-header--overlay:not(.is-scrolled) .nav__links a[aria-current="page"] { color: var(--paper); }
-.site-header--overlay:not(.is-scrolled) .nav__links a::after { background: var(--paper); }
-
-.site-header--overlay:not(.is-scrolled) .nav__toggle {
-  border-color: rgba(250, 249, 245, 0.35);
-  background: rgba(250, 249, 245, 0.08);
-}
-
-/* the mobile menu's own backdrop is always light, so the header needs
-   its normal dark-on-light styling while it's open, even over the hero */
-.site-header--overlay.menu-open:not(.is-scrolled) .brand,
-.site-header--overlay.menu-open:not(.is-scrolled) .nav__toggle {
-  color: var(--ink);
-}
-
-.site-header--overlay.menu-open:not(.is-scrolled) .brand__dot { color: var(--accent); }
-
-.site-header--overlay.menu-open:not(.is-scrolled) .nav__toggle {
-  border-color: var(--border);
-  background: var(--surface);
-}
-
 .mobile-menu {
   position: fixed;
   inset: 0;
@@ -481,6 +425,12 @@ h1, h2, h3, h4 {
   background: var(--paper-alt);
   padding-top: var(--space-8);
   padding-bottom: var(--space-9);
+  /* .hero__featured intentionally bleeds past its column at narrow
+     widths (see its max-width:639px rule below) -- clip that bleed at
+     the section edge instead of letting it create a page-wide
+     horizontal scrollbar. Purely a containment fix: it doesn't move or
+     resize anything that was actually visible. */
+  overflow-x: hidden;
 }
 
 @media (min-width: 1024px) {
@@ -890,7 +840,7 @@ h1, h2, h3, h4 {
   transition: transform var(--speed) var(--ease), box-shadow var(--speed) var(--ease), border-color var(--speed) var(--ease);
 }
 
-a.card:hover, .card.is-hoverable:hover {
+a.card:hover {
   transform: translateY(-4px);
   box-shadow: var(--shadow-md);
   border-color: var(--border);
@@ -1348,7 +1298,9 @@ a.card:hover, .card.is-hoverable:hover {
   font-size: 0.7rem;
   letter-spacing: 0.06em;
   text-transform: uppercase;
-  color: rgba(250, 249, 245, 0.4);
+  /* 0.4 measured ~3.7:1 against --ink, under the 4.5:1 WCAG AA
+     minimum for this text size -- 0.5 clears it (~5.1:1). */
+  color: rgba(250, 249, 245, 0.5);
 }
 
 .footer__heading {
@@ -1356,7 +1308,9 @@ a.card:hover, .card.is-hoverable:hover {
   font-size: 0.72rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: rgba(250, 249, 245, 0.45);
+  /* 0.45 measured ~4.3:1 against --ink, just under the 4.5:1 WCAG AA
+     minimum for this text size -- 0.5 clears it (~5.1:1). */
+  color: rgba(250, 249, 245, 0.5);
   margin-bottom: var(--space-4);
 }
 
@@ -1373,7 +1327,9 @@ a.card:hover, .card.is-hoverable:hover {
   font-size: 0.72rem;
   letter-spacing: 0.05em;
   text-transform: uppercase;
-  color: rgba(250, 249, 245, 0.45);
+  /* 0.45 measured ~4.4:1 against --ink, just under the 4.5:1 WCAG AA
+     minimum for this text size -- 0.5 clears it (~5.1:1). */
+  color: rgba(250, 249, 245, 0.5);
 }
 
 /* ---------- Entrance animation ----------
@@ -1443,15 +1399,6 @@ a.card:hover, .card.is-hoverable:hover {
 /* ---------- Utility ---------- */
 .mt-0 { margin-top: 0 !important; }
 .text-muted { color: var(--muted); }
-.sr-only {
-  position: absolute;
-  width: 1px; height: 1px;
-  padding: 0; margin: -1px;
-  overflow: hidden;
-  clip: rect(0,0,0,0);
-  white-space: nowrap;
-  border: 0;
-}
 
 .skip-link {
   position: absolute;
@@ -1509,16 +1456,6 @@ a.card:hover, .card.is-hoverable:hover {
   font-size: var(--fs-lead);
   max-width: 56ch;
 }
-
-.breadcrumb {
-  font-family: var(--font-mono);
-  font-size: 0.78rem;
-  color: var(--muted-2);
-  margin-bottom: var(--space-4);
-}
-
-.breadcrumb a { color: var(--muted); }
-.breadcrumb a:hover { color: var(--accent); }
 
 /* ---------- About / Founder ---------- */
 .founder {
@@ -1589,7 +1526,11 @@ a.card:hover, .card.is-hoverable:hover {
 .service-row__index {
   font-family: var(--font-mono);
   font-size: 0.8rem;
-  color: var(--muted-2);
+  /* --muted-2 measures ~2.6:1 on this background at this size, well
+     under WCAG AA's 4.5:1 for text this small -- this index number is
+     real visible content (not decorative/aria-hidden), so it uses
+     --muted (~4.6-5:1) instead. */
+  color: var(--muted);
 }
 
 /* Was a dead rule (targeted h3, but the markup uses h2 with a
@@ -1721,7 +1662,9 @@ a.card:hover, .card.is-hoverable:hover {
   font-size: 0.72rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--muted-2);
+  /* real gallery caption text, not decorative -- --muted-2 fails WCAG
+     AA (~2.6:1) at this size, --muted passes (~4.6-5:1). */
+  color: var(--muted);
 }
 
 /* ---------- Work page — flagship case study (Madani) ---------- */
@@ -1789,7 +1732,10 @@ a.card:hover, .card.is-hoverable:hover {
   font-size: 0.72rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--muted-2);
+  /* real field label text ("Industry"/"Services"/"Technology"), not
+     decorative -- --muted-2 fails WCAG AA (~2.6:1) at this size,
+     --muted passes (~4.6-5:1). */
+  color: var(--muted);
   margin-bottom: var(--space-2);
 }
 
@@ -2106,7 +2052,10 @@ a.card:hover, .card.is-hoverable:hover {
   font-size: 0.7rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--muted-2);
+  /* real field label text ("LinkedIn"/"Location"), not decorative --
+     --muted-2 fails WCAG AA (~2.6:1) at this size, --muted passes
+     (~4.6-5:1). */
+  color: var(--muted);
   margin-bottom: 2px;
 }
 
