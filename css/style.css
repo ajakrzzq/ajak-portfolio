@@ -172,8 +172,8 @@ h1, h2, h3, h4 {
   flex: none;
 }
 
-.section--ink .eyebrow,
-.section--ink .eyebrow::before { color: #9aa3ff; background: #9aa3ff; }
+.section--ink .eyebrow { color: #9aa3ff; }
+.section--ink .eyebrow::before { background: #9aa3ff; }
 
 .section-head {
   max-width: 640px;
@@ -765,11 +765,12 @@ h1, h2, h3, h4 {
   gap: var(--space-3);
 }
 
-.trust-strip__icon {
+.trust-strip__index {
   flex: none;
-  width: 16px;
-  height: 16px;
-  margin-top: 3px;
+  padding-top: 1px;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
   color: var(--muted-2);
 }
 
@@ -790,6 +791,44 @@ h1, h2, h3, h4 {
   text-transform: uppercase;
   color: var(--ink);
   font-weight: 500;
+}
+
+/* ---------- Manifesto (Introduction) ----------
+   An editorial opening statement rather than a centered "about" blurb:
+   the eyebrow numbering sits in its own narrow margin column (like a
+   running head/folio in a magazine spread) beside a large display
+   statement, with a smaller supporting paragraph underneath -- the
+   asymmetry itself is the section's whole visual idea, so it needs no
+   further decoration. */
+.manifesto__grid {
+  display: grid;
+  gap: var(--space-4);
+}
+
+@media (min-width: 860px) {
+  .manifesto__grid {
+    grid-template-columns: 180px 1fr;
+    gap: var(--space-8);
+  }
+
+  .manifesto__index { padding-top: 0.5em; }
+}
+
+.manifesto__statement {
+  font-family: var(--font-display);
+  font-weight: 600;
+  line-height: 1.14;
+  letter-spacing: -0.01em;
+  font-size: clamp(1.9rem, 1.3rem + 2.6vw, 3.1rem);
+  max-width: 17ch;
+  color: var(--ink);
+}
+
+.manifesto__support {
+  margin-top: var(--space-5);
+  font-size: var(--fs-lead);
+  color: var(--muted);
+  max-width: 56ch;
 }
 
 /* ---------- Browser-frame (signature element, reused in Hero & My Work) ---------- */
@@ -857,20 +896,6 @@ a.card:hover, .card.is-hoverable:hover {
   border-color: var(--border);
 }
 
-.card__icon {
-  width: 46px;
-  height: 46px;
-  border-radius: var(--radius-sm);
-  background: var(--accent-tint);
-  color: var(--accent);
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: var(--space-5);
-}
-
-.card__icon svg { width: 22px; height: 22px; }
-
 .card h3 { margin-bottom: var(--space-2); }
 .card p { color: var(--muted); font-size: var(--fs-small); }
 
@@ -896,17 +921,18 @@ a.card:hover, .card.is-hoverable:hover {
 
 .services__primary h3 { font-size: 1.4rem; }
 
-/* Restrained icon treatment for this section only: the shared .card__icon
-   box (filled accent-tint square) reads as a generic SaaS feature icon, so
-   within Services it's unboxed down to a plain glyph in accent ink. */
-.services .card__icon {
-  width: auto;
-  height: auto;
-  background: none;
-  color: var(--accent);
+/* Editorial index numbering instead of icons throughout Services --
+   reads as a contents-page list (01/WEB DESIGN, 02/...) rather than a
+   SaaS feature grid. Shared by the primary tile and each list row. */
+.services__index {
+  display: block;
+  margin-bottom: var(--space-4);
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  letter-spacing: 0.04em;
+  color: var(--muted-2);
+  transition: color var(--speed) var(--ease);
 }
-
-.services .card__icon svg { width: 26px; height: 26px; }
 
 .services__list {
   display: flex;
@@ -919,64 +945,26 @@ a.card:hover, .card.is-hoverable:hover {
   gap: var(--space-4);
   padding-block: var(--space-5);
   border-top: 1px solid var(--border);
+  transition: padding-left var(--speed) var(--ease);
 }
 
 .services__row:first-child { border-top: none; padding-top: 0; }
 .services__row:last-child { padding-bottom: 0; }
 
-.services__row .card__icon { margin-bottom: 0; flex: none; }
+.services__row .services__index { margin-bottom: 0; flex: none; width: 2ch; }
 .services__row h3 { margin-bottom: var(--space-1); font-size: 1.05rem; }
 .services__row p { color: var(--muted); font-size: var(--fs-small); margin: 0; }
 
-/* Work / featured project card */
-.work-card {
-  display: flex;
-  flex-direction: column;
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
-  overflow: hidden;
-  transition: transform var(--speed) var(--ease), box-shadow var(--speed) var(--ease);
-}
+/* Subtle hover interaction (per the redesign brief): the row nudges
+   right and its index brightens, echoing a contents-page entry
+   responding to the cursor -- transform/color only, no layout shift. */
+.services__row:hover { padding-left: var(--space-2); }
+.services__row:hover .services__index { color: var(--accent); }
 
-.work-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-md); }
-
-/* Screenshot bleeds flush to the card's own edges instead of sitting
-   inset in a second, smaller rounded box -- the card's existing border
-   + border-radius + overflow:hidden do the framing, so the browser-frame
-   itself needs none of its own here. Keeps the chrome (dots/url bar)
-   but drops the "box inside a box" feel so the screenshot reads as the
-   card's dominant surface. */
-.work-card__frame { padding: 0; }
-
-.work-card__frame .browser-frame { border: none; border-radius: 0; box-shadow: none; }
-
-.work-card__frame .browser-frame img { transition: transform 0.5s var(--ease); }
-.work-card:hover .work-card__frame .browser-frame img { transform: scale(1.035); }
-
-.work-card__body {
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-  padding: var(--space-5);
-}
-
-.work-card__tag {
-  display: inline-block;
-  font-family: var(--font-mono);
-  font-size: 0.68rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--accent);
-  background: var(--accent-tint);
-  padding: 4px 10px;
-  border-radius: var(--radius-full);
-  margin-bottom: var(--space-3);
-}
-
-.work-card__body h3 { margin-bottom: var(--space-2); }
-.work-card__body p { color: var(--muted); font-size: var(--fs-small); margin-bottom: var(--space-4); }
-
+/* Standalone text-link style (e.g. "Explore My Services", "View All
+   Work") -- shared across pages, so kept even though the card
+   component it originally lived alongside (image + tag + body) was
+   retired in the Selected Work redesign in favour of .work-spread. */
 .work-card__link {
   display: inline-flex;
   align-items: center;
@@ -986,15 +974,201 @@ a.card:hover, .card.is-hoverable:hover {
   color: var(--ink);
 }
 
-/* Pins "View Project" to the bottom of the card body so any extra height
-   a taller row-mate forces onto a shorter card (via the grid row stretch)
-   becomes breathing room above the link rather than dead space below it.
-   Scoped to the in-card usage only -- .work-card__link is also used for
-   two standalone links elsewhere that must stay untouched. */
-.work-card__body .work-card__link { margin-top: auto; }
-
 .work-card__link svg { width: 16px; height: 16px; transition: transform var(--speed) var(--ease); }
-.work-card:hover .work-card__link svg { transform: translateX(3px); }
+.work-card__link:hover svg { transform: translateX(3px); }
+
+/* ---------- Selected Work (editorial project spreads) ----------
+   Real case-study entries, not a card grid: each project is a "spread"
+   with its own oversized number, metadata line, title and short
+   description, hairline-ruled from the next rather than boxed. Four
+   layout variants (side, side-reverse, compact, stacked) give the
+   sequence real editorial variety while sharing one visual language,
+   per the redesign brief -- deliberately not all identical, but built
+   from the same handful of parts so the sequence still reads as one
+   coherent system. */
+.work-spreads { margin-top: var(--space-8); }
+
+.work-spread {
+  padding-block: var(--space-9);
+  border-top: 1px solid var(--border);
+}
+
+.work-spread:first-child { border-top: none; padding-top: 0; }
+
+.work-spread__visual {
+  overflow: hidden;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-lg);
+  transition: transform 0.4s var(--ease);
+}
+
+.work-spread__visual:hover { transform: translateY(-4px); }
+
+.work-spread__visual img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+  transition: transform 0.6s var(--ease);
+}
+
+.work-spread__visual:hover img { transform: scale(1.03); }
+
+.work-spread__number {
+  display: block;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(2.6rem, 1.6rem + 3vw, 4.4rem);
+  line-height: 1;
+  color: var(--border);
+}
+
+.work-spread__meta {
+  margin-top: var(--space-2);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.work-spread__title { margin-top: var(--space-3); font-size: var(--fs-h2); }
+.work-spread__desc { margin-top: var(--space-4); color: var(--muted); max-width: 48ch; }
+
+.work-spread__link {
+  margin-top: var(--space-5);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5em;
+  font-weight: 600;
+  color: var(--ink);
+  position: relative;
+  padding-block: 0.3em;
+}
+
+.work-spread__link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 2px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--speed) var(--ease);
+}
+
+.work-spread__link:hover::after { transform: scaleX(1); }
+.work-spread__link svg { width: 16px; height: 16px; transition: transform var(--speed) var(--ease); }
+.work-spread__link:hover svg { transform: translateX(3px); }
+
+/* Layout A -- "side": visual left, body right. The default, most
+   editorial two-column spread (large image / small metadata / large
+   title / short description). */
+.work-spread--side { display: grid; gap: var(--space-6); }
+.work-spread--side .work-spread__visual { aspect-ratio: 1440 / 820; }
+
+@media (min-width: 900px) {
+  .work-spread--side { grid-template-columns: 1.2fr 1fr; align-items: center; gap: var(--space-8); }
+}
+
+/* Layout B -- "side-reverse": visual right, body left, and the title
+   pulls up over the tail of the oversized number (negative margin
+   only -- no absolute positioning) so the numeral and title visually
+   cross, per the brief's "project title crossing the visual
+   hierarchy". */
+.work-spread--side-reverse { display: grid; gap: var(--space-6); }
+.work-spread--side-reverse .work-spread__visual { aspect-ratio: 1440 / 820; }
+
+@media (min-width: 900px) {
+  .work-spread--side-reverse {
+    grid-template-columns: 1fr 1.2fr;
+    align-items: center;
+    gap: var(--space-8);
+  }
+  .work-spread--side-reverse .work-spread__visual { order: 2; }
+  .work-spread--side-reverse .work-spread__body { order: 1; }
+  .work-spread--side-reverse .work-spread__title { margin-top: calc(var(--space-2) * -1); }
+}
+
+/* Layout C -- "compact": a deliberately smaller, constrained image with
+   strong surrounding whitespace instead of a full-bleed column, per
+   the brief's "different image scale, strong whitespace, small
+   technical metadata". */
+.work-spread--compact { display: grid; gap: var(--space-6); }
+.work-spread--compact .work-spread__visual { aspect-ratio: 4 / 3; max-width: 380px; }
+.work-spread--compact .work-spread__visual img { object-position: left top; }
+
+@media (min-width: 900px) {
+  .work-spread--compact { grid-template-columns: 1.3fr 1fr; align-items: center; gap: var(--space-8); }
+  .work-spread--compact .work-spread__visual { order: 2; margin-left: auto; }
+  .work-spread--compact .work-spread__body { order: 1; }
+}
+
+/* Layout D -- "stacked": full-width image on top, number/meta and
+   title/description running as a two-column foot beneath it -- a
+   structural variant (not just a mirrored side-by-side) that closes
+   the sequence. */
+.work-spread--stacked .work-spread__visual { aspect-ratio: 1440 / 620; }
+
+.work-spread--stacked .work-spread__foot {
+  margin-top: var(--space-6);
+  display: grid;
+  gap: var(--space-4);
+}
+
+@media (min-width: 720px) {
+  .work-spread--stacked .work-spread__foot { grid-template-columns: 200px 1fr; gap: var(--space-6); }
+}
+
+/* ---------- Selected Work -- compact index of remaining projects ----------
+   The rest of the studio's real work, listed the way a magazine's
+   contents page lists shorter items after the featured spreads: one
+   ruled row each, no imagery, continuing the same numbering. */
+.work-index { margin-top: var(--space-3); }
+
+.work-index__row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: var(--space-2) var(--space-4);
+  padding-block: var(--space-4);
+  border-top: 1px solid var(--border);
+}
+
+.work-index__index {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--muted-2);
+  flex: none;
+  width: 2ch;
+}
+
+.work-index__name { font-weight: 600; color: var(--ink); }
+
+.work-index__category {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.work-index__link {
+  margin-left: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4em;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.work-index__link svg { width: 15px; height: 15px; transition: transform var(--speed) var(--ease); }
+.work-index__row:hover .work-index__link svg { transform: translateX(3px); }
 
 /* ---------- Checklist ---------- */
 /* Founder line: a first-person statement inside the "Why Ajak" section
@@ -1012,23 +1186,36 @@ a.card:hover, .card.is-hoverable:hover {
   color: var(--ink-soft);
 }
 
-.checklist { display: grid; gap: var(--space-4); }
+/* ---------- Why Ajak (editorial statement, not a benefits grid) ----------
+   Asymmetric two-column layout echoing the Introduction manifesto:
+   the statement + founder line sit in one column, the reasons run as a
+   plain ruled list (numbered, no icons) in the other -- a confident
+   editorial statement rather than a checklist of feature badges. */
+.why-ajak__grid { display: grid; gap: var(--space-6); }
 
-@media (min-width: 720px) { .checklist { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 860px) {
+  .why-ajak__grid { grid-template-columns: 1.1fr 0.9fr; gap: var(--space-8); align-items: start; }
+}
 
-.checklist li {
+.why-ajak__list { display: flex; flex-direction: column; }
+
+.why-ajak__list li {
   display: flex;
-  align-items: flex-start;
+  align-items: baseline;
   gap: var(--space-3);
+  padding-block: var(--space-4);
+  border-top: 1px solid var(--border);
   font-size: 0.98rem;
 }
 
-.checklist svg {
+.why-ajak__list li:first-child { border-top: none; padding-top: 0; }
+.why-ajak__list li:last-child { padding-bottom: 0; }
+
+.why-ajak__index {
   flex: none;
-  width: 22px;
-  height: 22px;
-  color: var(--accent);
-  margin-top: 2px;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--muted-2);
 }
 
 /* ---------- Steps (numbered process — used where order is real) ---------- */
@@ -1057,6 +1244,8 @@ a.card:hover, .card.is-hoverable:hover {
   text-align: center;
 }
 
+.cta-band .eyebrow { justify-content: center; margin-bottom: var(--space-4); }
+
 .cta-band h2 { max-width: 20ch; margin-inline: auto; }
 .cta-band p {
   margin-top: var(--space-4);
@@ -1065,13 +1254,50 @@ a.card:hover, .card.is-hoverable:hover {
   margin-inline: auto;
 }
 
-.cta-band__actions {
-  margin-top: var(--space-6);
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-3);
-  justify-content: center;
+/* Closing spread: one dominant typographic link (not a button, and not
+   competing with a second equal-weight button) with a small, quieter
+   secondary text link underneath for the alternate contact channel. */
+.cta-band__actions { margin-top: var(--space-7); }
+
+.cta-band__primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6em;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(1.3rem, 1rem + 1.2vw, 1.8rem);
+  text-transform: uppercase;
+  letter-spacing: 0.01em;
+  color: var(--paper);
+  position: relative;
+  padding-block: 0.3em;
 }
+
+.cta-band__primary::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 2px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--speed) var(--ease);
+}
+
+.cta-band__primary:hover::after { transform: scaleX(1); }
+.cta-band__primary span[aria-hidden] { display: inline-block; transition: transform var(--speed) var(--ease); }
+.cta-band__primary:hover span[aria-hidden] { transform: translateX(4px); }
+
+.cta-band__secondary {
+  margin-top: var(--space-4);
+  font-size: 0.9rem;
+  color: rgba(250, 249, 245, 0.6);
+}
+
+.cta-band__secondary a { color: rgba(250, 249, 245, 0.88); text-decoration: underline; text-underline-offset: 3px; }
+.cta-band__secondary a:hover { color: var(--paper); }
 
 /* ---------- Footer ---------- */
 .site-footer {
@@ -1088,11 +1314,23 @@ a.card:hover, .card.is-hoverable:hover {
 }
 
 @media (min-width: 720px) {
-  .footer__top { grid-template-columns: 1.3fr 1fr 1fr; }
+  .footer__top { grid-template-columns: 1.2fr 0.9fr 0.9fr 0.9fr; }
 }
 
 .footer__brand .brand { color: var(--paper); margin-bottom: var(--space-3); }
 .footer__brand p { color: rgba(250, 249, 245, 0.6); max-width: 34ch; font-size: var(--fs-small); }
+
+/* Colophon-style production line: mono, quiet, under the tagline --
+   the same small technical-metadata treatment used everywhere else on
+   the site, so the footer reads as the publication's closing page. */
+.footer__reg {
+  margin-top: var(--space-3);
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: rgba(250, 249, 245, 0.4);
+}
 
 .footer__heading {
   font-family: var(--font-mono);
@@ -1112,7 +1350,10 @@ a.card:hover, .card.is-hoverable:hover {
   flex-wrap: wrap;
   gap: var(--space-3);
   justify-content: space-between;
-  font-size: var(--fs-small);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
   color: rgba(250, 249, 245, 0.45);
 }
 
