@@ -71,31 +71,44 @@
     <section class="hero--full">
       <div class="wrap hero__inner">
         <div class="hero__content">
-          <h1 class="hero__headline reveal">Websites that make your business look <span class="hero__headline-accent">professional.</span></h1>
-          <p class="hero__lead reveal">Modern, responsive websites designed for Malaysian businesses.</p>
+          <h1 class="hero__headline reveal">Good business<br>deserves<br><span class="hero__headline-accent">good design.</span></h1>
+          <p class="hero__lead reveal">Websites &amp; digital experiences for businesses ready to stand out.</p>
           <div class="hero__actions reveal">
-            <a class="btn btn--accent hero__cta-primary" href="https://wa.me/60176146502?text=Hi%20ajak.Web%2C%20I%27m%20interested%20in%20a%20website%20for%20my%20business." target="_blank" rel="noopener">Start a Project<span class="btn__arrow" aria-hidden="true">&rarr;</span></a>
-            <a class="hero__cta-secondary" href="work.html">View My Work<span class="hero__cta-secondary-arrow" aria-hidden="true">&rarr;</span></a>
+            <a class="hero__cta" href="work.html">View Selected Work<span class="hero__cta-arrow" aria-hidden="true">&rarr;</span></a>
+          </div>
+          <div class="hero__metadata reveal">
+            <span>Ajak.Web&reg; &mdash; Digital Studio</span>
+            <span>Web Design / Development</span>
+            <span>Petaling Jaya, Malaysia</span>
           </div>
         </div>
 
         <div class="hero__visual reveal">
-          <figure class="hero-portrait">
-            <picture>
-              <source
-                type="image/webp"
-                srcset="images/hero/portrait-360.webp 360w, images/hero/portrait-550.webp 550w"
-                sizes="(min-width: 1024px) 520px, (min-width: 640px) 460px, 62vw">
-              <img
-                class="hero-portrait__img"
-                src="images/hero/portrait-550.jpg"
-                srcset="images/hero/portrait-360.jpg 360w, images/hero/portrait-550.jpg 550w"
-                sizes="(min-width: 1024px) 520px, (min-width: 640px) 460px, 62vw"
-                width="550" height="820"
-                alt="Ajak, founder of ajak.Web, laughing candidly"
-                fetchpriority="high" loading="eager" decoding="async">
-            </picture>
+          <!--
+            PLACEHOLDER: "Photo 2" (the full-body, side-on, white-tee/indoor
+            editorial photo referenced in the brief) has not been supplied
+            to this environment yet. This container is sized, cropped and
+            positioned exactly as the final photograph will be -- swap the
+            contents of .hero-portrait for a <picture>/<img> pointing at
+            images/hero/editorial-portrait.{jpg,webp} (see the CSS comment
+            above .hero-portrait for the expected srcset/sizes markup) and
+            remove aria-hidden + this placeholder inner once the real asset
+            is in place. Do not replace this with a stand-in stock photo.
+          -->
+          <figure class="hero-portrait hero-portrait--placeholder" aria-hidden="true">
+            <div class="hero-portrait__placeholder-inner">
+              <span class="hero-portrait__placeholder-tag">Photo 2</span>
+              <span class="hero-portrait__placeholder-note">Editorial portrait &mdash; pending asset<br>images/hero/editorial-portrait.jpg</span>
+            </div>
           </figure>
+
+          <a class="hero__featured reveal" href="work.html#safwa">
+            <span class="hero__featured-label">01 / Selected Work &mdash; Safwa Umrah</span>
+            <span class="hero__featured-frame">
+              <img src="images/projects/safwa/safwa-home.jpg" alt="Safwa Umrah travel website homepage" width="1440" height="820" loading="eager" decoding="async">
+            </span>
+            <span class="hero__featured-link">Explore Project<span aria-hidden="true">&rarr;</span></span>
+          </a>
         </div>
       </div>
     </section>

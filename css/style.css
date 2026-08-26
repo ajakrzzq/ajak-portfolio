@@ -468,16 +468,27 @@ h1, h2, h3, h4 {
 }
 
 /* ---------- Hero ----------
-   Editorial hero: warm paper background keeps the left column (pitch)
-   visually quiet, while the right column carries the visual weight as
-   a real portrait (see .hero-portrait) — a straightened, tightly
-   cropped, colour-graded photograph rather than a generic rounded
-   card, so nothing here needs to touch the header/overlay treatment. */
+   Full-scale editorial hero: warm paper background keeps the left
+   column (headline/metadata) visually quiet, while the right column
+   carries the visual weight as a portrait (see .hero-portrait) plus a
+   smaller "Selected Work" insert (see .hero__featured) overlapping its
+   lower edge -- the magazine-cover + insert composition the redesign
+   brief asks for. min-height on desktop only (see below) gives the
+   90-100vh immersive first viewport; mobile stays content-height so it
+   never forces an oversized scroll before any real content appears. */
 .hero--full {
   position: relative;
   background: var(--paper-alt);
   padding-top: var(--space-8);
   padding-bottom: var(--space-9);
+}
+
+@media (min-width: 1024px) {
+  .hero--full {
+    min-height: 94vh;
+    display: flex;
+    align-items: center;
+  }
 }
 
 .hero__inner {
@@ -487,7 +498,11 @@ h1, h2, h3, h4 {
 
 @media (min-width: 1024px) {
   .hero__inner {
-    grid-template-columns: 0.95fr 1.15fr;
+    /* content column gets the edge (not an even split) so the stacked
+       three-line headline has real room, leaving the portrait at
+       roughly 40-45% of the composition rather than a plain 50/50
+       "photo on the right" split */
+    grid-template-columns: 1.15fr 1fr;
     align-items: start;
     gap: var(--space-7);
   }
@@ -500,9 +515,10 @@ h1, h2, h3, h4 {
 .hero__headline {
   font-family: var(--font-display);
   font-weight: 700;
-  line-height: 1.06;
-  letter-spacing: -0.02em;
-  font-size: clamp(2.5rem, 1.5rem + 3.4vw, 4.75rem);
+  line-height: 1.02;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+  font-size: clamp(2.6rem, 1.4rem + 4.2vw, 5.4rem);
   color: var(--ink);
 }
 
@@ -512,7 +528,7 @@ h1, h2, h3, h4 {
   margin-top: var(--space-5);
   font-size: var(--fs-lead);
   color: var(--muted);
-  max-width: 42ch;
+  max-width: 38ch;
 }
 
 .hero__actions {
@@ -523,26 +539,26 @@ h1, h2, h3, h4 {
   gap: var(--space-5);
 }
 
-.hero__cta-primary {
-  padding: 1.05em 1.9em;
-  font-size: 1rem;
-  box-shadow: 0 16px 32px -10px rgba(59, 70, 240, 0.55);
-}
-
-.hero__cta-primary:hover { box-shadow: 0 20px 38px -10px rgba(59, 70, 240, 0.6); }
-
-.hero__cta-secondary {
+/* Single hero CTA (per the redesign brief: no competing buttons here --
+   the nav bar and final CTA band already carry the direct "Start a
+   Project" conversion path). Editorial text-link treatment: uppercase,
+   tracked, underline-in on hover -- reuses the same interaction pattern
+   the old two-CTA row used for its secondary link. */
+.hero__cta {
   position: relative;
   display: inline-flex;
   align-items: center;
-  gap: 0.5em;
+  gap: 0.6em;
   padding-block: 0.5em;
   font-weight: 600;
+  font-size: 0.95rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
   color: var(--ink);
   transition: color var(--speed) var(--ease);
 }
 
-.hero__cta-secondary::after {
+.hero__cta::after {
   content: "";
   position: absolute;
   left: 0;
@@ -555,29 +571,62 @@ h1, h2, h3, h4 {
   transition: transform var(--speed) var(--ease);
 }
 
-.hero__cta-secondary:hover::after { transform: scaleX(1); }
+.hero__cta:hover::after { transform: scaleX(1); }
 
-.hero__cta-secondary-arrow { display: inline-block; transition: transform var(--speed) var(--ease); }
-.hero__cta-secondary:hover .hero__cta-secondary-arrow { transform: translateX(3px); }
+.hero__cta-arrow { display: inline-block; transition: transform var(--speed) var(--ease); }
+.hero__cta:hover .hero__cta-arrow { transform: translateX(3px); }
 
-/* ---------- Hero visual (portrait) ----------
-   The founder's actual photo, straightened and tightly cropped so the
-   subject reads as the dominant visual rather than a snapshot. Square
-   (unrounded) edges keep it reading as a photograph bleeding into the
-   page instead of a generic rounded card; the left edge softly masks
-   to transparent so it blends into the paper background behind the
-   headline instead of sitting in a hard box. Fixed aspect-ratio + explicit
-   width/height on the <img> reserve the space up front (no CLS). */
-.hero__visual { width: 100%; }
+/* Small masthead-style metadata block -- the "magazine issue info"
+   editorial detail. Reuses the same mono/tracked/uppercase treatment as
+   .eyebrow and .footer__heading elsewhere rather than inventing a new
+   label style. Kept to three short lines so it stays a quiet detail,
+   not a second block of copy competing with the headline. */
+.hero__metadata {
+  margin-top: var(--space-8);
+  display: flex;
+  flex-direction: column;
+  gap: 0.4em;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--muted-2);
+}
+
+/* ---------- Hero visual (portrait + featured-work insert) ----------
+   .hero-portrait is sized/cropped/masked exactly as "Photo 2" will be
+   once supplied: square (unrounded) edges so it reads as a photograph
+   bleeding into the page rather than a generic rounded card, a soft
+   left-edge mask into the paper background instead of a hard box, and
+   a taller near-full-body aspect-ratio per the redesign brief. Until
+   the real asset lands it renders as an explicit, labelled placeholder
+   (.hero-portrait--placeholder) -- never a stand-in stock photo.
+
+   When the real photo is ready, replace the placeholder <figure> markup
+   in index.html with (dimensions/ratio to be tuned to the actual asset):
+     <figure class="hero-portrait">
+       <picture>
+         <source type="image/webp" srcset="images/hero/editorial-portrait-360.webp 360w, images/hero/editorial-portrait-760.webp 760w" sizes="...">
+         <img class="hero-portrait__img" src="images/hero/editorial-portrait-760.jpg"
+              srcset="images/hero/editorial-portrait-360.jpg 360w, images/hero/editorial-portrait-760.jpg 760w"
+              sizes="(min-width:1024px) 600px, (min-width:640px) 480px, 64vw"
+              width="760" height="1170" alt="[meaningful, specific alt text]"
+              fetchpriority="high" loading="eager" decoding="async">
+       </picture>
+     </figure>
+   and delete aria-hidden + .hero-portrait--placeholder along with it.
+   .hero__visual hosts both the portrait and the .hero__featured insert
+   that overlaps its lower edge, so it needs position:relative. */
+.hero__visual { width: 100%; position: relative; }
 
 .hero-portrait {
   width: 100%;
   /* capped relative to viewport (not just column width) so the portrait
      stays a strong accent rather than stretching the hero tall on
      narrow phones — see the "Mobile" responsive note above .hero--full */
-  max-width: min(320px, 62vw);
+  max-width: min(340px, 64vw);
   margin-inline: auto;
-  aspect-ratio: 550 / 820;
+  aspect-ratio: 4 / 6.2;
   -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 9%);
   mask-image: linear-gradient(to right, transparent 0%, #000 9%);
 }
@@ -591,25 +640,136 @@ h1, h2, h3, h4 {
 }
 
 @media (min-width: 640px) {
-  .hero-portrait { max-width: 460px; }
+  .hero-portrait {
+    /* Same height-vs-width reasoning as the ≥1024px rule below: at
+       tablet the layout is still single-column (stacked below the
+       text), so a 480px-wide box at this tall aspect-ratio would run
+       ~740px high and make the stacked hero excessively tall. */
+    width: auto;
+    max-width: 480px;
+    max-height: 58vh;
+  }
 }
 
 @media (min-width: 1024px) {
   .hero-portrait {
-    /* meaningfully larger visual anchor on desktop, still short of the
-       550px-wide source's native ceiling so it stays crisp — see the
-       hero refinement note above .hero--full */
-    max-width: 520px;
+    /* The hero itself is height-constrained (min-height: 94vh on
+       .hero--full), so at desktop the portrait must be sized from
+       that available height rather than from column width -- a
+       width-driven tall aspect-ratio box can otherwise exceed the
+       viewport entirely and blow out the "one screen" hero. */
+    width: auto;
+    max-width: 620px;
+    max-height: min(70vh, 660px);
     margin-left: auto;
     margin-right: 0;
   }
 }
 
-@media (max-width: 420px) {
-  /* Left-aligned and tightly stacked so the two CTAs read as one
-     group (button, then its lighter alternative directly under it)
-     rather than a button with an unrelated link floating below it. */
-  .hero__actions { flex-direction: column; align-items: flex-start; gap: var(--space-3); }
+/* Explicit placeholder inner -- deliberately un-photographic so it can
+   never be mistaken for an attempt at the real photograph. Top-aligned:
+   this is where a real portrait's face/head would read, and the
+   featured-work card already overlaps the bottom edge. */
+.hero-portrait--placeholder {
+  display: flex;
+  align-items: flex-start;
+  background: var(--paper-alt);
+  border: 1.5px dashed var(--muted-2);
+}
+
+.hero-portrait__placeholder-inner {
+  padding: var(--space-5);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+}
+
+.hero-portrait__placeholder-tag {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+
+.hero-portrait__placeholder-note {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  line-height: 1.5;
+  color: var(--muted-2);
+}
+
+/* Featured-work insert: the "magazine insert" card overlapping the
+   portrait's lower edge, per the brief's hero visual hierarchy
+   (headline -> portrait -> featured project -> metadata -> CTA). A
+   real project screenshot in a plain bordered card -- no laptop
+   mockup, no extra chrome -- kept deliberately smaller than the
+   portrait so it reads as a supporting detail, not a second hero. */
+.hero__featured {
+  display: block;
+  position: absolute;
+  right: 4%;
+  bottom: -6%;
+  width: 60%;
+  max-width: 300px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-lg);
+  padding: var(--space-3);
+  z-index: 2;
+  transition: transform var(--speed) var(--ease), box-shadow var(--speed) var(--ease);
+}
+
+.hero__featured:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+}
+
+.hero__featured-label {
+  display: block;
+  margin-bottom: var(--space-2);
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.hero__featured-frame {
+  display: block;
+  aspect-ratio: 1440 / 820;
+  overflow: hidden;
+}
+
+.hero__featured-frame img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+  transition: transform 0.5s var(--ease);
+}
+
+.hero__featured:hover .hero__featured-frame img { transform: scale(1.04); }
+
+.hero__featured-link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5em;
+  margin-top: var(--space-2);
+  font-weight: 600;
+  font-size: 0.8rem;
+  color: var(--ink);
+}
+
+.hero__featured-link svg,
+.hero__featured-link span[aria-hidden] { transition: transform var(--speed) var(--ease); }
+.hero__featured:hover .hero__featured-link span[aria-hidden] { transform: translateX(3px); }
+
+@media (max-width: 639px) {
+  .hero__featured { width: 72%; max-width: 240px; right: -4%; bottom: -8%; }
 }
 
 /* ---------- Trust strip (home page, directly under the hero) ----------
@@ -1032,10 +1192,16 @@ a.card:hover, .card.is-hoverable:hover {
 .hero__headline.reveal { animation-delay: 0.05s; }
 .hero__lead.reveal { animation-delay: 0.2s; }
 .hero__actions.reveal { animation-delay: 0.34s; }
+.hero__metadata.reveal { animation-delay: 0.46s; }
 
 .hero__visual.reveal {
   animation-name: reveal-in-right;
   animation-delay: 0.3s;
+}
+
+.hero__featured.reveal {
+  animation-name: reveal-in-right;
+  animation-delay: 0.5s;
 }
 
 @keyframes reveal-in-right {
