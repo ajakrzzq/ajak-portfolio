@@ -817,10 +817,10 @@ h1, h2, h3, h4 {
 .manifesto__statement {
   font-family: var(--font-display);
   font-weight: 600;
-  line-height: 1.14;
+  line-height: 1.1;
   letter-spacing: -0.01em;
-  font-size: clamp(1.9rem, 1.3rem + 2.6vw, 3.1rem);
-  max-width: 17ch;
+  font-size: clamp(2rem, 1.1rem + 3.6vw, 3.8rem);
+  max-width: 15ch;
   color: var(--ink);
 }
 
@@ -919,7 +919,7 @@ a.card:hover, .card.is-hoverable:hover {
   padding-block: var(--space-7);
 }
 
-.services__primary h3 { font-size: 1.4rem; }
+.services__primary h3 { font-size: 1.7rem; }
 
 /* Editorial index numbering instead of icons throughout Services --
    reads as a contents-page list (01/WEB DESIGN, 02/...) rather than a
@@ -952,7 +952,7 @@ a.card:hover, .card.is-hoverable:hover {
 .services__row:last-child { padding-bottom: 0; }
 
 .services__row .services__index { margin-bottom: 0; flex: none; width: 2ch; }
-.services__row h3 { margin-bottom: var(--space-1); font-size: 1.05rem; }
+.services__row h3 { margin-bottom: var(--space-1); font-size: 1.25rem; }
 .services__row p { color: var(--muted); font-size: var(--fs-small); margin: 0; }
 
 /* Subtle hover interaction (per the redesign brief): the row nudges
@@ -986,6 +986,11 @@ a.card:hover, .card.is-hoverable:hover {
    per the redesign brief -- deliberately not all identical, but built
    from the same handful of parts so the sequence still reads as one
    coherent system. */
+/* Selected Work is the main feature of the homepage, so it gets more
+   room to breathe than the sections either side of it -- deliberate
+   rhythm rather than the uniform padding every other section shares. */
+#selected-work { padding-block: var(--space-9); }
+
 .work-spreads { margin-top: var(--space-8); }
 
 .work-spread {
@@ -1020,9 +1025,17 @@ a.card:hover, .card.is-hoverable:hover {
   display: block;
   font-family: var(--font-display);
   font-weight: 700;
-  font-size: clamp(2.6rem, 1.6rem + 3vw, 4.4rem);
+  font-size: clamp(3rem, 1.8rem + 4vw, 5.6rem);
   line-height: 1;
   color: var(--border);
+}
+
+/* Safwa opens the sequence right after the hero, so its number carries
+   a quiet accent tint -- the one deliberate, restrained use of colour
+   in the section, marking it as the lead case study rather than just
+   "spread one of four". */
+.work-spreads > .work-spread:first-child .work-spread__number {
+  color: rgba(59, 70, 240, 0.32);
 }
 
 .work-spread__meta {
@@ -1072,8 +1085,13 @@ a.card:hover, .card.is-hoverable:hover {
 .work-spread--side .work-spread__visual { aspect-ratio: 1440 / 820; }
 
 @media (min-width: 900px) {
-  .work-spread--side { grid-template-columns: 1.2fr 1fr; align-items: center; gap: var(--space-8); }
+  .work-spread--side { grid-template-columns: 1.5fr 1fr; align-items: center; gap: var(--space-8); }
 }
+
+/* Safwa is the opening case study right after the hero, so its image
+   runs a touch taller than the other spreads' native screenshot ratio
+   -- more presence for the first thing seen after the cover. */
+.work-spreads > .work-spread:first-child .work-spread__visual { aspect-ratio: 1440 / 900; }
 
 /* Layout B -- "side-reverse": visual right, body left, and the title
    pulls up over the tail of the oversized number (negative margin
@@ -1085,7 +1103,7 @@ a.card:hover, .card.is-hoverable:hover {
 
 @media (min-width: 900px) {
   .work-spread--side-reverse {
-    grid-template-columns: 1fr 1.2fr;
+    grid-template-columns: 1fr 1.5fr;
     align-items: center;
     gap: var(--space-8);
   }
@@ -1094,16 +1112,17 @@ a.card:hover, .card.is-hoverable:hover {
   .work-spread--side-reverse .work-spread__title { margin-top: calc(var(--space-2) * -1); }
 }
 
-/* Layout C -- "compact": a deliberately smaller, constrained image with
-   strong surrounding whitespace instead of a full-bleed column, per
-   the brief's "different image scale, strong whitespace, small
-   technical metadata". */
+/* Layout C -- "compact": a constrained (not full-column-width) image
+   with real surrounding whitespace, per the brief's "different image
+   scale, strong whitespace, small technical metadata" -- but still
+   substantial enough to feel confident rather than like an
+   afterthought, since Madani is a flagship-tier project. */
 .work-spread--compact { display: grid; gap: var(--space-6); }
-.work-spread--compact .work-spread__visual { aspect-ratio: 4 / 3; max-width: 380px; }
+.work-spread--compact .work-spread__visual { aspect-ratio: 3 / 2; max-width: 460px; }
 .work-spread--compact .work-spread__visual img { object-position: left top; }
 
 @media (min-width: 900px) {
-  .work-spread--compact { grid-template-columns: 1.3fr 1fr; align-items: center; gap: var(--space-8); }
+  .work-spread--compact { grid-template-columns: 1fr 1.1fr; align-items: center; gap: var(--space-8); }
   .work-spread--compact .work-spread__visual { order: 2; margin-left: auto; }
   .work-spread--compact .work-spread__body { order: 1; }
 }
