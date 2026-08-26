@@ -151,16 +151,6 @@
   .hero-art .plate-wrap{position:relative;width:min(420px,88vw)}
   .hero-art .stamp-float{position:absolute;top:-6%;left:-8%;width:120px;filter:drop-shadow(0 10px 18px rgba(46,28,18,.25));transform:rotate(-10deg)}
   @media(max-width:540px){ .hero-art .stamp-float{width:92px;left:-2%} }
-  .steam-line{transform-origin:center bottom;animation:steam 3.6s ease-in-out infinite}
-  .steam-line.s2{animation-delay:.5s}
-  .steam-line.s3{animation-delay:1s}
-  @keyframes steam{
-    0%{transform:translateY(6px) scaleY(.9);opacity:0}
-    30%{opacity:.55}
-    70%{opacity:.35}
-    100%{transform:translateY(-16px) scaleY(1.05);opacity:0}
-  }
-
   /* ============ WHY US (chalkboard) ============ */
   .why{background:var(--umber);color:var(--cream);position:relative;background-image:
       radial-gradient(circle, rgba(243,232,211,.06) 1px, transparent 1.4px);
@@ -324,38 +314,6 @@
     <text x="100" y="106" text-anchor="middle" font-family="Fraunces, serif" font-style="italic" font-weight="600" font-size="24" fill="#A32F1F">Syukran</text>
     <text x="100" y="126" text-anchor="middle" font-family="Space Mono, monospace" font-size="8.5" letter-spacing="2.5" fill="#5B3A26">EST. 2019 · SEKSYEN 13</text>
     <path d="M70 145 q30 14 60 0" fill="none" stroke="#C08A3E" stroke-width="1.5"/>
-  </symbol>
-
-  <symbol id="bowl-illustration" viewBox="0 0 420 420">
-    <ellipse cx="205" cy="330" rx="150" ry="24" fill="#2E1C12" opacity=".08"/>
-    <circle cx="205" cy="215" r="168" fill="none" stroke="#C08A3E" stroke-width="7"/>
-    <circle cx="205" cy="215" r="150" fill="#F3E8D3"/>
-    <circle cx="205" cy="215" r="128" fill="#FBF6EC"/>
-    <ellipse cx="178" cy="238" rx="76" ry="52" fill="#E7D9BE" opacity=".7"/>
-    <ellipse cx="172" cy="222" rx="74" ry="52" fill="#FDF8EE"/>
-    <ellipse cx="150" cy="205" rx="16" ry="9" fill="#F3E8D3" opacity=".8"/>
-    <ellipse cx="195" cy="238" rx="14" ry="8" fill="#F3E8D3" opacity=".8"/>
-    <g stroke="#8A5A2B" stroke-width="1.5">
-      <rect x="252" y="168" width="80" height="30" rx="15" fill="#DBA55E" transform="rotate(-11 292 183)"/>
-      <rect x="258" y="203" width="86" height="30" rx="15" fill="#CE9750" transform="rotate(7 301 218)"/>
-      <rect x="250" y="238" width="78" height="28" rx="14" fill="#DBA55E" transform="rotate(-6 289 252)"/>
-    </g>
-    <circle cx="238" cy="152" r="13" fill="#CFE0B8" stroke="#8FAE6B" stroke-width="2"/>
-    <circle cx="216" cy="138" r="12" fill="#CFE0B8" stroke="#8FAE6B" stroke-width="2"/>
-    <path d="M175 130 q6 -16 20 -16 q-10 10 -6 22 q-10 -2 -14 -6z" fill="#6B8E4E"/>
-    <circle cx="112" cy="300" r="34" fill="#FBF6EC" stroke="#C08A3E" stroke-width="3"/>
-    <circle cx="112" cy="300" r="25" fill="#A32F1F"/>
-    <circle cx="105" cy="293" r="2.4" fill="#5B1B12"/>
-    <circle cx="120" cy="304" r="2" fill="#5B1B12"/>
-    <circle cx="108" cy="309" r="1.8" fill="#5B1B12"/>
-    <g stroke="#5B3A26" stroke-width="6" stroke-linecap="round">
-      <line x1="315" y1="300" x2="345" y2="255"/>
-    </g>
-    <g fill="none" stroke="#7A5A44" stroke-width="4" stroke-linecap="round" opacity=".55">
-      <path class="steam-line s1" d="M165 155 C155 130 178 118 168 92"/>
-      <path class="steam-line s2" d="M188 150 C178 126 200 112 190 88"/>
-      <path class="steam-line s3" d="M210 156 C200 132 222 120 212 96"/>
-    </g>
   </symbol>
 </svg>
 
