@@ -84,22 +84,14 @@
         </div>
 
         <div class="hero__visual reveal">
-          <!--
-            PLACEHOLDER: "Photo 2" (the full-body, side-on, white-tee/indoor
-            editorial photo referenced in the brief) has not been supplied
-            to this environment yet. This container is sized, cropped and
-            positioned exactly as the final photograph will be -- swap the
-            contents of .hero-portrait for a <picture>/<img> pointing at
-            images/hero/editorial-portrait.{jpg,webp} (see the CSS comment
-            above .hero-portrait for the expected srcset/sizes markup) and
-            remove aria-hidden + this placeholder inner once the real asset
-            is in place. Do not replace this with a stand-in stock photo.
-          -->
-          <figure class="hero-portrait hero-portrait--placeholder" aria-hidden="true">
-            <div class="hero-portrait__placeholder-inner">
-              <span class="hero-portrait__placeholder-tag">Photo 2</span>
-              <span class="hero-portrait__placeholder-note">Editorial portrait &mdash; pending asset<br>images/hero/editorial-portrait.jpg</span>
-            </div>
+          <figure class="hero-portrait">
+            <picture>
+              <source type="image/webp" srcset="images/hero/editorial-portrait.webp">
+              <img class="hero-portrait__img" src="images/hero/editorial-portrait.jpg"
+                   width="550" height="1250"
+                   alt="Ajak, founder of Ajak.Web, walking indoors mid-conversation, wearing a white t-shirt and jeans"
+                   fetchpriority="high" loading="eager" decoding="async">
+            </picture>
           </figure>
 
           <a class="hero__featured reveal" href="work.html#safwa">

@@ -594,27 +594,12 @@ h1, h2, h3, h4 {
 }
 
 /* ---------- Hero visual (portrait + featured-work insert) ----------
-   .hero-portrait is sized/cropped/masked exactly as "Photo 2" will be
-   once supplied: square (unrounded) edges so it reads as a photograph
-   bleeding into the page rather than a generic rounded card, a soft
-   left-edge mask into the paper background instead of a hard box, and
-   a taller near-full-body aspect-ratio per the redesign brief. Until
-   the real asset lands it renders as an explicit, labelled placeholder
-   (.hero-portrait--placeholder) -- never a stand-in stock photo.
-
-   When the real photo is ready, replace the placeholder <figure> markup
-   in index.html with (dimensions/ratio to be tuned to the actual asset):
-     <figure class="hero-portrait">
-       <picture>
-         <source type="image/webp" srcset="images/hero/editorial-portrait-360.webp 360w, images/hero/editorial-portrait-760.webp 760w" sizes="...">
-         <img class="hero-portrait__img" src="images/hero/editorial-portrait-760.jpg"
-              srcset="images/hero/editorial-portrait-360.jpg 360w, images/hero/editorial-portrait-760.jpg 760w"
-              sizes="(min-width:1024px) 600px, (min-width:640px) 480px, 64vw"
-              width="760" height="1170" alt="[meaningful, specific alt text]"
-              fetchpriority="high" loading="eager" decoding="async">
-       </picture>
-     </figure>
-   and delete aria-hidden + .hero-portrait--placeholder along with it.
+   .hero-portrait holds the real editorial portrait (images/hero/
+   editorial-portrait.{jpg,webp}, 550x1250, ratio 0.44): square
+   (unrounded) edges so it reads as a photograph bleeding into the page
+   rather than a generic rounded card, a soft left-edge mask into the
+   paper background instead of a hard box, and a taller near-full-body
+   crop per the redesign brief.
    .hero__visual hosts both the portrait and the .hero__featured insert
    that overlaps its lower edge, so it needs position:relative. */
 .hero__visual { width: 100%; position: relative; }
@@ -626,7 +611,7 @@ h1, h2, h3, h4 {
      narrow phones — see the "Mobile" responsive note above .hero--full */
   max-width: min(340px, 64vw);
   margin-inline: auto;
-  aspect-ratio: 4 / 6.2;
+  aspect-ratio: 550 / 1250;
   -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 9%);
   mask-image: linear-gradient(to right, transparent 0%, #000 9%);
 }
@@ -664,40 +649,6 @@ h1, h2, h3, h4 {
     margin-left: auto;
     margin-right: 0;
   }
-}
-
-/* Explicit placeholder inner -- deliberately un-photographic so it can
-   never be mistaken for an attempt at the real photograph. Top-aligned:
-   this is where a real portrait's face/head would read, and the
-   featured-work card already overlaps the bottom edge. */
-.hero-portrait--placeholder {
-  display: flex;
-  align-items: flex-start;
-  background: var(--paper-alt);
-  border: 1.5px dashed var(--muted-2);
-}
-
-.hero-portrait__placeholder-inner {
-  padding: var(--space-5);
-  display: flex;
-  flex-direction: column;
-  gap: 0.5em;
-}
-
-.hero-portrait__placeholder-tag {
-  font-family: var(--font-mono);
-  font-size: 0.8rem;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--ink-soft);
-}
-
-.hero-portrait__placeholder-note {
-  font-family: var(--font-mono);
-  font-size: 0.68rem;
-  line-height: 1.5;
-  color: var(--muted-2);
 }
 
 /* Featured-work insert: the "magazine insert" card overlapping the
