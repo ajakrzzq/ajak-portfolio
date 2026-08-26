@@ -1421,9 +1421,6 @@ a.card:hover, .card.is-hoverable:hover {
 }
 
 /* ---------- Work page entrance sequence ---------- */
-.work-intro__eyebrow.reveal { animation-delay: 0.05s; }
-.work-intro__headline.reveal { animation-delay: 0.14s; }
-.work-intro__lead.reveal { animation-delay: 0.24s; }
 .work-filter.reveal { animation-delay: 0.32s; }
 
 .work-feature__head.reveal { animation-delay: 0.05s; }
@@ -1474,15 +1471,40 @@ a.card:hover, .card.is-hoverable:hover {
    Page-specific components
    ========================================================= */
 
-/* ---------- Page header (non-home pages) ---------- */
+/* ---------- Page header (inner-page opening spread) ----------
+   The inner-page equivalent of the homepage's manifesto: a small
+   numbered eyebrow in its own margin column beside an oversized
+   statement, rather than a conventional centered page title. Shared
+   by About, Services, Work and Contact so each page opens with the
+   same editorial move -- distinct content, same system. Title-case
+   (not the hero's uppercase treatment) so inner pages read as
+   further spreads in the publication, not a second cover. */
 .page-header {
   padding-top: var(--space-8);
-  padding-bottom: var(--space-7);
+  padding-bottom: var(--space-8);
 }
 
-.page-header h1 { max-width: 20ch; }
+.page-header__grid {
+  display: grid;
+  gap: var(--space-4);
+}
+
+@media (min-width: 860px) {
+  .page-header__grid { grid-template-columns: 180px 1fr; gap: var(--space-8); }
+  .page-header__index { padding-top: 0.5em; }
+}
+
+.page-header h1 {
+  font-weight: 600;
+  line-height: 1.08;
+  letter-spacing: -0.01em;
+  font-size: clamp(2.2rem, 1.2rem + 4vw, 4.2rem);
+  max-width: 14ch;
+  color: var(--ink);
+}
+
 .page-header p {
-  margin-top: var(--space-4);
+  margin-top: var(--space-5);
   color: var(--muted);
   font-size: var(--fs-lead);
   max-width: 56ch;
@@ -1509,32 +1531,28 @@ a.card:hover, .card.is-hoverable:hover {
   .founder { grid-template-columns: 0.7fr 1.3fr; }
 }
 
-.founder__mark {
+/* Same real photo as the homepage hero, reused with a different crop
+   (bust-length, object-position:top on a 4:5 box vs the hero's tall
+   near-full-body frame) -- a different composition from the same
+   photograph, not a duplicate of the hero, and not a fabricated
+   second portrait. Square (unrounded) edges to match the hero
+   portrait's photographic, non-card treatment. */
+.founder__photo {
   width: 100%;
-  max-width: 220px;
-  aspect-ratio: 1;
-  border-radius: var(--radius-lg);
-  background: var(--ink);
-  color: var(--paper);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: var(--font-display);
-  font-weight: 700;
-  font-size: 3.5rem;
+  max-width: 320px;
+  aspect-ratio: 4 / 5;
   margin-inline: auto;
-  position: relative;
+  background: var(--paper-alt);
   overflow: hidden;
 }
 
-.founder__mark::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(circle at 30% 20%, rgba(59, 70, 240, 0.55), transparent 60%);
+.founder__photo img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
 }
-
-.founder__mark span { position: relative; z-index: 1; }
 
 .founder__title { color: var(--accent); margin-bottom: var(--space-2); }
 .founder h3.founder__name { font-size: var(--fs-h2); margin-bottom: var(--space-4); }
@@ -1574,7 +1592,11 @@ a.card:hover, .card.is-hoverable:hover {
   color: var(--muted-2);
 }
 
-.service-row h3 { font-size: var(--fs-h2); }
+/* Was a dead rule (targeted h3, but the markup uses h2 with a
+   repeated inline font-size) -- fixed to actually apply, and sized up
+   from the generic --fs-h2 so titles read as dominant editorial-index
+   entries rather than a standard section heading. */
+.service-row__head h2 { font-size: clamp(1.9rem, 1.3rem + 2.2vw, 2.7rem); }
 
 .service-row__body p { color: var(--muted); margin-bottom: var(--space-4); max-width: 62ch; }
 
@@ -1601,56 +1623,53 @@ a.card:hover, .card.is-hoverable:hover {
 
 .feature-list svg { width: 16px; height: 16px; flex: none; margin-top: 4px; color: var(--accent); }
 
-/* ---------- Portfolio filter ---------- */
+/* ---------- Portfolio filter (typography + rules, not pills) ----------
+   A row of plain mono labels with an underline-in for the active
+   filter, closer to a magazine contents-page section switcher than a
+   SaaS filter-pill row. Same .filter-bar/.filter-btn/data-filter
+   markup and js/script.js logic as before -- presentation only. */
 .filter-bar {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--space-2);
+  align-items: center;
+  gap: var(--space-5);
   margin-bottom: var(--space-7);
+  padding-bottom: var(--space-4);
+  border-bottom: 1px solid var(--border);
 }
 
 .filter-btn {
-  font-size: 0.88rem;
-  font-weight: 600;
-  padding: 0.6em 1.25em;
-  border-radius: var(--radius-full);
-  border: 1.5px solid var(--border);
-  background: var(--surface);
-  color: var(--ink-soft);
-  cursor: pointer;
-  transition: background var(--speed) var(--ease), color var(--speed) var(--ease), border-color var(--speed) var(--ease);
-}
-
-.filter-btn:hover { border-color: var(--ink); }
-
-.filter-btn.is-active {
-  background: var(--ink);
-  border-color: var(--ink);
-  color: var(--paper);
-}
-
-/* ---------- Work page — editorial intro ---------- */
-.work-intro {
-  --navy: #0b1220;
-  padding-top: var(--space-8);
-  padding-bottom: var(--space-6);
-}
-
-.work-intro__headline {
-  margin-top: var(--space-4);
-  font-size: clamp(2.2rem, 1.6rem + 2.4vw, 3.5rem);
-  line-height: 1.06;
-  letter-spacing: -0.01em;
-  color: var(--navy);
-  max-width: 18ch;
-}
-
-.work-intro__lead {
-  margin-top: var(--space-4);
-  font-size: var(--fs-lead);
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding-block: 0.3em;
+  border: none;
+  background: none;
   color: var(--muted);
-  max-width: 56ch;
+  cursor: pointer;
+  position: relative;
+  transition: color var(--speed) var(--ease);
 }
+
+.filter-btn::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+  height: 2px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--speed) var(--ease);
+}
+
+.filter-btn:hover { color: var(--ink); }
+
+.filter-btn.is-active { color: var(--ink); }
+.filter-btn.is-active::after { transform: scaleX(1); }
 
 .work-filter-section { padding-bottom: var(--space-7); }
 .work-selected-head { padding-top: var(--space-9); }
@@ -1721,9 +1740,6 @@ a.card:hover, .card.is-hoverable:hover {
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--accent);
-  background: var(--accent-tint);
-  padding: 5px 12px;
-  border-radius: var(--radius-full);
   margin-bottom: var(--space-4);
 }
 
@@ -1883,9 +1899,6 @@ a.card:hover, .card.is-hoverable:hover {
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--accent);
-  background: var(--accent-tint);
-  padding: 5px 12px;
-  border-radius: var(--radius-full);
   margin-bottom: var(--space-4);
 }
 
@@ -2031,31 +2044,62 @@ a.card:hover, .card.is-hoverable:hover {
   .contact-layout { grid-template-columns: 0.85fr 1.15fr; align-items: start; }
 }
 
+/* Plain ruled rows instead of icon-boxed cards, matching the trust
+   strip / services / why-ajak precedent set on the homepage. */
 .contact-card {
   display: flex;
-  align-items: flex-start;
-  gap: var(--space-4);
-  padding: var(--space-5);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-md);
-  background: var(--surface);
+  flex-direction: column;
+  gap: 2px;
+  padding-block: var(--space-4);
+  border-top: 1px solid var(--border);
 }
 
-.contact-card + .contact-card { margin-top: var(--space-4); }
+.contact-card:first-child { border-top: none; padding-top: 0; }
+.contact-card + .contact-card { margin-top: 0; }
 
-.contact-card__icon {
-  width: 42px;
-  height: 42px;
-  border-radius: var(--radius-sm);
-  background: var(--accent-tint);
-  color: var(--accent);
+/* One dominant WhatsApp link (per the redesign brief: keep WhatsApp
+   as the primary action, avoid competing CTAs) sitting above the
+   quieter reference info -- the same big-typographic-link move as the
+   homepage's closing CTA, reused here in ink-on-paper rather than
+   paper-on-ink since this page opens on a light background. */
+.contact-primary {
+  margin-bottom: var(--space-7);
+  padding-bottom: var(--space-6);
+  border-bottom: 1px solid var(--border);
+}
+
+.contact-primary__link {
   display: inline-flex;
   align-items: center;
-  justify-content: center;
-  flex: none;
+  gap: 0.6em;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(1.6rem, 1rem + 2.4vw, 2.4rem);
+  text-transform: uppercase;
+  letter-spacing: 0.01em;
+  color: var(--ink);
+  position: relative;
+  padding-block: 0.2em;
 }
 
-.contact-card__icon svg { width: 20px; height: 20px; }
+.contact-primary__link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 3px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--speed) var(--ease);
+}
+
+.contact-primary__link:hover::after { transform: scaleX(1); }
+.contact-primary__link span[aria-hidden] { display: inline-block; transition: transform var(--speed) var(--ease); }
+.contact-primary__link:hover span[aria-hidden] { transform: translateX(4px); }
+.contact-primary__note { margin-top: var(--space-3); color: var(--muted); font-size: 0.92rem; }
+.contact-primary__note a { color: var(--ink-soft); text-decoration: underline; text-underline-offset: 3px; }
 
 .contact-card__label {
   font-family: var(--font-mono);
