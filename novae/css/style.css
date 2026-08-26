@@ -1264,6 +1264,11 @@ p {
 .lookbook-item:nth-child(4) { aspect-ratio: 3 / 4; }
 .lookbook-item:nth-child(5) { grid-column: span 2; aspect-ratio: 16 / 10; }
 
+.lookbook-item:nth-child(1) img,
+.lookbook-item:nth-child(5) img {
+  object-position: 50% 22%;
+}
+
 .lookbook-item__caption {
   position: absolute;
   left: 1.1rem;

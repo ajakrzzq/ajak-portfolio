@@ -457,6 +457,41 @@ input:focus-visible {
   min-height: 40px;
 }
 
+/* 7b. Concept banner
+   ========================================================================== */
+.concept-banner {
+  background: var(--kc-primary-dark);
+  color: var(--kc-primary-light);
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  letter-spacing: 0.01em;
+  text-align: center;
+  padding: 0.6rem 1rem;
+}
+
+.concept-banner strong {
+  color: var(--kc-white);
+}
+
+.concept-banner a {
+  color: var(--kc-accent-light);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.concept-banner .banner-text-short {
+  display: none;
+}
+
+@media (max-width: 600px) {
+  .concept-banner .banner-text-full {
+    display: none;
+  }
+  .concept-banner .banner-text-short {
+    display: inline;
+  }
+}
+
 /* 8. Header / navigation
    ========================================================================== */
 .site-header {

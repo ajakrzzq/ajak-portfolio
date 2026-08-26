@@ -537,6 +537,41 @@ body.preloader-active {
   }
 }
 
+/* 8b. Concept banner
+   ========================================================================== */
+.concept-banner {
+  background: var(--lu-accent);
+  color: var(--lu-cream);
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  letter-spacing: 0.02em;
+  text-align: center;
+  padding: 0.6rem 1rem;
+}
+
+.concept-banner strong {
+  color: var(--lu-white);
+}
+
+.concept-banner a {
+  color: var(--lu-cream);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.concept-banner .banner-text-short {
+  display: none;
+}
+
+@media (max-width: 600px) {
+  .concept-banner .banner-text-full {
+    display: none;
+  }
+  .concept-banner .banner-text-short {
+    display: inline;
+  }
+}
+
 /* 9. Header / navigation
    ========================================================================== */
 .site-header {
