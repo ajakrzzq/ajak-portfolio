@@ -1,11 +1,11 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1000" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Lumière Hair Studio placeholder image">
   <defs>
     <linearGradient id="lu-ph-bg" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#f0e9de"/>
-      <stop offset="100%" stop-color="#ddccb0"/>
+      <stop offset="0%" stop-color="#2e2a27"/>
+      <stop offset="100%" stop-color="#171310"/>
     </linearGradient>
   </defs>
   <rect width="800" height="1000" fill="url(#lu-ph-bg)"/>
-  <rect x="24" y="24" width="752" height="952" fill="none" stroke="#b89b72" stroke-width="1"/>
-  <text x="60" y="944" font-family="Helvetica, Arial, sans-serif" font-size="13" letter-spacing="3" fill="#756d66">LUMIÈRE HAIR STUDIO — IMAGE COMING SOON</text>
+  <rect x="24" y="24" width="752" height="952" fill="none" stroke="#7d2634" stroke-width="1"/>
+  <text x="60" y="944" font-family="Helvetica, Arial, sans-serif" font-size="13" letter-spacing="3" fill="#cbb9ae">LUMIÈRE HAIR STUDIO — IMAGE COMING SOON</text>
 </svg>

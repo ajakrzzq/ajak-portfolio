@@ -102,9 +102,9 @@ svg {
   --lu-ink: #24211f;
   --lu-ink-soft: #2e2a27;
   --lu-muted: #756d66;
-  --lu-accent: #b89b72;
-  --lu-accent-dark: #93794f;
-  --lu-accent-light: #d7c4a2;
+  --lu-accent: #7d2634;
+  --lu-accent-dark: #5c1c27;
+  --lu-accent-light: #e3b8bd;
   --lu-line: #e2d8c8;
   --lu-line-dark: #3c372f;
   --lu-white: #ffffff;
@@ -393,7 +393,7 @@ button:focus-visible {
 
 .btn--accent {
   background: var(--lu-accent);
-  color: var(--lu-ink);
+  color: var(--lu-cream);
   border-color: var(--lu-accent);
 }
 
@@ -787,6 +787,14 @@ body.menu-open {
 
 /* 12. Services
    ========================================================================== */
+.services-feature {
+  margin-bottom: clamp(3rem, 6vw, 4.5rem);
+}
+
+.services-feature h3 {
+  margin-top: 0.6rem;
+}
+
 .services-grid {
   display: grid;
   gap: 1.5rem;
@@ -794,30 +802,34 @@ body.menu-open {
 }
 
 .service-card {
-  background: var(--color-bg-paper);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-md);
-  padding: clamp(1.75rem, 3vw, 2.25rem);
-  transition: transform var(--dur-med) var(--ease), box-shadow var(--dur-med) var(--ease),
-    border-color var(--dur-med) var(--ease);
+  background: transparent;
+  border: none;
+  border-top: 1px solid var(--color-border);
+  border-radius: 0;
+  padding: clamp(1.5rem, 3vw, 1.9rem) 0 0;
+  transition: border-color var(--dur-med) var(--ease);
 }
 
 .service-card:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-pop);
-  border-color: var(--lu-accent-light);
+  border-color: var(--lu-accent);
 }
 
 .service-card__icon {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 52px;
-  height: 52px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
-  background: var(--color-bg-alt);
+  background: transparent;
+  border: 1px solid var(--color-border);
   color: var(--lu-accent-dark);
-  margin-bottom: 1.4rem;
+  margin-bottom: 1.2rem;
+  transition: border-color var(--dur-med) var(--ease);
+}
+
+.service-card:hover .service-card__icon {
+  border-color: var(--lu-accent);
 }
 
 .service-card__icon svg {
@@ -1208,12 +1220,6 @@ body.has-mobile-whatsapp {
     opacity: 1;
     transform: none;
   }
-}
-
-/* Image fallback (graceful degrade if a remote image fails to load) */
-img.img-fallback {
-  object-fit: cover;
-  background: var(--lu-cream-alt);
 }
 
 /* 20. Responsive
