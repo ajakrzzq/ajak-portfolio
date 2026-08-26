@@ -421,6 +421,40 @@ p {
   text-align: center;
 }
 
+/* Concept disclosure banner (sits above the announcement bar) */
+.concept-banner {
+  background: var(--novae-charcoal);
+  color: var(--novae-grey);
+  font-family: var(--font-sans);
+  font-size: 0.68rem;
+  letter-spacing: 0.03em;
+  text-align: center;
+  padding: 0.55rem var(--container-pad);
+}
+
+.concept-banner strong {
+  color: var(--novae-white);
+}
+
+.concept-banner a {
+  color: var(--novae-beige-dark);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.concept-banner .banner-text-short {
+  display: none;
+}
+
+@media (max-width: 600px) {
+  .concept-banner .banner-text-full {
+    display: none;
+  }
+  .concept-banner .banner-text-short {
+    display: inline;
+  }
+}
+
 /* 9. Header / navigation
    ========================================================================== */
 .site-header {

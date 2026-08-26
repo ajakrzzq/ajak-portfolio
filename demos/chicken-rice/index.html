@@ -756,16 +756,29 @@
   const hamburgerBtn = document.getElementById('hamburgerBtn');
   const navScrim = document.getElementById('navScrim');
   const navLinks = document.getElementById('navLinks');
+  const navMain = document.getElementById('home');
+  const navFooter = document.querySelector('.site-footer');
   function closeNav(){
     document.body.classList.remove('nav-open');
     hamburgerBtn.setAttribute('aria-expanded','false');
+    if (navMain) navMain.inert = false;
+    if (navFooter) navFooter.inert = false;
+  }
+  function openNav(){
+    document.body.classList.add('nav-open');
+    hamburgerBtn.setAttribute('aria-expanded','true');
+    if (navMain) navMain.inert = true;
+    if (navFooter) navFooter.inert = true;
   }
   hamburgerBtn.addEventListener('click', () => {
-    const isOpen = document.body.classList.toggle('nav-open');
-    hamburgerBtn.setAttribute('aria-expanded', String(isOpen));
+    const isOpen = document.body.classList.contains('nav-open');
+    isOpen ? closeNav() : openNav();
   });
   navScrim.addEventListener('click', closeNav);
   navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', closeNav));
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && document.body.classList.contains('nav-open')) closeNav();
+  });
 
   // Menu tabs
   const tabs = document.querySelectorAll('.menu-tab');
