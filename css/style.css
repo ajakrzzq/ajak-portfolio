@@ -140,16 +140,6 @@ h1, h2, h3, h4 {
   gap: var(--space-6);
 }
 
-@media (min-width: 720px) {
-  .grid--2 { grid-template-columns: repeat(2, 1fr); }
-  .grid--3 { grid-template-columns: repeat(3, 1fr); }
-  .grid--4 { grid-template-columns: repeat(2, 1fr); }
-}
-
-@media (min-width: 980px) {
-  .grid--4 { grid-template-columns: repeat(4, 1fr); }
-}
-
 .stack { display: flex; flex-direction: column; }
 
 .eyebrow {
@@ -172,8 +162,8 @@ h1, h2, h3, h4 {
   flex: none;
 }
 
-.section--ink .eyebrow,
-.section--ink .eyebrow::before { color: #9aa3ff; background: #9aa3ff; }
+.section--ink .eyebrow { color: #9aa3ff; }
+.section--ink .eyebrow::before { background: #9aa3ff; }
 
 .section-head {
   max-width: 640px;
@@ -191,7 +181,12 @@ h1, h2, h3, h4 {
 
 .center { text-align: center; margin-inline: auto; }
 
-/* ---------- Buttons ---------- */
+/* ---------- Buttons ----------
+   Small rectangular radius rather than a full pill, and hover feedback
+   carried entirely by colour + the arrow glyph (no lift) -- the pill
+   shape and hover "bounce" are the two most SaaS-coded button tells,
+   so removing them is enough to place the button inside the studio's
+   own visual language rather than a generic landing-page kit. */
 .btn {
   --btn-fg: var(--paper);
   --btn-bg: var(--ink);
@@ -200,7 +195,7 @@ h1, h2, h3, h4 {
   justify-content: center;
   gap: 0.55em;
   padding: 0.85em 1.5em;
-  border-radius: var(--radius-full);
+  border-radius: var(--radius-sm);
   font-weight: 600;
   font-size: 0.95rem;
   border: 1.5px solid transparent;
@@ -208,10 +203,8 @@ h1, h2, h3, h4 {
   color: var(--btn-fg);
   cursor: pointer;
   white-space: nowrap;
-  transition: transform var(--speed) var(--ease), background var(--speed) var(--ease), border-color var(--speed) var(--ease), color var(--speed) var(--ease);
+  transition: background var(--speed) var(--ease), border-color var(--speed) var(--ease), color var(--speed) var(--ease);
 }
-
-.btn:hover { transform: translateY(-2px); }
 
 .btn--accent { --btn-bg: var(--accent); --btn-fg: #ffffff; }
 .btn--accent:hover { --btn-bg: var(--accent-dark); }
@@ -334,7 +327,7 @@ h1, h2, h3, h4 {
   justify-content: center;
   width: 42px;
   height: 42px;
-  border-radius: var(--radius-full);
+  border-radius: var(--radius-sm);
   border: 1.5px solid var(--border);
   background: var(--surface);
   cursor: pointer;
@@ -349,52 +342,6 @@ h1, h2, h3, h4 {
   .nav__links { display: flex; }
   .nav__cta { display: inline-flex; }
   .nav__toggle { display: none; }
-}
-
-/* ---------- Header, overlaid on the full-screen hero (home page only) ----------
-   Sits transparent and light-on-dark over the hero image until the page
-   scrolls, at which point the existing .is-scrolled rule above takes over
-   and gives it the same solid, dark-on-light bar every other page already
-   uses. Fixed (not sticky) so the hero image can run edge-to-edge behind
-   it — every other page keeps the original sticky header untouched. */
-.site-header--overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-}
-
-.site-header--overlay:not(.is-scrolled) {
-  border-bottom-color: transparent;
-}
-
-.site-header--overlay:not(.is-scrolled) .brand,
-.site-header--overlay:not(.is-scrolled) .nav__links a,
-.site-header--overlay:not(.is-scrolled) .nav__toggle {
-  color: var(--paper);
-}
-
-.site-header--overlay:not(.is-scrolled) .brand__dot { color: #9aa3ff; }
-.site-header--overlay:not(.is-scrolled) .nav__links a[aria-current="page"] { color: var(--paper); }
-.site-header--overlay:not(.is-scrolled) .nav__links a::after { background: var(--paper); }
-
-.site-header--overlay:not(.is-scrolled) .nav__toggle {
-  border-color: rgba(250, 249, 245, 0.35);
-  background: rgba(250, 249, 245, 0.08);
-}
-
-/* the mobile menu's own backdrop is always light, so the header needs
-   its normal dark-on-light styling while it's open, even over the hero */
-.site-header--overlay.menu-open:not(.is-scrolled) .brand,
-.site-header--overlay.menu-open:not(.is-scrolled) .nav__toggle {
-  color: var(--ink);
-}
-
-.site-header--overlay.menu-open:not(.is-scrolled) .brand__dot { color: var(--accent); }
-
-.site-header--overlay.menu-open:not(.is-scrolled) .nav__toggle {
-  border-color: var(--border);
-  background: var(--surface);
 }
 
 .mobile-menu {
@@ -468,16 +415,33 @@ h1, h2, h3, h4 {
 }
 
 /* ---------- Hero ----------
-   Editorial hero: warm paper background keeps the left column (pitch)
-   visually quiet, while the right column carries the visual weight as
-   a real portrait (see .hero-portrait) — a straightened, tightly
-   cropped, colour-graded photograph rather than a generic rounded
-   card, so nothing here needs to touch the header/overlay treatment. */
+   Full-scale editorial hero: warm paper background keeps the left
+   column (headline/metadata) visually quiet, while the right column
+   carries the visual weight as a portrait (see .hero-portrait) plus a
+   smaller "Selected Work" insert (see .hero__featured) overlapping its
+   lower edge -- the magazine-cover + insert composition the redesign
+   brief asks for. min-height on desktop only (see below) gives the
+   90-100vh immersive first viewport; mobile stays content-height so it
+   never forces an oversized scroll before any real content appears. */
 .hero--full {
   position: relative;
   background: var(--paper-alt);
   padding-top: var(--space-8);
   padding-bottom: var(--space-9);
+  /* .hero__featured intentionally bleeds past its column at narrow
+     widths (see its max-width:639px rule below) -- clip that bleed at
+     the section edge instead of letting it create a page-wide
+     horizontal scrollbar. Purely a containment fix: it doesn't move or
+     resize anything that was actually visible. */
+  overflow-x: hidden;
+}
+
+@media (min-width: 1024px) {
+  .hero--full {
+    min-height: 94vh;
+    display: flex;
+    align-items: center;
+  }
 }
 
 .hero__inner {
@@ -487,7 +451,11 @@ h1, h2, h3, h4 {
 
 @media (min-width: 1024px) {
   .hero__inner {
-    grid-template-columns: 0.95fr 1.15fr;
+    /* content column gets the edge (not an even split) so the stacked
+       three-line headline has real room, leaving the portrait at
+       roughly 40-45% of the composition rather than a plain 50/50
+       "photo on the right" split */
+    grid-template-columns: 1.15fr 1fr;
     align-items: start;
     gap: var(--space-7);
   }
@@ -500,9 +468,10 @@ h1, h2, h3, h4 {
 .hero__headline {
   font-family: var(--font-display);
   font-weight: 700;
-  line-height: 1.06;
-  letter-spacing: -0.02em;
-  font-size: clamp(2.5rem, 1.5rem + 3.4vw, 4.75rem);
+  line-height: 1.02;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+  font-size: clamp(2.6rem, 1.4rem + 4.2vw, 5.4rem);
   color: var(--ink);
 }
 
@@ -512,7 +481,7 @@ h1, h2, h3, h4 {
   margin-top: var(--space-5);
   font-size: var(--fs-lead);
   color: var(--muted);
-  max-width: 42ch;
+  max-width: 38ch;
 }
 
 .hero__actions {
@@ -523,26 +492,26 @@ h1, h2, h3, h4 {
   gap: var(--space-5);
 }
 
-.hero__cta-primary {
-  padding: 1.05em 1.9em;
-  font-size: 1rem;
-  box-shadow: 0 16px 32px -10px rgba(59, 70, 240, 0.55);
-}
-
-.hero__cta-primary:hover { box-shadow: 0 20px 38px -10px rgba(59, 70, 240, 0.6); }
-
-.hero__cta-secondary {
+/* Single hero CTA (per the redesign brief: no competing buttons here --
+   the nav bar and final CTA band already carry the direct "Start a
+   Project" conversion path). Editorial text-link treatment: uppercase,
+   tracked, underline-in on hover -- reuses the same interaction pattern
+   the old two-CTA row used for its secondary link. */
+.hero__cta {
   position: relative;
   display: inline-flex;
   align-items: center;
-  gap: 0.5em;
+  gap: 0.6em;
   padding-block: 0.5em;
   font-weight: 600;
+  font-size: 0.95rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
   color: var(--ink);
   transition: color var(--speed) var(--ease);
 }
 
-.hero__cta-secondary::after {
+.hero__cta::after {
   content: "";
   position: absolute;
   left: 0;
@@ -555,29 +524,47 @@ h1, h2, h3, h4 {
   transition: transform var(--speed) var(--ease);
 }
 
-.hero__cta-secondary:hover::after { transform: scaleX(1); }
+.hero__cta:hover::after { transform: scaleX(1); }
 
-.hero__cta-secondary-arrow { display: inline-block; transition: transform var(--speed) var(--ease); }
-.hero__cta-secondary:hover .hero__cta-secondary-arrow { transform: translateX(3px); }
+.hero__cta-arrow { display: inline-block; transition: transform var(--speed) var(--ease); }
+.hero__cta:hover .hero__cta-arrow { transform: translateX(3px); }
 
-/* ---------- Hero visual (portrait) ----------
-   The founder's actual photo, straightened and tightly cropped so the
-   subject reads as the dominant visual rather than a snapshot. Square
-   (unrounded) edges keep it reading as a photograph bleeding into the
-   page instead of a generic rounded card; the left edge softly masks
-   to transparent so it blends into the paper background behind the
-   headline instead of sitting in a hard box. Fixed aspect-ratio + explicit
-   width/height on the <img> reserve the space up front (no CLS). */
-.hero__visual { width: 100%; }
+/* Small masthead-style metadata block -- the "magazine issue info"
+   editorial detail. Reuses the same mono/tracked/uppercase treatment as
+   .eyebrow and .footer__heading elsewhere rather than inventing a new
+   label style. Kept to three short lines so it stays a quiet detail,
+   not a second block of copy competing with the headline. */
+.hero__metadata {
+  margin-top: var(--space-8);
+  display: flex;
+  flex-direction: column;
+  gap: 0.4em;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--muted-2);
+}
+
+/* ---------- Hero visual (portrait + featured-work insert) ----------
+   .hero-portrait holds the real editorial portrait (images/hero/
+   editorial-portrait.{jpg,webp}, 550x1250, ratio 0.44): square
+   (unrounded) edges so it reads as a photograph bleeding into the page
+   rather than a generic rounded card, a soft left-edge mask into the
+   paper background instead of a hard box, and a taller near-full-body
+   crop per the redesign brief.
+   .hero__visual hosts both the portrait and the .hero__featured insert
+   that overlaps its lower edge, so it needs position:relative. */
+.hero__visual { width: 100%; position: relative; }
 
 .hero-portrait {
   width: 100%;
   /* capped relative to viewport (not just column width) so the portrait
      stays a strong accent rather than stretching the hero tall on
      narrow phones — see the "Mobile" responsive note above .hero--full */
-  max-width: min(320px, 62vw);
+  max-width: min(340px, 64vw);
   margin-inline: auto;
-  aspect-ratio: 550 / 820;
+  aspect-ratio: 550 / 1250;
   -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 9%);
   mask-image: linear-gradient(to right, transparent 0%, #000 9%);
 }
@@ -591,25 +578,102 @@ h1, h2, h3, h4 {
 }
 
 @media (min-width: 640px) {
-  .hero-portrait { max-width: 460px; }
+  .hero-portrait {
+    /* Same height-vs-width reasoning as the ≥1024px rule below: at
+       tablet the layout is still single-column (stacked below the
+       text), so a 480px-wide box at this tall aspect-ratio would run
+       ~740px high and make the stacked hero excessively tall. */
+    width: auto;
+    max-width: 480px;
+    max-height: 58vh;
+  }
 }
 
 @media (min-width: 1024px) {
   .hero-portrait {
-    /* meaningfully larger visual anchor on desktop, still short of the
-       550px-wide source's native ceiling so it stays crisp — see the
-       hero refinement note above .hero--full */
-    max-width: 520px;
+    /* The hero itself is height-constrained (min-height: 94vh on
+       .hero--full), so at desktop the portrait must be sized from
+       that available height rather than from column width -- a
+       width-driven tall aspect-ratio box can otherwise exceed the
+       viewport entirely and blow out the "one screen" hero. */
+    width: auto;
+    max-width: 620px;
+    max-height: min(70vh, 660px);
     margin-left: auto;
     margin-right: 0;
   }
 }
 
-@media (max-width: 420px) {
-  /* Left-aligned and tightly stacked so the two CTAs read as one
-     group (button, then its lighter alternative directly under it)
-     rather than a button with an unrelated link floating below it. */
-  .hero__actions { flex-direction: column; align-items: flex-start; gap: var(--space-3); }
+/* Featured-work insert: the "magazine insert" card overlapping the
+   portrait's lower edge, per the brief's hero visual hierarchy
+   (headline -> portrait -> featured project -> metadata -> CTA). A
+   real project screenshot in a plain bordered card -- no laptop
+   mockup, no extra chrome -- kept deliberately smaller than the
+   portrait so it reads as a supporting detail, not a second hero. */
+.hero__featured {
+  display: block;
+  position: absolute;
+  right: 4%;
+  bottom: -6%;
+  width: 60%;
+  max-width: 300px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-lg);
+  padding: var(--space-3);
+  z-index: 2;
+  transition: transform var(--speed) var(--ease), box-shadow var(--speed) var(--ease);
+}
+
+.hero__featured:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+}
+
+.hero__featured-label {
+  display: block;
+  margin-bottom: var(--space-2);
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.hero__featured-frame {
+  display: block;
+  aspect-ratio: 1440 / 820;
+  overflow: hidden;
+}
+
+.hero__featured-frame img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+  transition: transform 0.5s var(--ease);
+}
+
+.hero__featured:hover .hero__featured-frame img { transform: scale(1.04); }
+
+.hero__featured-link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5em;
+  margin-top: var(--space-2);
+  font-weight: 600;
+  font-size: 0.8rem;
+  color: var(--ink);
+}
+
+.hero__featured-link svg,
+.hero__featured-link span[aria-hidden] { transition: transform var(--speed) var(--ease); }
+.hero__featured:hover .hero__featured-link span[aria-hidden] { transform: translateX(3px); }
+
+@media (max-width: 639px) {
+  .hero__featured { width: 72%; max-width: 240px; right: -4%; bottom: -8%; }
 }
 
 /* ---------- Trust strip (home page, directly under the hero) ----------
@@ -654,11 +718,12 @@ h1, h2, h3, h4 {
   gap: var(--space-3);
 }
 
-.trust-strip__icon {
+.trust-strip__index {
   flex: none;
-  width: 16px;
-  height: 16px;
-  margin-top: 3px;
+  padding-top: 1px;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
   color: var(--muted-2);
 }
 
@@ -679,6 +744,44 @@ h1, h2, h3, h4 {
   text-transform: uppercase;
   color: var(--ink);
   font-weight: 500;
+}
+
+/* ---------- Manifesto (Introduction) ----------
+   An editorial opening statement rather than a centered "about" blurb:
+   the eyebrow numbering sits in its own narrow margin column (like a
+   running head/folio in a magazine spread) beside a large display
+   statement, with a smaller supporting paragraph underneath -- the
+   asymmetry itself is the section's whole visual idea, so it needs no
+   further decoration. */
+.manifesto__grid {
+  display: grid;
+  gap: var(--space-4);
+}
+
+@media (min-width: 860px) {
+  .manifesto__grid {
+    grid-template-columns: 180px 1fr;
+    gap: var(--space-8);
+  }
+
+  .manifesto__index { padding-top: 0.5em; }
+}
+
+.manifesto__statement {
+  font-family: var(--font-display);
+  font-weight: 600;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  font-size: clamp(2rem, 1.1rem + 3.6vw, 3.8rem);
+  max-width: 15ch;
+  color: var(--ink);
+}
+
+.manifesto__support {
+  margin-top: var(--space-5);
+  font-size: var(--fs-lead);
+  color: var(--muted);
+  max-width: 56ch;
 }
 
 /* ---------- Browser-frame (signature element, reused in Hero & My Work) ---------- */
@@ -740,25 +843,11 @@ h1, h2, h3, h4 {
   transition: transform var(--speed) var(--ease), box-shadow var(--speed) var(--ease), border-color var(--speed) var(--ease);
 }
 
-a.card:hover, .card.is-hoverable:hover {
+a.card:hover {
   transform: translateY(-4px);
   box-shadow: var(--shadow-md);
   border-color: var(--border);
 }
-
-.card__icon {
-  width: 46px;
-  height: 46px;
-  border-radius: var(--radius-sm);
-  background: var(--accent-tint);
-  color: var(--accent);
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: var(--space-5);
-}
-
-.card__icon svg { width: 22px; height: 22px; }
 
 .card h3 { margin-bottom: var(--space-2); }
 .card p { color: var(--muted); font-size: var(--fs-small); }
@@ -783,19 +872,20 @@ a.card:hover, .card.is-hoverable:hover {
   padding-block: var(--space-7);
 }
 
-.services__primary h3 { font-size: 1.4rem; }
+.services__primary h3 { font-size: 1.7rem; }
 
-/* Restrained icon treatment for this section only: the shared .card__icon
-   box (filled accent-tint square) reads as a generic SaaS feature icon, so
-   within Services it's unboxed down to a plain glyph in accent ink. */
-.services .card__icon {
-  width: auto;
-  height: auto;
-  background: none;
-  color: var(--accent);
+/* Editorial index numbering instead of icons throughout Services --
+   reads as a contents-page list (01/WEB DESIGN, 02/...) rather than a
+   SaaS feature grid. Shared by the primary tile and each list row. */
+.services__index {
+  display: block;
+  margin-bottom: var(--space-4);
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  letter-spacing: 0.04em;
+  color: var(--muted-2);
+  transition: color var(--speed) var(--ease);
 }
-
-.services .card__icon svg { width: 26px; height: 26px; }
 
 .services__list {
   display: flex;
@@ -808,64 +898,26 @@ a.card:hover, .card.is-hoverable:hover {
   gap: var(--space-4);
   padding-block: var(--space-5);
   border-top: 1px solid var(--border);
+  transition: padding-left var(--speed) var(--ease);
 }
 
 .services__row:first-child { border-top: none; padding-top: 0; }
 .services__row:last-child { padding-bottom: 0; }
 
-.services__row .card__icon { margin-bottom: 0; flex: none; }
-.services__row h3 { margin-bottom: var(--space-1); font-size: 1.05rem; }
+.services__row .services__index { margin-bottom: 0; flex: none; width: 2ch; }
+.services__row h3 { margin-bottom: var(--space-1); font-size: 1.25rem; }
 .services__row p { color: var(--muted); font-size: var(--fs-small); margin: 0; }
 
-/* Work / featured project card */
-.work-card {
-  display: flex;
-  flex-direction: column;
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
-  overflow: hidden;
-  transition: transform var(--speed) var(--ease), box-shadow var(--speed) var(--ease);
-}
+/* Subtle hover interaction (per the redesign brief): the row nudges
+   right and its index brightens, echoing a contents-page entry
+   responding to the cursor -- transform/color only, no layout shift. */
+.services__row:hover { padding-left: var(--space-2); }
+.services__row:hover .services__index { color: var(--accent); }
 
-.work-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-md); }
-
-/* Screenshot bleeds flush to the card's own edges instead of sitting
-   inset in a second, smaller rounded box -- the card's existing border
-   + border-radius + overflow:hidden do the framing, so the browser-frame
-   itself needs none of its own here. Keeps the chrome (dots/url bar)
-   but drops the "box inside a box" feel so the screenshot reads as the
-   card's dominant surface. */
-.work-card__frame { padding: 0; }
-
-.work-card__frame .browser-frame { border: none; border-radius: 0; box-shadow: none; }
-
-.work-card__frame .browser-frame img { transition: transform 0.5s var(--ease); }
-.work-card:hover .work-card__frame .browser-frame img { transform: scale(1.035); }
-
-.work-card__body {
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-  padding: var(--space-5);
-}
-
-.work-card__tag {
-  display: inline-block;
-  font-family: var(--font-mono);
-  font-size: 0.68rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--accent);
-  background: var(--accent-tint);
-  padding: 4px 10px;
-  border-radius: var(--radius-full);
-  margin-bottom: var(--space-3);
-}
-
-.work-card__body h3 { margin-bottom: var(--space-2); }
-.work-card__body p { color: var(--muted); font-size: var(--fs-small); margin-bottom: var(--space-4); }
-
+/* Standalone text-link style (e.g. "Explore My Services", "View All
+   Work") -- shared across pages, so kept even though the card
+   component it originally lived alongside (image + tag + body) was
+   retired in the Selected Work redesign in favour of .work-spread. */
 .work-card__link {
   display: inline-flex;
   align-items: center;
@@ -875,15 +927,220 @@ a.card:hover, .card.is-hoverable:hover {
   color: var(--ink);
 }
 
-/* Pins "View Project" to the bottom of the card body so any extra height
-   a taller row-mate forces onto a shorter card (via the grid row stretch)
-   becomes breathing room above the link rather than dead space below it.
-   Scoped to the in-card usage only -- .work-card__link is also used for
-   two standalone links elsewhere that must stay untouched. */
-.work-card__body .work-card__link { margin-top: auto; }
-
 .work-card__link svg { width: 16px; height: 16px; transition: transform var(--speed) var(--ease); }
-.work-card:hover .work-card__link svg { transform: translateX(3px); }
+.work-card__link:hover svg { transform: translateX(3px); }
+
+/* ---------- Selected Work (editorial project spreads) ----------
+   Real case-study entries, not a card grid: each project is a "spread"
+   with its own oversized number, metadata line, title and short
+   description, hairline-ruled from the next rather than boxed. Four
+   layout variants (side, side-reverse, compact, stacked) give the
+   sequence real editorial variety while sharing one visual language,
+   per the redesign brief -- deliberately not all identical, but built
+   from the same handful of parts so the sequence still reads as one
+   coherent system. */
+/* Selected Work is the main feature of the homepage, so it gets more
+   room to breathe than the sections either side of it -- deliberate
+   rhythm rather than the uniform padding every other section shares. */
+#selected-work { padding-block: var(--space-9); }
+
+.work-spreads { margin-top: var(--space-8); }
+
+.work-spread {
+  padding-block: var(--space-9);
+  border-top: 1px solid var(--border);
+}
+
+.work-spread:first-child { border-top: none; padding-top: 0; }
+
+.work-spread__visual {
+  overflow: hidden;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-lg);
+  transition: transform 0.4s var(--ease);
+}
+
+.work-spread__visual:hover { transform: translateY(-4px); }
+
+.work-spread__visual img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+  transition: transform 0.6s var(--ease);
+}
+
+.work-spread__visual:hover img { transform: scale(1.03); }
+
+.work-spread__number {
+  display: block;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(3rem, 1.8rem + 4vw, 5.6rem);
+  line-height: 1;
+  color: var(--border);
+}
+
+/* Safwa opens the sequence right after the hero, so its number carries
+   a quiet accent tint -- the one deliberate, restrained use of colour
+   in the section, marking it as the lead case study rather than just
+   "spread one of four". */
+.work-spreads > .work-spread:first-child .work-spread__number {
+  color: rgba(59, 70, 240, 0.32);
+}
+
+.work-spread__meta {
+  margin-top: var(--space-2);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.work-spread__title { margin-top: var(--space-3); font-size: var(--fs-h2); }
+.work-spread__desc { margin-top: var(--space-4); color: var(--muted); max-width: 48ch; }
+
+.work-spread__link {
+  margin-top: var(--space-5);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5em;
+  font-weight: 600;
+  color: var(--ink);
+  position: relative;
+  padding-block: 0.3em;
+}
+
+.work-spread__link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 2px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--speed) var(--ease);
+}
+
+.work-spread__link:hover::after { transform: scaleX(1); }
+.work-spread__link svg { width: 16px; height: 16px; transition: transform var(--speed) var(--ease); }
+.work-spread__link:hover svg { transform: translateX(3px); }
+
+/* Layout A -- "side": visual left, body right. The default, most
+   editorial two-column spread (large image / small metadata / large
+   title / short description). */
+.work-spread--side { display: grid; gap: var(--space-6); }
+.work-spread--side .work-spread__visual { aspect-ratio: 1440 / 820; }
+
+@media (min-width: 900px) {
+  .work-spread--side { grid-template-columns: 1.5fr 1fr; align-items: center; gap: var(--space-8); }
+}
+
+/* Safwa is the opening case study right after the hero, so its image
+   runs a touch taller than the other spreads' native screenshot ratio
+   -- more presence for the first thing seen after the cover. */
+.work-spreads > .work-spread:first-child .work-spread__visual { aspect-ratio: 1440 / 900; }
+
+/* Layout B -- "side-reverse": visual right, body left, and the title
+   pulls up over the tail of the oversized number (negative margin
+   only -- no absolute positioning) so the numeral and title visually
+   cross, per the brief's "project title crossing the visual
+   hierarchy". */
+.work-spread--side-reverse { display: grid; gap: var(--space-6); }
+.work-spread--side-reverse .work-spread__visual { aspect-ratio: 1440 / 820; }
+
+@media (min-width: 900px) {
+  .work-spread--side-reverse {
+    grid-template-columns: 1fr 1.5fr;
+    align-items: center;
+    gap: var(--space-8);
+  }
+  .work-spread--side-reverse .work-spread__visual { order: 2; }
+  .work-spread--side-reverse .work-spread__body { order: 1; }
+  .work-spread--side-reverse .work-spread__title { margin-top: calc(var(--space-2) * -1); }
+}
+
+/* Layout C -- "compact": a constrained (not full-column-width) image
+   with real surrounding whitespace, per the brief's "different image
+   scale, strong whitespace, small technical metadata" -- but still
+   substantial enough to feel confident rather than like an
+   afterthought, since Madani is a flagship-tier project. */
+.work-spread--compact { display: grid; gap: var(--space-6); }
+.work-spread--compact .work-spread__visual { aspect-ratio: 3 / 2; max-width: 460px; }
+.work-spread--compact .work-spread__visual img { object-position: left top; }
+
+@media (min-width: 900px) {
+  .work-spread--compact { grid-template-columns: 1fr 1.1fr; align-items: center; gap: var(--space-8); }
+  .work-spread--compact .work-spread__visual { order: 2; margin-left: auto; }
+  .work-spread--compact .work-spread__body { order: 1; }
+}
+
+/* Layout D -- "stacked": full-width image on top, number/meta and
+   title/description running as a two-column foot beneath it -- a
+   structural variant (not just a mirrored side-by-side) that closes
+   the sequence. */
+.work-spread--stacked .work-spread__visual { aspect-ratio: 1440 / 620; }
+
+.work-spread--stacked .work-spread__foot {
+  margin-top: var(--space-6);
+  display: grid;
+  gap: var(--space-4);
+}
+
+@media (min-width: 720px) {
+  .work-spread--stacked .work-spread__foot { grid-template-columns: 200px 1fr; gap: var(--space-6); }
+}
+
+/* ---------- Selected Work -- compact index of remaining projects ----------
+   The rest of the studio's real work, listed the way a magazine's
+   contents page lists shorter items after the featured spreads: one
+   ruled row each, no imagery, continuing the same numbering. */
+.work-index { margin-top: var(--space-3); }
+
+.work-index__row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: var(--space-2) var(--space-4);
+  padding-block: var(--space-4);
+  border-top: 1px solid var(--border);
+}
+
+.work-index__index {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--muted-2);
+  flex: none;
+  width: 2ch;
+}
+
+.work-index__name { font-weight: 600; color: var(--ink); }
+
+.work-index__category {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.work-index__link {
+  margin-left: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4em;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.work-index__link svg { width: 15px; height: 15px; transition: transform var(--speed) var(--ease); }
+.work-index__row:hover .work-index__link svg { transform: translateX(3px); }
 
 /* ---------- Checklist ---------- */
 /* Founder line: a first-person statement inside the "Why Ajak" section
@@ -901,23 +1158,36 @@ a.card:hover, .card.is-hoverable:hover {
   color: var(--ink-soft);
 }
 
-.checklist { display: grid; gap: var(--space-4); }
+/* ---------- Why Ajak (editorial statement, not a benefits grid) ----------
+   Asymmetric two-column layout echoing the Introduction manifesto:
+   the statement + founder line sit in one column, the reasons run as a
+   plain ruled list (numbered, no icons) in the other -- a confident
+   editorial statement rather than a checklist of feature badges. */
+.why-ajak__grid { display: grid; gap: var(--space-6); }
 
-@media (min-width: 720px) { .checklist { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 860px) {
+  .why-ajak__grid { grid-template-columns: 1.1fr 0.9fr; gap: var(--space-8); align-items: start; }
+}
 
-.checklist li {
+.why-ajak__list { display: flex; flex-direction: column; }
+
+.why-ajak__list li {
   display: flex;
-  align-items: flex-start;
+  align-items: baseline;
   gap: var(--space-3);
+  padding-block: var(--space-4);
+  border-top: 1px solid var(--border);
   font-size: 0.98rem;
 }
 
-.checklist svg {
+.why-ajak__list li:first-child { border-top: none; padding-top: 0; }
+.why-ajak__list li:last-child { padding-bottom: 0; }
+
+.why-ajak__index {
   flex: none;
-  width: 22px;
-  height: 22px;
-  color: var(--accent);
-  margin-top: 2px;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--muted-2);
 }
 
 /* ---------- Steps (numbered process — used where order is real) ---------- */
@@ -946,6 +1216,8 @@ a.card:hover, .card.is-hoverable:hover {
   text-align: center;
 }
 
+.cta-band .eyebrow { justify-content: center; margin-bottom: var(--space-4); }
+
 .cta-band h2 { max-width: 20ch; margin-inline: auto; }
 .cta-band p {
   margin-top: var(--space-4);
@@ -954,13 +1226,50 @@ a.card:hover, .card.is-hoverable:hover {
   margin-inline: auto;
 }
 
-.cta-band__actions {
-  margin-top: var(--space-6);
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-3);
-  justify-content: center;
+/* Closing spread: one dominant typographic link (not a button, and not
+   competing with a second equal-weight button) with a small, quieter
+   secondary text link underneath for the alternate contact channel. */
+.cta-band__actions { margin-top: var(--space-7); }
+
+.cta-band__primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6em;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(1.3rem, 1rem + 1.2vw, 1.8rem);
+  text-transform: uppercase;
+  letter-spacing: 0.01em;
+  color: var(--paper);
+  position: relative;
+  padding-block: 0.3em;
 }
+
+.cta-band__primary::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 2px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--speed) var(--ease);
+}
+
+.cta-band__primary:hover::after { transform: scaleX(1); }
+.cta-band__primary span[aria-hidden] { display: inline-block; transition: transform var(--speed) var(--ease); }
+.cta-band__primary:hover span[aria-hidden] { transform: translateX(4px); }
+
+.cta-band__secondary {
+  margin-top: var(--space-4);
+  font-size: 0.9rem;
+  color: rgba(250, 249, 245, 0.6);
+}
+
+.cta-band__secondary a { color: rgba(250, 249, 245, 0.88); text-decoration: underline; text-underline-offset: 3px; }
+.cta-band__secondary a:hover { color: var(--paper); }
 
 /* ---------- Footer ---------- */
 .site-footer {
@@ -977,18 +1286,34 @@ a.card:hover, .card.is-hoverable:hover {
 }
 
 @media (min-width: 720px) {
-  .footer__top { grid-template-columns: 1.3fr 1fr 1fr; }
+  .footer__top { grid-template-columns: 1.2fr 0.9fr 0.9fr 0.9fr; }
 }
 
 .footer__brand .brand { color: var(--paper); margin-bottom: var(--space-3); }
 .footer__brand p { color: rgba(250, 249, 245, 0.6); max-width: 34ch; font-size: var(--fs-small); }
+
+/* Colophon-style production line: mono, quiet, under the tagline --
+   the same small technical-metadata treatment used everywhere else on
+   the site, so the footer reads as the publication's closing page. */
+.footer__reg {
+  margin-top: var(--space-3);
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  /* 0.4 measured ~3.7:1 against --ink, under the 4.5:1 WCAG AA
+     minimum for this text size -- 0.5 clears it (~5.1:1). */
+  color: rgba(250, 249, 245, 0.5);
+}
 
 .footer__heading {
   font-family: var(--font-mono);
   font-size: 0.72rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: rgba(250, 249, 245, 0.45);
+  /* 0.45 measured ~4.3:1 against --ink, just under the 4.5:1 WCAG AA
+     minimum for this text size -- 0.5 clears it (~5.1:1). */
+  color: rgba(250, 249, 245, 0.5);
   margin-bottom: var(--space-4);
 }
 
@@ -1001,8 +1326,13 @@ a.card:hover, .card.is-hoverable:hover {
   flex-wrap: wrap;
   gap: var(--space-3);
   justify-content: space-between;
-  font-size: var(--fs-small);
-  color: rgba(250, 249, 245, 0.45);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  /* 0.45 measured ~4.4:1 against --ink, just under the 4.5:1 WCAG AA
+     minimum for this text size -- 0.5 clears it (~5.1:1). */
+  color: rgba(250, 249, 245, 0.5);
 }
 
 /* ---------- Entrance animation ----------
@@ -1032,10 +1362,16 @@ a.card:hover, .card.is-hoverable:hover {
 .hero__headline.reveal { animation-delay: 0.05s; }
 .hero__lead.reveal { animation-delay: 0.2s; }
 .hero__actions.reveal { animation-delay: 0.34s; }
+.hero__metadata.reveal { animation-delay: 0.46s; }
 
 .hero__visual.reveal {
   animation-name: reveal-in-right;
   animation-delay: 0.3s;
+}
+
+.hero__featured.reveal {
+  animation-name: reveal-in-right;
+  animation-delay: 0.5s;
 }
 
 @keyframes reveal-in-right {
@@ -1044,9 +1380,6 @@ a.card:hover, .card.is-hoverable:hover {
 }
 
 /* ---------- Work page entrance sequence ---------- */
-.work-intro__eyebrow.reveal { animation-delay: 0.05s; }
-.work-intro__headline.reveal { animation-delay: 0.14s; }
-.work-intro__lead.reveal { animation-delay: 0.24s; }
 .work-filter.reveal { animation-delay: 0.32s; }
 
 .work-feature__head.reveal { animation-delay: 0.05s; }
@@ -1069,15 +1402,6 @@ a.card:hover, .card.is-hoverable:hover {
 /* ---------- Utility ---------- */
 .mt-0 { margin-top: 0 !important; }
 .text-muted { color: var(--muted); }
-.sr-only {
-  position: absolute;
-  width: 1px; height: 1px;
-  padding: 0; margin: -1px;
-  overflow: hidden;
-  clip: rect(0,0,0,0);
-  white-space: nowrap;
-  border: 0;
-}
 
 .skip-link {
   position: absolute;
@@ -1097,29 +1421,44 @@ a.card:hover, .card.is-hoverable:hover {
    Page-specific components
    ========================================================= */
 
-/* ---------- Page header (non-home pages) ---------- */
+/* ---------- Page header (inner-page opening spread) ----------
+   The inner-page equivalent of the homepage's manifesto: a small
+   numbered eyebrow in its own margin column beside an oversized
+   statement, rather than a conventional centered page title. Shared
+   by About, Services, Work and Contact so each page opens with the
+   same editorial move -- distinct content, same system. Title-case
+   (not the hero's uppercase treatment) so inner pages read as
+   further spreads in the publication, not a second cover. */
 .page-header {
   padding-top: var(--space-8);
-  padding-bottom: var(--space-7);
+  padding-bottom: var(--space-8);
 }
 
-.page-header h1 { max-width: 20ch; }
+.page-header__grid {
+  display: grid;
+  gap: var(--space-4);
+}
+
+@media (min-width: 860px) {
+  .page-header__grid { grid-template-columns: 180px 1fr; gap: var(--space-8); }
+  .page-header__index { padding-top: 0.5em; }
+}
+
+.page-header h1 {
+  font-weight: 600;
+  line-height: 1.08;
+  letter-spacing: -0.01em;
+  font-size: clamp(2.2rem, 1.2rem + 4vw, 4.2rem);
+  max-width: 14ch;
+  color: var(--ink);
+}
+
 .page-header p {
-  margin-top: var(--space-4);
+  margin-top: var(--space-5);
   color: var(--muted);
   font-size: var(--fs-lead);
   max-width: 56ch;
 }
-
-.breadcrumb {
-  font-family: var(--font-mono);
-  font-size: 0.78rem;
-  color: var(--muted-2);
-  margin-bottom: var(--space-4);
-}
-
-.breadcrumb a { color: var(--muted); }
-.breadcrumb a:hover { color: var(--accent); }
 
 /* ---------- About / Founder ---------- */
 .founder {
@@ -1132,32 +1471,28 @@ a.card:hover, .card.is-hoverable:hover {
   .founder { grid-template-columns: 0.7fr 1.3fr; }
 }
 
-.founder__mark {
+/* Same real photo as the homepage hero, reused with a different crop
+   (bust-length, object-position:top on a 4:5 box vs the hero's tall
+   near-full-body frame) -- a different composition from the same
+   photograph, not a duplicate of the hero, and not a fabricated
+   second portrait. Square (unrounded) edges to match the hero
+   portrait's photographic, non-card treatment. */
+.founder__photo {
   width: 100%;
-  max-width: 220px;
-  aspect-ratio: 1;
-  border-radius: var(--radius-lg);
-  background: var(--ink);
-  color: var(--paper);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: var(--font-display);
-  font-weight: 700;
-  font-size: 3.5rem;
+  max-width: 320px;
+  aspect-ratio: 4 / 5;
   margin-inline: auto;
-  position: relative;
+  background: var(--paper-alt);
   overflow: hidden;
 }
 
-.founder__mark::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(circle at 30% 20%, rgba(59, 70, 240, 0.55), transparent 60%);
+.founder__photo img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
 }
-
-.founder__mark span { position: relative; z-index: 1; }
 
 .founder__title { color: var(--accent); margin-bottom: var(--space-2); }
 .founder h3.founder__name { font-size: var(--fs-h2); margin-bottom: var(--space-4); }
@@ -1194,10 +1529,18 @@ a.card:hover, .card.is-hoverable:hover {
 .service-row__index {
   font-family: var(--font-mono);
   font-size: 0.8rem;
-  color: var(--muted-2);
+  /* --muted-2 measures ~2.6:1 on this background at this size, well
+     under WCAG AA's 4.5:1 for text this small -- this index number is
+     real visible content (not decorative/aria-hidden), so it uses
+     --muted (~4.6-5:1) instead. */
+  color: var(--muted);
 }
 
-.service-row h3 { font-size: var(--fs-h2); }
+/* Was a dead rule (targeted h3, but the markup uses h2 with a
+   repeated inline font-size) -- fixed to actually apply, and sized up
+   from the generic --fs-h2 so titles read as dominant editorial-index
+   entries rather than a standard section heading. */
+.service-row__head h2 { font-size: clamp(1.9rem, 1.3rem + 2.2vw, 2.7rem); }
 
 .service-row__body p { color: var(--muted); margin-bottom: var(--space-4); max-width: 62ch; }
 
@@ -1224,56 +1567,53 @@ a.card:hover, .card.is-hoverable:hover {
 
 .feature-list svg { width: 16px; height: 16px; flex: none; margin-top: 4px; color: var(--accent); }
 
-/* ---------- Portfolio filter ---------- */
+/* ---------- Portfolio filter (typography + rules, not pills) ----------
+   A row of plain mono labels with an underline-in for the active
+   filter, closer to a magazine contents-page section switcher than a
+   SaaS filter-pill row. Same .filter-bar/.filter-btn/data-filter
+   markup and js/script.js logic as before -- presentation only. */
 .filter-bar {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--space-2);
+  align-items: center;
+  gap: var(--space-5);
   margin-bottom: var(--space-7);
+  padding-bottom: var(--space-4);
+  border-bottom: 1px solid var(--border);
 }
 
 .filter-btn {
-  font-size: 0.88rem;
-  font-weight: 600;
-  padding: 0.6em 1.25em;
-  border-radius: var(--radius-full);
-  border: 1.5px solid var(--border);
-  background: var(--surface);
-  color: var(--ink-soft);
-  cursor: pointer;
-  transition: background var(--speed) var(--ease), color var(--speed) var(--ease), border-color var(--speed) var(--ease);
-}
-
-.filter-btn:hover { border-color: var(--ink); }
-
-.filter-btn.is-active {
-  background: var(--ink);
-  border-color: var(--ink);
-  color: var(--paper);
-}
-
-/* ---------- Work page — editorial intro ---------- */
-.work-intro {
-  --navy: #0b1220;
-  padding-top: var(--space-8);
-  padding-bottom: var(--space-6);
-}
-
-.work-intro__headline {
-  margin-top: var(--space-4);
-  font-size: clamp(2.2rem, 1.6rem + 2.4vw, 3.5rem);
-  line-height: 1.06;
-  letter-spacing: -0.01em;
-  color: var(--navy);
-  max-width: 18ch;
-}
-
-.work-intro__lead {
-  margin-top: var(--space-4);
-  font-size: var(--fs-lead);
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding-block: 0.3em;
+  border: none;
+  background: none;
   color: var(--muted);
-  max-width: 56ch;
+  cursor: pointer;
+  position: relative;
+  transition: color var(--speed) var(--ease);
 }
+
+.filter-btn::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+  height: 2px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--speed) var(--ease);
+}
+
+.filter-btn:hover { color: var(--ink); }
+
+.filter-btn.is-active { color: var(--ink); }
+.filter-btn.is-active::after { transform: scaleX(1); }
 
 .work-filter-section { padding-bottom: var(--space-7); }
 .work-selected-head { padding-top: var(--space-9); }
@@ -1325,7 +1665,9 @@ a.card:hover, .card.is-hoverable:hover {
   font-size: 0.72rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--muted-2);
+  /* real gallery caption text, not decorative -- --muted-2 fails WCAG
+     AA (~2.6:1) at this size, --muted passes (~4.6-5:1). */
+  color: var(--muted);
 }
 
 /* ---------- Work page — flagship case study (Madani) ---------- */
@@ -1344,9 +1686,6 @@ a.card:hover, .card.is-hoverable:hover {
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--accent);
-  background: var(--accent-tint);
-  padding: 5px 12px;
-  border-radius: var(--radius-full);
   margin-bottom: var(--space-4);
 }
 
@@ -1396,7 +1735,10 @@ a.card:hover, .card.is-hoverable:hover {
   font-size: 0.72rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--muted-2);
+  /* real field label text ("Industry"/"Services"/"Technology"), not
+     decorative -- --muted-2 fails WCAG AA (~2.6:1) at this size,
+     --muted passes (~4.6-5:1). */
+  color: var(--muted);
   margin-bottom: var(--space-2);
 }
 
@@ -1506,9 +1848,6 @@ a.card:hover, .card.is-hoverable:hover {
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--accent);
-  background: var(--accent-tint);
-  padding: 5px 12px;
-  border-radius: var(--radius-full);
   margin-bottom: var(--space-4);
 }
 
@@ -1654,38 +1993,72 @@ a.card:hover, .card.is-hoverable:hover {
   .contact-layout { grid-template-columns: 0.85fr 1.15fr; align-items: start; }
 }
 
+/* Plain ruled rows instead of icon-boxed cards, matching the trust
+   strip / services / why-ajak precedent set on the homepage. */
 .contact-card {
   display: flex;
-  align-items: flex-start;
-  gap: var(--space-4);
-  padding: var(--space-5);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-md);
-  background: var(--surface);
+  flex-direction: column;
+  gap: 2px;
+  padding-block: var(--space-4);
+  border-top: 1px solid var(--border);
 }
 
-.contact-card + .contact-card { margin-top: var(--space-4); }
+.contact-card:first-child { border-top: none; padding-top: 0; }
+.contact-card + .contact-card { margin-top: 0; }
 
-.contact-card__icon {
-  width: 42px;
-  height: 42px;
-  border-radius: var(--radius-sm);
-  background: var(--accent-tint);
-  color: var(--accent);
+/* One dominant WhatsApp link (per the redesign brief: keep WhatsApp
+   as the primary action, avoid competing CTAs) sitting above the
+   quieter reference info -- the same big-typographic-link move as the
+   homepage's closing CTA, reused here in ink-on-paper rather than
+   paper-on-ink since this page opens on a light background. */
+.contact-primary {
+  margin-bottom: var(--space-7);
+  padding-bottom: var(--space-6);
+  border-bottom: 1px solid var(--border);
+}
+
+.contact-primary__link {
   display: inline-flex;
   align-items: center;
-  justify-content: center;
-  flex: none;
+  gap: 0.6em;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(1.6rem, 1rem + 2.4vw, 2.4rem);
+  text-transform: uppercase;
+  letter-spacing: 0.01em;
+  color: var(--ink);
+  position: relative;
+  padding-block: 0.2em;
 }
 
-.contact-card__icon svg { width: 20px; height: 20px; }
+.contact-primary__link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 3px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--speed) var(--ease);
+}
+
+.contact-primary__link:hover::after { transform: scaleX(1); }
+.contact-primary__link span[aria-hidden] { display: inline-block; transition: transform var(--speed) var(--ease); }
+.contact-primary__link:hover span[aria-hidden] { transform: translateX(4px); }
+.contact-primary__note { margin-top: var(--space-3); color: var(--muted); font-size: 0.92rem; }
+.contact-primary__note a { color: var(--ink-soft); text-decoration: underline; text-underline-offset: 3px; }
 
 .contact-card__label {
   font-family: var(--font-mono);
   font-size: 0.7rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--muted-2);
+  /* real field label text ("LinkedIn"/"Location"), not decorative --
+     --muted-2 fails WCAG AA (~2.6:1) at this size, --muted passes
+     (~4.6-5:1). */
+  color: var(--muted);
   margin-bottom: 2px;
 }
 
