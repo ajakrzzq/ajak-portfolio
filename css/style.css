@@ -181,7 +181,12 @@ h1, h2, h3, h4 {
 
 .center { text-align: center; margin-inline: auto; }
 
-/* ---------- Buttons ---------- */
+/* ---------- Buttons ----------
+   Small rectangular radius rather than a full pill, and hover feedback
+   carried entirely by colour + the arrow glyph (no lift) -- the pill
+   shape and hover "bounce" are the two most SaaS-coded button tells,
+   so removing them is enough to place the button inside the studio's
+   own visual language rather than a generic landing-page kit. */
 .btn {
   --btn-fg: var(--paper);
   --btn-bg: var(--ink);
@@ -190,7 +195,7 @@ h1, h2, h3, h4 {
   justify-content: center;
   gap: 0.55em;
   padding: 0.85em 1.5em;
-  border-radius: var(--radius-full);
+  border-radius: var(--radius-sm);
   font-weight: 600;
   font-size: 0.95rem;
   border: 1.5px solid transparent;
@@ -198,10 +203,8 @@ h1, h2, h3, h4 {
   color: var(--btn-fg);
   cursor: pointer;
   white-space: nowrap;
-  transition: transform var(--speed) var(--ease), background var(--speed) var(--ease), border-color var(--speed) var(--ease), color var(--speed) var(--ease);
+  transition: background var(--speed) var(--ease), border-color var(--speed) var(--ease), color var(--speed) var(--ease);
 }
-
-.btn:hover { transform: translateY(-2px); }
 
 .btn--accent { --btn-bg: var(--accent); --btn-fg: #ffffff; }
 .btn--accent:hover { --btn-bg: var(--accent-dark); }
@@ -324,7 +327,7 @@ h1, h2, h3, h4 {
   justify-content: center;
   width: 42px;
   height: 42px;
-  border-radius: var(--radius-full);
+  border-radius: var(--radius-sm);
   border: 1.5px solid var(--border);
   background: var(--surface);
   cursor: pointer;
