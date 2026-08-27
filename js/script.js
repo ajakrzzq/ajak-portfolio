@@ -51,11 +51,22 @@ document.addEventListener("DOMContentLoaded", function () {
   var toggle = document.querySelector(".nav__toggle");
   var mobileMenu = document.querySelector(".mobile-menu");
   if (toggle && mobileMenu) {
+    var mainRegion = document.getElementById("main");
+    var footerRegion = document.querySelector(".site-footer");
+    // The overlay covers <main>/<footer> completely but sits below the
+    // header (so the toggle stays reachable to close it) -- inert keeps
+    // screen-reader "browse mode" from reaching content hidden behind
+    // the menu, since the Tab-cycle below only covers linear keyboard use.
+    var setBackgroundInert = function (isInert) {
+      if (mainRegion) mainRegion.inert = isInert;
+      if (footerRegion) footerRegion.inert = isInert;
+    };
     var closeMenu = function (returnFocus) {
       toggle.setAttribute("aria-expanded", "false");
       toggle.setAttribute("aria-label", "Open menu");
       mobileMenu.classList.remove("is-open");
       document.body.style.overflow = "";
+      setBackgroundInert(false);
       if (header) header.classList.remove("menu-open");
       if (returnFocus) toggle.focus();
     };
@@ -64,6 +75,7 @@ document.addEventListener("DOMContentLoaded", function () {
       toggle.setAttribute("aria-label", "Close menu");
       mobileMenu.classList.add("is-open");
       document.body.style.overflow = "hidden";
+      setBackgroundInert(true);
       // The mobile menu's own backdrop is always light, so while it's
       // open the header needs its normal dark-on-light styling even if
       // the page hasn't scrolled past the (dark) hero yet.
@@ -134,6 +146,18 @@ document.addEventListener("DOMContentLoaded", function () {
     var lightboxCaption = lightbox.querySelector(".lightbox__caption");
     var lightboxClose = lightbox.querySelector(".lightbox__close");
     var lightboxTrigger = null;
+    var lightboxHeader = document.querySelector(".site-header");
+    var lightboxMain = document.getElementById("main");
+    var lightboxFooter = document.querySelector(".site-footer");
+    // The lightbox's backdrop covers the entire page (header included),
+    // so everything behind it is inert while open -- otherwise a screen
+    // reader in browse mode could still reach page content the Tab-only
+    // trap below doesn't account for.
+    var setPageInert = function (isInert) {
+      if (lightboxHeader) lightboxHeader.inert = isInert;
+      if (lightboxMain) lightboxMain.inert = isInert;
+      if (lightboxFooter) lightboxFooter.inert = isInert;
+    };
     var openLightbox = function (src, caption) {
       if (document.activeElement instanceof HTMLElement) {
         lightboxTrigger = document.activeElement;
@@ -143,12 +167,14 @@ document.addEventListener("DOMContentLoaded", function () {
       lightboxCaption.textContent = caption || "";
       lightbox.classList.add("is-open");
       document.body.style.overflow = "hidden";
+      setPageInert(true);
       lightboxClose.focus();
     };
     var closeLightbox = function () {
       lightbox.classList.remove("is-open");
       lightboxImg.src = "";
       document.body.style.overflow = "";
+      setPageInert(false);
       if (lightboxTrigger && typeof lightboxTrigger.focus === "function") {
         lightboxTrigger.focus();
       }
