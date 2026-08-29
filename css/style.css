@@ -184,6 +184,21 @@ h1, h2, h3, h4 {
 .section--ink .eyebrow { color: #9aa3ff; }
 .section--ink .eyebrow::before { background: #9aa3ff; }
 
+/* Global color-system alignment: inner-page eyebrows (page-header,
+   founder title) sit on paper, where lime text measures near-invisible
+   -- text stays neutral, only the dot picks up the brand accent. Scoped
+   to body.is-inner (about/services/work/contact only) so this cannot
+   reach the homepage's own eyebrows, several of which are still on the
+   pre-lime system and out of scope for this phase. */
+body.is-inner .eyebrow { color: var(--muted-2); }
+body.is-inner .eyebrow::before { background: var(--lime); }
+
+/* The dark CTA band (About/Services/Work) is the one place an inner
+   page's eyebrow sits on ink instead of paper -- lime text is safe
+   there, same as the approved Introduction's own eyebrow treatment. */
+.cta-band.section--ink .eyebrow { color: var(--lime); }
+.cta-band.section--ink .eyebrow::before { background: var(--lime); }
+
 .section-head {
   max-width: 640px;
   margin-bottom: var(--space-7);
@@ -225,8 +240,14 @@ h1, h2, h3, h4 {
   transition: background var(--speed) var(--ease), border-color var(--speed) var(--ease), color var(--speed) var(--ease);
 }
 
-.btn--accent { --btn-bg: var(--accent); --btn-fg: #ffffff; }
-.btn--accent:hover { --btn-bg: var(--accent-dark); }
+/* Brand accent button (Global color-system alignment): lime fill with
+   dark ink text at rest -- a large solid fill reads fine in lime
+   (unlike small text on paper, which measures near-invisible), so
+   this is safe as the primary "Start a Project"/"Send Enquiry" style
+   sitewide. Hover inverts to ink-fill/lime-text, reusing the same
+   pattern already approved on the hero's own nav CTA hover state. */
+.btn--accent { --btn-bg: var(--lime); --btn-fg: var(--ink); }
+.btn--accent:hover { --btn-bg: var(--ink); --btn-fg: var(--lime); }
 
 .btn--ghost {
   --btn-bg: transparent;
@@ -289,7 +310,7 @@ h1, h2, h3, h4 {
 
 .brand:hover { opacity: 0.8; }
 
-.brand__dot { color: var(--accent); }
+.brand__dot { color: var(--lime); }
 
 .nav__links {
   display: none;
@@ -313,7 +334,7 @@ h1, h2, h3, h4 {
   bottom: -3px;
   width: 100%;
   height: 2px;
-  background: var(--accent);
+  background: var(--lime);
   transform: scaleX(0);
   transform-origin: left;
   transition: transform var(--speed) var(--ease);
@@ -393,7 +414,16 @@ h1, h2, h3, h4 {
   font-weight: 600;
 }
 
-.mobile-menu__links a[aria-current="page"] { color: var(--accent); }
+/* Text stays ink (the mobile menu sits on paper, where lime text
+   would be hard to read at this size) -- the current page is marked
+   with a lime underline instead. */
+.mobile-menu__links a[aria-current="page"] {
+  color: var(--ink);
+  text-decoration: underline;
+  text-decoration-color: var(--lime);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 4px;
+}
 
 .mobile-menu__links a {
   display: inline-block;
@@ -1534,7 +1564,7 @@ a.card:hover {
 .step__num {
   font-family: var(--font-mono);
   font-size: 0.85rem;
-  color: var(--accent);
+  color: var(--muted-2);
   margin-bottom: var(--space-3);
 }
 
@@ -1547,6 +1577,14 @@ a.card:hover {
   padding: var(--space-8) var(--space-6);
   text-align: center;
 }
+
+/* Global color-system alignment: same warm charcoal as the approved
+   Hero/Introduction/Services, not the cooler sitewide --ink. Scoped to
+   the .cta-band + .section--ink combination specifically (the only
+   place the two classes are ever paired) rather than changing bare
+   .section--ink, which stays available at its original value for any
+   other use. */
+.cta-band.section--ink { background: #17140f; }
 
 .cta-band .eyebrow { justify-content: center; margin-bottom: var(--space-4); }
 
@@ -1809,7 +1847,7 @@ a.card:hover {
   object-position: center top;
 }
 
-.founder__title { color: var(--accent); margin-bottom: var(--space-2); }
+.founder__title { color: var(--muted-2); margin-bottom: var(--space-2); }
 .founder h3.founder__name { font-size: var(--fs-h2); margin-bottom: var(--space-4); }
 .founder p { color: var(--muted); }
 .founder p + p { margin-top: var(--space-4); }
@@ -1880,7 +1918,7 @@ a.card:hover {
   color: var(--ink-soft);
 }
 
-.feature-list svg { width: 16px; height: 16px; flex: none; margin-top: 4px; color: var(--accent); }
+.feature-list svg { width: 16px; height: 16px; flex: none; margin-top: 4px; color: var(--lime); }
 
 /* ---------- Portfolio filter (typography + rules, not pills) ----------
    A row of plain mono labels with an underline-in for the active
@@ -1919,7 +1957,7 @@ a.card:hover {
   right: 0;
   bottom: -1px;
   height: 2px;
-  background: var(--accent);
+  background: var(--lime);
   transform: scaleX(0);
   transform-origin: left;
   transition: transform var(--speed) var(--ease);
@@ -1987,7 +2025,7 @@ a.card:hover {
 
 /* ---------- Work page — flagship case study (Madani) ---------- */
 .work-feature {
-  --navy: #0b1220;
+  --navy: var(--ink); /* Global color-system alignment: unified with the warm ink family per direction; kept as --navy so its ~7 heading consumers below don't need individual edits. */
   padding-block: var(--space-9);
   border-bottom: 1px solid var(--border);
 }
@@ -2000,7 +2038,7 @@ a.card:hover {
   font-size: 0.72rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--accent);
+  color: var(--muted-2);
   margin-bottom: var(--space-4);
 }
 
@@ -2114,7 +2152,7 @@ a.card:hover {
 .numbered-list__index {
   font-family: var(--font-mono);
   font-size: 0.85rem;
-  color: var(--accent);
+  color: var(--muted-2);
   flex: none;
 }
 
@@ -2122,7 +2160,7 @@ a.card:hover {
 
 /* ---------- Work page — selected projects (alternating editorial layout) ---------- */
 .work-project {
-  --navy: #0b1220;
+  --navy: var(--ink); /* Global color-system alignment: unified with the warm ink family per direction; kept as --navy so its ~7 heading consumers below don't need individual edits. */
   padding-block: var(--space-9);
   border-bottom: 1px solid var(--border);
 }
@@ -2162,7 +2200,7 @@ a.card:hover {
   font-size: 0.72rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--accent);
+  color: var(--muted-2);
   margin-bottom: var(--space-4);
 }
 
@@ -2353,7 +2391,7 @@ a.card:hover {
   right: 0;
   bottom: 0;
   height: 3px;
-  background: var(--accent);
+  background: var(--lime);
   transform: scaleX(0);
   transform-origin: left;
   transition: transform var(--speed) var(--ease);
@@ -2378,7 +2416,14 @@ a.card:hover {
 }
 
 .contact-card__value { font-weight: 600; }
-.contact-card__value a:hover { color: var(--accent); }
+/* Text stays ink at this size (small label text); the lime accent
+   shows as an underline on hover instead of a color swap. */
+.contact-card__value a:hover {
+  text-decoration: underline;
+  text-decoration-color: var(--lime);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+}
 
 .form-panel {
   background: var(--surface);
@@ -2416,7 +2461,7 @@ a.card:hover {
 .field input:focus,
 .field select:focus,
 .field textarea:focus {
-  border-color: var(--accent);
+  border-color: var(--lime);
   outline: none;
 }
 
@@ -2434,7 +2479,7 @@ a.card:hover {
   margin-bottom: var(--space-5);
 }
 
-.form-note svg { width: 17px; height: 17px; flex: none; margin-top: 1px; color: var(--accent); }
+.form-note svg { width: 17px; height: 17px; flex: none; margin-top: 1px; color: var(--lime); }
 
 .form-status {
   margin-top: var(--space-4);
