@@ -199,6 +199,16 @@ body.is-inner .eyebrow::before { background: var(--lime); }
 .cta-band.section--ink .eyebrow { color: var(--lime); }
 .cta-band.section--ink .eyebrow::before { background: var(--lime); }
 
+/* Selected Work (homepage) art-direction pass: this eyebrow sits on
+   paper and was still on the legacy blue -- the one piece of Selected
+   Work the color-system phase deliberately left alone. Same treatment
+   as the inner pages: neutral text for legibility, lime only on the
+   dot. Scoped to #selected-work specifically, not the shared .eyebrow
+   base rule, so the rest of the homepage (out of scope for this
+   phase) is untouched. */
+#selected-work .eyebrow { color: var(--muted-2); }
+#selected-work .eyebrow::before { background: var(--lime); }
+
 .section-head {
   max-width: 640px;
   margin-bottom: var(--space-7);
@@ -1348,9 +1358,15 @@ a.card:hover {
 /* Safwa opens the sequence right after the hero, so its number carries
    a quiet accent tint -- the one deliberate, restrained use of colour
    in the section, marking it as the lead case study rather than just
-   "spread one of four". */
+   "spread one of four". Was a leftover legacy-blue tint. Raw lime is
+   too close in lightness to the warm paper behind it to read as a
+   ghost numeral at any opacity (unlike a solid button fill, this is a
+   huge translucent glyph, so luminance -- not hue -- is what makes it
+   visible), so this uses a deepened, muted lime instead of var(--lime)
+   directly, tuned to sit at roughly the same quiet visual weight the
+   blue tint had. */
 .work-spreads > .work-spread:first-child .work-spread__number {
-  color: rgba(59, 70, 240, 0.32);
+  color: #c8d24a;
 }
 
 .work-spread__meta {
@@ -1452,6 +1468,44 @@ a.card:hover {
   margin-top: var(--space-6);
   display: grid;
   gap: var(--space-4);
+}
+
+/* ---------- Selected Work -- per-project image art direction ----------
+   Each source screenshot has its own focal point; "cover + top" is
+   only correct where the strongest visual information genuinely sits
+   at the top of the frame. Decided per project, not inherited as one
+   sitewide default. */
+
+/* Safwa: nav, eyebrow, headline and both CTAs all sit in the upper
+   two-thirds of the frame; the only things near the left/right edges
+   are the logo and the WhatsApp pill, which can afford the small
+   horizontal trim this aspect-ratio change already produces. Center
+   top keeps the headline block centered under that trim either way. */
+.work-spread--safwa .work-spread__visual img { object-position: center top; }
+
+/* NOVAÉ: the original homepage screenshot (novae-home.jpg) was mostly
+   empty gradient with its headline sitting at the very bottom edge and
+   its subhead cut off -- a bad source crop, not something object-fit
+   could fix. Swapped to the New Arrivals screenshot (novae-products.jpg),
+   whose headline and product grid sit at the top of the frame like
+   every other spread in this section. */
+.work-spread--novae .work-spread__visual img { object-position: center top; }
+
+/* Klinik Ceria: cropping to this spread's wide aspect ratio trims
+   roughly the bottom quarter of the source. That's the "Need to visit
+   us?" info strip, not the hero -- headline, CTAs and the clinic
+   illustration all sit above it and survive fully intact. */
+.work-spread--klinik .work-spread__visual img { object-position: center top; }
+
+/* Below the two-column breakpoint every spread becomes a single
+   full-width column, which is where side and side-reverse start to
+   look identical. A slight right-inset on the reversed spread's image
+   echoes its "flipped" desktop identity without a second grid column. */
+@media (max-width: 899px) {
+  .work-spread--side-reverse .work-spread__visual {
+    width: 92%;
+    margin-left: auto;
+  }
 }
 
 @media (min-width: 720px) {
