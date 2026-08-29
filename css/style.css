@@ -16,6 +16,16 @@
   --accent: #3b46f0;
   --accent-dark: #2a32c4;
   --accent-tint: #eaebff;
+  /* Hero-only accent (Phase 23B): a vivid neon lime, reserved for small
+     marks placed on an ink-black surface -- on the warm paper/paper-alt
+     backgrounds it measures ~1:1 contrast (functionally invisible), so
+     it is never used as running text color here, only as a fill behind
+     off-white/ink content. Kept as a token (not hardcoded) so it stays
+     available if a future phase wants it elsewhere, but nothing outside
+     the hero references it yet. Recalibrated to the reference's own
+     measured lime (~#E1E778-#E7FF4D, warmer/yellower than the previous
+     value) per the Phase 23 color-calibration pass. */
+  --lime: #e7ff4d;
   --muted: #6b6b74;
   --muted-2: #96959e;
   --border: #e5e2da;
@@ -415,236 +425,387 @@ h1, h2, h3, h4 {
 }
 
 /* ---------- Hero ----------
-   Full-scale editorial hero: warm paper background keeps the left
-   column (headline/metadata) visually quiet, while the right column
-   carries the visual weight as a portrait (see .hero-portrait) plus a
-   smaller "Selected Work" insert (see .hero__featured) overlapping its
-   lower edge -- the magazine-cover + insert composition the redesign
-   brief asks for. min-height on desktop only (see below) gives the
-   90-100vh immersive first viewport; mobile stays content-height so it
-   never forces an oversized scroll before any real content appears. */
+   Single-canvas editorial composition (Phase 23F). Every prior pass
+   fought the fact that the shipped source asset
+   (images/hero/editorial-portrait.jpg) was ALREADY an aggressively
+   pre-cropped 550x1250 sliver of the real photograph -- fighting that
+   crop with transform:scale() only ever zoomed further into an
+   ever-smaller slice ("shoulder filling the screen"). The actual fix
+   was upstream of any CSS: the source asset itself has been replaced
+   with a far less-cropped export of the SAME photograph (1154x1536),
+   which shows the real scene -- the subject, the diagonal
+   architectural beams, genuine negative space -- instead of a tight
+   vertical strip of it. With that source, a plain object-fit:cover
+   full-bleed crop is naturally generous (no scale() anywhere in this
+   file), which is what finally makes a true single-canvas composition
+   possible: nav, headline and the project insert all layered directly
+   on ONE photograph, matching the reference, instead of a photo
+   column next to a solid text panel.
+   The site header itself is untouched (still position:sticky, still
+   transparent until scroll -- see the "Header / Nav" rules above):
+   this section just pulls up behind it with a negative margin equal
+   to the header's own rendered height, so the photo shows through the
+   header's transparent background instead of starting below it. That
+   keeps every other page's header behavior completely unchanged. */
 .hero--full {
   position: relative;
-  background: var(--paper-alt);
-  padding-top: var(--space-8);
-  padding-bottom: var(--space-9);
-  /* .hero__featured intentionally bleeds past its column at narrow
-     widths (see its max-width:639px rule below) -- clip that bleed at
-     the section edge instead of letting it create a page-wide
-     horizontal scrollbar. Purely a containment fix: it doesn't move or
-     resize anything that was actually visible. */
-  overflow-x: hidden;
-}
-
-@media (min-width: 1024px) {
-  .hero--full {
-    min-height: 94vh;
-    display: flex;
-    align-items: center;
-  }
-}
-
-.hero__inner {
-  display: grid;
-  gap: var(--space-8);
-}
-
-@media (min-width: 1024px) {
-  .hero__inner {
-    /* content column gets the edge (not an even split) so the stacked
-       three-line headline has real room, leaving the portrait at
-       roughly 40-45% of the composition rather than a plain 50/50
-       "photo on the right" split */
-    grid-template-columns: 1.15fr 1fr;
-    align-items: start;
-    gap: var(--space-7);
-  }
-
-  .hero__content { padding-top: var(--space-6); }
-}
-
-.hero__content { max-width: 560px; }
-
-.hero__headline {
-  font-family: var(--font-display);
-  font-weight: 700;
-  line-height: 1.02;
-  letter-spacing: -0.01em;
-  text-transform: uppercase;
-  font-size: clamp(2.6rem, 1.4rem + 4.2vw, 5.4rem);
-  color: var(--ink);
-}
-
-.hero__headline-accent { color: var(--accent); }
-
-.hero__lead {
-  margin-top: var(--space-5);
-  font-size: var(--fs-lead);
-  color: var(--muted);
-  max-width: 38ch;
-}
-
-.hero__actions {
-  margin-top: var(--space-6);
+  margin-top: -73px;
+  min-height: 100vh;
   display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: var(--space-5);
+  flex-direction: column;
+  justify-content: flex-end;
+  overflow: hidden;
+  /* Warm charcoal, not the sitewide --ink (#131316, slightly blue) --
+     the reference's dark tone reads warm, and this stays scoped to the
+     hero rather than changing --ink's cooler value everywhere else on
+     the site. */
+  background: #17140f;
 }
 
-/* Single hero CTA (per the redesign brief: no competing buttons here --
-   the nav bar and final CTA band already carry the direct "Start a
-   Project" conversion path). Editorial text-link treatment: uppercase,
-   tracked, underline-in on hover -- reuses the same interaction pattern
-   the old two-CTA row used for its secondary link. */
+/* Calibration pass (Phase 23 -- negative-space correction). The prior
+   version made the photo box's own width equal the hero's full width
+   at every breakpoint, so the subject's footprint tracked the same
+   ~20%-90% span regardless of viewport -- too dominant, not
+   right-weighted, per the visual audit. Structure now:
+   1. ATMOSPHERE (.hero__photo-pic--soft): stays full-bleed, but is
+      pushed much closer to "almost pure background" -- heavier blur,
+      near-grayscale, and dark enough that architectural detail reads
+      as a quiet, low-contrast hint rather than a recognizable blurred
+      photograph. Masked to fade to nothing at the true left edge.
+   2. SUBJECT (.hero__photo-pic--sharp): no longer full width. A
+      narrower box pinned to the right (not just the <img> repositioned
+      inside an oversized box) is what actually makes the subject
+      right-weighted -- the hero's left ~38% now contains no subject
+      pixels at all, only the atmosphere layer above. A small top inset
+      also shrinks the image's effective display scale and opens
+      headroom above the head (the source has no headroom of its own
+      to crop into -- his head is already at the top pixel row of the
+      photo -- so it has to come from the layout, not the crop). */
+.hero__photo {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.hero__photo-pic { display: block; position: absolute; }
+
+.hero__photo-pic--soft { inset: 0; width: 100%; height: 100%; }
+
+.hero__photo-img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 68% 4%;
+}
+
+/* Pushed further than the sample's own measured brightness: the goal
+   here is closer to "hint of atmosphere" than "blurred photograph." */
+.hero__photo-img--soft { filter: blur(46px) grayscale(0.95) saturate(0.18) brightness(0.32); }
+
+/* Blend-only fix: the seam between atmosphere and subject wasn't a
+   masking-shape problem, it was a MISSING-STEP problem -- opacity was
+   crossfading directly between "fully blurred/dark/desaturated" and
+   "fully sharp/normal," two very different image characters, with no
+   intermediate stage. That jump reads as a seam no matter how the
+   mask gradient itself is shaped. This third layer sits between them
+   at roughly the midpoint of blur/color/brightness, so the transition
+   passes through a visible intermediate state instead of jumping. */
+.hero__photo-img--mid { filter: blur(20px) grayscale(0.6) saturate(0.55) brightness(0.6); }
+
+/* True mobile only (<640px): the subject occupies just the upper
+   portion of the hero (top:0, confined height below), full width --
+   there's no room for a left/right split at this narrow a viewport.
+   A soft bottom feather on its own mask blends it into the
+   atmosphere/ink beneath rather than ending in a hard edge. */
+@media (max-width: 639px) {
+  .hero__photo-pic--sharp {
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 54%;
+    width: 100%;
+    -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 38%, transparent 88%);
+    mask-image: linear-gradient(to bottom, #000 0%, #000 38%, transparent 88%);
+  }
+
+  /* Bridges the same gap vertically: fully visible for longer than
+     .soft fades in, and fading out gradually well before .sharp does,
+     so there's always an intermediate treatment under the crossfade. */
+  .hero__photo-pic--mid {
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 62%;
+    width: 100%;
+    -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 50%, transparent 92%);
+    mask-image: linear-gradient(to bottom, #000 0%, #000 50%, transparent 92%);
+  }
+
+  /* Atmosphere fades out vertically here too, so the lower hero
+     (subheading, CTA, card) sits on the page's own ink background
+     instead of a dimmed photograph. */
+  .hero__photo-pic--soft {
+    -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 42%, transparent 62%);
+    mask-image: linear-gradient(to bottom, #000 0%, #000 42%, transparent 62%);
+  }
+}
+
+/* Tablet portrait (640-899px, e.g. 768x1024): this was still using
+   the mobile top/bottom-band treatment, which put the subject at
+   nearly full width with no negative space -- confirmed as a genuine
+   failure against the same right-weighting/negative-space criteria
+   applied at desktop, not an acceptable "mobile-family" adaptation.
+   Same right-anchored-box technique as 900px+ below, but sized for a
+   taller/narrower box and using the tall image (<picture> doesn't
+   swap to the landscape crop until 900px -- the landscape crop's own
+   1.346 aspect is too wide to crop sensibly into a box this narrow
+   and tall; the tall crop's 0.751 aspect fits it far better). */
+@media (min-width: 640px) and (max-width: 899px) {
+  .hero__photo-pic--sharp {
+    top: 10%;
+    left: auto;
+    right: 0;
+    bottom: 0;
+    height: auto;
+    width: 62%;
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, rgba(0, 0, 0, 0.55) 10%, #000 20%);
+    mask-image: linear-gradient(to right, transparent 0%, rgba(0, 0, 0, 0.55) 10%, #000 20%);
+  }
+
+  /* Same box as .sharp but wider -- extends further left, INTO the
+     zone before .sharp's own box even begins, where .soft was
+     previously handing off directly to .sharp. That's where the
+     bridging needs to happen; .sharp's own fade-in (above) stays
+     short because the subject sits close to its box's left edge --
+     widening it further was tried and blurred the subject's own face,
+     confirmed by screenshot, so it's reverted. */
+  .hero__photo-pic--mid {
+    top: 10%;
+    left: auto;
+    right: 0;
+    bottom: 0;
+    height: auto;
+    width: 78%;
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 22%);
+    mask-image: linear-gradient(to right, transparent 0%, #000 22%);
+  }
+
+  .hero__photo-pic--soft {
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, rgba(0, 0, 0, 0.4) 22%, #000 40%);
+    mask-image: linear-gradient(to right, transparent 0%, rgba(0, 0, 0, 0.4) 22%, #000 40%);
+  }
+
+  .hero__photo-img { object-position: 62% 4%; }
+}
+
+/* Thin top-to-bottom band only, so the transparent nav stays legible
+   regardless of what's directly beneath it. */
+.hero__photo::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background:
+    linear-gradient(to bottom, rgba(4, 4, 4, 0.45) 0%, transparent 14%),
+    radial-gradient(ellipse 60% 32% at 16% 24%, rgba(232, 229, 220, 0.3), transparent 70%);
+}
+
+/* 900px+: the subject becomes a narrower, right-anchored box instead
+   of the full hero width -- this, not object-position alone, is what
+   creates real left-hand negative space. The box is also height-
+   constrained against the landscape crop's own aspect ratio (0.89-1.18
+   vs the crop's 1.346), which is what restores object-position's X
+   value to having a real cropping effect again (12-34% of the crop's
+   width, depending on breakpoint) after it was inert at full-bleed. */
+@media (min-width: 900px) {
+  .hero__photo-pic--sharp {
+    top: 13%;
+    left: auto;
+    right: 0;
+    bottom: 0;
+    height: auto;
+    width: 58%;
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, rgba(0, 0, 0, 0.5) 9%, #000 18%);
+    mask-image: linear-gradient(to right, transparent 0%, rgba(0, 0, 0, 0.5) 9%, #000 18%);
+  }
+
+  /* Same box as .sharp but wider -- extends further left, INTO the
+     zone before .sharp's own box even begins, where .soft was
+     previously handing off directly to .sharp. That's where the
+     bridging needs to happen; .sharp's own fade-in (above) stays
+     short because the subject sits close to its box's left edge --
+     widening it further was tried and blurred the subject's own face,
+     confirmed by screenshot, so it's reverted. */
+  .hero__photo-pic--mid {
+    top: 13%;
+    left: auto;
+    right: 0;
+    bottom: 0;
+    height: auto;
+    width: 72%;
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 25%);
+    mask-image: linear-gradient(to right, transparent 0%, #000 25%);
+  }
+
+  .hero__photo-pic--soft {
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, rgba(0, 0, 0, 0.4) 22%, #000 40%);
+    mask-image: linear-gradient(to right, transparent 0%, rgba(0, 0, 0, 0.4) 22%, #000 40%);
+  }
+
+  .hero__photo-img { object-position: 56% 0%; }
+}
+
+.hero__overlay {
+  position: relative;
+  z-index: 2;
+  max-width: 24rem;
+  padding: 0 var(--space-5) var(--space-6);
+}
+
+/* 640-1023px: the headline's mobile clamp hits its ceiling (4.8rem)
+   well before this range ends, so a fixed 24rem column starts
+   clipping single condensed words like "BUSINESS" -- confirmed with
+   a text-bounds measurement (Range.getClientRects()), not just visual
+   inspection, since overflow: hidden further up the tree hides real
+   clipping from a page-level scrollWidth check. */
+@media (min-width: 640px) {
+  .hero__overlay { max-width: 30rem; }
+}
+
+/* Reference-matched headline: ONE four-line block ("Good/Business/
+   Deserves/Good Design.") with dark/light/dark color alternation for
+   hierarchy -- not a small lead-in plus a separate short punchline.
+   Sized to occupy roughly half the viewport height at desktop,
+   matching the reference's own proportions (measured directly from
+   the supplied mockup), not an invented smaller scale. */
+.hero__headline {
+  font-family: "Anton", var(--font-display), sans-serif;
+  font-weight: 400;
+  line-height: 0.86;
+  letter-spacing: 0.005em;
+  text-transform: uppercase;
+  font-size: clamp(2.8rem, 1.6rem + 9vw, 4.8rem);
+  color: #f3f1ec;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.55), 0 8px 28px rgba(0, 0, 0, 0.4);
+}
+
+.hero__headline-strong { color: #f3f1ec; }
+
+/* Reference-matched: "Good Business" reads dark/near-black there,
+   not off-white like the rest of the headline. A light glow (instead
+   of the dark drop-shadow the other lines use) keeps it legible
+   against the photo regardless of exactly how light or dark that
+   specific patch renders -- paired with the radial highlight added to
+   .hero__photo::before, which lightens that same corner of the
+   atmosphere layer to actually support the dark fill, not just paper
+   over a mismatch with a shadow trick alone. */
+.hero__headline-dark {
+  color: #16140f;
+  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.35), 0 0 24px rgba(240, 236, 224, 0.3);
+}
+
+/* Mid-gray against a similarly mid-toned blurred photo is the one
+   headline color that the shared text-shadow above doesn't fully
+   rescue (confirmed by screenshot -- "DESERVES" was reading as
+   nearly invisible). A tighter, darker shadow on top of the inherited
+   one adds the extra separation this specific color needs. */
+.hero__headline-soft { color: #a6a6a6; text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8), 0 4px 16px rgba(0, 0, 0, 0.6); }
+
+.hero__headline-mark { color: var(--lime); }
+
+.hero__sub {
+  margin-top: var(--space-4);
+  font-size: 0.95rem;
+  color: rgba(243, 241, 236, 0.85);
+  max-width: 30ch;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
+}
+
+.hero__sub-accent { color: var(--lime); font-weight: 600; }
+
+/* Outline/ghost button -- sits directly on the photo, so it doesn't
+   need an opaque fill to read; the border alone carries it. */
 .hero__cta {
   position: relative;
   display: inline-flex;
   align-items: center;
   gap: 0.6em;
-  padding-block: 0.5em;
+  margin-top: var(--space-5);
+  padding: 0.85em 1.6em;
+  border: 1.5px solid rgba(243, 241, 236, 0.55);
   font-weight: 600;
-  font-size: 0.95rem;
-  letter-spacing: 0.04em;
+  font-size: 0.85rem;
+  letter-spacing: 0.05em;
   text-transform: uppercase;
-  color: var(--ink);
-  transition: color var(--speed) var(--ease);
+  color: #f3f1ec;
+  transition: border-color var(--speed) var(--ease), color var(--speed) var(--ease);
 }
 
-.hero__cta::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  height: 2px;
-  background: currentColor;
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform var(--speed) var(--ease);
-}
-
-.hero__cta:hover::after { transform: scaleX(1); }
+.hero__cta:hover { border-color: var(--lime); color: var(--lime); }
 
 .hero__cta-arrow { display: inline-block; transition: transform var(--speed) var(--ease); }
 .hero__cta:hover .hero__cta-arrow { transform: translateX(3px); }
 
-/* Small masthead-style metadata block -- the "magazine issue info"
-   editorial detail. Reuses the same mono/tracked/uppercase treatment as
-   .eyebrow and .footer__heading elsewhere rather than inventing a new
-   label style. Kept to three short lines so it stays a quiet detail,
-   not a second block of copy competing with the headline. */
-.hero__metadata {
-  margin-top: var(--space-8);
+/* Foot metadata: thin rule + 3-column row + a literal barcode graphic
+   with tagline -- matching the reference's actual bottom structure
+   (previously collapsed to a single line, which under-built it). */
+.hero__foot { margin-top: var(--space-6); }
+
+.hero__foot-rule { display: block; height: 1px; background: rgba(243, 241, 236, 0.3); margin-bottom: var(--space-3); }
+
+.hero__foot-row {
   display: flex;
-  flex-direction: column;
-  gap: 0.4em;
-  font-family: var(--font-mono);
-  font-size: 0.7rem;
-  letter-spacing: 0.07em;
-  text-transform: uppercase;
-  color: var(--muted-2);
-}
-
-/* ---------- Hero visual (portrait + featured-work insert) ----------
-   .hero-portrait holds the real editorial portrait (images/hero/
-   editorial-portrait.{jpg,webp}, 550x1250, ratio 0.44): square
-   (unrounded) edges so it reads as a photograph bleeding into the page
-   rather than a generic rounded card, a soft left-edge mask into the
-   paper background instead of a hard box, and a taller near-full-body
-   crop per the redesign brief.
-   .hero__visual hosts both the portrait and the .hero__featured insert
-   that overlaps its lower edge, so it needs position:relative. */
-.hero__visual { width: 100%; position: relative; }
-
-.hero-portrait {
-  width: 100%;
-  /* capped relative to viewport (not just column width) so the portrait
-     stays a strong accent rather than stretching the hero tall on
-     narrow phones — see the "Mobile" responsive note above .hero--full */
-  max-width: min(340px, 64vw);
-  margin-inline: auto;
-  aspect-ratio: 550 / 1250;
-  -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 9%);
-  mask-image: linear-gradient(to right, transparent 0%, #000 9%);
-}
-
-.hero-portrait__img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center top;
-}
-
-@media (min-width: 640px) {
-  .hero-portrait {
-    /* Same height-vs-width reasoning as the ≥1024px rule below: at
-       tablet the layout is still single-column (stacked below the
-       text), so a 480px-wide box at this tall aspect-ratio would run
-       ~740px high and make the stacked hero excessively tall. */
-    width: auto;
-    max-width: 480px;
-    max-height: 58vh;
-  }
-}
-
-@media (min-width: 1024px) {
-  .hero-portrait {
-    /* The hero itself is height-constrained (min-height: 94vh on
-       .hero--full), so at desktop the portrait must be sized from
-       that available height rather than from column width -- a
-       width-driven tall aspect-ratio box can otherwise exceed the
-       viewport entirely and blow out the "one screen" hero. */
-    width: auto;
-    max-width: 620px;
-    max-height: min(70vh, 660px);
-    margin-left: auto;
-    margin-right: 0;
-  }
-}
-
-/* Featured-work insert: the "magazine insert" card overlapping the
-   portrait's lower edge, per the brief's hero visual hierarchy
-   (headline -> portrait -> featured project -> metadata -> CTA). A
-   real project screenshot in a plain bordered card -- no laptop
-   mockup, no extra chrome -- kept deliberately smaller than the
-   portrait so it reads as a supporting detail, not a second hero. */
-.hero__featured {
-  display: block;
-  position: absolute;
-  right: 4%;
-  bottom: -6%;
-  width: 60%;
-  max-width: 300px;
-  background: var(--surface);
-  border: 1px solid var(--border);
-  box-shadow: var(--shadow-lg);
-  padding: var(--space-3);
-  z-index: 2;
-  transition: transform var(--speed) var(--ease), box-shadow var(--speed) var(--ease);
-}
-
-.hero__featured:hover {
-  transform: translateY(-3px);
-  box-shadow: var(--shadow-md);
-}
-
-.hero__featured-label {
-  display: block;
-  margin-bottom: var(--space-2);
+  flex-wrap: wrap;
+  gap: var(--space-2) var(--space-4);
+  margin-bottom: var(--space-3);
   font-family: var(--font-mono);
   font-size: 0.62rem;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
-  color: var(--muted);
+  color: rgba(243, 241, 236, 0.7);
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.7);
 }
 
-.hero__featured-frame {
-  display: block;
-  aspect-ratio: 1440 / 820;
-  overflow: hidden;
+.hero__foot-tag {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.02em;
+  color: rgba(243, 241, 236, 0.5);
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.7);
 }
+
+.hero__barcode {
+  display: inline-block;
+  flex: none;
+  width: 46px;
+  height: 12px;
+  background-image: repeating-linear-gradient(to right, rgba(243, 241, 236, 0.8) 0 1px, transparent 1px 3px);
+}
+
+/* ---------- Featured project ----------
+   No card, no border, no shadow: a small unframed thumbnail with a
+   two-line caption beneath it, like a printed photo credit set
+   directly on the page rather than a UI component. In normal document
+   flow below the headline block at mobile/tablet (stacked, so it can
+   never collide with the headline text -- see the earlier version's
+   bug where an absolutely-positioned card overlapped the lead-in
+   line); switches to overlapping the photo's lower-right corner only
+   at >=1024px, where there's room for it beside the text instead of
+   below it. */
+.hero__featured {
+  display: block;
+  position: relative;
+  z-index: 2;
+  width: 11rem;
+  margin: 0 var(--space-5) var(--space-7);
+}
+
+.hero__featured-frame { display: block; aspect-ratio: 1440 / 820; overflow: hidden; }
 
 .hero__featured-frame img {
   display: block;
@@ -655,25 +816,110 @@ h1, h2, h3, h4 {
   transition: transform 0.5s var(--ease);
 }
 
-.hero__featured:hover .hero__featured-frame img { transform: scale(1.04); }
+.hero__featured:hover .hero__featured-frame img { transform: scale(1.05); }
 
-.hero__featured-link {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 0.5em;
+.hero__featured-caption {
+  display: block;
   margin-top: var(--space-2);
-  font-weight: 600;
-  font-size: 0.8rem;
-  color: var(--ink);
+  padding-top: var(--space-2);
+  border-top: 1px solid var(--lime);
 }
 
-.hero__featured-link svg,
-.hero__featured-link span[aria-hidden] { transition: transform var(--speed) var(--ease); }
-.hero__featured:hover .hero__featured-link span[aria-hidden] { transform: translateX(3px); }
+/* Text-shadow, not a background box: the caption has no card behind
+   it by design, and removing the old heavy directional gradient (now
+   that the photo itself carries the composition on the right) left
+   this text sitting directly on whatever the photo shows at that
+   exact spot -- illegible over busier/brighter content. A shadow
+   guarantees contrast without adding the card chrome this treatment
+   deliberately avoids. */
+.hero__featured-title {
+  display: block;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 0.85rem;
+  color: #f3f1ec;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.85), 0 2px 10px rgba(0, 0, 0, 0.6);
+}
 
-@media (max-width: 639px) {
-  .hero__featured { width: 72%; max-width: 240px; right: -4%; bottom: -8%; }
+.hero__featured-meta {
+  display: block;
+  margin-top: 0.2em;
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: rgba(243, 241, 236, 0.75);
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.85), 0 2px 10px rgba(0, 0, 0, 0.6);
+}
+
+/* Object-position for the 900px+ sharp box now lives with the rest of
+   that breakpoint's photo rules, above -- it's height-constrained
+   against the narrower box now (not full-bleed), so X has a real
+   cropping effect again without any scale/zoom. */
+@media (min-width: 1024px) {
+  .hero--full { height: calc(100vh - 73px); justify-content: flex-end; }
+
+  .hero__overlay {
+    max-width: 48vw;
+    padding: 0 clamp(var(--space-5), 5vw, 4.5rem) var(--space-8);
+  }
+
+  /* ~50% of the viewport height across the 4 lines at 1920px, matching
+     the reference mockup's own measured proportions. Growth rate
+     (vw coefficient) is tuned so the longest single word ("BUSINESS")
+     stays inside the 48vw column above -- verified with a text-bounds
+     measurement, not just a visual check, since the previous 4.8vw
+     rate overflowed its 42vw column by 60-117px at 1024-1440px. */
+  .hero__headline { font-size: clamp(4.6rem, 2.6rem + 3.6vw, 8.6rem); }
+
+  .hero__featured {
+    position: absolute;
+    right: clamp(var(--space-5), 5vw, 4.5rem);
+    bottom: var(--space-7);
+    width: min(60%, 13rem);
+    margin: 0;
+  }
+}
+
+/* No width cap needed past 1600px any more: the sharp box is already
+   a percentage of the viewport (58%), so its upscale factor against
+   the 1154px-wide source stays modest and roughly constant across
+   1024-1920 (~0.55x-1.03x) instead of climbing toward 1.7x the way a
+   100vw-wide box did. */
+
+/* The header itself is untouched -- see the Header/Nav rules above --
+   but its brand/link text color (var(--ink), near-black) assumes the
+   light backgrounds every other page has behind it. On the homepage,
+   before any scroll, the header sits transparent over the new dark
+   hero photo instead, which would make that text unreadable (near-
+   black on a near-black photo). This override only fires in that one
+   state -- body.is-home (index.html only) AND :not(.is-scrolled) --
+   and reverts automatically once .is-scrolled gives the header its
+   normal opaque light background back, at which point the original
+   dark text is correct again. */
+body.is-home .site-header:not(.is-scrolled) .brand,
+body.is-home .site-header:not(.is-scrolled) .nav__links a {
+  color: #f3f1ec;
+}
+
+body.is-home .site-header:not(.is-scrolled) .brand__dot { color: var(--lime); }
+
+body.is-home .site-header:not(.is-scrolled) .nav__links a::after { background: var(--lime); }
+
+/* Opaque ink fill, not a transparent outline: the header now often
+   sits over the bright/busy photo column (not a uniformly dark
+   surface), where a transparent button becomes illegible. An opaque
+   background keeps it readable regardless of what's behind it. */
+body.is-home .site-header:not(.is-scrolled) .nav__cta {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: #f3f1ec;
+}
+
+body.is-home .site-header:not(.is-scrolled) .nav__cta:hover {
+  background: var(--ink);
+  border-color: var(--lime);
+  color: var(--lime);
 }
 
 /* ---------- Trust strip (home page, directly under the hero) ----------
@@ -1359,25 +1605,8 @@ a.card:hover {
 }
 
 /* ---------- Hero entrance sequence ---------- */
-.hero__headline.reveal { animation-delay: 0.05s; }
-.hero__lead.reveal { animation-delay: 0.2s; }
-.hero__actions.reveal { animation-delay: 0.34s; }
-.hero__metadata.reveal { animation-delay: 0.46s; }
-
-.hero__visual.reveal {
-  animation-name: reveal-in-right;
-  animation-delay: 0.3s;
-}
-
-.hero__featured.reveal {
-  animation-name: reveal-in-right;
-  animation-delay: 0.5s;
-}
-
-@keyframes reveal-in-right {
-  from { opacity: 0; transform: translateX(28px); }
-  to { opacity: 1; transform: translateX(0); }
-}
+.hero__overlay.reveal { animation-delay: 0.15s; }
+.hero__featured.reveal { animation-delay: 0.35s; }
 
 /* ---------- Work page entrance sequence ---------- */
 .work-filter.reveal { animation-delay: 0.32s; }

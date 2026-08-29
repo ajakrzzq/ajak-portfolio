@@ -22,10 +22,10 @@
   <link rel="icon" type="image/svg+xml" href="images/brand/favicon.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
+<body class="is-home">
   <a class="skip-link" href="#main">Skip to content</a>
 
   <header class="site-header">
@@ -69,40 +69,57 @@
 
     <!-- HERO -->
     <section class="hero--full">
-      <div class="wrap hero__inner">
-        <div class="hero__content">
-          <h1 class="hero__headline reveal">Good business<br>deserves<br><span class="hero__headline-accent">good design.</span></h1>
-          <p class="hero__lead reveal">Websites &amp; digital experiences for businesses ready to stand out.</p>
-          <div class="hero__actions reveal">
-            <a class="hero__cta" href="work.html">View Selected Work<span class="hero__cta-arrow" aria-hidden="true">&rarr;</span></a>
-          </div>
-          <div class="hero__metadata reveal">
-            <span>Ajak.Web&reg; &mdash; Digital Studio</span>
+      <div class="hero__photo">
+        <picture class="hero__photo-pic hero__photo-pic--soft" aria-hidden="true">
+          <source type="image/webp" media="(min-width: 900px)" srcset="images/hero/editorial-portrait-landscape.webp">
+          <source type="image/jpeg" media="(min-width: 900px)" srcset="images/hero/editorial-portrait-landscape.jpg">
+          <source type="image/webp" srcset="images/hero/editorial-portrait.webp">
+          <img class="hero__photo-img hero__photo-img--soft" src="images/hero/editorial-portrait.jpg" alt="" fetchpriority="high" loading="eager" decoding="async">
+        </picture>
+        <picture class="hero__photo-pic hero__photo-pic--mid" aria-hidden="true">
+          <source type="image/webp" media="(min-width: 900px)" srcset="images/hero/editorial-portrait-landscape.webp">
+          <source type="image/jpeg" media="(min-width: 900px)" srcset="images/hero/editorial-portrait-landscape.jpg">
+          <source type="image/webp" srcset="images/hero/editorial-portrait.webp">
+          <img class="hero__photo-img hero__photo-img--mid" src="images/hero/editorial-portrait.jpg" alt="" fetchpriority="high" loading="eager" decoding="async">
+        </picture>
+        <picture class="hero__photo-pic hero__photo-pic--sharp">
+          <source type="image/webp" media="(min-width: 900px)" srcset="images/hero/editorial-portrait-landscape.webp">
+          <source type="image/jpeg" media="(min-width: 900px)" srcset="images/hero/editorial-portrait-landscape.jpg">
+          <source type="image/webp" srcset="images/hero/editorial-portrait.webp">
+          <img class="hero__photo-img" src="images/hero/editorial-portrait.jpg"
+               width="1154" height="1536"
+               alt="Ajak, founder of Ajak.Web, laughing mid-conversation in a bright indoor space, wearing a white t-shirt"
+               fetchpriority="high" loading="eager" decoding="async">
+        </picture>
+      </div>
+
+      <div class="hero__overlay reveal">
+        <h1 class="hero__headline"><span class="hero__headline-dark">Good<br>Business</span><br><span class="hero__headline-soft">Deserves</span><br><span class="hero__headline-strong">Good Design<span class="hero__headline-mark">.</span></span></h1>
+        <p class="hero__sub"><span class="hero__sub-accent">Websites</span> &amp; digital experiences for Malaysian businesses.</p>
+        <a class="hero__cta" href="work.html">View Selected Work<span class="hero__cta-arrow" aria-hidden="true">&rarr;</span></a>
+        <div class="hero__foot">
+          <span class="hero__foot-rule" aria-hidden="true"></span>
+          <div class="hero__foot-row">
+            <span>AJK / 001</span>
             <span>Web Design / Development</span>
-            <span>Petaling Jaya, Malaysia</span>
+            <span>Petaling Jaya, MY</span>
           </div>
-        </div>
-
-        <div class="hero__visual reveal">
-          <figure class="hero-portrait">
-            <picture>
-              <source type="image/webp" srcset="images/hero/editorial-portrait.webp">
-              <img class="hero-portrait__img" src="images/hero/editorial-portrait.jpg"
-                   width="550" height="1250"
-                   alt="Ajak, founder of Ajak.Web, walking indoors mid-conversation, wearing a white t-shirt and jeans"
-                   fetchpriority="high" loading="eager" decoding="async">
-            </picture>
-          </figure>
-
-          <a class="hero__featured reveal" href="work.html#safwa">
-            <span class="hero__featured-label">01 / Selected Work &mdash; Safwa Umrah</span>
-            <span class="hero__featured-frame">
-              <img src="images/projects/safwa/safwa-home.jpg" alt="Safwa Umrah travel website homepage" width="1440" height="820" loading="eager" decoding="async">
-            </span>
-            <span class="hero__featured-link">Explore Project<span aria-hidden="true">&rarr;</span></span>
-          </a>
+          <p class="hero__foot-tag">
+            <span class="hero__barcode" aria-hidden="true"></span>
+            <span>Built to help businesses grow with confidence.</span>
+          </p>
         </div>
       </div>
+
+      <a class="hero__featured reveal" href="work.html#safwa">
+        <span class="hero__featured-frame">
+          <img src="images/projects/safwa/safwa-home.jpg" alt="Safwa Umrah travel website homepage" width="1440" height="820" loading="eager" decoding="async">
+        </span>
+        <span class="hero__featured-caption">
+          <span class="hero__featured-title">Safwa Umrah</span>
+          <span class="hero__featured-meta">Featured Project &middot; 01/04</span>
+        </span>
+      </a>
     </section>
 
     <!-- TRUST STRIP -->
