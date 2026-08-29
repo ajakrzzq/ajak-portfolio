@@ -1558,7 +1558,7 @@ a.card:hover {
 .work-index__link svg { width: 15px; height: 15px; transition: transform var(--speed) var(--ease); }
 .work-index__row:hover .work-index__link svg { transform: translateX(3px); }
 
-/* ---------- Checklist ---------- */
+/* ---------- Why Ajak -- founder line ---------- */
 /* Founder line: a first-person statement inside the "Why Ajak" section
    head, sitting between the h2 and the checklist. Deliberately not the
    shared .section-head p (muted, same weight as every other section's
@@ -1584,6 +1584,28 @@ a.card:hover {
 @media (min-width: 860px) {
   .why-ajak__grid { grid-template-columns: 1.1fr 0.9fr; gap: var(--space-8); align-items: start; }
 }
+
+/* This section's heading previously had no font-size rule of its own
+   and was silently falling back to the browser's default <h2> size
+   (a flat 24px at every viewport) -- the same gap Services and
+   Introduction each avoided by giving their own heading a dedicated
+   class. Scale follows that precedent: a bit more assertive than
+   Services' clamp(1.8rem, 1.3rem + 2vw, 2.6rem) since this is framed
+   as a standalone statement (like the Introduction manifesto) rather
+   than a preview heading, but capped well short of Introduction's own
+   scale so it doesn't compete with it. font-family/weight/line-height
+   still come from the shared h1,h2,h3,h4 rule -- only font-size is set
+   here. */
+.why-ajak__statement {
+  font-size: clamp(1.9rem, 1.3rem + 2.4vw, 2.9rem);
+}
+
+/* Eyebrow dot only: Why Ajak's own accent-system correction, scoped to
+   this section so it can't reach the shared .eyebrow/.eyebrow::before
+   rule used elsewhere. The eyebrow text already renders neutral here
+   (the more-specific .section-head p rule already outranks the plain
+   .eyebrow color), so only the dot needs to move off the legacy blue. */
+.why-ajak__grid .eyebrow::before { background: var(--lime); }
 
 .why-ajak__list { display: flex; flex-direction: column; }
 
