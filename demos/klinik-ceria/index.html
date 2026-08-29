@@ -15,11 +15,11 @@
   <meta name="twitter:description" content="A friendly, convenient general clinic providing everyday healthcare services for individuals and families in the local community.">
 
   <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
-  <meta name="theme-color" content="#fbfaf6">
+  <meta name="theme-color" content="#f7f6f2">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
 
   <!--
@@ -51,782 +51,238 @@
     ]
   }
   </script>
-
-  <noscript><style>[data-reveal],[data-reveal-group]>*{opacity:1;transform:none}.mobile-whatsapp{display:none}</style></noscript>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
 
-  <header class="site-header" data-site-header>
-    <div class="container site-header__inner">
-      <a href="#home" class="logo">
-        <span class="logo__icon" aria-hidden="true">
-          <svg viewBox="0 0 40 40"><circle cx="20" cy="20" r="19" fill="#DCEDE6"/><path d="M8 21h5l3-8 4 14 3-9h9" fill="none" stroke="#1F5D4C" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  <!-- ============================== STATUS BAR ============================== -->
+  <header class="bar">
+    <div class="bar-inner">
+      <div class="sign--compact" data-sign role="group" aria-label="Clinic open status">
+        <span class="sign-dot" data-sign-dot aria-hidden="true"></span>
+        <span class="sign-text">
+          <span class="sign-status" data-sign-status aria-live="polite">Checking hours&hellip;</span>
+          <span class="sign-hours" data-sign-hours>Mon&ndash;Sat 08:00&ndash;22:00 &middot; Sun 09:00&ndash;17:00</span>
         </span>
-        <span class="logo__text">
-          <span class="logo__mark">Klinik Ceria</span>
-          <span class="logo__sub">Family General Clinic</span>
-        </span>
-      </a>
+      </div>
 
-      <nav class="primary-nav" aria-label="Primary">
-        <a class="nav-link" href="#home" aria-current="page">Home</a>
-        <a class="nav-link" href="#about">About</a>
-        <a class="nav-link" href="#services">Services</a>
-        <a class="nav-link" href="#clinic">Clinic</a>
-        <a class="nav-link" href="#hours">Hours</a>
-        <a class="nav-link" href="#contact">Contact</a>
+      <span class="bar-mark">Klinik Ceria</span>
+
+      <nav class="bar-links" aria-label="Page sections">
+        <a href="#services">Services</a>
+        <a href="#expect">What to Expect</a>
+        <a href="#visit">Visit</a>
       </nav>
 
-      <div class="header-actions">
-        <a class="btn btn--primary btn--sm" href="https://wa.me/60129876543?text=Hi%20Klinik%20Ceria%2C%20I%20would%20like%20to%20enquire%20about%20a%20clinic%20visit." target="_blank" rel="noopener">
-          Contact Clinic
-        </a>
-        <a class="icon-btn header-actions__wa" href="https://wa.me/60129876543?text=Hi%20Klinik%20Ceria%2C%20I%20would%20like%20to%20enquire%20about%20a%20clinic%20visit." target="_blank" rel="noopener" aria-label="Chat with Klinik Ceria on WhatsApp">
-          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2z"/></svg>
-        </a>
-        <button type="button" class="menu-toggle" data-menu-toggle aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
-          <span class="menu-toggle__box" aria-hidden="true"><span></span><span></span><span></span></span>
-        </button>
-      </div>
+      <a class="bar-wa" href="https://wa.me/60129876543?text=Hi%20Klinik%20Ceria%2C%20I%20would%20like%20to%20enquire%20about%20a%20clinic%20visit." target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2z"/></svg>
+        <span>Ask on WhatsApp</span>
+      </a>
     </div>
   </header>
-
-  <div class="mobile-menu" data-mobile-menu id="mobile-menu" role="dialog" aria-modal="true" aria-label="Site menu">
-    <nav class="mobile-menu__links" aria-label="Mobile">
-      <a href="#home">Home</a>
-      <a href="#about">About</a>
-      <a href="#services">Services</a>
-      <a href="#clinic">Clinic</a>
-      <a href="#hours">Hours</a>
-      <a href="#contact">Contact</a>
-    </nav>
-    <div class="mobile-menu__foot">
-      <a class="btn btn--primary" href="https://wa.me/60129876543?text=Hi%20Klinik%20Ceria%2C%20I%20would%20like%20to%20enquire%20about%20a%20clinic%20visit." target="_blank" rel="noopener">
-        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2z"/></svg>
-        WhatsApp Clinic
-      </a>
-      <a href="tel:+60378904455">+60 3-7890 4455</a>
-    </div>
-  </div>
 
   <main id="main">
 
     <!-- ============================== HERO ============================== -->
-    <section class="hero" id="home" aria-label="Klinik Ceria introduction">
-      <div class="container hero__inner">
-        <div class="hero__content" data-reveal>
-          <p class="eyebrow hero__eyebrow">Family General Clinic</p>
-          <h1>Everyday Healthcare for You &amp; Your Family</h1>
-          <p class="hero__sub">A friendly and convenient general clinic providing healthcare services for individuals and families in the local Puchong community.</p>
-          <div class="hero__actions">
-            <a class="btn btn--primary" href="https://wa.me/60129876543?text=Hi%20Klinik%20Ceria%2C%20I%20would%20like%20to%20enquire%20about%20a%20clinic%20visit." target="_blank" rel="noopener">
+    <section class="hero" id="hero" aria-label="Klinik Ceria introduction">
+      <!-- The Sign as a full-width strip, the hero's top grid line -->
+      <div class="sign--strip" data-sign role="group" aria-label="Clinic open status">
+        <div class="sign-inner">
+          <span class="sign-dot" data-sign-dot aria-hidden="true"></span>
+          <span class="sign-status" data-sign-status aria-live="polite">Checking hours&hellip;</span>
+          <span class="sign-hours" data-sign-hours>Mon&ndash;Sat 08:00&ndash;22:00 &middot; Sun 09:00&ndash;17:00</span>
+        </div>
+      </div>
+
+      <div class="hero-grid">
+        <div class="hero-text">
+          <h1><span>Walk in.</span><span>No referral.</span><span>Same day.</span></h1>
+          <p class="hero-sub">A friendly, convenient general clinic for individuals and families in the local Puchong community.</p>
+
+          <div class="hero-actions">
+            <a class="cta cta--primary" href="https://wa.me/60129876543?text=Hi%20Klinik%20Ceria%2C%20I%20would%20like%20to%20enquire%20about%20a%20clinic%20visit." target="_blank" rel="noopener">
               <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2z"/></svg>
-              WhatsApp Clinic
+              Ask on WhatsApp
             </a>
-            <a class="btn btn--outline" href="#hours">View Clinic Hours</a>
-          </div>
-          <p class="hero__note"><span class="dot" aria-hidden="true"></span> Walk-ins welcome, no referral needed for general consultations.</p>
-        </div>
-        <div class="hero__media" data-reveal>
-          <div class="hero__media-frame">
-            <img src="images/hero-family-doctor.jpg" alt="A doctor speaking warmly with a parent and child at Klinik Ceria" width="1400" height="1120" loading="eager" fetchpriority="high">
-            <svg viewBox="0 0 600 480" role="img" aria-label="Illustration of a doctor speaking warmly with a parent and child at a consultation desk" hidden>
-              <ellipse cx="504" cy="74" rx="150" ry="120" fill="#FDF1E6" opacity="0.7"/>
-              <ellipse cx="58" cy="432" rx="172" ry="140" fill="#DCEDE6" opacity="0.8"/>
-              <ellipse cx="300" cy="434" rx="270" ry="16" fill="#17453A" opacity="0.07"/>
-
-              <!-- window + plant -->
-              <rect x="40" y="46" width="132" height="164" rx="20" fill="#FFFFFF" stroke="#E1E9E4" stroke-width="2"/>
-              <rect x="54" y="60" width="104" height="136" rx="10" fill="#EEF7F3"/>
-              <line x1="106" y1="60" x2="106" y2="196" stroke="#E1E9E4" stroke-width="3"/>
-              <line x1="54" y1="128" x2="158" y2="128" stroke="#E1E9E4" stroke-width="3"/>
-              <rect x="86" y="196" width="40" height="26" rx="6" fill="#C96C3C"/>
-              <ellipse cx="106" cy="180" rx="10" ry="22" fill="#2E7D66" transform="rotate(-18 106 180)"/>
-              <ellipse cx="106" cy="174" rx="10" ry="24" fill="#2E7D66"/>
-              <ellipse cx="106" cy="180" rx="10" ry="22" fill="#2E7D66" transform="rotate(18 106 180)"/>
-
-              <!-- table -->
-              <ellipse cx="330" cy="344" rx="178" ry="26" fill="#FFFFFF" stroke="#E1E9E4" stroke-width="2"/>
-              <rect x="176" y="344" width="308" height="66" rx="16" fill="#FFFFFF" stroke="#E1E9E4" stroke-width="2"/>
-
-              <!-- parent -->
-              <circle cx="206" cy="212" r="37" fill="#2A2320"/>
-              <rect x="146" y="230" width="120" height="186" rx="44" fill="#E98A57" stroke="#C96C3C" stroke-width="2"/>
-              <circle cx="206" cy="216" r="25" fill="#C68B59"/>
-              <circle cx="198" cy="214" r="2" fill="#1E2A27"/>
-              <circle cx="214" cy="214" r="2" fill="#1E2A27"/>
-              <path d="M198,225 Q206,229 214,225" fill="none" stroke="#1E2A27" stroke-width="1.8" stroke-linecap="round"/>
-
-              <!-- child -->
-              <ellipse cx="118" cy="392" rx="34" ry="10" fill="#FBDCC2"/>
-              <rect x="98" y="360" width="40" height="34" rx="10" fill="#FDF1E6" stroke="#E1E9E4" stroke-width="2"/>
-              <rect x="84" y="318" width="70" height="80" rx="30" fill="#F4C77A" stroke="#E0AC55" stroke-width="2"/>
-              <circle cx="119" cy="286" r="20" fill="#5C4433"/>
-              <circle cx="119" cy="300" r="22" fill="#F0C9A0"/>
-              <circle cx="112" cy="300" r="1.8" fill="#1E2A27"/>
-              <circle cx="126" cy="300" r="1.8" fill="#1E2A27"/>
-              <path d="M113,307 Q119,310 125,307" fill="none" stroke="#1E2A27" stroke-width="1.6" stroke-linecap="round"/>
-
-              <!-- doctor -->
-              <circle cx="392" cy="208" r="34" fill="#3B2A22"/>
-              <rect x="330" y="230" width="124" height="190" rx="46" fill="#FFFFFF" stroke="#E1E9E4" stroke-width="2"/>
-              <path d="M374,244 L392,268 L382,240 Z" fill="#2E7D66"/>
-              <path d="M410,244 L392,268 L402,240 Z" fill="#2E7D66"/>
-              <circle cx="392" cy="214" r="26" fill="#F0C9A0"/>
-              <circle cx="383" cy="212" r="2.1" fill="#1E2A27"/>
-              <circle cx="401" cy="212" r="2.1" fill="#1E2A27"/>
-              <path d="M383,222 Q392,226 401,222" fill="none" stroke="#1E2A27" stroke-width="1.8" stroke-linecap="round"/>
-              <path d="M375,250 C369,264 369,278 383,284" fill="none" stroke="#2E7D66" stroke-width="5" stroke-linecap="round"/>
-              <circle cx="383" cy="285" r="7" fill="#C96C3C"/>
-
-              <!-- clipboard + plant on table -->
-              <rect x="300" y="322" width="52" height="38" rx="5" fill="#FFFFFF" stroke="#E1E9E4" stroke-width="2"/>
-              <rect x="318" y="318" width="16" height="8" rx="3" fill="#E1E9E4"/>
-              <line x1="308" y1="336" x2="344" y2="336" stroke="#DCEDE6" stroke-width="3" stroke-linecap="round"/>
-              <line x1="308" y1="346" x2="336" y2="346" stroke="#DCEDE6" stroke-width="3" stroke-linecap="round"/>
-              <rect x="452" y="322" width="26" height="18" rx="5" fill="#C96C3C"/>
-              <ellipse cx="465" cy="308" rx="16" ry="12" fill="#2E7D66"/>
-            </svg>
-          </div>
-          <div class="hero__badge">
-            <span class="hero__badge-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.5 8.5c0 5-8.5 11-8.5 11s-8.5-6-8.5-11a4.5 4.5 0 0 1 8.5-2 4.5 4.5 0 0 1 8.5 2z"/></svg>
-            </span>
-            <span><strong>Family-Friendly</strong> <span>Care for every age, under one roof</span></span>
+            <a class="cta-line" href="#services">See today's services</a>
           </div>
         </div>
+
+        <figure class="hero-photo">
+          <div class="hero-photo-frame">
+            <img
+              src="images/hero-family-doctor.jpg"
+              alt="A doctor speaking warmly with a parent and child at Klinik Ceria"
+              width="1400" height="1120"
+              loading="eager" fetchpriority="high"
+            >
+          </div>
+          <figcaption class="photo-tag"><strong>Klinik Ceria</strong><span>Bandar Puteri</span></figcaption>
+        </figure>
       </div>
     </section>
 
-    <!-- ============================== QUICK INFO STRIP ============================== -->
-    <section class="quick-info" aria-label="Quick clinic information">
-      <div class="container quick-info__inner" data-reveal>
-        <p class="quick-info__lead">Need to visit us? Here's what you need to know.</p>
-        <div class="quick-info__grid">
-          <a class="quick-info__item" href="#location">
-            <span class="quick-info__icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-6.4 7-11.5A7 7 0 0 0 5 9.5C5 14.6 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>
-            </span>
-            <span>
-              <p class="quick-info__label">Location</p>
-              <p class="quick-info__value">Puchong, Selangor</p>
+    <!-- ============================== 01 · SERVICES ============================== -->
+    <section class="services" id="services" aria-labelledby="services-heading">
+      <div class="wrap">
+        <div class="wayfind">
+          <span class="wayfind-num" aria-hidden="true">01</span>
+          <h2 id="services-heading">Services</h2>
+        </div>
+
+        <div class="services-intro">
+          <figure class="services-photo">
+            <div class="services-photo-frame">
+              <img
+                src="images/about-doctor-consultation.jpg"
+                alt="A doctor consulting with a patient in a warm, welcoming room at Klinik Ceria"
+                width="900" height="1125"
+                loading="lazy"
+              >
+            </div>
+            <figcaption class="photo-tag photo-tag--quiet"><span>A consultation at Klinik Ceria</span></figcaption>
+          </figure>
+
+          <p class="section-lead">From everyday illnesses to routine care, our clinic supports individuals and families with accessible general healthcare services. Every row below is a direct line to ask about that service on WhatsApp.</p>
+        </div>
+
+        <div class="services-list">
+          <a class="service-row" href="https://wa.me/60129876543?text=Hi%20Klinik%20Ceria%2C%20I'd%20like%20to%20ask%20about%20General%20Consultation.%20" target="_blank" rel="noopener">
+            <span class="service-index">01</span>
+            <span class="service-body">
+              <span class="service-name">General Consultation</span>
+              <span class="service-desc">Same-day consultations for every member of the family, covering everyday concerns such as fever, cough, flu, infections and other common conditions.</span>
+              <span class="service-tags">Fever &amp; Flu &middot; Minor Injuries &middot; Common Infections &middot; Medical Certificates</span>
             </span>
           </a>
-          <a class="quick-info__item" href="#hours">
-            <span class="quick-info__icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg>
-            </span>
-            <span>
-              <p class="quick-info__label">Opening Hours</p>
-              <p class="quick-info__value">Open Daily</p>
-            </span>
-          </a>
-          <a class="quick-info__item" href="https://wa.me/60129876543?text=Hi%20Klinik%20Ceria%2C%20I%20would%20like%20to%20enquire%20about%20a%20clinic%20visit." target="_blank" rel="noopener">
-            <span class="quick-info__icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.5 8.5 0 0 1-12.4 7.5L4 20l1.1-4.4A8.5 8.5 0 1 1 21 11.5z"/></svg>
-            </span>
-            <span>
-              <p class="quick-info__label">WhatsApp</p>
-              <p class="quick-info__value">Chat With Us</p>
+
+          <a class="service-row" href="https://wa.me/60129876543?text=Hi%20Klinik%20Ceria%2C%20I'd%20like%20to%20ask%20about%20Family%20%26%20Child%20Healthcare.%20" target="_blank" rel="noopener">
+            <span class="service-index">02</span>
+            <span class="service-body">
+              <span class="service-name">Family &amp; Child Healthcare</span>
+              <span class="service-desc">General healthcare support for children and family members of all ages, in a friendly clinic setting.</span>
             </span>
           </a>
-          <a class="quick-info__item" href="#services">
-            <span class="quick-info__icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="8.5" cy="8" r="3"/><circle cx="17" cy="9" r="2.4"/><path d="M2.5 20c0-3.3 2.7-6 6-6s6 2.7 6 6"/><path d="M14.5 14.5c2.7.3 4.5 2.6 4.5 5.5"/></svg>
+
+          <a class="service-row" href="https://wa.me/60129876543?text=Hi%20Klinik%20Ceria%2C%20I'd%20like%20to%20ask%20about%20Women's%20Health.%20" target="_blank" rel="noopener">
+            <span class="service-index">03</span>
+            <span class="service-body">
+              <span class="service-name">Women's Health</span>
+              <span class="service-desc">General health consultations for women, provided in a comfortable and private setting.</span>
             </span>
-            <span>
-              <p class="quick-info__label">Family Care</p>
-              <p class="quick-info__value">For All Ages</p>
+          </a>
+
+          <a class="service-row" href="https://wa.me/60129876543?text=Hi%20Klinik%20Ceria%2C%20I'd%20like%20to%20ask%20about%20Men's%20Health.%20" target="_blank" rel="noopener">
+            <span class="service-index">04</span>
+            <span class="service-body">
+              <span class="service-name">Men's Health</span>
+              <span class="service-desc">Everyday health consultations tailored to men's general healthcare needs.</span>
+            </span>
+          </a>
+
+          <a class="service-row" href="https://wa.me/60129876543?text=Hi%20Klinik%20Ceria%2C%20I'd%20like%20to%20ask%20about%20Preventive%20Health%20%26%20Screening.%20" target="_blank" rel="noopener">
+            <span class="service-index">05</span>
+            <span class="service-body">
+              <span class="service-name">Preventive Health &amp; Screening</span>
+              <span class="service-desc">Basic health checks to help you keep track of your overall wellbeing.</span>
+            </span>
+          </a>
+
+          <a class="service-row" href="https://wa.me/60129876543?text=Hi%20Klinik%20Ceria%2C%20I'd%20like%20to%20ask%20about%20Medical%20Certificates%20%26%20Referrals.%20" target="_blank" rel="noopener">
+            <span class="service-index">06</span>
+            <span class="service-body">
+              <span class="service-name">Medical Certificates &amp; Referrals</span>
+              <span class="service-desc">MC issuance and referral letters when further care or specialist attention is needed.</span>
             </span>
           </a>
         </div>
       </div>
     </section>
 
-    <!-- ============================== ABOUT ============================== -->
-    <section class="section" id="about" aria-labelledby="about-heading">
-      <div class="container about-grid">
-        <div class="about__media" data-reveal>
-          <img src="images/about-doctor-consultation.jpg" alt="A doctor consulting with a patient in a warm, welcoming room at Klinik Ceria" width="900" height="1125" loading="lazy">
-          <svg viewBox="0 0 480 600" role="img" aria-label="Illustration of a friendly doctor in a warm, welcoming consultation room" hidden>
-            <ellipse cx="380" cy="500" rx="180" ry="150" fill="#FDF1E6" opacity="0.7"/>
-            <ellipse cx="90" cy="90" rx="150" ry="120" fill="#DCEDE6" opacity="0.8"/>
-            <ellipse cx="240" cy="560" rx="170" ry="18" fill="#17453A" opacity="0.07"/>
-
-            <rect x="316" y="54" width="118" height="148" rx="18" fill="#FFFFFF" stroke="#E1E9E4" stroke-width="2"/>
-            <rect x="330" y="68" width="90" height="120" rx="8" fill="#EEF7F3"/>
-            <line x1="375" y1="68" x2="375" y2="188" stroke="#E1E9E4" stroke-width="3"/>
-            <line x1="330" y1="128" x2="420" y2="128" stroke="#E1E9E4" stroke-width="3"/>
-
-            <rect x="56" y="478" width="54" height="34" rx="8" fill="#C96C3C"/>
-            <ellipse cx="83" cy="460" rx="13" ry="28" fill="#2E7D66" transform="rotate(-14 83 460)"/>
-            <ellipse cx="83" cy="452" rx="13" ry="30" fill="#2E7D66"/>
-            <ellipse cx="83" cy="460" rx="13" ry="28" fill="#2E7D66" transform="rotate(14 83 460)"/>
-
-            <!-- friendly doctor, seated pose (matches hero illustration style) -->
-            <circle cx="240" cy="208" r="46" fill="#3B2A22"/>
-            <rect x="156" y="240" width="168" height="260" rx="64" fill="#FFFFFF" stroke="#E1E9E4" stroke-width="2"/>
-            <path d="M205,244 L240,278 L225,240 Z" fill="#2E7D66"/>
-            <path d="M275,244 L240,278 L255,240 Z" fill="#2E7D66"/>
-            <circle cx="240" cy="212" r="37" fill="#F0C9A0"/>
-            <circle cx="227" cy="210" r="2.6" fill="#1E2A27"/>
-            <circle cx="253" cy="210" r="2.6" fill="#1E2A27"/>
-            <path d="M226,222 Q240,226 254,222" fill="none" stroke="#1E2A27" stroke-width="2.2" stroke-linecap="round"/>
-            <path d="M204,254 C196,272 196,290 214,298" fill="none" stroke="#2E7D66" stroke-width="6" stroke-linecap="round"/>
-            <circle cx="214" cy="299" r="9" fill="#C96C3C"/>
-          </svg>
-        </div>
-        <div class="about__text" data-reveal>
-          <p class="eyebrow">About The Clinic</p>
-          <h2 id="about-heading">Healthcare for Every Stage of Life</h2>
-          <p>Klinik Ceria is a general clinic providing everyday healthcare for individuals and families in the local community. From common illnesses to routine consultations, our team is here to offer accessible, patient-focused care in a clean and welcoming environment.</p>
-          <p>Whether you're bringing in a child with a fever, popping by after work, or accompanying an elderly parent, our aim is simple: to make every visit comfortable and straightforward.</p>
-          <div class="about__points">
-            <p class="about__point">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8.5 12.5l2.3 2.3L16 10"/></svg>
-              Walk-in friendly consultations for everyday health concerns
-            </p>
-            <p class="about__point">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8.5 12.5l2.3 2.3L16 10"/></svg>
-              A clean, comfortable clinic environment for all ages
-            </p>
-            <p class="about__point">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8.5 12.5l2.3 2.3L16 10"/></svg>
-              Clear communication so you always know what to expect
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============================== SERVICES ============================== -->
-    <section class="section section--alt" id="services" aria-labelledby="services-heading">
-      <div class="container">
-        <div class="section-head" data-reveal>
-          <p class="eyebrow">What We Offer</p>
-          <h2 id="services-heading">General Healthcare Services</h2>
-          <p>From everyday illnesses to routine care, our clinic supports individuals and families with accessible general healthcare services.</p>
+    <!-- ============================== 02 · WHAT TO EXPECT ============================== -->
+    <section class="expect" id="expect" aria-labelledby="expect-heading">
+      <div class="wrap">
+        <div class="wayfind">
+          <span class="wayfind-num" aria-hidden="true">02</span>
+          <h2 id="expect-heading">What to Expect</h2>
         </div>
 
-        <div class="services-layout" data-reveal-group>
-          <article class="service-feature">
-            <span class="service-feature__icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3v4M16 3v4M4 9h16M5 6h14a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1z"/><path d="M9 14l2 2 4-4"/></svg>
-            </span>
-            <h3>General Consultation</h3>
-            <p>Same-day consultations for every member of the family, covering everyday concerns such as fever, cough, flu, infections and other common conditions.</p>
-            <div class="service-feature__tags">
-              <span>Fever &amp; Flu</span>
-              <span>Minor Injuries</span>
-              <span>Common Infections</span>
-              <span>Medical Certificates</span>
-            </div>
-          </article>
-
-          <div class="service-list">
-            <article class="service-row">
-              <span class="service-row__icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="8.5" cy="8" r="3"/><circle cx="17" cy="9" r="2.4"/><path d="M2.5 20c0-3.3 2.7-6 6-6s6 2.7 6 6"/><path d="M14.5 14.5c2.7.3 4.5 2.6 4.5 5.5"/></svg>
-              </span>
-              <span>
-                <h3>Family &amp; Child Healthcare</h3>
-                <p>General healthcare support for children and family members of all ages, in a friendly clinic setting.</p>
-              </span>
-            </article>
-            <article class="service-row">
-              <span class="service-row__icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M12 12v6M9 21l3-3 3 3"/></svg>
-              </span>
-              <span>
-                <h3>Women's Health</h3>
-                <p>General health consultations for women, provided in a comfortable and private setting.</p>
-              </span>
-            </article>
-            <article class="service-row">
-              <span class="service-row__icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M8 21v-3a4 4 0 0 1 8 0v3"/></svg>
-              </span>
-              <span>
-                <h3>Men's Health</h3>
-                <p>Everyday health consultations tailored to men's general healthcare needs.</p>
-              </span>
-            </article>
-            <article class="service-row">
-              <span class="service-row__icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-4.6-7-10.4A5 5 0 0 1 12 6a5 5 0 0 1 7 4.6C19 16.4 12 21 12 21z"/><path d="M9 11l2 2 4-4"/></svg>
-              </span>
-              <span>
-                <h3>Preventive Health &amp; Screening</h3>
-                <p>Basic health checks to help you keep track of your overall wellbeing.</p>
-              </span>
-            </article>
-            <article class="service-row">
-              <span class="service-row__icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3h8l4 4v14a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z"/><path d="M15 3v4h4M9 13h6M9 17h6"/></svg>
-              </span>
-              <span>
-                <h3>Medical Certificates &amp; Referrals</h3>
-                <p>MC issuance and referral letters when further care or specialist attention is needed.</p>
-              </span>
-            </article>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============================== FAMILY CARE ============================== -->
-    <section class="section" aria-labelledby="family-heading">
-      <div class="container family-layout" data-reveal>
-        <div class="family-statement">
-          <h2 id="family-heading">Care for the Whole Family</h2>
-          <p>A welcoming clinic experience designed for patients of every age, from young children to grandparents.</p>
-          <div class="family-statement__media">
-            <img src="images/family-care.jpg" alt="A doctor with a parent and child, representing family healthcare at Klinik Ceria" width="420" height="420" loading="lazy">
-            <svg viewBox="0 0 200 200" role="img" aria-label="Illustration of a parent and child, representing family care" hidden>
-              <rect width="200" height="200" fill="#FDF1E6"/>
-              <circle cx="78" cy="70" r="24" fill="#3B2A22"/>
-              <rect x="42" y="88" width="72" height="98" rx="34" fill="#E98A57" stroke="#C96C3C" stroke-width="2"/>
-              <circle cx="78" cy="76" r="17" fill="#F0C9A0"/>
-              <circle cx="72" cy="75" r="1.6" fill="#1E2A27"/>
-              <circle cx="84" cy="75" r="1.6" fill="#1E2A27"/>
-              <path d="M71,84 Q78,87 85,84" fill="none" stroke="#1E2A27" stroke-width="1.6" stroke-linecap="round"/>
-              <circle cx="132" cy="98" r="18" fill="#5C4433"/>
-              <rect x="106" y="112" width="52" height="70" rx="24" fill="#F4C77A" stroke="#E0AC55" stroke-width="2"/>
-              <circle cx="132" cy="104" r="14" fill="#F0C9A0"/>
-              <circle cx="127" cy="103" r="1.4" fill="#1E2A27"/>
-              <circle cx="137" cy="103" r="1.4" fill="#1E2A27"/>
-              <path d="M126,110 Q132,113 138,110" fill="none" stroke="#1E2A27" stroke-width="1.4" stroke-linecap="round"/>
-              <path d="M100,140 c-6,-8 -18,-4 -18,6 c0,10 18,20 18,20 s18,-10 18,-20 c0,-10 -12,-14 -18,-6z" fill="#2E7D66" opacity="0.85"/>
-            </svg>
-          </div>
-        </div>
-
-        <div class="family-points" data-reveal-group>
-          <article class="family-point">
-            <span class="family-point__icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20.5 8.5c0 5-8.5 11-8.5 11s-8.5-6-8.5-11a4.5 4.5 0 0 1 8.5-2 4.5 4.5 0 0 1 8.5 2z"/></svg>
-            </span>
-            <div>
-              <h3>Friendly Environment</h3>
-              <p>A welcoming clinic experience for patients of different ages, from little ones to grandparents.</p>
-            </div>
-          </article>
-          <article class="family-point">
-            <span class="family-point__icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-6.4 7-11.5A7 7 0 0 0 5 9.5C5 14.6 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>
-            </span>
-            <div>
-              <h3>Convenient Healthcare</h3>
-              <p>Accessible general healthcare for everyday medical needs, close to home.</p>
-            </div>
-          </article>
-          <article class="family-point">
-            <span class="family-point__icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v11H8l-4 4V5z"/></svg>
-            </span>
-            <div>
-              <h3>Patient-Focused Care</h3>
-              <p>Clear communication and a comfortable consultation experience, every visit.</p>
-            </div>
-          </article>
-          <article class="family-point">
-            <span class="family-point__icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="8.5" cy="8" r="3"/><circle cx="17" cy="9" r="2.4"/><path d="M2.5 20c0-3.3 2.7-6 6-6s6 2.7 6 6"/><path d="M14.5 14.5c2.7.3 4.5 2.6 4.5 5.5"/></svg>
-            </span>
-            <div>
-              <h3>Family-Friendly Approach</h3>
-              <p>Healthcare support for parents, children and adults, under one roof.</p>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============================== TRUST ============================== -->
-    <section class="section section--dark trust-section" aria-labelledby="trust-heading">
-      <div class="container trust-layout" data-reveal>
-        <div class="trust-statement">
-          <h2 id="trust-heading">Your Local Healthcare Partner</h2>
-          <p>A clinic you can feel comfortable visiting. Here's what you can expect when you choose Klinik Ceria for your family's everyday healthcare.</p>
-        </div>
-
-        <div class="trust-points" data-reveal-group>
-          <div class="trust-item">
-            <span class="trust-item__icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 3.5v5c0 5-3.4 8.4-8 9.5-4.6-1.1-8-4.5-8-9.5v-5z"/><path d="M9 12l2 2 4-4"/></svg>
-            </span>
-            <div>
-              <h3>Professional Environment</h3>
-              <p>A clean, well-kept clinic designed for your comfort and confidence.</p>
-            </div>
-          </div>
-          <div class="trust-item">
-            <span class="trust-item__icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v11H8l-4 4V5z"/></svg>
-            </span>
-            <div>
-              <h3>Patient-Focused Service</h3>
-              <p>We take the time to listen and explain your care clearly.</p>
-            </div>
-          </div>
-          <div class="trust-item">
-            <span class="trust-item__icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20.5 8.5c0 5-8.5 11-8.5 11s-8.5-6-8.5-11a4.5 4.5 0 0 1 8.5-2 4.5 4.5 0 0 1 8.5 2z"/></svg>
-            </span>
-            <div>
-              <h3>Family-Friendly Care</h3>
-              <p>A welcoming space for patients of every age, from children to elders.</p>
-            </div>
-          </div>
-          <div class="trust-item">
-            <span class="trust-item__icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-6.4 7-11.5A7 7 0 0 0 5 9.5C5 14.6 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>
-            </span>
-            <div>
-              <h3>Convenient Location</h3>
-              <p>Easy to reach for the local community and nearby residents.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============================== GALLERY ============================== -->
-    <section class="section" id="clinic" aria-labelledby="clinic-heading">
-      <div class="container">
-        <div class="section-head section-head--center" data-reveal>
-          <h2 id="clinic-heading">Take a Look Inside</h2>
-          <p>A glimpse of what to expect when you visit, from our entrance to the consultation room.</p>
-        </div>
-
-        <div class="gallery-grid" data-reveal-group>
-          <figure class="gallery-item">
-            <!-- Photography (not yet supplied): replace this <svg>...</svg> with:
-                 <img src="images/gallery-entrance.jpg" alt="The entrance to Klinik Ceria" width="400" height="300" loading="lazy"> -->
-            <svg viewBox="0 0 400 300" role="img" aria-label="Illustration of the clinic entrance with signage">
-              <rect width="400" height="300" fill="#EEF7F3"/>
-              <ellipse cx="200" cy="252" rx="150" ry="14" fill="#17453A" opacity="0.06"/>
-              <rect x="120" y="90" width="160" height="150" rx="10" fill="#FFFFFF" stroke="#DCEDE6" stroke-width="3"/>
-              <rect x="150" y="70" width="100" height="30" rx="8" fill="#2E7D66"/>
-              <rect x="168" y="150" width="64" height="90" rx="6" fill="#DCEDE6"/>
-              <circle cx="222" cy="195" r="3" fill="#2E7D66"/>
-              <rect x="140" y="120" width="34" height="34" rx="6" fill="#FDF1E6" stroke="#E98A57" stroke-width="2"/>
-              <rect x="226" y="120" width="34" height="34" rx="6" fill="#FDF1E6" stroke="#E98A57" stroke-width="2"/>
-              <rect x="176" y="55" width="48" height="18" rx="4" fill="#FFFFFF"/>
-            </svg>
-            <figcaption class="gallery-item__caption"><span>Clinic Entrance</span></figcaption>
-          </figure>
-
-          <figure class="gallery-item">
-            <img src="images/gallery-reception.jpg" alt="The reception desk at Klinik Ceria" width="800" height="600" loading="lazy">
-            <svg viewBox="0 0 400 300" role="img" aria-label="Illustration of the reception desk" hidden>
-              <rect width="400" height="300" fill="#FDF1E6"/>
-              <ellipse cx="200" cy="252" rx="150" ry="14" fill="#17453A" opacity="0.06"/>
-              <rect x="90" y="150" width="220" height="80" rx="14" fill="#FFFFFF" stroke="#E1E9E4" stroke-width="3"/>
-              <rect x="90" y="150" width="220" height="18" rx="9" fill="#E98A57"/>
-              <circle cx="270" cy="185" r="12" fill="#DCEDE6"/>
-              <rect x="264" y="179" width="12" height="12" rx="3" fill="#2E7D66"/>
-              <rect x="120" y="176" width="70" height="8" rx="4" fill="#EEF7F3"/>
-              <rect x="60" y="200" width="34" height="46" rx="6" fill="#2E7D66"/>
-              <ellipse cx="77" cy="192" rx="18" ry="14" fill="#2E7D66"/>
-            </svg>
-            <figcaption class="gallery-item__caption"><span>Reception</span></figcaption>
-          </figure>
-
-          <figure class="gallery-item">
-            <img src="images/gallery-waiting-room.jpg" alt="The waiting area at Klinik Ceria" width="800" height="600" loading="lazy">
-            <svg viewBox="0 0 400 300" role="img" aria-label="Illustration of the waiting area with chairs and a plant" hidden>
-              <rect width="400" height="300" fill="#EEF7F3"/>
-              <ellipse cx="200" cy="252" rx="150" ry="14" fill="#17453A" opacity="0.06"/>
-              <rect x="70" y="160" width="80" height="70" rx="16" fill="#FFFFFF" stroke="#E1E9E4" stroke-width="3"/>
-              <rect x="70" y="130" width="80" height="40" rx="16" fill="#FFFFFF" stroke="#E1E9E4" stroke-width="3"/>
-              <rect x="210" y="160" width="80" height="70" rx="16" fill="#FFFFFF" stroke="#E1E9E4" stroke-width="3"/>
-              <rect x="210" y="130" width="80" height="40" rx="16" fill="#FFFFFF" stroke="#E1E9E4" stroke-width="3"/>
-              <rect x="164" y="196" width="34" height="34" rx="8" fill="#FDF1E6"/>
-              <rect x="326" y="200" width="20" height="30" rx="5" fill="#C96C3C"/>
-              <ellipse cx="336" cy="184" rx="14" ry="26" fill="#2E7D66"/>
-            </svg>
-            <figcaption class="gallery-item__caption"><span>Waiting Area</span></figcaption>
-          </figure>
-
-          <figure class="gallery-item">
-            <img src="images/gallery-consultation.jpg" alt="A consultation room at Klinik Ceria" width="800" height="600" loading="lazy">
-            <svg viewBox="0 0 400 300" role="img" aria-label="Illustration of a consultation room with a desk and clock" hidden>
-              <rect width="400" height="300" fill="#FDF1E6"/>
-              <ellipse cx="200" cy="252" rx="150" ry="14" fill="#17453A" opacity="0.06"/>
-              <circle cx="300" cy="80" r="24" fill="#FFFFFF" stroke="#E1E9E4" stroke-width="3"/>
-              <line x1="300" y1="80" x2="300" y2="66" stroke="#2E7D66" stroke-width="3" stroke-linecap="round"/>
-              <line x1="300" y1="80" x2="310" y2="84" stroke="#2E7D66" stroke-width="3" stroke-linecap="round"/>
-              <rect x="70" y="170" width="200" height="20" rx="8" fill="#FFFFFF" stroke="#E1E9E4" stroke-width="3"/>
-              <rect x="90" y="190" width="160" height="50" rx="10" fill="#FFFFFF" stroke="#E1E9E4" stroke-width="3"/>
-              <rect x="150" y="130" width="40" height="40" rx="8" fill="#FFFFFF" stroke="#E1E9E4" stroke-width="3"/>
-              <path d="M158,146 C154,154 154,162 164,166" fill="none" stroke="#2E7D66" stroke-width="4" stroke-linecap="round"/>
-              <circle cx="164" cy="167" r="5" fill="#C96C3C"/>
-            </svg>
-            <figcaption class="gallery-item__caption"><span>Consultation Room</span></figcaption>
-          </figure>
-
-          <figure class="gallery-item gallery-item--warm">
-            <img src="images/gallery-doctor.jpg" alt="A doctor at Klinik Ceria" width="800" height="600" loading="lazy">
-            <svg viewBox="0 0 400 300" role="img" aria-label="Illustration of two friendly clinic staff members" hidden>
-              <rect width="400" height="300" fill="#EEF7F3"/>
-              <ellipse cx="200" cy="252" rx="150" ry="14" fill="#17453A" opacity="0.06"/>
-              <circle cx="160" cy="142" r="27" fill="#2A2320"/>
-              <rect x="120" y="164" width="80" height="102" rx="34" fill="#FFFFFF" stroke="#E1E9E4" stroke-width="3"/>
-              <path d="M148,168 L160,190 L152,166 Z" fill="#2E7D66"/>
-              <path d="M172,168 L160,190 L168,166 Z" fill="#2E7D66"/>
-              <circle cx="160" cy="150" r="19" fill="#F0C9A0"/>
-              <circle cx="154" cy="148" r="1.6" fill="#1E2A27"/>
-              <circle cx="166" cy="148" r="1.6" fill="#1E2A27"/>
-              <path d="M153,159 Q160,162 167,159" fill="none" stroke="#1E2A27" stroke-width="1.6" stroke-linecap="round"/>
-              <circle cx="248" cy="142" r="27" fill="#3B2A22"/>
-              <rect x="208" y="164" width="80" height="102" rx="34" fill="#FFFFFF" stroke="#E1E9E4" stroke-width="3"/>
-              <path d="M236,168 L248,190 L240,166 Z" fill="#2E7D66"/>
-              <path d="M260,168 L248,190 L256,166 Z" fill="#2E7D66"/>
-              <circle cx="248" cy="150" r="19" fill="#C68B59"/>
-              <circle cx="242" cy="148" r="1.6" fill="#1E2A27"/>
-              <circle cx="254" cy="148" r="1.6" fill="#1E2A27"/>
-              <path d="M241,159 Q248,162 255,159" fill="none" stroke="#1E2A27" stroke-width="1.6" stroke-linecap="round"/>
-            </svg>
-            <figcaption class="gallery-item__caption"><span>Friendly Care Team</span></figcaption>
-          </figure>
-
-          <figure class="gallery-item">
-            <img src="images/gallery-family.jpg" alt="A family consulting with a doctor at Klinik Ceria" width="800" height="600" loading="lazy">
-            <svg viewBox="0 0 400 300" role="img" aria-label="Illustration of a parent and child, representing family care at the clinic" hidden>
-              <rect width="400" height="300" fill="#EEF7F3"/>
-              <ellipse cx="200" cy="252" rx="150" ry="14" fill="#17453A" opacity="0.06"/>
-              <circle cx="168" cy="140" r="26" fill="#3B2A22"/>
-              <rect x="130" y="162" width="76" height="100" rx="34" fill="#E98A57" stroke="#C96C3C" stroke-width="2"/>
-              <circle cx="168" cy="146" r="18" fill="#F0C9A0"/>
-              <circle cx="162" cy="144" r="1.8" fill="#1E2A27"/>
-              <circle cx="174" cy="144" r="1.8" fill="#1E2A27"/>
-              <path d="M161,155 Q168,158 175,155" fill="none" stroke="#1E2A27" stroke-width="1.6" stroke-linecap="round"/>
-              <circle cx="246" cy="166" r="19" fill="#5C4433"/>
-              <rect x="218" y="182" width="58" height="78" rx="26" fill="#F4C77A" stroke="#E0AC55" stroke-width="2"/>
-              <circle cx="246" cy="174" r="14" fill="#F0C9A0"/>
-              <circle cx="241" cy="172" r="1.5" fill="#1E2A27"/>
-              <circle cx="251" cy="172" r="1.5" fill="#1E2A27"/>
-              <path d="M240,180 Q246,183 252,180" fill="none" stroke="#1E2A27" stroke-width="1.5" stroke-linecap="round"/>
-              <path d="M204,224 c-7,-9 -21,-4 -21,7 c0,11 21,23 21,23 s21,-12 21,-23 c0,-11 -14,-16 -21,-7z" fill="#2E7D66" opacity="0.85"/>
-            </svg>
-            <figcaption class="gallery-item__caption"><span>Family Care</span></figcaption>
-          </figure>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============================== HOURS ============================== -->
-    <section class="section section--alt" id="hours" aria-labelledby="hours-heading">
-      <div class="container hours-layout">
-        <div data-reveal>
-          <div class="section-head">
-            <p class="eyebrow">Plan Your Visit</p>
-            <h2 id="hours-heading">Clinic Hours</h2>
-            <p>We're open every day of the week. Today's hours are highlighted below.</p>
-          </div>
-
-          <div class="hours-table">
-            <div class="hours-row" data-day="mon">
-              <span class="hours-row__day">Monday <span class="hours-row__today-tag">Today</span></span>
-              <span class="hours-row__time">8:00 AM-10:00 PM</span>
-            </div>
-            <div class="hours-row" data-day="tue">
-              <span class="hours-row__day">Tuesday <span class="hours-row__today-tag">Today</span></span>
-              <span class="hours-row__time">8:00 AM-10:00 PM</span>
-            </div>
-            <div class="hours-row" data-day="wed">
-              <span class="hours-row__day">Wednesday <span class="hours-row__today-tag">Today</span></span>
-              <span class="hours-row__time">8:00 AM-10:00 PM</span>
-            </div>
-            <div class="hours-row" data-day="thu">
-              <span class="hours-row__day">Thursday <span class="hours-row__today-tag">Today</span></span>
-              <span class="hours-row__time">8:00 AM-10:00 PM</span>
-            </div>
-            <div class="hours-row" data-day="fri">
-              <span class="hours-row__day">Friday <span class="hours-row__today-tag">Today</span></span>
-              <span class="hours-row__time">8:00 AM-10:00 PM</span>
-            </div>
-            <div class="hours-row" data-day="sat">
-              <span class="hours-row__day">Saturday <span class="hours-row__today-tag">Today</span></span>
-              <span class="hours-row__time">8:00 AM-10:00 PM</span>
-            </div>
-            <div class="hours-row" data-day="sun">
-              <span class="hours-row__day">Sunday <span class="hours-row__today-tag">Today</span></span>
-              <span class="hours-row__time">9:00 AM-5:00 PM</span>
-            </div>
-            <div class="hours-row">
-              <span class="hours-row__day">Public Holidays</span>
-              <span class="hours-row__time">Limited hours, please call ahead</span>
-            </div>
-          </div>
-
-          <div class="hours-note">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16h.01"/></svg>
-            <p><strong>Please contact the clinic to confirm operating hours before visiting</strong>, especially on public holidays.</p>
-          </div>
-        </div>
-
-        <aside class="hours-aside" data-reveal>
-          <h3>Not sure if we're open?</h3>
-          <p>Send us a quick WhatsApp message and we'll confirm our current hours and let you know how busy the clinic is before you head over.</p>
-          <a class="btn btn--primary" href="https://wa.me/60129876543?text=Hi%20Klinik%20Ceria%2C%20are%20you%20open%20now%3F" target="_blank" rel="noopener">
-            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2z"/></svg>
-            Ask on WhatsApp
-          </a>
-        </aside>
-      </div>
-    </section>
-
-    <!-- ============================== LOCATION ============================== -->
-    <section class="section" id="location" aria-labelledby="location-heading">
-      <div class="container location-layout">
-        <div class="location-details" data-reveal>
-          <h2 id="location-heading">Conveniently Located in Puchong</h2>
-          <address>
-            Klinik Ceria<br>
-            No. 12, Jalan Puteri 2/4, Bandar Puteri<br>
-            47100 Puchong, Selangor
-          </address>
-          <p class="location-details__area">Located within Bandar Puteri, easily accessible from surrounding residential areas and nearby communities in Puchong.</p>
-          <div class="location-actions">
-            <a class="btn btn--accent" href="https://www.google.com/maps/search/?api=1&amp;query=Klinik+Ceria%2C+No.+12%2C+Jalan+Puteri+2%2F4%2C+Bandar+Puteri%2C+47100+Puchong%2C+Selangor" target="_blank" rel="noopener">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-6.4 7-11.5A7 7 0 0 0 5 9.5C5 14.6 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>
-              Get Directions
-            </a>
-            <a class="btn btn--outline" href="#contact">Contact Clinic</a>
-          </div>
-        </div>
-
-        <div class="location-map" data-reveal>
-          <svg viewBox="0 0 480 360" role="img" aria-label="Stylised map illustration showing the clinic's approximate location">
-            <rect width="480" height="360" fill="#F1F6F2"/>
-            <path d="M-20,300 C100,320 160,220 260,240 C360,260 400,160 500,140" fill="none" stroke="#E1E9E4" stroke-width="26" stroke-linecap="round"/>
-            <path d="M-20,300 C100,320 160,220 260,240 C360,260 400,160 500,140" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-dasharray="2 14" stroke-linecap="round"/>
-            <rect x="60" y="60" width="60" height="50" rx="8" fill="#DCEDE6"/>
-            <rect x="140" y="90" width="46" height="40" rx="8" fill="#FBDCC2"/>
-            <rect x="340" y="250" width="70" height="56" rx="8" fill="#DCEDE6"/>
-            <rect x="70" y="230" width="50" height="42" rx="8" fill="#FBDCC2"/>
-            <circle cx="380" cy="70" r="26" fill="#DCEDE6"/>
-            <g transform="translate(292,150)">
-              <circle cx="0" cy="0" r="30" fill="#2E7D66" opacity="0.16"/>
-              <path d="M0,-38 C16,-38 28,-26 28,-11 C28,10 0,34 0,34 C0,34 -28,10 -28,-11 C-28,-26 -16,-38 0,-38z" fill="#E98A57" stroke="#C96C3C" stroke-width="2"/>
-              <circle cx="0" cy="-12" r="10" fill="#FFFFFF"/>
-            </g>
-          </svg>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============================== CONTACT ============================== -->
-    <section class="section" id="contact" aria-labelledby="contact-heading">
-      <div class="container">
-        <div class="contact-panel" data-reveal>
-          <!-- Photography (not yet supplied) for contact-reception.jpg: this
-               panel is currently a solid-color block with no image slot, and
-               this photo was flagged as optional/lowest priority. Not done
-               here pending a decision on approach — see the photography prep
-               report for options. -->
-          <div class="section-head">
-            <h2 id="contact-heading">Need to Speak With the Clinic?</h2>
-            <p>Contact us through WhatsApp for enquiries, clinic information or assistance before your visit.</p>
-          </div>
-          <div class="contact-actions">
-            <a class="btn btn--primary" href="https://wa.me/60129876543?text=Hi%20Klinik%20Ceria%2C%20I%20would%20like%20to%20enquire%20about%20a%20clinic%20visit." target="_blank" rel="noopener">
-              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2z"/></svg>
-              WhatsApp Us
-            </a>
-            <a class="btn btn--ghost-light" href="tel:+60378904455">Call Clinic</a>
-          </div>
-          <div class="contact-recap">
-            <div>
-              <h4>Phone</h4>
-              <a href="tel:+60378904455">+60 3-7890 4455</a>
-            </div>
-            <div>
-              <h4>WhatsApp</h4>
-              <a href="https://wa.me/60129876543" target="_blank" rel="noopener">+60 12-987 6543</a>
-            </div>
-            <div>
-              <h4>Address</h4>
-              <p>Bandar Puteri, Puchong, Selangor</p>
-            </div>
-          </div>
+        <div class="notice">
+          <p class="notice-major">No referral needed.</p>
+          <p class="notice-major">Same-day care.</p>
+          <p class="notice-minor">Open Monday&ndash;Saturday, 08:00&ndash;22:00.</p>
+          <p class="notice-minor">Open Sunday, 09:00&ndash;17:00.</p>
+          <p class="notice-minor">Not sure if we're open? Ask us on WhatsApp before you visit.</p>
         </div>
       </div>
     </section>
   </main>
 
-  <footer class="site-footer">
-    <div class="container footer-top">
-      <div class="footer-brand">
-        <a href="#home" class="logo">
-          <span class="logo__icon" aria-hidden="true">
-            <svg viewBox="0 0 40 40"><circle cx="20" cy="20" r="19" fill="#1F5D4C"/><path d="M8 21h5l3-8 4 14 3-9h9" fill="none" stroke="#FBDCC2" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </span>
-          <span class="logo__text">
-            <span class="logo__mark">Klinik Ceria</span>
-            <span class="logo__sub">Family General Clinic</span>
-          </span>
-        </a>
-        <p>A friendly general clinic providing everyday healthcare for individuals and families in the local community.</p>
-        <div class="footer-social">
-          <a aria-disabled="true" title="Facebook (demo)">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M15 8h-2a2 2 0 0 0-2 2v10M9 13h4"/><circle cx="12" cy="12" r="9"/></svg>
-          </a>
-          <a aria-disabled="true" title="Instagram (demo)">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.3" cy="6.7" r="1"></circle></svg>
+  <!-- ============================== 03 · VISIT ============================== -->
+  <footer class="visit" id="visit" aria-labelledby="visit-heading">
+    <div class="wrap">
+      <div class="wayfind">
+        <span class="wayfind-num" aria-hidden="true">03</span>
+        <h2 id="visit-heading">Visit Klinik Ceria</h2>
+      </div>
+
+      <div class="visit-grid">
+        <div class="visit-block">
+          <h3>Where</h3>
+          <address>
+            Klinik Ceria<br>
+            No. 12, Jalan Puteri 2/4, Bandar Puteri<br>
+            47100 Puchong, Selangor
+          </address>
+        </div>
+
+        <div class="visit-block">
+          <h3>When</h3>
+          <p>Monday&ndash;Saturday: 8:00 AM&ndash;10:00 PM<br>Sunday: 9:00 AM&ndash;5:00 PM</p>
+        </div>
+
+        <div class="visit-block">
+          <h3>How</h3>
+          <p><a href="tel:+60378904455">+60 3-7890 4455</a></p>
+          <p><a href="https://wa.me/60129876543" target="_blank" rel="noopener">+60 12-987 6543 (WhatsApp)</a></p>
+        </div>
+      </div>
+
+      <div class="visit-lower">
+        <figure class="visit-photo">
+          <div class="visit-photo-frame">
+            <img
+              src="images/family-care.jpg"
+              alt="A doctor with a parent and child, representing family healthcare at Klinik Ceria"
+              width="420" height="420"
+              loading="lazy"
+            >
+          </div>
+          <figcaption class="photo-tag photo-tag--quiet"><span>Care for every age, under one roof</span></figcaption>
+        </figure>
+
+        <div class="visit-cta">
+          <p class="visit-cta-lead">Deciding whether to come in now?</p>
+          <div class="sign--compact" data-sign role="group" aria-label="Clinic open status">
+            <span class="sign-dot" data-sign-dot aria-hidden="true"></span>
+            <span class="sign-text">
+              <span class="sign-status" data-sign-status aria-live="polite">Checking hours&hellip;</span>
+              <span class="sign-hours" data-sign-hours>Mon&ndash;Sat 08:00&ndash;22:00 &middot; Sun 09:00&ndash;17:00</span>
+            </span>
+          </div>
+          <a class="cta cta--primary" href="https://wa.me/60129876543?text=Hi%20Klinik%20Ceria%2C%20I%20would%20like%20to%20enquire%20about%20a%20clinic%20visit." target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2z"/></svg>
+            Ask on WhatsApp
           </a>
         </div>
       </div>
 
-      <div class="footer-cols">
-        <div class="footer-col">
-          <h4>Explore</h4>
-          <ul>
-            <li><a href="#home">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#services">Services</a></li>
-            <li><a href="#clinic">Clinic</a></li>
-            <li><a href="#hours">Hours</a></li>
-            <li><a href="#contact">Contact</a></li>
-          </ul>
-        </div>
-        <div class="footer-col">
-          <h4>Contact</h4>
-          <ul>
-            <li><a href="tel:+60378904455">+60 3-7890 4455</a></li>
-            <li><a href="https://wa.me/60129876543" target="_blank" rel="noopener">WhatsApp: +60 12-987 6543</a></li>
-            <li><address>No. 12, Jalan Puteri 2/4,<br>Bandar Puteri, 47100 Puchong, Selangor</address></li>
-          </ul>
-        </div>
-        <div class="footer-col">
-          <h4>Clinic Hours</h4>
-          <ul>
-            <li><p>Mon-Sat: 8:00 AM-10:00 PM</p></li>
-            <li><p>Sunday: 9:00 AM-5:00 PM</p></li>
-            <li><p>Public Holidays: Call ahead</p></li>
-          </ul>
-        </div>
-      </div>
-    </div>
+      <p class="disclaimer">This website provides general information about the clinic and its services. It is not intended to replace professional medical advice, diagnosis or treatment. Always seek the advice of a qualified healthcare provider for any medical concerns.</p>
 
-    <p class="footer-disclaimer">This website provides general information about the clinic and its services. It is not intended to replace professional medical advice, diagnosis or treatment. Always seek the advice of a qualified healthcare provider for any medical concerns.</p>
-
-    <div class="container footer-bottom">
-      <p>&copy; <span data-year>2026</span> Klinik Ceria. Demo Website.</p>
-      <p>A portfolio concept by AJAK.WEB.</p>
+      <p class="closing-row">&copy; <span data-year>2026</span> Klinik Ceria. Demo Website. A portfolio concept by AJAK.WEB.</p>
     </div>
   </footer>
 
-  <!-- ============================== MOBILE WHATSAPP CTA ============================== -->
-  <a class="mobile-whatsapp" href="https://wa.me/60129876543?text=Hi%20Klinik%20Ceria%2C%20I%20would%20like%20to%20enquire%20about%20a%20clinic%20visit." target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
-    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2z"/></svg>
-    WhatsApp Clinic
-  </a>
-
-  <script>document.body.classList.add('has-mobile-whatsapp');</script>
   <script src="js/main.js"></script>
 </body>
 </html>

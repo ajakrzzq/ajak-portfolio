@@ -1,105 +1,88 @@
 (function () {
   'use strict';
 
-  var prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-  /* ------------------------------------------------------------------ *
-   * Header: elevate on scroll
-   * ------------------------------------------------------------------ */
-  var header = document.querySelector('.site-header');
-  if (header) {
-    var onScroll = function () {
-      header.classList.toggle('is-scrolled', window.scrollY > 12);
-    };
-    onScroll();
-    window.addEventListener('scroll', onScroll, { passive: true });
-  }
-
-  /* ------------------------------------------------------------------ *
-   * Mobile menu
-   * ------------------------------------------------------------------ */
-  var menuToggle = document.querySelector('[data-menu-toggle]');
-  var mobileMenu = document.querySelector('[data-mobile-menu]');
-
-  function closeMenu() {
-    if (!mobileMenu) return;
-    mobileMenu.classList.remove('is-open');
-    if (header) header.classList.remove('is-open');
-    if (menuToggle) menuToggle.setAttribute('aria-expanded', 'false');
-    document.body.classList.remove('menu-open');
-  }
-
-  function openMenu() {
-    if (!mobileMenu) return;
-    mobileMenu.classList.add('is-open');
-    if (header) header.classList.add('is-open');
-    if (menuToggle) menuToggle.setAttribute('aria-expanded', 'true');
-    document.body.classList.add('menu-open');
-  }
-
-  if (menuToggle && mobileMenu) {
-    menuToggle.addEventListener('click', function () {
-      var isOpen = mobileMenu.classList.contains('is-open');
-      if (isOpen) {
-        closeMenu();
-      } else {
-        openMenu();
-      }
-    });
-
-    mobileMenu.querySelectorAll('a').forEach(function (link) {
-      link.addEventListener('click', closeMenu);
-    });
-
-    document.addEventListener('keydown', function (event) {
-      if (event.key === 'Escape') closeMenu();
-    });
-  }
-
-  /* ------------------------------------------------------------------ *
-   * Clinic hours: highlight today's row
-   * ------------------------------------------------------------------ */
-  var hoursRows = document.querySelectorAll('[data-day]');
-  if (hoursRows.length) {
-    var dayKeys = ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat'];
-    var todayKey = dayKeys[new Date().getDay()];
-    hoursRows.forEach(function (row) {
-      if (row.getAttribute('data-day') === todayKey) {
-        row.classList.add('is-today');
-      }
-    });
-  }
-
-  /* ------------------------------------------------------------------ *
-   * Scroll reveal
-   * ------------------------------------------------------------------ */
-  if (!prefersReducedMotion && 'IntersectionObserver' in window) {
-    var revealTargets = document.querySelectorAll('[data-reveal], [data-reveal-group]');
-    var observer = new IntersectionObserver(
-      function (entries) {
-        entries.forEach(function (entry) {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('is-visible');
-            observer.unobserve(entry.target);
-          }
-        });
-      },
-      { threshold: 0.14, rootMargin: '0px 0px -60px 0px' }
-    );
-    revealTargets.forEach(function (el) {
-      observer.observe(el);
-    });
-  } else {
-    document.querySelectorAll('[data-reveal], [data-reveal-group]').forEach(function (el) {
-      el.classList.add('is-visible');
-    });
-  }
-
-  /* ------------------------------------------------------------------ *
+  /**
    * Footer year
-   * ------------------------------------------------------------------ */
+   */
   var yearEl = document.querySelector('[data-year]');
-  if (yearEl) {
-    yearEl.textContent = String(new Date().getFullYear());
+  if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+  /**
+   * The Sign — live open/closed status computed from the clinic's real
+   * published hours, in the clinic's own timezone regardless of the
+   * visitor's local timezone.
+   */
+  var SCHEDULE = {
+    0: { open: 9 * 60, close: 17 * 60 },  // Sunday
+    1: { open: 8 * 60, close: 22 * 60 },  // Monday
+    2: { open: 8 * 60, close: 22 * 60 },
+    3: { open: 8 * 60, close: 22 * 60 },
+    4: { open: 8 * 60, close: 22 * 60 },
+    5: { open: 8 * 60, close: 22 * 60 },
+    6: { open: 8 * 60, close: 22 * 60 }   // Saturday
+  };
+
+  var WEEKDAY_INDEX = { Sun: 0, Mon: 1, Tue: 2, Wed: 3, Thu: 4, Fri: 5, Sat: 6 };
+
+  function getClinicTimeParts() {
+    var fmt = new Intl.DateTimeFormat('en-GB', {
+      timeZone: 'Asia/Kuala_Lumpur',
+      weekday: 'short',
+      hour: '2-digit',
+      minute: '2-digit',
+      hour12: false
+    });
+    var map = {};
+    fmt.formatToParts(new Date()).forEach(function (part) {
+      map[part.type] = part.value;
+    });
+    var hour = parseInt(map.hour, 10);
+    if (hour === 24) hour = 0; // some engines report midnight as "24"
+    return {
+      day: WEEKDAY_INDEX[map.weekday],
+      minutesNow: hour * 60 + parseInt(map.minute, 10)
+    };
   }
+
+  function formatTime(totalMinutes) {
+    var h = Math.floor(totalMinutes / 60);
+    var m = totalMinutes % 60;
+    return (h < 10 ? '0' + h : h) + ':' + (m < 10 ? '0' + m : m);
+  }
+
+  function computeStatus() {
+    var now = getClinicTimeParts();
+    var today = SCHEDULE[now.day];
+    var isOpen = now.minutesNow >= today.open && now.minutesNow < today.close;
+
+    var hoursLabel;
+    if (isOpen) {
+      hoursLabel = 'Today ' + formatTime(today.open) + '–' + formatTime(today.close);
+    } else if (now.minutesNow < today.open) {
+      hoursLabel = 'Opens today at ' + formatTime(today.open);
+    } else {
+      var nextDay = (now.day + 1) % 7;
+      hoursLabel = 'Opens tomorrow at ' + formatTime(SCHEDULE[nextDay].open);
+    }
+
+    return { isOpen: isOpen, hoursLabel: hoursLabel };
+  }
+
+  function renderStatus() {
+    var status = computeStatus();
+    var signs = document.querySelectorAll('[data-sign]');
+
+    signs.forEach(function (sign) {
+      sign.setAttribute('data-state', status.isOpen ? 'open' : 'closed');
+
+      var statusEl = sign.querySelector('[data-sign-status]');
+      if (statusEl) statusEl.textContent = status.isOpen ? 'Open Now' : 'Closed Now';
+
+      var hoursEl = sign.querySelector('[data-sign-hours]');
+      if (hoursEl) hoursEl.textContent = status.hoursLabel;
+    });
+  }
+
+  renderStatus();
+  window.setInterval(renderStatus, 60000);
 })();
