@@ -1129,40 +1129,93 @@ a.card:hover {
 .card h3 { margin-bottom: var(--space-2); }
 .card p { color: var(--muted); font-size: var(--fs-small); }
 
-/* ---------- Services (lead tile + divided list) ---------- */
+/* ---------- Services (Phase: 02 -- What I Build) ----------
+   The site's deliberate dark-to-light hinge: Hero and Introduction are
+   dark editorial, Selected Work onward is paper again, and this
+   section is where that switch happens. Kept on the standard light
+   .section background (no --alt needed), but rebuilt so it reads as
+   the same design system as the approved dark sections -- an
+   editorial numbered sequence (echoing Trust Strip's 01-04 and
+   Introduction's own "01 --" folio mark) rather than a SaaS feature
+   grid. The previous version wrapped the lead item in the sitewide
+   .card component (white surface, border, radius, shadow) -- that's
+   removed entirely; hierarchy here comes from type scale, spacing and
+   a hairline column rule, not a UI container. Scoped under
+   .services-preview throughout so none of this reaches .section-head,
+   .eyebrow or .card as used on other pages. */
+.services-preview__heading {
+  margin-top: var(--space-3);
+  font-size: clamp(1.8rem, 1.3rem + 2vw, 2.6rem);
+}
+
+/* Small, restrained lime mark -- lime reads as near-invisible running
+   text on this light background (measured elsewhere in this system),
+   so it's used here only as a small decorative dot, not as text
+   color, mirroring how sparingly the hero itself uses solid lime
+   fills against its own bright zones. */
+.services-preview .eyebrow::before { background: var(--lime); }
+
 .services {
   display: grid;
-  gap: var(--space-6);
+  gap: var(--space-7);
 }
 
 @media (min-width: 860px) {
   .services {
     grid-template-columns: 1.05fr 1fr;
     align-items: start;
+    gap: var(--space-9);
   }
+
+  .services__list { border-left: 1px solid var(--border); padding-left: var(--space-8); }
 }
 
-.services__primary {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding-block: var(--space-7);
+.services__lead {
+  padding-top: var(--space-5);
+  border-top: 1px solid var(--ink);
 }
 
-.services__primary h3 { font-size: 1.7rem; }
+.services__lead h3 {
+  margin-top: var(--space-4);
+  font-size: clamp(2rem, 1.5rem + 2.2vw, 3rem);
+}
 
-/* Editorial index numbering instead of icons throughout Services --
-   reads as a contents-page list (01/WEB DESIGN, 02/...) rather than a
-   SaaS feature grid. Shared by the primary tile and each list row. */
+.services__lead p {
+  margin-top: var(--space-3);
+  color: var(--muted);
+  max-width: 42ch;
+}
+
+/* Editorial index numbering instead of icons -- reads as a
+   contents-page list (01/WEB DESIGN, 02/...) rather than a feature
+   grid. The lead's own number is sized up to carry real weight
+   without becoming a graphic element; list rows stay small. */
 .services__index {
   display: block;
-  margin-bottom: var(--space-4);
   font-family: var(--font-mono);
-  font-size: 0.85rem;
   letter-spacing: 0.04em;
   color: var(--muted-2);
   transition: color var(--speed) var(--ease);
 }
+
+.services__lead .services__index { font-size: 1rem; }
+
+.services__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5em;
+  margin-top: var(--space-6);
+  padding-bottom: 0.2em;
+  border-bottom: 1.5px solid var(--ink);
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--ink);
+  transition: border-color var(--speed) var(--ease);
+}
+
+.services__cta-arrow { display: inline-block; transition: transform var(--speed) var(--ease); }
+.services__cta:hover { border-color: var(--lime); }
+.services__cta:hover .services__cta-arrow { transform: translateX(3px); }
 
 .services__list {
   display: flex;
@@ -1175,21 +1228,23 @@ a.card:hover {
   gap: var(--space-4);
   padding-block: var(--space-5);
   border-top: 1px solid var(--border);
-  transition: padding-left var(--speed) var(--ease);
+  border-left: 2px solid transparent;
+  padding-left: var(--space-3);
+  margin-left: calc(-1 * var(--space-3));
+  transition: border-color var(--speed) var(--ease);
 }
 
 .services__row:first-child { border-top: none; padding-top: 0; }
 .services__row:last-child { padding-bottom: 0; }
 
-.services__row .services__index { margin-bottom: 0; flex: none; width: 2ch; }
-.services__row h3 { margin-bottom: var(--space-1); font-size: 1.25rem; }
+.services__row .services__index { font-size: 0.85rem; flex: none; width: 2ch; padding-top: 0.2em; }
+.services__row h3 { margin-bottom: var(--space-1); font-size: 1.15rem; }
 .services__row p { color: var(--muted); font-size: var(--fs-small); margin: 0; }
 
-/* Subtle hover interaction (per the redesign brief): the row nudges
-   right and its index brightens, echoing a contents-page entry
-   responding to the cursor -- transform/color only, no layout shift. */
-.services__row:hover { padding-left: var(--space-2); }
-.services__row:hover .services__index { color: var(--accent); }
+/* Restrained hover: a lime rule grows in on the left rather than the
+   row shifting position or picking up the old blue accent color --
+   color-only elsewhere, no movement, no shadow. */
+.services__row:hover { border-left-color: var(--lime); }
 
 /* Standalone text-link style (e.g. "Explore My Services", "View All
    Work") -- shared across pages, so kept even though the card
