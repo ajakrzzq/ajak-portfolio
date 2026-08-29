@@ -145,6 +145,15 @@ h1, h2, h3, h4 {
   color: var(--paper);
 }
 
+/* Same warm charcoal as the approved hero (a literal value, not a
+   shared token -- the hero's CSS is a frozen baseline and isn't
+   touched to extract one). Used only by the Introduction section
+   directly below the hero, so the dark opening reads as two
+   deliberate beats before the page returns to paper for Services. */
+.section--charcoal { background: #17140f; }
+.section--charcoal .eyebrow { color: var(--lime); }
+.section--charcoal .eyebrow::before { background: var(--lime); }
+
 .grid {
   display: grid;
   gap: var(--space-6);
@@ -992,6 +1001,22 @@ body.is-home .site-header:not(.is-scrolled) .nav__cta:hover {
   font-weight: 500;
 }
 
+/* Charcoal variant: required for the hero -> Introduction transition
+   (the homepage Introduction below is now dark too) -- left on its
+   light background, this strip would sit as a jarring pale band
+   between two dark sections. Colors only; layout is untouched. Same
+   warm charcoal literal as .section--charcoal and the hero for
+   visual continuity. */
+.trust-strip--charcoal {
+  background: #17140f;
+  border-top-color: rgba(243, 241, 236, 0.14);
+}
+
+.trust-strip--charcoal .trust-strip__item { border-left-color: rgba(243, 241, 236, 0.14); }
+.trust-strip--charcoal .trust-strip__index { color: rgba(243, 241, 236, 0.45); }
+.trust-strip--charcoal .trust-strip__item span { color: #a39d90; }
+.trust-strip--charcoal .trust-strip__item strong { color: #f3f1ec; }
+
 /* ---------- Manifesto (Introduction) ----------
    An editorial opening statement rather than a centered "about" blurb:
    the eyebrow numbering sits in its own narrow margin column (like a
@@ -1029,6 +1054,12 @@ body.is-home .site-header:not(.is-scrolled) .nav__cta:hover {
   color: var(--muted);
   max-width: 56ch;
 }
+
+/* Dark-charcoal context (.section--charcoal, homepage Introduction
+   only): off-white statement and a warm-toned muted gray for the
+   support line, rather than this pair's light-background colors. */
+.section--charcoal .manifesto__statement { color: #f3f1ec; }
+.section--charcoal .manifesto__support { color: #a39d90; }
 
 /* ---------- Browser-frame (signature element, reused in Hero & My Work) ---------- */
 .browser-frame {
