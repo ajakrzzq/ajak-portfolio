@@ -1648,30 +1648,62 @@ a.card:hover {
 
 /* ---------- Selected Work -- compact index of remaining projects ----------
    The rest of the studio's real work, listed the way a magazine's
-   contents page lists shorter items after the featured spreads: one
-   ruled row each, no imagery, continuing the same numbering. */
-.work-index { margin-top: var(--space-3); }
-
-.work-index__row {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: baseline;
-  gap: var(--space-2) var(--space-4);
-  padding-block: var(--space-4);
-  border-top: 1px solid var(--border);
+   contents page lists shorter items after the featured spreads --
+   deliberately not thumbnails: only one of the three (Royale
+   Chesterfield) has real project photography in the repo, so adding
+   an image to that row alone would look more unfinished than none at
+   all, not less. The distinction from the four featured spreads above
+   is made with typography and rhythm instead -- a smaller but still
+   lime-numbered index, a real display-face name, and a labelled
+   "More Selected Work" divider so the tier change reads as
+   intentional archive, not an afterthought. */
+.work-index__label {
+  margin-top: var(--space-8);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted-2);
 }
 
+.work-index { margin-top: var(--space-3); border-bottom: 1px solid var(--border); }
+
+.work-index__row {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  grid-template-areas: "index name link" "index category link";
+  align-items: center;
+  row-gap: 0.3em;
+  column-gap: var(--space-5);
+  padding-block: var(--space-5);
+  border-top: 1px solid var(--border);
+  transition: border-color var(--speed) var(--ease);
+}
+
+.work-index__row:hover { border-top-color: var(--lime); }
+
 .work-index__index {
+  grid-area: index;
+  align-self: start;
   font-family: var(--font-mono);
-  font-size: 0.8rem;
-  color: var(--muted-2);
-  flex: none;
+  font-weight: 600;
+  font-size: clamp(1.6rem, 1vw + 1.3rem, 2.2rem);
+  color: var(--lime);
   width: 2ch;
 }
 
-.work-index__name { font-weight: 600; color: var(--ink); }
+.work-index__name {
+  grid-area: name;
+  display: block;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(1.15rem, 0.5vw + 1.02rem, 1.4rem);
+  color: var(--ink);
+}
 
 .work-index__category {
+  grid-area: category;
+  display: block;
   font-family: var(--font-mono);
   font-size: 0.72rem;
   letter-spacing: 0.06em;
@@ -1680,17 +1712,43 @@ a.card:hover {
 }
 
 .work-index__link {
-  margin-left: auto;
+  grid-area: link;
+  position: relative;
   display: inline-flex;
   align-items: center;
   gap: 0.4em;
+  padding-block: 0.3em;
   font-size: 0.88rem;
   font-weight: 600;
   color: var(--ink);
+  white-space: nowrap;
 }
 
+.work-index__link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 2px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--speed) var(--ease);
+}
+
+.work-index__row:hover .work-index__link::after { transform: scaleX(1); }
 .work-index__link svg { width: 15px; height: 15px; transition: transform var(--speed) var(--ease); }
 .work-index__row:hover .work-index__link svg { transform: translateX(3px); }
+
+@media (max-width: 639px) {
+  .work-index__row {
+    grid-template-columns: auto 1fr;
+    grid-template-areas: "index name" "index category" "link link";
+    row-gap: 0.4em;
+  }
+  .work-index__link { justify-self: start; margin-top: var(--space-2); }
+}
 
 /* ---------- Why Ajak -- founder line ---------- */
 /* Founder line: a first-person statement inside the "Why Ajak" section
