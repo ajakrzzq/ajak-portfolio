@@ -1,0 +1,614 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JOVI — Give Something That Stays</title>
+  <meta name="description" content="JOVI is a leather goods gifting studio — considered wallets, sling bags and keychains, personalised and priced from RM49. Good design, good materials, good price.">
+
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Hanken+Grotesk:wght@400;500;600;700;800&display=swap">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <p class="concept-banner">
+    <span class="banner-text-full"><strong>Concept Website</strong> &mdash; Demo by <a href="../work.html#jovi">ajak.Web</a>, not a real operating store.</span>
+    <span class="banner-text-short"><strong>Concept Website</strong> &mdash; Demo by <a href="../work.html#jovi">ajak.Web</a></span>
+  </p>
+
+  <header class="site-header" data-site-header>
+    <div class="container site-header__inner">
+      <p class="logo"><a href="index.html">JOVI</a></p>
+
+      <nav class="primary-nav" aria-label="Primary">
+        <a class="nav-link" href="#gift-finder">Gift Finder</a>
+        <a class="nav-link" href="#signature">Signature</a>
+        <a class="nav-link" href="#men">Men</a>
+        <a class="nav-link" href="#women">Women</a>
+        <a class="nav-link" href="#personalise">Personalise</a>
+        <a class="nav-link" href="#story">Our Story</a>
+      </nav>
+
+      <div class="header-actions">
+        <a class="btn btn--primary btn--sm" href="#gift-finder">Find a Gift</a>
+        <button type="button" class="icon-btn menu-toggle" data-menu-toggle aria-expanded="false" aria-controls="mobile-menu" aria-label="Open menu">
+          <span class="menu-toggle__box" aria-hidden="true"><span></span><span></span><span></span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <div class="mobile-menu" data-mobile-menu id="mobile-menu" role="dialog" aria-modal="true" aria-label="Site menu">
+    <div class="mobile-menu__header">
+      <p class="logo"><a href="index.html">JOVI</a></p>
+      <button type="button" class="icon-btn" data-menu-close aria-label="Close menu">
+        <svg viewBox="0 0 24 24" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><line x1="5" y1="5" x2="19" y2="19"></line><line x1="19" y1="5" x2="5" y2="19"></line></svg>
+      </button>
+    </div>
+    <nav class="mobile-menu__links" aria-label="Primary">
+      <a data-menu-anchor href="#gift-finder">Gift Finder</a>
+      <a data-menu-anchor href="#signature">Signature</a>
+      <a data-menu-anchor href="#men">Men</a>
+      <a data-menu-anchor href="#women">Women</a>
+      <a data-menu-anchor href="#personalise">Personalise</a>
+      <a data-menu-anchor href="#story">Our Story</a>
+      <a data-menu-anchor href="#visit">Visit</a>
+    </nav>
+    <p class="mobile-menu__meta">Good design. Good materials. Good price. From RM49.</p>
+  </div>
+
+  <main id="main">
+
+    <!-- ============================== HERO ============================== -->
+    <section class="hero" aria-label="JOVI — Give something that stays">
+      <div class="hero__field" aria-hidden="true">
+        <svg class="hero__ribbon" viewBox="0 0 600 600" fill="none">
+          <path d="M60 420 C 180 280, 260 520, 360 380 S 560 220, 540 80" stroke="#F7F1E4" stroke-width="3" stroke-linecap="round" opacity="0.55"/>
+          <circle cx="540" cy="80" r="7" fill="#F7F1E4" opacity="0.55"/>
+        </svg>
+        <svg class="hero__box" viewBox="0 0 220 220" fill="none">
+          <rect x="20" y="70" width="180" height="130" rx="4" fill="#F0B23E"/>
+          <rect x="20" y="70" width="180" height="34" rx="4" fill="#E39A20"/>
+          <rect x="98" y="20" width="24" height="180" fill="#8C232E"/>
+          <rect x="20" y="94" width="180" height="24" fill="#8C232E"/>
+          <path d="M98 20 C 60 20, 60 60, 98 60 C 60 60, 60 20, 98 20 Z" fill="#8C232E"/>
+          <path d="M122 20 C 160 20, 160 60, 122 60 C 160 60, 160 20, 122 20 Z" fill="#8C232E"/>
+        </svg>
+      </div>
+
+      <div class="container hero__inner">
+        <p class="hero__eyebrow reveal">A Leather Gifting Studio</p>
+        <h1 class="reveal">Give something<br>that <em>stays.</em></h1>
+        <p class="hero__sub reveal">Wallets, sling bags and keychains made from considered leather &mdash; personalised in minutes, priced like they were never meant to be a splurge.</p>
+        <div class="hero__actions reveal">
+          <a class="btn btn--primary" href="#gift-finder">Start the Gift Finder</a>
+          <a class="btn btn--ghost-light" href="#signature">See Signature Pieces</a>
+        </div>
+        <p class="hero__price-signal reveal"><span>From RM49</span> &middot; personalisation included</p>
+      </div>
+
+      <div class="hero__scroll-cue" aria-hidden="true">
+        <span>Scroll</span>
+        <span class="line"></span>
+      </div>
+    </section>
+
+    <!-- ========================== BRAND STATEMENT ========================== -->
+    <section class="statement" aria-labelledby="statement-heading">
+      <div class="container">
+        <p class="eyebrow reveal">The Idea</p>
+        <h2 id="statement-heading" class="reveal">Beautiful things don&rsquo;t have to be unaffordable. <em>Neither does giving them.</em></h2>
+        <p class="statement__body reveal">JOVI started with a small complaint: everything worth gifting was either mass-produced or priced for people who don&rsquo;t need to check the receipt. We wanted the middle &mdash; leather that feels considered, a name pressed into it that makes it theirs, at a price that lets you actually send it.</p>
+      </div>
+    </section>
+
+    <!-- ======================= GOOD DESIGN / GOOD PRICE ======================= -->
+    <section class="good-design" aria-labelledby="good-design-heading">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="eyebrow eyebrow--light">Why It Costs Less</p>
+          <h2 id="good-design-heading">Good design.<br>Good materials.<br>Good price.</h2>
+        </div>
+        <div class="good-design__grid" data-reveal-group>
+          <article class="good-design__card reveal">
+            <svg viewBox="0 0 48 48" aria-hidden="true"><path d="M8 14 L24 6 L40 14 L40 34 L24 42 L8 34 Z" fill="none" stroke="#F7F1E4" stroke-width="2"/><path d="M8 14 L24 22 L40 14 M24 22 V42" fill="none" stroke="#F7F1E4" stroke-width="2"/></svg>
+            <h3>Full-grain, not middleman</h3>
+            <p>We buy leather direct from tanneries and cut every order ourselves &mdash; no import layers marking up the hide before it reaches you.</p>
+          </article>
+          <article class="good-design__card reveal">
+            <svg viewBox="0 0 48 48" aria-hidden="true"><rect x="8" y="8" width="32" height="32" rx="6" fill="none" stroke="#F7F1E4" stroke-width="2"/><path d="M17 24 L22 30 L32 17" fill="none" stroke="#F7F1E4" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <h3>Small batch, made to order</h3>
+            <p>No warehouse of unsold stock to write off. Each piece is cut and stitched only once someone&rsquo;s actually ordered it.</p>
+          </article>
+          <article class="good-design__card reveal">
+            <svg viewBox="0 0 48 48" aria-hidden="true"><path d="M24 6 V24 L36 30" fill="none" stroke="#F7F1E4" stroke-width="2" stroke-linecap="round"/><circle cx="24" cy="24" r="18" fill="none" stroke="#F7F1E4" stroke-width="2"/></svg>
+            <h3>Sold direct, always</h3>
+            <p>No boutique rent, no wholesale cut for a third party. What you&rsquo;d pay a middle-man, we put back into the leather.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================ GIFT FINDER ============================ -->
+    <section class="gift-finder" id="gift-finder" aria-labelledby="gift-finder-heading" data-gift-finder>
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="eyebrow">Not Sure What To Get?</p>
+          <h2 id="gift-finder-heading">The Gift Finder</h2>
+          <p class="section-head__sub">Three quick questions. One good answer.</p>
+        </div>
+
+        <div class="gift-finder__panel reveal">
+          <ol class="gift-finder__progress" data-gf-progress>
+            <li class="is-active" data-step="1"><span>1</span>Who</li>
+            <li data-step="2"><span>2</span>Occasion</li>
+            <li data-step="3"><span>3</span>Budget</li>
+            <li data-step="4"><span>&#10003;</span>Result</li>
+          </ol>
+
+          <div class="gift-finder__step is-active" data-gf-step="1">
+            <h3>Who are you shopping for?</h3>
+            <div class="gift-finder__options" role="group" aria-label="Who are you shopping for">
+              <button type="button" class="gf-option" data-gf-answer="who" data-value="him">Him</button>
+              <button type="button" class="gf-option" data-gf-answer="who" data-value="her">Her</button>
+              <button type="button" class="gf-option" data-gf-answer="who" data-value="special">Someone Special</button>
+            </div>
+          </div>
+
+          <div class="gift-finder__step" data-gf-step="2">
+            <h3>What&rsquo;s the occasion?</h3>
+            <div class="gift-finder__options" role="group" aria-label="What is the occasion">
+              <button type="button" class="gf-option" data-gf-answer="occasion" data-value="birthday">Birthday</button>
+              <button type="button" class="gf-option" data-gf-answer="occasion" data-value="anniversary">Anniversary</button>
+              <button type="button" class="gf-option" data-gf-answer="occasion" data-value="graduation">Graduation</button>
+              <button type="button" class="gf-option" data-gf-answer="occasion" data-value="thankyou">Thank You</button>
+              <button type="button" class="gf-option" data-gf-answer="occasion" data-value="justbecause">Just Because</button>
+            </div>
+            <button type="button" class="gf-back" data-gf-back>&larr; Back</button>
+          </div>
+
+          <div class="gift-finder__step" data-gf-step="3">
+            <h3>What&rsquo;s your budget?</h3>
+            <div class="gift-finder__options" role="group" aria-label="What is your budget">
+              <button type="button" class="gf-option" data-gf-answer="budget" data-value="under100">Under RM100</button>
+              <button type="button" class="gf-option" data-gf-answer="budget" data-value="100to200">RM100&ndash;200</button>
+              <button type="button" class="gf-option" data-gf-answer="budget" data-value="200plus">RM200+</button>
+            </div>
+            <button type="button" class="gf-back" data-gf-back>&larr; Back</button>
+          </div>
+
+          <div class="gift-finder__step gift-finder__step--result" data-gf-step="4">
+            <h3>Our pick for you</h3>
+            <div class="gift-finder__results" data-gf-results></div>
+            <button type="button" class="gf-restart" data-gf-restart>Start Over</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================== SIGNATURE PRODUCTS ========================== -->
+    <section class="rail" id="signature" aria-labelledby="rail-heading">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="eyebrow">The Line-Up</p>
+          <h2 id="rail-heading">Signature Pieces</h2>
+        </div>
+
+        <div class="rail__grid" data-reveal-group>
+
+          <article class="product-card product-card--lg reveal" data-product="wallet">
+            <div class="product-card__frame product-card__frame--maroon">
+              <svg viewBox="0 0 200 140" aria-hidden="true"><rect x="14" y="20" width="172" height="100" rx="10" fill="none" stroke="#F7F1E4" stroke-width="2.5"/><path d="M100 20 V120" stroke="#F7F1E4" stroke-width="2"/><rect x="30" y="40" width="55" height="38" rx="4" fill="none" stroke="#F7F1E4" stroke-width="1.6"/><rect x="115" y="40" width="55" height="38" rx="4" fill="none" stroke="#F7F1E4" stroke-width="1.6"/></svg>
+            </div>
+            <div class="product-card__body">
+              <p class="product-card__name">The Bifold Wallet</p>
+              <p class="product-card__meta">Espresso &amp; Maroon &middot; Full-grain leather</p>
+              <div class="product-card__row">
+                <p class="product-card__price">RM119</p>
+                <span class="swatches" aria-label="Available colours">
+                  <span class="swatch" style="--sw:#3A2A22" title="Espresso"></span>
+                  <span class="swatch" style="--sw:#8C232E" title="Maroon"></span>
+                </span>
+              </div>
+              <p class="product-card__stock">In stock</p>
+              <button type="button" class="btn btn--outline btn--sm" aria-disabled="true" title="Concept store — not a working cart">Add to Bag</button>
+            </div>
+          </article>
+
+          <article class="product-card reveal" data-product="sling">
+            <div class="product-card__frame product-card__frame--pistachio">
+              <svg viewBox="0 0 160 160" aria-hidden="true"><path d="M40 60 Q40 30 80 30 Q120 30 120 60 V120 Q120 132 108 132 H52 Q40 132 40 120 Z" fill="none" stroke="#241712" stroke-width="2.5"/><path d="M80 30 V10" stroke="#241712" stroke-width="2.5"/><circle cx="80" cy="8" r="4" fill="#241712"/></svg>
+            </div>
+            <div class="product-card__body">
+              <p class="product-card__name">The Everyday Sling</p>
+              <p class="product-card__meta">Espresso leather &middot; Brass hardware</p>
+              <div class="product-card__row">
+                <p class="product-card__price">RM189</p>
+                <span class="swatches" aria-label="Available colours">
+                  <span class="swatch" style="--sw:#3A2A22" title="Espresso"></span>
+                  <span class="swatch" style="--sw:#A7B98C" title="Pistachio trim"></span>
+                </span>
+              </div>
+              <p class="product-card__stock">In stock</p>
+              <button type="button" class="btn btn--outline btn--sm" aria-disabled="true" title="Concept store — not a working cart">Add to Bag</button>
+            </div>
+          </article>
+
+          <article class="product-card reveal" data-product="cardholder">
+            <div class="product-card__frame product-card__frame--butter">
+              <svg viewBox="0 0 160 120" aria-hidden="true"><rect x="24" y="30" width="112" height="70" rx="8" fill="none" stroke="#241712" stroke-width="2.5"/><rect x="24" y="30" width="112" height="18" fill="none" stroke="#241712" stroke-width="1.6"/></svg>
+            </div>
+            <div class="product-card__body">
+              <p class="product-card__name">The Slim Card Holder</p>
+              <p class="product-card__meta">Maroon leather &middot; Holds 6 cards</p>
+              <div class="product-card__row">
+                <p class="product-card__price">RM49</p>
+                <span class="swatches" aria-label="Available colours">
+                  <span class="swatch" style="--sw:#8C232E" title="Maroon"></span>
+                  <span class="swatch" style="--sw:#3A2A22" title="Espresso"></span>
+                </span>
+              </div>
+              <p class="product-card__stock">In stock</p>
+              <button type="button" class="btn btn--outline btn--sm" aria-disabled="true" title="Concept store — not a working cart">Add to Bag</button>
+            </div>
+          </article>
+
+          <article class="product-card reveal" data-product="keychain">
+            <div class="product-card__frame product-card__frame--powder">
+              <svg viewBox="0 0 120 140" aria-hidden="true"><circle cx="60" cy="24" r="14" fill="none" stroke="#241712" stroke-width="2.5"/><rect x="38" y="46" width="44" height="70" rx="10" fill="none" stroke="#241712" stroke-width="2.5"/></svg>
+            </div>
+            <div class="product-card__body">
+              <p class="product-card__name">The Keychain Fob</p>
+              <p class="product-card__meta">Terracotta leather &middot; Brass ring</p>
+              <div class="product-card__row">
+                <p class="product-card__price">RM59</p>
+                <span class="swatches" aria-label="Available colours">
+                  <span class="swatch" style="--sw:#C1663B" title="Terracotta"></span>
+                  <span class="swatch" style="--sw:#8C232E" title="Maroon"></span>
+                </span>
+              </div>
+              <p class="product-card__stock">In stock</p>
+              <button type="button" class="btn btn--outline btn--sm" aria-disabled="true" title="Concept store — not a working cart">Add to Bag</button>
+            </div>
+          </article>
+
+          <article class="product-card product-card--wide reveal" data-product="giftset">
+            <div class="product-card__frame product-card__frame--terracotta">
+              <svg viewBox="0 0 220 120" aria-hidden="true"><rect x="20" y="30" width="90" height="64" rx="8" fill="none" stroke="#F7F1E4" stroke-width="2.5"/><rect x="120" y="20" width="80" height="80" rx="8" fill="none" stroke="#F7F1E4" stroke-width="2.5"/><path d="M120 60 H90" stroke="#F7F1E4" stroke-width="2" stroke-dasharray="4 5"/></svg>
+            </div>
+            <div class="product-card__body">
+              <p class="product-card__name">The Wallet &amp; Card Set</p>
+              <p class="product-card__meta">Matched pair &middot; Gift-boxed together</p>
+              <div class="product-card__row">
+                <p class="product-card__price">RM239 <span class="product-card__was">RM168 saved</span></p>
+                <span class="swatches" aria-label="Available colours">
+                  <span class="swatch" style="--sw:#3A2A22" title="Espresso"></span>
+                  <span class="swatch" style="--sw:#8C232E" title="Maroon"></span>
+                </span>
+              </div>
+              <p class="product-card__stock">In stock</p>
+              <button type="button" class="btn btn--outline btn--sm" aria-disabled="true" title="Concept store — not a working cart">Add to Bag</button>
+            </div>
+          </article>
+
+          <article class="product-card reveal" data-product="weekender">
+            <div class="product-card__frame product-card__frame--maroon">
+              <svg viewBox="0 0 160 130" aria-hidden="true"><rect x="20" y="40" width="120" height="72" rx="14" fill="none" stroke="#F7F1E4" stroke-width="2.5"/><path d="M55 40 V26 Q55 16 80 16 Q105 16 105 26 V40" fill="none" stroke="#F7F1E4" stroke-width="2.5"/></svg>
+            </div>
+            <div class="product-card__body">
+              <p class="product-card__name">The Weekender Companion</p>
+              <p class="product-card__meta">Espresso leather &middot; Detachable strap</p>
+              <div class="product-card__row">
+                <p class="product-card__price">RM259</p>
+                <span class="swatches" aria-label="Available colours">
+                  <span class="swatch" style="--sw:#3A2A22" title="Espresso"></span>
+                </span>
+              </div>
+              <p class="product-card__stock">Low stock &mdash; 4 left</p>
+              <button type="button" class="btn btn--outline btn--sm" aria-disabled="true" title="Concept store — not a working cart">Add to Bag</button>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================ MEN'S CHAPTER ============================ -->
+    <section class="chapter chapter--men" id="men" aria-labelledby="men-heading">
+      <div class="container chapter__inner">
+        <div class="chapter__figure reveal" aria-hidden="true">
+          <svg viewBox="0 0 260 320" class="chapter__silhouette">
+            <path d="M130 30 C 160 30 175 55 175 82 C 175 105 165 115 155 122 C 190 135 215 165 220 230 L215 300 H45 L40 230 C 45 165 70 135 105 122 C 95 115 85 105 85 82 C 85 55 100 30 130 30 Z" fill="#8C4526" opacity="0.55"/>
+          </svg>
+          <svg class="chapter__product" viewBox="0 0 160 130" aria-hidden="true"><rect x="20" y="40" width="120" height="72" rx="14" fill="none" stroke="#241712" stroke-width="3"/><path d="M55 40 V26 Q55 16 80 16 Q105 16 105 26 V40" fill="none" stroke="#241712" stroke-width="3"/></svg>
+        </div>
+        <div class="chapter__text">
+          <p class="eyebrow reveal">Chapter One</p>
+          <h2 id="men-heading" class="reveal">For Him</h2>
+          <p class="chapter__body reveal">Pieces built for the pockets he actually uses &mdash; slim, sturdy, and quietly good-looking. Nothing that needs explaining, everything that ages well.</p>
+          <ul class="chapter__picks reveal" data-reveal-group>
+            <li><span>The Bifold Wallet</span><span>RM119</span></li>
+            <li><span>The Weekender Companion</span><span>RM259</span></li>
+            <li><span>The Keychain Fob</span><span>RM59</span></li>
+          </ul>
+          <a class="link-underline reveal" href="#signature">Shop the edit &rarr;</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================== WOMEN'S CHAPTER =========================== -->
+    <section class="chapter chapter--women" id="women" aria-labelledby="women-heading">
+      <div class="container chapter__inner chapter__inner--reverse">
+        <div class="chapter__text">
+          <p class="eyebrow reveal">Chapter Two</p>
+          <h2 id="women-heading" class="reveal">For Her</h2>
+          <p class="chapter__body reveal">Considered shapes, colour that isn&rsquo;t an afterthought, and just enough room for the essentials &mdash; built to move from the studio to dinner without a second bag.</p>
+          <ul class="chapter__picks reveal" data-reveal-group>
+            <li><span>The Everyday Sling</span><span>RM189</span></li>
+            <li><span>The Slim Card Holder</span><span>RM49</span></li>
+            <li><span>The Wallet &amp; Card Set</span><span>RM239</span></li>
+          </ul>
+          <a class="link-underline reveal" href="#signature">Shop the edit &rarr;</a>
+        </div>
+        <div class="chapter__figure reveal" aria-hidden="true">
+          <svg viewBox="0 0 260 320" class="chapter__silhouette">
+            <path d="M130 26 C 158 26 172 50 172 76 C 172 98 163 108 152 115 C 148 118 148 124 156 128 C 200 145 224 180 226 240 L232 300 H28 L34 240 C 36 180 60 145 104 128 C 112 124 112 118 108 115 C 97 108 88 98 88 76 C 88 50 102 26 130 26 Z" fill="#5C7444" opacity="0.5"/>
+          </svg>
+          <svg class="chapter__product" viewBox="0 0 160 160" aria-hidden="true"><path d="M40 60 Q40 30 80 30 Q120 30 120 60 V120 Q120 132 108 132 H52 Q40 132 40 120 Z" fill="none" stroke="#241712" stroke-width="3"/><path d="M80 30 V10" stroke="#241712" stroke-width="3"/></svg>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================ PERSONALISATION ============================ -->
+    <section class="personalise" id="personalise" aria-labelledby="personalise-heading" data-personalise>
+      <div class="container personalise__inner">
+        <div class="personalise__text">
+          <p class="eyebrow reveal">Make It Theirs</p>
+          <h2 id="personalise-heading" class="reveal">Every piece, personalised.</h2>
+          <p class="personalise__body reveal">Add up to three initials, pressed into the leather at no extra cost. Type below to see it take shape.</p>
+
+          <div class="personalise__controls reveal">
+            <label for="engrave-input" class="visually-hidden">Enter initials</label>
+            <input type="text" id="engrave-input" class="personalise__input" maxlength="4" placeholder="A J K" autocomplete="off" data-engrave-input>
+
+            <div class="personalise__targets" role="group" aria-label="Choose a product to personalise">
+              <button type="button" class="pz-target is-active" data-engrave-target="cardholder">Card Holder</button>
+              <button type="button" class="pz-target" data-engrave-target="keychain">Keychain</button>
+              <button type="button" class="pz-target" data-engrave-target="wallet">Wallet</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="personalise__preview reveal">
+          <div class="pz-stage" data-pz-stage="cardholder">
+            <svg viewBox="0 0 300 200" class="pz-illustration"><rect x="20" y="30" width="260" height="140" rx="14" fill="#8C232E"/><rect x="20" y="30" width="260" height="30" fill="#6E1B24"/></svg>
+            <p class="pz-engrave" data-engrave-output>AJK</p>
+          </div>
+          <div class="pz-stage" data-pz-stage="keychain" hidden>
+            <svg viewBox="0 0 220 260" class="pz-illustration"><circle cx="110" cy="40" r="24" fill="none" stroke="#8C232E" stroke-width="8"/><rect x="60" y="70" width="100" height="150" rx="20" fill="#8C232E"/></svg>
+            <p class="pz-engrave pz-engrave--fob" data-engrave-output>AJK</p>
+          </div>
+          <div class="pz-stage" data-pz-stage="wallet" hidden>
+            <svg viewBox="0 0 320 220" class="pz-illustration"><rect x="20" y="20" width="280" height="180" rx="16" fill="#3A2A22"/><rect x="20" y="108" width="280" height="4" fill="#251A13"/></svg>
+            <p class="pz-engrave" data-engrave-output>AJK</p>
+          </div>
+          <p class="pz-caption">Live preview &middot; actual emboss depth may vary slightly by leather grain</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================== PRODUCT STORYTELLING ========================== -->
+    <section class="storytelling" aria-labelledby="storytelling-heading">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="eyebrow eyebrow--light">Under the Stitching</p>
+          <h2 id="storytelling-heading">Why the Bifold Wallet is worth RM119</h2>
+        </div>
+
+        <div class="storytelling__panel reveal" data-storytelling>
+          <div class="storytelling__tabs" role="tablist" aria-label="Wallet details">
+            <button type="button" class="st-tab is-active" role="tab" aria-selected="true" data-st-tab="material">Material</button>
+            <button type="button" class="st-tab" role="tab" aria-selected="false" data-st-tab="construction">Construction</button>
+            <button type="button" class="st-tab" role="tab" aria-selected="false" data-st-tab="interior">Interior</button>
+            <button type="button" class="st-tab" role="tab" aria-selected="false" data-st-tab="hardware">Hardware</button>
+            <button type="button" class="st-tab" role="tab" aria-selected="false" data-st-tab="personalisation">Personalisation</button>
+            <button type="button" class="st-tab" role="tab" aria-selected="false" data-st-tab="packaging">Packaging</button>
+          </div>
+
+          <div class="storytelling__panels">
+            <div class="st-panel is-active" role="tabpanel" data-st-panel="material">
+              <svg viewBox="0 0 200 140" class="st-vignette" aria-hidden="true"><rect width="200" height="140" fill="#8C232E"/><path d="M0 20 Q50 40 100 20 T200 20" stroke="#6E1B24" stroke-width="6" fill="none"/><path d="M0 60 Q50 80 100 60 T200 60" stroke="#6E1B24" stroke-width="6" fill="none"/><path d="M0 100 Q50 120 100 100 T200 100" stroke="#6E1B24" stroke-width="6" fill="none"/></svg>
+              <p><strong>Full-grain buffalo leather.</strong> Sourced whole-hide, not split &mdash; so the grain you see is the grain that wears in, not a printed layer that peels.</p>
+            </div>
+            <div class="st-panel" role="tabpanel" data-st-panel="construction" hidden>
+              <svg viewBox="0 0 200 140" class="st-vignette" aria-hidden="true"><rect width="200" height="140" fill="#3A2A22"/><path d="M10 70 H190" stroke="#F0B23E" stroke-width="4" stroke-dasharray="8 6"/></svg>
+              <p><strong>Saddle-stitched by hand.</strong> Two needles, one thread, locked at every pass &mdash; if one stitch fails, the seam still holds.</p>
+            </div>
+            <div class="st-panel" role="tabpanel" data-st-panel="interior" hidden>
+              <svg viewBox="0 0 200 140" class="st-vignette" aria-hidden="true"><rect width="200" height="140" fill="#C1663B"/><rect x="30" y="30" width="60" height="80" rx="6" fill="#A7440F"/><rect x="110" y="30" width="60" height="80" rx="6" fill="#A7440F"/></svg>
+              <p><strong>6 card slots, 2 bill pockets.</strong> Laid out so your most-used card sits under your thumb, not buried third from the back.</p>
+            </div>
+            <div class="st-panel" role="tabpanel" data-st-panel="hardware" hidden>
+              <svg viewBox="0 0 200 140" class="st-vignette" aria-hidden="true"><rect width="200" height="140" fill="#AEC6CE"/><circle cx="100" cy="70" r="26" fill="none" stroke="#3A5560" stroke-width="6"/></svg>
+              <p><strong>Solid brass snap.</strong> No plating to flake off &mdash; brass hardware ages into a warmer tone the more it&rsquo;s used.</p>
+            </div>
+            <div class="st-panel" role="tabpanel" data-st-panel="personalisation" hidden>
+              <svg viewBox="0 0 200 140" class="st-vignette" aria-hidden="true"><rect width="200" height="140" fill="#F0B23E"/><text x="100" y="85" text-anchor="middle" font-family="Georgia, serif" font-size="42" font-style="italic" fill="#8C232E">Aa</text></svg>
+              <p><strong>Deboss, not print.</strong> Initials are pressed into the hide under heat, so they wear the way the leather does &mdash; never rubs off.</p>
+            </div>
+            <div class="st-panel" role="tabpanel" data-st-panel="packaging" hidden>
+              <svg viewBox="0 0 200 140" class="st-vignette" aria-hidden="true"><rect width="200" height="140" fill="#F7F1E4"/><rect x="55" y="30" width="90" height="80" rx="6" fill="none" stroke="#8C232E" stroke-width="4"/><path d="M100 30 V110 M55 70 H145" stroke="#8C232E" stroke-width="3"/></svg>
+              <p><strong>One box, one ribbon.</strong> No plastic window, no extra insert &mdash; just enough to make opening it feel like something.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================== WHAT'S IN THE BAG ========================== -->
+    <section class="bag-demo" aria-labelledby="bag-demo-heading" data-bag-demo>
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="eyebrow">The Everyday Sling, Tested</p>
+          <h2 id="bag-demo-heading">What&rsquo;s actually in the bag?</h2>
+          <p class="section-head__sub">Tap each item to pack it in.</p>
+        </div>
+
+        <div class="bag-demo__panel reveal">
+          <div class="bag-demo__stage">
+            <svg viewBox="0 0 260 260" class="bag-demo__outline" aria-hidden="true">
+              <path d="M60 90 Q60 40 130 40 Q200 40 200 90 V210 Q200 226 184 226 H76 Q60 226 60 210 Z" fill="none" stroke="#3A2A22" stroke-width="3"/>
+              <path d="M130 40 V10" stroke="#3A2A22" stroke-width="3"/>
+            </svg>
+            <div class="bag-demo__items" data-bag-items>
+              <span class="bag-item" data-bag-item="phone" style="--x:44%; --y:38%;">&#128241;</span>
+              <span class="bag-item" data-bag-item="wallet" style="--x:60%; --y:55%;">&#128365;</span>
+              <span class="bag-item" data-bag-item="keys" style="--x:36%; --y:60%;">&#128273;</span>
+              <span class="bag-item" data-bag-item="cards" style="--x:52%; --y:70%;">&#127183;</span>
+              <span class="bag-item" data-bag-item="earbuds" style="--x:66%; --y:36%;">&#127911;</span>
+              <span class="bag-item" data-bag-item="lipbalm" style="--x:40%; --y:75%;">&#128132;</span>
+            </div>
+            <p class="bag-demo__count"><span data-bag-count>0</span> / 6 items packed</p>
+          </div>
+
+          <div class="bag-demo__chips" role="group" aria-label="Everyday items">
+            <button type="button" class="bag-chip" data-bag-toggle="phone">Phone</button>
+            <button type="button" class="bag-chip" data-bag-toggle="wallet">Wallet</button>
+            <button type="button" class="bag-chip" data-bag-toggle="keys">Keys</button>
+            <button type="button" class="bag-chip" data-bag-toggle="cards">Cards</button>
+            <button type="button" class="bag-chip" data-bag-toggle="earbuds">Earbuds</button>
+            <button type="button" class="bag-chip" data-bag-toggle="lipbalm">Lip Balm</button>
+            <button type="button" class="bag-chip bag-chip--all" data-bag-pack-all>Pack It All</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================== JOVI WALL ============================== -->
+    <section class="wall" aria-labelledby="wall-heading">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="eyebrow eyebrow--light">Customer Culture</p>
+          <h2 id="wall-heading">Given With Love</h2>
+          <p class="section-head__sub section-head__sub--light">A wall of the moments this leather has actually been part of.</p>
+        </div>
+
+        <div class="wall__board reveal" data-reveal-group>
+          <figure class="wall__tile wall__tile--a wall__tile--maroon"><span class="wall__icon">&#127873;</span><figcaption>Unboxed for a birthday, Subang Jaya</figcaption></figure>
+          <figure class="wall__tile wall__tile--b wall__tile--note">&ldquo;He didn&rsquo;t take it off for a week.&rdquo;<figcaption>&mdash; L., Petaling Jaya</figcaption></figure>
+          <figure class="wall__tile wall__tile--c wall__tile--texture" aria-hidden="true"></figure>
+          <figure class="wall__tile wall__tile--d wall__tile--stat"><strong>1,200+</strong><span>gifts given so far</span></figure>
+          <figure class="wall__tile wall__tile--e wall__tile--pink"><span class="wall__icon">&#128140;</span><figcaption>Anniversary card set, hand delivered</figcaption></figure>
+          <figure class="wall__tile wall__tile--f wall__tile--note">&ldquo;Cheaper than I expected &mdash; better than I expected, too.&rdquo;<figcaption>&mdash; A., Ipoh</figcaption></figure>
+          <figure class="wall__tile wall__tile--g wall__tile--tag">#GivenWithLove</figure>
+          <figure class="wall__tile wall__tile--h wall__tile--maroon"><span class="wall__icon">&#127903;</span><figcaption>Graduation keychain, engraved same-week</figcaption></figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================== PACKAGING / UNBOXING =========================== -->
+    <section class="packaging" aria-labelledby="packaging-heading">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="eyebrow">Before It Reaches Them</p>
+          <h2 id="packaging-heading">Made to be opened slowly</h2>
+        </div>
+
+        <ol class="packaging__steps reveal" data-reveal-group>
+          <li>
+            <svg viewBox="0 0 80 80" aria-hidden="true"><rect x="14" y="14" width="52" height="52" rx="6" fill="none" stroke="#8C232E" stroke-width="3"/></svg>
+            <h3>01 &middot; The Box</h3>
+            <p>Kraft board, unbranded on the outside &mdash; no clue what&rsquo;s inside until it&rsquo;s opened.</p>
+          </li>
+          <li>
+            <svg viewBox="0 0 80 80" aria-hidden="true"><path d="M40 10 V70 M20 30 Q40 20 60 30" fill="none" stroke="#8C232E" stroke-width="3"/></svg>
+            <h3>02 &middot; The Ribbon</h3>
+            <p>One length, one knot &mdash; tied by hand, not machine-looped.</p>
+          </li>
+          <li>
+            <svg viewBox="0 0 80 80" aria-hidden="true"><rect x="18" y="24" width="44" height="32" rx="3" fill="none" stroke="#8C232E" stroke-width="3"/><path d="M26 36 H54" stroke="#8C232E" stroke-width="2"/></svg>
+            <h3>03 &middot; The Card</h3>
+            <p>A blank note card, so whatever you want to say is the only thing printed on it.</p>
+          </li>
+          <li>
+            <svg viewBox="0 0 80 80" aria-hidden="true"><rect x="16" y="28" width="48" height="30" rx="6" fill="#8C232E"/></svg>
+            <h3>04 &middot; The Piece</h3>
+            <p>Wrapped in unbleached tissue, initials already pressed in if you asked for them.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ============================== BRAND STORY ============================== -->
+    <section class="story" id="story" aria-labelledby="story-heading">
+      <div class="container story__inner">
+        <div class="story__text">
+          <p class="eyebrow eyebrow--light">Our Story</p>
+          <h2 id="story-heading">Made in Malaysia, priced like it.</h2>
+          <p class="story__body">JOVI began as a side table covered in offcuts &mdash; a cardholder cut for a friend&rsquo;s birthday because the shops nearby only sold logos, not leather. Word travelled faster than the workbench could keep up, so we built a proper one. The rule hasn&rsquo;t changed since: good hide, honest stitching, and a price a friend could actually afford to send another friend.</p>
+        </div>
+        <div class="story__figure" aria-hidden="true">
+          <svg viewBox="0 0 220 220"><circle cx="110" cy="110" r="100" fill="none" stroke="#F0B23E" stroke-width="3" stroke-dasharray="2 10"/><path d="M70 130 L100 100 L120 120 L150 80" stroke="#F0B23E" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================= STORE ================================= -->
+    <section class="store" id="visit" aria-labelledby="store-heading">
+      <div class="container store__inner">
+        <div class="store__text reveal">
+          <p class="eyebrow">Visit</p>
+          <h2 id="store-heading">A small studio, not a showroom.</h2>
+          <p>We keep a working corner where pieces get cut, stitched and personalised &mdash; drop by if you&rsquo;d rather see the leather before it&rsquo;s wrapped.</p>
+          <dl class="store__details">
+            <div><dt>Address</dt><dd>Concept Studio, Petaling Jaya, Selangor</dd></div>
+            <div><dt>Hours</dt><dd>Tue&ndash;Sun, 11am&ndash;7pm</dd></div>
+          </dl>
+        </div>
+        <div class="store__figure reveal" aria-hidden="true">
+          <svg viewBox="0 0 240 200"><rect x="20" y="70" width="200" height="110" fill="none" stroke="#F7F1E4" stroke-width="3"/><path d="M20 70 L120 20 L220 70" fill="none" stroke="#F7F1E4" stroke-width="3"/><rect x="100" y="120" width="40" height="60" fill="none" stroke="#F7F1E4" stroke-width="3"/><circle cx="110" cy="110" r="16" fill="none" stroke="#F0B23E" stroke-width="3"/><text x="110" y="116" text-anchor="middle" font-family="Georgia, serif" font-style="italic" font-size="16" fill="#F0B23E">J</text></svg>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================== FINAL CTA ============================== -->
+    <section class="final-cta">
+      <div class="container">
+        <h2 class="reveal">Made to be given.</h2>
+        <p class="reveal">Three questions, one good gift, from RM49.</p>
+        <a class="btn btn--primary btn--lg reveal" href="#gift-finder">Start the Gift Finder</a>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container site-footer__inner">
+      <div class="site-footer__brand">
+        <p class="logo"><a href="index.html">JOVI</a></p>
+        <p>Good design. Good materials. Good price.</p>
+      </div>
+      <nav class="site-footer__links" aria-label="Footer">
+        <a href="#gift-finder">Gift Finder</a>
+        <a href="#signature">Signature</a>
+        <a href="#men">Men</a>
+        <a href="#women">Women</a>
+        <a href="#personalise">Personalise</a>
+        <a href="#story">Our Story</a>
+        <a href="#visit">Visit</a>
+      </nav>
+      <div class="site-footer__meta">
+        <p>Concept Website &mdash; a design &amp; development demo by <a href="../work.html#jovi">ajak.Web</a>.</p>
+        <p>&copy; <span data-year></span> JOVI. Not a real operating store.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
