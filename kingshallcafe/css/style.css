@@ -48,6 +48,19 @@ html {
   scroll-behavior: smooth;
 }
 
+/* Keeps anchor-nav targets (and any capture/QA tooling that scrolls
+   straight to a section) clear of the sticky header instead of landing
+   underneath it. */
+#home,
+#about,
+#menu,
+#gallery,
+#reviews,
+#visit,
+#favourites-heading {
+  scroll-margin-top: 100px;
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
@@ -1235,21 +1248,45 @@ body.menu-open {
   align-items: stretch;
 }
 
+/* A static card rather than a live Google Maps iframe embed — the embed
+   is unreliable to render consistently (slow first paint, occasional
+   blank/black box), so this stays visually correct in every environment
+   while still linking out to real directions. */
 .location-map {
   position: relative;
   min-height: 340px;
   border-radius: var(--radius-md);
   overflow: hidden;
   border: 1px solid var(--color-inverse-line);
-  filter: grayscale(0.25) contrast(1.05);
+  background: var(--kh-charcoal-soft);
+  background-image: radial-gradient(rgba(217, 180, 131, 0.16) 1px, transparent 1px);
+  background-size: 22px 22px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.25rem;
 }
 
-.location-map iframe {
-  width: 100%;
-  height: 100%;
-  min-height: 340px;
-  border: 0;
-  display: block;
+.location-map__visual {
+  width: 56px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: rgba(217, 180, 131, 0.12);
+  color: var(--kh-brass-light);
+}
+
+.location-map__visual svg {
+  width: 26px;
+  height: 26px;
+}
+
+.location-map__link {
+  color: var(--kh-cream);
+  border-bottom-color: rgba(247, 241, 228, 0.35);
 }
 
 .location-card {
@@ -1610,7 +1647,7 @@ img.img-fallback {
   }
 
   .review-grid {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
   }
 
   .footer-top {

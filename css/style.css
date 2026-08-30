@@ -1101,56 +1101,6 @@ body.is-home .site-header:not(.is-scrolled) .nav__cta:hover {
 .section--charcoal .manifesto__statement { color: #f3f1ec; }
 .section--charcoal .manifesto__support { color: #a39d90; }
 
-/* ---------- Browser-frame (signature element, reused in Hero & My Work) ---------- */
-.browser-frame {
-  background: var(--surface);
-  border-radius: var(--radius-lg);
-  border: 1px solid var(--border);
-  box-shadow: var(--shadow-lg);
-  overflow: hidden;
-}
-
-.browser-frame__bar {
-  display: flex;
-  align-items: center;
-  gap: var(--space-3);
-  padding: 10px 14px;
-  background: var(--paper-alt);
-  border-bottom: 1px solid var(--border);
-}
-
-.browser-frame__dots {
-  display: flex;
-  gap: 6px;
-  flex: none;
-}
-
-.browser-frame__dots span {
-  width: 9px;
-  height: 9px;
-  border-radius: 50%;
-  background: var(--muted-2);
-  opacity: 0.55;
-}
-
-.browser-frame__url {
-  flex: 1;
-  min-width: 0;
-  font-family: var(--font-mono);
-  font-size: 0.7rem;
-  color: var(--muted);
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-full);
-  padding: 5px 12px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.browser-frame img,
-.browser-frame svg { display: block; width: 100%; height: auto; }
-
 /* ---------- Cards ---------- */
 .card {
   background: var(--surface);
@@ -1827,7 +1777,7 @@ a.card:hover {
 .hero__featured.reveal { animation-delay: 0.35s; }
 
 /* ---------- Work page entrance sequence ---------- */
-.work-filter.reveal { animation-delay: 0.32s; }
+.work-toc.reveal { animation-delay: 0.32s; }
 
 .work-feature__head.reveal { animation-delay: 0.05s; }
 .work-feature__visual.reveal { animation-delay: 0.14s; }
@@ -2014,37 +1964,36 @@ a.card:hover {
 
 .feature-list svg { width: 16px; height: 16px; flex: none; margin-top: 4px; color: var(--lime); }
 
-/* ---------- Portfolio filter (typography + rules, not pills) ----------
-   A row of plain mono labels with an underline-in for the active
-   filter, closer to a magazine contents-page section switcher than a
-   SaaS filter-pill row. Same .filter-bar/.filter-btn/data-filter
-   markup and js/script.js logic as before -- presentation only. */
-.filter-bar {
+/* ---------- Portfolio project index (editorial anchor nav) ----------
+   Replaces the old client-side filter: a magazine contents-page list
+   of every project below, each entry a real #anchor link rather than
+   a JS show/hide filter. Same plain-mono, underline-in visual language
+   the old .filter-bar used. */
+.work-toc-section { padding-bottom: var(--space-7); }
+.work-selected-head { padding-top: var(--space-9); }
+
+.work-toc {
   display: flex;
   flex-wrap: wrap;
-  align-items: center;
-  gap: var(--space-5);
-  margin-bottom: var(--space-7);
+  align-items: baseline;
+  gap: var(--space-2) var(--space-6);
   padding-bottom: var(--space-4);
   border-bottom: 1px solid var(--border);
 }
 
-.filter-btn {
-  font-family: var(--font-mono);
-  font-size: 0.78rem;
-  font-weight: 500;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  padding-block: 0.3em;
-  border: none;
-  background: none;
+.work-toc__item {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.6em;
+  font-size: 0.9rem;
+  font-weight: 600;
   color: var(--muted);
-  cursor: pointer;
   position: relative;
+  padding-block: 0.3em;
   transition: color var(--speed) var(--ease);
 }
 
-.filter-btn::after {
+.work-toc__item::after {
   content: "";
   position: absolute;
   left: 0;
@@ -2057,15 +2006,17 @@ a.card:hover {
   transition: transform var(--speed) var(--ease);
 }
 
-.filter-btn:hover { color: var(--ink); }
+.work-toc__item:hover { color: var(--ink); }
+.work-toc__item:hover::after { transform: scaleX(1); }
 
-.filter-btn.is-active { color: var(--ink); }
-.filter-btn.is-active::after { transform: scaleX(1); }
+.work-toc__index {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+  color: var(--muted-2);
+}
 
-.work-filter-section { padding-bottom: var(--space-7); }
-.work-selected-head { padding-top: var(--space-9); }
-
-/* ---------- Portfolio visual gallery grid (reused by the flagship visual story) ---------- */
+/* ---------- Portfolio visual gallery grid (reused by every case study's visual story) ---------- */
 .project__gallery {
   display: grid;
   gap: var(--space-4);
@@ -2076,26 +2027,40 @@ a.card:hover {
 
 @media (min-width: 720px) {
   .project__gallery { grid-template-columns: repeat(2, 1fr); }
-  .project__gallery > .browser-frame:first-child { grid-column: 1 / -1; }
 }
 
-.project__gallery button.browser-frame {
+.project__gallery button.work-story-item__frame {
   padding: 0;
   border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
   background: var(--surface);
+  box-shadow: var(--shadow-lg);
   cursor: zoom-in;
   text-align: left;
   width: 100%;
-  transition: box-shadow var(--speed) var(--ease);
+  transition: box-shadow var(--speed) var(--ease), transform var(--speed) var(--ease);
 }
 
-.project__gallery button.browser-frame:hover { box-shadow: var(--shadow-md); }
+.project__gallery button.work-story-item__frame:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
 
-.project__gallery button.browser-frame img { transition: transform 0.5s var(--ease); }
-.project__gallery button.browser-frame:hover img { transform: scale(1.03); }
+.project__gallery button.work-story-item__frame img,
+.project__gallery button.work-story-item__frame svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  transition: transform 0.5s var(--ease);
+}
 
-/* ---------- NOVAÉ gallery: mixed landscape/portrait screenshots, scoped so Madani's gallery is unaffected ---------- */
-#novae .project__gallery {
+.project__gallery button.work-story-item__frame:hover img { transform: scale(1.03); }
+
+/* ---------- NOVAÉ / King's Hall galleries: mixed aspect-ratio screenshots,
+   scoped so the default (matched-ratio) galleries elsewhere are unaffected ---------- */
+#novae .project__gallery,
+#kingshall .project__gallery {
   align-items: start;
 }
 
@@ -2154,18 +2119,45 @@ a.card:hover {
 
 .work-feature__intro { font-size: var(--fs-lead); color: var(--muted); max-width: 56ch; }
 
+/* Mounted-print treatment: the hero screenshot sits inset on a card
+   rather than bleeding edge-to-edge. Madani's own hero source is a
+   short, wide banner crop (~3.2:1) that would otherwise read as a
+   thin strip next to King's Hall's tall photograph -- padding gives
+   both feature-tier heroes real presence without cropping or
+   distorting either image. */
 .work-feature__visual {
   margin-bottom: var(--space-7);
+  padding: clamp(1.25rem, 3vw, 2.25rem);
+  background: var(--surface);
   border-radius: var(--radius-lg);
   overflow: hidden;
   box-shadow: var(--shadow-lg);
   transition: transform 0.5s var(--ease);
 }
 
+.work-feature__visual img,
+.work-feature__visual svg { border-radius: var(--radius-sm); }
+
 .work-feature__visual:hover { transform: translateY(-4px); }
-.work-feature__visual .browser-frame { border-radius: 0; border: none; box-shadow: none; }
+.work-feature__visual img,
+.work-feature__visual svg { display: block; width: 100%; height: auto; }
 .work-feature__visual img { transition: transform 0.6s var(--ease); }
 .work-feature__visual:hover img { transform: scale(1.02); }
+
+/* King's Hall's own honest-defect disclosure -- required wherever the
+   concept appears, so it can't be missed by scanning past the intro. */
+.work-feature__disclosure {
+  margin-top: var(--space-4);
+  padding: var(--space-3) var(--space-4);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  background: var(--paper-alt);
+  font-size: 0.85rem;
+  color: var(--muted);
+  max-width: 56ch;
+}
+
+.work-feature__disclosure strong { color: var(--ink); }
 
 .work-feature__meta {
   margin-bottom: var(--space-8);
@@ -2210,6 +2202,15 @@ a.card:hover {
 .work-feature__story { margin-bottom: var(--space-9); }
 .work-feature__story h3 { font-size: var(--fs-h3); margin-bottom: var(--space-5); color: var(--navy); }
 .work-feature__story .project__gallery { gap: var(--space-6); }
+
+/* Madani's 6-image gallery renders at generic 2-up scale otherwise --
+   large enough to visually compete with the hero above it instead of
+   supporting it. A tighter 3-up grid keeps every screenshot legible
+   while clearly reading as secondary. Scoped to Madani only -- King's
+   Hall's 2-image gallery is deliberately spacious. */
+@media (min-width: 900px) {
+  #oil-gas .project__gallery { grid-template-columns: repeat(3, 1fr); }
+}
 
 .work-feature__summary {
   margin-bottom: var(--space-9);
@@ -2272,6 +2273,14 @@ a.card:hover {
   .work-project--reverse .work-project__grid { grid-template-columns: 0.9fr 1.1fr; }
   .work-project--reverse .work-project__visual { order: 2; }
   .work-project--reverse .work-project__body { order: 1; }
+
+  /* Medium tier: Chicken Rice keeps the default ratio; Safwa and NOVAÉ
+     each get a genuinely different image/text balance rather than
+     just a mirrored copy of the same column split -- Safwa's own copy
+     is deliberately restrained ("without leaning on heavy imagery"),
+     NOVAÉ's is the most visual-forward of the three. */
+  #safwa .work-project__grid { grid-template-columns: 1.2fr 0.8fr; }
+  #novae .work-project__grid { grid-template-columns: 1.3fr 0.7fr; }
 }
 
 .work-project__visual {
@@ -2282,7 +2291,8 @@ a.card:hover {
 }
 
 .work-project__visual:hover { transform: translateY(-4px); }
-.work-project__visual .browser-frame { border-radius: 0; border: none; box-shadow: none; }
+.work-project__visual img,
+.work-project__visual svg { display: block; width: 100%; height: auto; }
 .work-project__visual img { transition: transform 0.6s var(--ease); }
 .work-project__visual:hover img { transform: scale(1.03); }
 
@@ -2370,6 +2380,42 @@ a.card:hover {
 .info-row:last-child { border-bottom: none; }
 .info-row dt { color: var(--muted); }
 .info-row dd { font-weight: 600; text-align: right; }
+
+/* ---------- Work page — archive tier (lighter visual weight) ----------
+   Klinik Ceria, Royale Chesterfield and Lumi\00e8re carry the same full
+   case-study markup as the medium tier, but read as a lighter "more
+   projects" pass: a smaller, constrained image and tighter spacing
+   rather than a fourth full-width spread. */
+.work-project--compact {
+  padding-block: var(--space-7);
+}
+
+@media (min-width: 900px) {
+  .work-project--compact .work-project__visual {
+    max-width: 420px;
+  }
+
+  .work-project--compact .work-project__grid {
+    grid-template-columns: 0.8fr 1.2fr;
+  }
+
+  .work-project--compact.work-project--reverse .work-project__grid {
+    grid-template-columns: 1.2fr 0.8fr;
+  }
+}
+
+.work-project--compact .work-project__story {
+  margin-top: var(--space-5);
+}
+
+.work-project--compact .project__gallery {
+  gap: var(--space-3);
+}
+
+@media (min-width: 900px) {
+  .work-project--compact .project__gallery { max-width: 640px; }
+  .work-project--compact.work-project--reverse .project__gallery { margin-left: auto; }
+}
 
 /* ---------- Lightbox ---------- */
 .lightbox {

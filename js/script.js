@@ -116,29 +116,6 @@ document.addEventListener("DOMContentLoaded", function () {
      entirely by a CSS animation in style.css (see "Entrance animation").
      It plays automatically on load, so it needs no JavaScript here. */
 
-  /* ---------- Portfolio filter (My Work page) ---------- */
-  var filterBar = document.querySelector(".filter-bar");
-  var projectEls = document.querySelectorAll("[data-category]");
-  if (filterBar && projectEls.length) {
-    filterBar.addEventListener("click", function (e) {
-      var btn = e.target.closest(".filter-btn");
-      if (!btn) return;
-      filterBar.querySelectorAll(".filter-btn").forEach(function (b) {
-        b.classList.remove("is-active");
-        b.setAttribute("aria-pressed", "false");
-      });
-      btn.classList.add("is-active");
-      btn.setAttribute("aria-pressed", "true");
-
-      var value = btn.dataset.filter;
-      projectEls.forEach(function (el) {
-        var cats = el.dataset.category.split(" ");
-        var show = value === "all" || cats.indexOf(value) !== -1;
-        el.style.display = show ? "" : "none";
-      });
-    });
-  }
-
   /* ---------- Lightbox (project screenshots) ---------- */
   var lightbox = document.querySelector(".lightbox");
   if (lightbox) {
