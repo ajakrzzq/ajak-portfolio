@@ -578,10 +578,10 @@ body.is-inner .eyebrow::before { background: var(--lime); }
      opens more of the existing blurred-atmosphere layer above the
      subject, it doesn't add a blank margin. */
   .hero__photo-pic--sharp {
-    top: 12%;
+    top: 18%;
     left: 0;
     right: 0;
-    height: 42%;
+    height: 36%;
     width: 100%;
     -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 38%, transparent 88%);
     mask-image: linear-gradient(to bottom, #000 0%, #000 38%, transparent 88%);
@@ -591,10 +591,10 @@ body.is-inner .eyebrow::before { background: var(--lime); }
      .soft fades in, and fading out gradually well before .sharp does,
      so there's always an intermediate treatment under the crossfade. */
   .hero__photo-pic--mid {
-    top: 12%;
+    top: 18%;
     left: 0;
     right: 0;
-    height: 50%;
+    height: 44%;
     width: 100%;
     -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 50%, transparent 92%);
     mask-image: linear-gradient(to bottom, #000 0%, #000 50%, transparent 92%);
@@ -612,8 +612,8 @@ body.is-inner .eyebrow::before { background: var(--lime); }
      anchored (6% + 94% = 100%) while opening a quiet band under the
      header before the atmosphere begins -- mask gradient unchanged. */
   .hero__photo-pic--soft {
-    top: 6%;
-    height: 94%;
+    top: 14%;
+    height: 86%;
     -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 42%, transparent 62%);
     mask-image: linear-gradient(to bottom, #000 0%, #000 42%, transparent 62%);
   }
@@ -635,7 +635,7 @@ body.is-inner .eyebrow::before { background: var(--lime); }
      pushed further down; bottom:0 keeps the box's lower edge anchored,
      so only headroom opens up, nothing shifts at the bottom. */
   .hero__photo-pic--sharp {
-    top: 16%;
+    top: 22%;
     left: auto;
     right: 0;
     bottom: 0;
@@ -653,7 +653,7 @@ body.is-inner .eyebrow::before { background: var(--lime); }
      widening it further was tried and blurred the subject's own face,
      confirmed by screenshot, so it's reverted. */
   .hero__photo-pic--mid {
-    top: 16%;
+    top: 22%;
     left: auto;
     right: 0;
     bottom: 0;
@@ -670,8 +670,8 @@ body.is-inner .eyebrow::before { background: var(--lime); }
      quiet band under the header that .sharp/.mid already got at
      top:16% -- mask gradient (horizontal, right-weighting) unchanged. */
   .hero__photo-pic--soft {
-    top: 6%;
-    height: 94%;
+    top: 14%;
+    height: 86%;
     -webkit-mask-image: linear-gradient(to right, transparent 0%, rgba(0, 0, 0, 0.4) 22%, #000 40%);
     mask-image: linear-gradient(to right, transparent 0%, rgba(0, 0, 0, 0.4) 22%, #000 40%);
   }
@@ -706,7 +706,7 @@ body.is-inner .eyebrow::before { background: var(--lime); }
      pause; bottom:0 keeps the box's lower edge anchored, so only
      headroom opens up, nothing shifts at the bottom. */
   .hero__photo-pic--sharp {
-    top: 19%;
+    top: 25%;
     left: auto;
     right: 0;
     bottom: 0;
@@ -724,7 +724,7 @@ body.is-inner .eyebrow::before { background: var(--lime); }
      widening it further was tried and blurred the subject's own face,
      confirmed by screenshot, so it's reverted. */
   .hero__photo-pic--mid {
-    top: 19%;
+    top: 25%;
     left: auto;
     right: 0;
     bottom: 0;
@@ -741,8 +741,8 @@ body.is-inner .eyebrow::before { background: var(--lime); }
      quiet band under the header that .sharp/.mid already got at
      top:19% -- mask gradient (horizontal, right-weighting) unchanged. */
   .hero__photo-pic--soft {
-    top: 8%;
-    height: 92%;
+    top: 16%;
+    height: 84%;
     -webkit-mask-image: linear-gradient(to right, transparent 0%, rgba(0, 0, 0, 0.4) 22%, #000 40%);
     mask-image: linear-gradient(to right, transparent 0%, rgba(0, 0, 0, 0.4) 22%, #000 40%);
   }
