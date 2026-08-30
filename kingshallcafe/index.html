@@ -3,6 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Progressive enhancement: only arm the clip-path/line-mask hidden
+       state if JS actually runs. If this never executes, content in
+       index.html stays visible via the CSS default (see .unmask-armed). -->
+  <script>document.documentElement.classList.add('unmask-armed');</script>
   <title>Kings Hall Cafe @ Sec 13 | Cafe in Section 13, Petaling Jaya</title>
   <meta name="description" content="Kings Hall Cafe is a spacious, laid-back cafe in Section 13, Petaling Jaya, known for good coffee, comforting food and good vibes inside a building with a story. Open daily.">
   <meta name="keywords" content="Kings Hall Cafe, Kings Hall Cafe Section 13, cafe Section 13 Petaling Jaya, cafe in Petaling Jaya, coffee shop Section 13 PJ">
@@ -12,19 +16,19 @@
   <meta property="og:site_name" content="Kings Hall Cafe @ Sec 13">
   <meta property="og:title" content="Kings Hall Cafe @ Sec 13 | Good Coffee. Good Food. Good Vibes.">
   <meta property="og:description" content="A spacious, laid-back cafe in Section 13, Petaling Jaya — good coffee, comforting food and good vibes inside a building with a story.">
-  <meta property="og:image" content="https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=1200&q=80">
+  <meta property="og:image" content="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=1200&q=80">
   <meta property="og:url" content="https://www.kingshallcafe.com/">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Kings Hall Cafe @ Sec 13 | Good Coffee. Good Food. Good Vibes.">
   <meta name="twitter:description" content="A hidden cafe worth discovering in Section 13, Petaling Jaya.">
-  <meta name="twitter:image" content="https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=1200&q=80">
+  <meta name="twitter:image" content="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=1200&q=80">
 
   <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
-  <meta name="theme-color" content="#1c1914">
+  <meta name="theme-color" content="#ededE8">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400;1,6..72,500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
 
   <!-- Local business structured data — update ratingValue / reviewCount from live Google listing before launch -->
@@ -33,7 +37,7 @@
     "@context": "https://schema.org",
     "@type": "CafeOrCoffeeShop",
     "name": "Kings Hall Cafe @ Sec 13",
-    "image": "https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=1200&q=80",
+    "image": "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=1200&q=80",
     "url": "https://www.kingshallcafe.com/",
     "priceRange": "RM20 - RM40",
     "servesCuisine": "Cafe",
@@ -74,614 +78,354 @@
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
 
-  <header class="site-header" data-site-header>
-    <div class="container site-header__inner">
-      <a href="#home" class="logo">
-        <span class="logo__mark">Kings Hall</span>
-        <span class="logo__sub">Cafe @ Sec 13</span>
+  <!-- ============================== MASTHEAD ============================== -->
+  <header class="masthead">
+    <div class="rail masthead-row">
+      <a href="#cover" class="masthead-mark">
+        Kings Hall
+        <span>Cafe &middot; Section 13, PJ</span>
       </a>
-
-      <nav class="primary-nav" aria-label="Primary">
-        <a class="nav-link" href="#home" aria-current="page">Home</a>
-        <a class="nav-link" href="#about">About</a>
-        <a class="nav-link" href="#menu">Menu</a>
-        <a class="nav-link" href="#gallery">Gallery</a>
-        <a class="nav-link" href="#reviews">Reviews</a>
-        <a class="nav-link" href="#visit">Visit</a>
-      </nav>
-
-      <div class="header-actions">
-        <a class="btn btn--primary btn--sm" href="https://www.google.com/maps/dir/?api=1&destination=5,+Jalan+13/2,+Section+13,+46200+Petaling+Jaya,+Selangor,+Malaysia" target="_blank" rel="noopener">
-          Get Directions
-        </a>
-        <button type="button" class="menu-toggle" data-menu-toggle aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
-          <span class="menu-toggle__box" aria-hidden="true"><span></span><span></span><span></span></span>
-        </button>
+      <div class="masthead-actions">
+        <nav class="masthead-index" aria-label="Section index">
+          <a href="#table">Today's Table</a>
+          <a href="#story">Our Story</a>
+          <a href="#space">The Space</a>
+          <a href="#visit">Visit</a>
+        </nav>
       </div>
     </div>
   </header>
 
-  <div class="mobile-menu" data-mobile-menu id="mobile-menu" role="dialog" aria-modal="true" aria-label="Site menu">
-    <nav class="mobile-menu__links" aria-label="Mobile">
-      <a href="#home">Home</a>
-      <a href="#about">About</a>
-      <a href="#menu">Menu</a>
-      <a href="#gallery">Gallery</a>
-      <a href="#reviews">Reviews</a>
-      <a href="#visit">Visit</a>
-    </nav>
-    <div class="mobile-menu__foot">
-      <a class="btn btn--primary" href="https://www.google.com/maps/dir/?api=1&destination=5,+Jalan+13/2,+Section+13,+46200+Petaling+Jaya,+Selangor,+Malaysia" target="_blank" rel="noopener">Get Directions</a>
-      <a href="https://www.instagram.com/kingshallcafe/" target="_blank" rel="noopener">@kingshallcafe on Instagram</a>
-      <a href="https://www.facebook.com/KingsHallCafe/" target="_blank" rel="noopener">Facebook</a>
+  <!-- ============================== CONTENTS ============================== -->
+  <button type="button" class="contents-tab" data-contents-open aria-haspopup="dialog" aria-controls="contents-overlay">
+    <span class="contents-tab-mark" aria-hidden="true"></span>
+    Contents
+  </button>
+
+  <div class="contents-overlay" id="contents-overlay" role="dialog" aria-modal="true" aria-label="Table of contents" data-contents-overlay>
+    <div class="contents-overlay-head">
+      <span class="masthead-mark">Kings Hall</span>
+      <button type="button" class="contents-close" data-contents-close>
+        Close <span aria-hidden="true">&times;</span>
+      </button>
     </div>
+    <nav class="contents-list" aria-label="Article sections">
+      <a href="#table" data-contents-link><span class="index-num">01</span> Today's Table</a>
+      <a href="#story" data-contents-link><span class="index-num">02</span> Our Story</a>
+      <a href="#space" data-contents-link><span class="index-num">03</span> The Space</a>
+      <a href="#visit" data-contents-link><span class="index-num">04</span> Visit</a>
+    </nav>
   </div>
 
   <main id="main">
 
-    <!-- ============================== HERO ============================== -->
-    <section class="hero" id="home" aria-label="Kings Hall Cafe introduction">
-      <div class="hero__media">
-        <img
-          src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=1800&q=80"
-          alt="Warm, spacious cafe interior with wooden tables and soft natural light, similar to the seating area at Kings Hall Cafe"
-          onerror="this.onerror=null;this.src='images/placeholder.svg';this.classList.add('img-fallback')"
-        >
-        <div class="hero__scrim"></div>
-      </div>
-      <div class="hero__content">
-        <p class="hero__location">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s7-6.4 7-11.5A7 7 0 0 0 5 9.5C5 14.6 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>
-          Section 13 &bull; Petaling Jaya
-        </p>
-        <h1>Kings Hall</h1>
-        <p class="hero__tagline">Good Coffee. Good Food. Good Vibes.</p>
-        <p class="hero__sub">Discover a hidden cafe in the heart of Section 13, Petaling Jaya — spacious, relaxed, and easy to lose an afternoon in.</p>
-        <div class="hero__actions">
-          <a class="btn btn--primary" href="#menu">View Menu</a>
-          <a class="btn btn--ghost-light" href="https://www.google.com/maps/dir/?api=1&destination=5,+Jalan+13/2,+Section+13,+46200+Petaling+Jaya,+Selangor,+Malaysia" target="_blank" rel="noopener">Get Directions</a>
+    <!-- ============================== COVER ============================== -->
+    <section class="cover" id="cover" aria-label="Kings Hall Cafe introduction">
+      <div class="rail">
+        <div class="cover-folio">
+          <span class="folio">No. 13 &mdash; Section 13, Petaling Jaya</span>
+          <span class="folio">Est. 2019</span>
         </div>
-      </div>
-      <div class="hero__scroll-cue" aria-hidden="true">
-        <span>Scroll</span>
-        <span class="line"></span>
+
+        <div class="cover-grid">
+          <div class="cover-text">
+            <p class="cover-mark">Kings Hall Cafe</p>
+            <h1 class="cover-headline" data-unmask-line>
+              <span>Good coffee.<br>Good food.<br>Good vibes.</span>
+            </h1>
+            <p class="cover-dek">A spacious, laid-back cafe in a building with a story &mdash; built for slow mornings and long conversations.</p>
+            <div class="cover-actions">
+              <a class="action is-primary" href="#table">Today's Table</a>
+              <a class="action-line" href="https://www.google.com/maps/dir/?api=1&destination=5,+Jalan+13/2,+Section+13,+46200+Petaling+Jaya,+Selangor,+Malaysia" target="_blank" rel="noopener">Get Directions &rarr;</a>
+            </div>
+          </div>
+
+          <figure class="cover-figure" data-unmask>
+            <img
+              src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=1400&q=80"
+              alt="Piccolo latte in a small glass on a wooden table, steam rising"
+              onerror="this.onerror=null;this.src='images/placeholder.svg';this.classList.add('img-fallback')"
+            >
+            <figcaption class="cover-caption">
+              <span class="caption">Piccolo latte, most mornings</span>
+              <span class="caption">Photograph &mdash; Kings Hall</span>
+            </figcaption>
+          </figure>
+        </div>
       </div>
     </section>
 
-    <!-- ============================== INTRO ============================== -->
-    <section class="section" id="about" aria-labelledby="intro-heading">
-      <div class="container">
-        <div class="editorial" data-reveal>
-          <div class="editorial__media">
+    <!-- ============================== BREATH ============================== -->
+    <figure class="breath" data-unmask>
+      <img
+        src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=1800&q=80"
+        alt="Warm, spacious cafe interior with wooden tables and soft natural light"
+        loading="lazy"
+        onerror="this.onerror=null;this.src='images/placeholder.svg';this.classList.add('img-fallback')"
+      >
+    </figure>
+
+    <!-- ============================== TODAY'S TABLE ============================== -->
+    <section class="table-section" id="table" aria-labelledby="table-heading">
+      <div class="rail">
+        <div class="rubric">
+          <span class="index-num">01</span>
+          <div>
+            <h2 id="table-heading">Today's Table</h2>
+            <p class="rubric-dek">A taste of what's on offer &mdash; from house coffee to weekend brunch.</p>
+          </div>
+        </div>
+
+        <p class="table-range">RM20 &ndash; RM40 &middot; ask for today's selection &middot; menu changes with the season</p>
+
+        <div class="table-list" data-unmask-group>
+          <div class="table-row" data-unmask>
+            <span class="table-name">Piccolo Latte</span>
+            <span class="table-leader" aria-hidden="true"></span>
+            <span class="table-tag">Coffee</span>
+            <p class="table-desc">A small, strong espresso balanced with steamed milk.</p>
+          </div>
+          <div class="table-row" data-unmask>
+            <span class="table-name">Brew of the Day</span>
+            <span class="table-leader" aria-hidden="true"></span>
+            <span class="table-tag">Coffee</span>
+            <p class="table-desc">A rotating filter brew, chosen fresh each morning.</p>
+          </div>
+          <div class="table-row" data-unmask>
+            <span class="table-name">Biggie Breakfast</span>
+            <span class="table-leader" aria-hidden="true"></span>
+            <span class="table-tag">Breakfast &amp; Brunch</span>
+            <p class="table-desc">A hearty all-day breakfast plate for when you're in no rush.</p>
+          </div>
+          <div class="table-row" data-unmask>
+            <span class="table-name">Waffles</span>
+            <span class="table-leader" aria-hidden="true"></span>
+            <span class="table-tag">Breakfast &amp; Brunch</span>
+            <p class="table-desc">Crisp on the outside, soft within &mdash; served with seasonal toppings.</p>
+          </div>
+          <div class="table-row" data-unmask>
+            <span class="table-name">Japanese Curry Rice</span>
+            <span class="table-leader" aria-hidden="true"></span>
+            <span class="table-tag">Mains</span>
+            <p class="table-desc">A comforting cafe classic, mild and satisfying.</p>
+          </div>
+          <div class="table-row" data-unmask>
+            <span class="table-name">Honeycomb Cake</span>
+            <span class="table-leader" aria-hidden="true"></span>
+            <span class="table-tag">Desserts</span>
+            <p class="table-desc">A cafe favourite, best paired with a hot flat white.</p>
+          </div>
+        </div>
+
+        <p style="margin-top:1.5rem;"><a class="action-line" href="https://www.facebook.com/KingsHallCafe/" target="_blank" rel="noopener">View Full Menu &rarr;</a></p>
+      </div>
+    </section>
+
+    <!-- ============================== CROP LINE ============================== -->
+    <section class="crop-line" id="crop-line" aria-labelledby="crop-line-heading" data-unmask>
+      <div class="crop-line-label">
+        <span class="folio" id="crop-line-heading">02 &mdash; The Crop Line &middot; a contact sheet from the kitchen</span>
+      </div>
+      <div class="crop-track" data-crop-track role="list" aria-label="Close-up photographs of Kings Hall food and drink">
+        <figure class="crop-frame" role="listitem">
+          <img src="https://images.unsplash.com/photo-1447933601403-0c6688de566e?auto=format&fit=crop&w=500&q=80" alt="Freshly roasted coffee beans, close up" loading="lazy">
+          <figcaption>Roast &mdash; first light</figcaption>
+        </figure>
+        <figure class="crop-frame" role="listitem">
+          <img src="https://images.unsplash.com/photo-1442512595331-e89e73853f31?auto=format&fit=crop&w=500&q=80" alt="Latte art being poured" loading="lazy">
+          <figcaption>Pour &mdash; every morning</figcaption>
+        </figure>
+        <figure class="crop-frame" role="listitem">
+          <img src="https://images.unsplash.com/photo-1562376552-0d160a2f238d?auto=format&fit=crop&w=500&q=80" alt="Waffle close up with syrup" loading="lazy">
+          <figcaption>Crumb &mdash; table four</figcaption>
+        </figure>
+        <figure class="crop-frame" role="listitem">
+          <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=500&q=80" alt="Japanese curry rice, close up" loading="lazy">
+          <figcaption>Steam &mdash; just plated</figcaption>
+        </figure>
+        <figure class="crop-frame" role="listitem">
+          <img src="https://images.unsplash.com/photo-1473093295043-cdd812d0e601?auto=format&fit=crop&w=500&q=80" alt="Smoked salmon carbonara, close up" loading="lazy">
+          <figcaption>Twirl &mdash; carbonara</figcaption>
+        </figure>
+        <figure class="crop-frame" role="listitem">
+          <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=500&q=80" alt="Honeycomb cake slice, close up" loading="lazy">
+          <figcaption>Crust &mdash; honeycomb cake</figcaption>
+        </figure>
+        <!-- duplicated for seamless drift loop, hidden from assistive tech -->
+        <figure class="crop-frame" role="presentation" aria-hidden="true">
+          <img src="https://images.unsplash.com/photo-1447933601403-0c6688de566e?auto=format&fit=crop&w=500&q=80" alt="" loading="lazy">
+          <figcaption>Roast &mdash; first light</figcaption>
+        </figure>
+        <figure class="crop-frame" role="presentation" aria-hidden="true">
+          <img src="https://images.unsplash.com/photo-1442512595331-e89e73853f31?auto=format&fit=crop&w=500&q=80" alt="" loading="lazy">
+          <figcaption>Pour &mdash; every morning</figcaption>
+        </figure>
+        <figure class="crop-frame" role="presentation" aria-hidden="true">
+          <img src="https://images.unsplash.com/photo-1562376552-0d160a2f238d?auto=format&fit=crop&w=500&q=80" alt="" loading="lazy">
+          <figcaption>Crumb &mdash; table four</figcaption>
+        </figure>
+        <figure class="crop-frame" role="presentation" aria-hidden="true">
+          <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=500&q=80" alt="" loading="lazy">
+          <figcaption>Steam &mdash; just plated</figcaption>
+        </figure>
+        <figure class="crop-frame" role="presentation" aria-hidden="true">
+          <img src="https://images.unsplash.com/photo-1473093295043-cdd812d0e601?auto=format&fit=crop&w=500&q=80" alt="" loading="lazy">
+          <figcaption>Twirl &mdash; carbonara</figcaption>
+        </figure>
+        <figure class="crop-frame" role="presentation" aria-hidden="true">
+          <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=500&q=80" alt="" loading="lazy">
+          <figcaption>Crust &mdash; honeycomb cake</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- ============================== STORY ============================== -->
+    <section class="story-section" id="story" aria-labelledby="story-heading">
+      <div class="rail">
+        <div class="rubric">
+          <span class="index-num">03</span>
+          <div>
+            <h2 id="story-heading">Our Story</h2>
+          </div>
+        </div>
+
+        <div class="story-grid">
+          <div class="story-text" data-unmask>
+            <p>Kings Hall is a spacious, relaxed cafe where good coffee, comforting food and good company come together. It's the kind of place built for slow mornings, long conversations and laptop-friendly afternoons &mdash; with enough room to actually spread out.</p>
+            <p>The space sits inside a building with ties to Section 13's local music history, and that character carries through in the room itself: high ceilings, industrial textures and a warm, creative energy that feels a little different from your average coffee shop.</p>
+
+            <blockquote class="story-quote">
+              &ldquo;Spacious seating, relaxed music, and coffee that's worth the trip &mdash; one of PJ's better-kept secrets.&rdquo;
+              <cite>Google Review</cite>
+            </blockquote>
+
+            <p>Part of Kings Hall by Cafe In A Box.</p>
+          </div>
+
+          <figure class="story-figure" data-unmask>
             <img
-              src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1000&q=80"
-              alt="Guests seated at a spacious cafe table, working on laptops over coffee"
+              src="https://images.unsplash.com/photo-1461360370896-922624d12aa1?auto=format&fit=crop&w=900&q=80"
+              alt="Vinyl record and turntable detail, a nod to the building's music history"
               loading="lazy"
               onerror="this.onerror=null;this.src='images/placeholder.svg';this.classList.add('img-fallback')"
             >
-          </div>
-          <div class="editorial__text">
-            <p class="eyebrow">Since 2019</p>
-            <h2 id="intro-heading">More Than Just a Cup of Coffee.</h2>
-            <p>Kings Hall is a spacious, relaxed cafe where good coffee, comforting food and good company come together. It's the kind of place built for slow mornings, long conversations and laptop-friendly afternoons — with enough room to actually spread out.</p>
-            <p>The space sits inside a building with ties to Section 13's local music history, and that character carries through in the room itself: high ceilings, industrial textures and a warm, creative energy that feels a little different from your average coffee shop.</p>
-            <a class="link-underline" href="#gallery">See the space</a>
-          </div>
+            <figcaption class="story-aside">
+              <span>A trace of the building's past</span>
+              <span>Kings Hall, Section 13</span>
+            </figcaption>
+          </figure>
         </div>
       </div>
     </section>
 
-    <!-- ===================== THE KINGS HALL EXPERIENCE ==================== -->
-    <section class="section section--alt" aria-labelledby="experience-heading">
-      <div class="container">
-        <div class="section-head" data-reveal>
-          <div class="section-head__text">
-            <p class="eyebrow">Why Kings Hall</p>
-            <h2 id="experience-heading">The Kings Hall Experience</h2>
-            <p>Four things regulars keep coming back for — and what first-timers notice right away.</p>
+    <!-- ============================== BREATH ============================== -->
+    <figure class="breath" data-unmask>
+      <img
+        src="https://images.unsplash.com/photo-1445116572660-236099ec97a0?auto=format&fit=crop&w=1800&q=80"
+        alt="Relaxed cafe corner with soft seating and natural light"
+        loading="lazy"
+        onerror="this.onerror=null;this.src='images/placeholder.svg';this.classList.add('img-fallback')"
+      >
+    </figure>
+
+    <!-- ============================== THE SPACE ============================== -->
+    <section class="space-section" id="space" aria-labelledby="space-heading">
+      <div class="rail">
+        <div class="rubric">
+          <span class="index-num">04</span>
+          <div>
+            <h2 id="space-heading">The Space</h2>
+            <p class="rubric-dek">Four things regulars keep coming back for.</p>
           </div>
         </div>
 
-        <div class="experience-grid" data-reveal-group>
-          <article class="experience-card">
-            <img src="https://images.unsplash.com/photo-1442512595331-e89e73853f31?auto=format&fit=crop&w=700&q=80" alt="Latte art in a coffee cup, freshly poured" loading="lazy" onerror="this.onerror=null;this.src='images/placeholder.svg';this.classList.add('img-fallback')">
-            <div class="experience-card__body">
-              <p class="experience-card__number">01</p>
-              <h3>Good Coffee</h3>
-              <p>Thoughtfully prepared coffee for slow mornings and productive afternoons.</p>
-            </div>
-          </article>
-          <article class="experience-card">
-            <img src="https://images.unsplash.com/photo-1481833761820-0509d3217039?auto=format&fit=crop&w=700&q=80" alt="Plate of waffles with fresh fruit, cafe-style presentation" loading="lazy" onerror="this.onerror=null;this.src='images/placeholder.svg';this.classList.add('img-fallback')">
-            <div class="experience-card__body">
-              <p class="experience-card__number">02</p>
-              <h3>Good Food</h3>
-              <p>Comforting meals, breakfast favourites, cakes and cafe treats made to share.</p>
-            </div>
-          </article>
-          <article class="experience-card">
-            <img src="https://images.unsplash.com/photo-1445116572660-236099ec97a0?auto=format&fit=crop&w=700&q=80" alt="Relaxed cafe corner with soft seating and natural light" loading="lazy" onerror="this.onerror=null;this.src='images/placeholder.svg';this.classList.add('img-fallback')">
-            <div class="experience-card__body">
-              <p class="experience-card__number">03</p>
-              <h3>Good Vibes</h3>
-              <p>A relaxed space for catching up, working solo, or simply taking a break.</p>
-            </div>
-          </article>
-          <article class="experience-card">
-            <img src="https://images.unsplash.com/photo-1461360370896-922624d12aa1?auto=format&fit=crop&w=700&q=80" alt="Vinyl record and turntable detail, nodding to the building's music history" loading="lazy" onerror="this.onerror=null;this.src='images/placeholder.svg';this.classList.add('img-fallback')">
-            <div class="experience-card__body">
-              <p class="experience-card__number">04</p>
-              <h3>A Space With Character</h3>
-              <p>A cafe with a distinct atmosphere, shaped by its music-related surroundings.</p>
-            </div>
-          </article>
+        <div class="space-grid" data-unmask-group>
+          <div class="space-item" data-unmask>
+            <span class="index-num">01</span>
+            <h3>Good Coffee</h3>
+            <p>Thoughtfully prepared coffee for slow mornings and productive afternoons.</p>
+          </div>
+          <div class="space-item" data-unmask>
+            <span class="index-num">02</span>
+            <h3>Good Food</h3>
+            <p>Comforting meals, breakfast favourites, cakes and cafe treats made to share.</p>
+          </div>
+          <div class="space-item" data-unmask>
+            <span class="index-num">03</span>
+            <h3>Good Vibes</h3>
+            <p>A relaxed space for catching up, working solo, or simply taking a break.</p>
+          </div>
+          <div class="space-item" data-unmask>
+            <span class="index-num">04</span>
+            <h3>A Space With Character</h3>
+            <p>A distinct atmosphere, shaped by the building's music-related surroundings.</p>
+          </div>
         </div>
+
+        <p class="meta-line" style="margin-top:2.5rem;">4.3 rating &middot; 500+ Google reviews &middot; @kingshallcafe on Instagram</p>
       </div>
     </section>
 
-    <!-- ============================== MENU ============================== -->
-    <section class="section" id="menu" aria-labelledby="menu-heading">
-      <div class="container">
-        <div class="section-head" data-reveal>
-          <div class="section-head__text">
-            <p class="eyebrow">On The Menu</p>
-            <h2 id="menu-heading">Coffee, Food &amp; Something Sweet</h2>
-            <p>A taste of what's on offer — from house coffee to weekend brunch. Ask us about today's selection when you visit.</p>
-          </div>
-          <a class="link-underline" href="https://www.facebook.com/KingsHallCafe/" target="_blank" rel="noopener">View Full Menu</a>
-        </div>
-
-        <ul class="menu-tabs" aria-label="Menu categories">
-          <li class="menu-tab">Coffee</li>
-          <li class="menu-tab">Breakfast &amp; Brunch</li>
-          <li class="menu-tab">Mains</li>
-          <li class="menu-tab">Desserts</li>
-          <li class="menu-tab">Non-Coffee</li>
-        </ul>
-
-        <div class="menu-grid" data-reveal-group>
-
-          <article class="menu-card">
-            <div class="menu-card__media">
-              <span class="menu-card__category">Coffee</span>
-              <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=800&q=80" alt="Piccolo latte in a small glass on a wooden table" loading="lazy" onerror="this.onerror=null;this.src='images/placeholder.svg';this.classList.add('img-fallback')">
-            </div>
-            <div class="menu-card__body">
-              <h3>Piccolo Latte</h3>
-              <p>A small, strong espresso balanced with steamed milk.</p>
-              <span class="menu-card__note">Ask for today's selection</span>
-            </div>
-          </article>
-
-          <article class="menu-card">
-            <div class="menu-card__media">
-              <span class="menu-card__category">Coffee</span>
-              <img src="https://images.unsplash.com/photo-1447933601403-0c6688de566e?auto=format&fit=crop&w=800&q=80" alt="Freshly roasted coffee beans, close up" loading="lazy" onerror="this.onerror=null;this.src='images/placeholder.svg';this.classList.add('img-fallback')">
-            </div>
-            <div class="menu-card__body">
-              <h3>Brew of the Day</h3>
-              <p>A rotating filter brew, chosen fresh each morning.</p>
-              <span class="menu-card__note">Explore Menu</span>
-            </div>
-          </article>
-
-          <article class="menu-card">
-            <div class="menu-card__media">
-              <span class="menu-card__category">Breakfast &amp; Brunch</span>
-              <img src="https://images.unsplash.com/photo-1533089860892-a7c6f0a88666?auto=format&fit=crop&w=800&q=80" alt="Full breakfast plate with eggs, toast and sides" loading="lazy" onerror="this.onerror=null;this.src='images/placeholder.svg';this.classList.add('img-fallback')">
-            </div>
-            <div class="menu-card__body">
-              <h3>Biggie Breakfast</h3>
-              <p>A hearty all-day breakfast plate for when you're in no rush.</p>
-              <span class="menu-card__note">Ask for today's selection</span>
-            </div>
-          </article>
-
-          <article class="menu-card">
-            <div class="menu-card__media">
-              <span class="menu-card__category">Breakfast &amp; Brunch</span>
-              <img src="https://images.unsplash.com/photo-1562376552-0d160a2f238d?auto=format&fit=crop&w=800&q=80" alt="Waffles topped with fruit and syrup" loading="lazy" onerror="this.onerror=null;this.src='images/placeholder.svg';this.classList.add('img-fallback')">
-            </div>
-            <div class="menu-card__body">
-              <h3>Waffles</h3>
-              <p>Crisp on the outside, soft within — served with seasonal toppings.</p>
-              <span class="menu-card__note">Explore Menu</span>
-            </div>
-          </article>
-
-          <article class="menu-card">
-            <div class="menu-card__media">
-              <span class="menu-card__category">Mains</span>
-              <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=800&q=80" alt="Japanese-style curry rice with cutlet, plated" loading="lazy" onerror="this.onerror=null;this.src='images/placeholder.svg';this.classList.add('img-fallback')">
-            </div>
-            <div class="menu-card__body">
-              <h3>Japanese Curry Rice</h3>
-              <p>A comforting cafe classic, mild and satisfying.</p>
-              <span class="menu-card__note">Ask for today's selection</span>
-            </div>
-          </article>
-
-          <article class="menu-card">
-            <div class="menu-card__media">
-              <span class="menu-card__category">Mains</span>
-              <img src="https://images.unsplash.com/photo-1473093295043-cdd812d0e601?auto=format&fit=crop&w=800&q=80" alt="Creamy pasta plated with garnish, cafe-style" loading="lazy" onerror="this.onerror=null;this.src='images/placeholder.svg';this.classList.add('img-fallback')">
-            </div>
-            <div class="menu-card__body">
-              <h3>Smoked Salmon Carbonara</h3>
-              <p>A cafe take on a classic, finished with smoked salmon.</p>
-              <span class="menu-card__note">Explore Menu</span>
-            </div>
-          </article>
-
-          <article class="menu-card">
-            <div class="menu-card__media">
-              <span class="menu-card__category">Desserts</span>
-              <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=800&q=80" alt="Slice of cake on a plate, cafe dessert styling" loading="lazy" onerror="this.onerror=null;this.src='images/placeholder.svg';this.classList.add('img-fallback')">
-            </div>
-            <div class="menu-card__body">
-              <h3>Honeycomb Cake</h3>
-              <p>A cafe favourite, best paired with a hot flat white.</p>
-              <span class="menu-card__note">Ask for today's selection</span>
-            </div>
-          </article>
-
-          <article class="menu-card">
-            <div class="menu-card__media">
-              <span class="menu-card__category">Non-Coffee</span>
-              <img src="https://images.unsplash.com/photo-1517578239113-b03992dcdd25?auto=format&fit=crop&w=800&q=80" alt="Iced non-coffee beverage in a tall glass" loading="lazy" onerror="this.onerror=null;this.src='images/placeholder.svg';this.classList.add('img-fallback')">
-            </div>
-            <div class="menu-card__body">
-              <h3>Chocolate &amp; Matcha</h3>
-              <p>For the non-coffee drinkers — rich, smooth, and just as satisfying.</p>
-              <span class="menu-card__note">Explore Menu</span>
-            </div>
-          </article>
-
-        </div>
-
-        <div class="menu-cta" data-reveal>
-          <p>Menu items shown are a taste of what's typically available and may change with the season — our baristas are always happy to walk you through today's specials.</p>
-          <a class="btn btn--dark" href="https://www.facebook.com/KingsHallCafe/" target="_blank" rel="noopener">View Full Menu</a>
-        </div>
-      </div>
-    </section>
-
-    <!-- ========================= KINGS HALL FAVOURITES ========================= -->
-    <section class="section section--dark" aria-labelledby="favourites-heading">
-      <div class="container">
-        <div class="section-head" data-reveal>
-          <div class="section-head__text">
-            <p class="eyebrow">Guest Favourites</p>
-            <h2 id="favourites-heading">What Regulars Keep Ordering</h2>
-            <p>A handful of dishes and drinks that come up again and again.</p>
+    <!-- ============================== VISIT ============================== -->
+    <section class="visit-section" id="visit" aria-labelledby="visit-heading">
+      <div class="rail">
+        <div class="rubric">
+          <span class="index-num">05</span>
+          <div>
+            <h2 id="visit-heading">Visit</h2>
+            <p class="rubric-dek">Tucked into Section 13 &mdash; worth the short detour.</p>
           </div>
         </div>
 
-        <div class="favourites-grid" data-reveal-group>
-          <article class="favourite-card">
-            <div class="favourite-card__media">
-              <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=500&q=80" alt="Piccolo latte close up" loading="lazy" onerror="this.onerror=null;this.src='images/placeholder.svg';this.classList.add('img-fallback')">
-            </div>
-            <div class="favourite-card__body">
-              <h3>Piccolo Latte</h3>
-              <span>Coffee</span>
-            </div>
-          </article>
-          <article class="favourite-card">
-            <div class="favourite-card__media">
-              <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=500&q=80" alt="Japanese curry rice plated" loading="lazy" onerror="this.onerror=null;this.src='images/placeholder.svg';this.classList.add('img-fallback')">
-            </div>
-            <div class="favourite-card__body">
-              <h3>Japanese Curry Rice</h3>
-              <span>Mains</span>
-            </div>
-          </article>
-          <article class="favourite-card">
-            <div class="favourite-card__media">
-              <img src="https://images.unsplash.com/photo-1562376552-0d160a2f238d?auto=format&fit=crop&w=500&q=80" alt="Waffles with fruit" loading="lazy" onerror="this.onerror=null;this.src='images/placeholder.svg';this.classList.add('img-fallback')">
-            </div>
-            <div class="favourite-card__body">
-              <h3>Waffles</h3>
-              <span>Breakfast &amp; Brunch</span>
-            </div>
-          </article>
-          <article class="favourite-card">
-            <div class="favourite-card__media">
-              <img src="https://images.unsplash.com/photo-1473093295043-cdd812d0e601?auto=format&fit=crop&w=500&q=80" alt="Smoked salmon carbonara plated" loading="lazy" onerror="this.onerror=null;this.src='images/placeholder.svg';this.classList.add('img-fallback')">
-            </div>
-            <div class="favourite-card__body">
-              <h3>Smoked Salmon Carbonara</h3>
-              <span>Mains</span>
-            </div>
-          </article>
-          <article class="favourite-card">
-            <div class="favourite-card__media">
-              <img src="https://images.unsplash.com/photo-1533089860892-a7c6f0a88666?auto=format&fit=crop&w=500&q=80" alt="Biggie breakfast plate" loading="lazy" onerror="this.onerror=null;this.src='images/placeholder.svg';this.classList.add('img-fallback')">
-            </div>
-            <div class="favourite-card__body">
-              <h3>Biggie Breakfast</h3>
-              <span>Breakfast &amp; Brunch</span>
-            </div>
-          </article>
-          <article class="favourite-card">
-            <div class="favourite-card__media">
-              <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=500&q=80" alt="Honeycomb cake slice" loading="lazy" onerror="this.onerror=null;this.src='images/placeholder.svg';this.classList.add('img-fallback')">
-            </div>
-            <div class="favourite-card__body">
-              <h3>Honeycomb Cake</h3>
-              <span>Desserts</span>
-            </div>
-          </article>
-          <article class="favourite-card">
-            <div class="favourite-card__media">
-              <img src="https://images.unsplash.com/photo-1488477181946-6428a0291777?auto=format&fit=crop&w=500&q=80" alt="Banana loaf slice on a plate" loading="lazy" onerror="this.onerror=null;this.src='images/placeholder.svg';this.classList.add('img-fallback')">
-            </div>
-            <div class="favourite-card__body">
-              <h3>Banana Loaf</h3>
-              <span>Desserts</span>
-            </div>
-          </article>
-          <article class="favourite-card">
-            <div class="favourite-card__media">
-              <img src="https://images.unsplash.com/photo-1447933601403-0c6688de566e?auto=format&fit=crop&w=500&q=80" alt="Coffee beans, close up" loading="lazy" onerror="this.onerror=null;this.src='images/placeholder.svg';this.classList.add('img-fallback')">
-            </div>
-            <div class="favourite-card__body">
-              <h3>Brew of the Day</h3>
-              <span>Coffee</span>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============================== REVIEWS ============================== -->
-    <section class="section section--alt" id="reviews" aria-labelledby="reviews-heading">
-      <div class="container">
-        <div class="section-head" data-reveal>
-          <div class="section-head__text">
-            <p class="eyebrow">Social Proof</p>
-            <h2 id="reviews-heading">What People Are Saying</h2>
-          </div>
-        </div>
-
-        <!-- Update rating / review count from the live Google Business listing before launch -->
-        <div class="reviews-summary" data-reveal>
-          <div class="reviews-summary__score">
-            <strong>4.3</strong>
-            <div>
-              <div class="reviews-summary__stars" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.7 7-6.3-3.9-6.3 3.9 1.7-7L2 9.2l7.1-.6z"/></svg>
-                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.7 7-6.3-3.9-6.3 3.9 1.7-7L2 9.2l7.1-.6z"/></svg>
-                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.7 7-6.3-3.9-6.3 3.9 1.7-7L2 9.2l7.1-.6z"/></svg>
-                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.7 7-6.3-3.9-6.3 3.9 1.7-7L2 9.2l7.1-.6z"/></svg>
-                <svg viewBox="0 0 24 24" fill="currentColor" opacity="0.35"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.7 7-6.3-3.9-6.3 3.9 1.7-7L2 9.2l7.1-.6z"/></svg>
-              </div>
-              <p class="reviews-summary__meta"><strong>500+</strong> Google Reviews</p>
-            </div>
-          </div>
-          <a class="link-underline" href="https://www.google.com/maps/dir/?api=1&destination=5,+Jalan+13/2,+Section+13,+46200+Petaling+Jaya,+Selangor,+Malaysia" target="_blank" rel="noopener">Read More Reviews</a>
-        </div>
-
-        <div class="review-grid" data-reveal-group>
-          <article class="review-card">
-            <div class="review-card__stars" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.7 7-6.3-3.9-6.3 3.9 1.7-7L2 9.2l7.1-.6z"/></svg>
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.7 7-6.3-3.9-6.3 3.9 1.7-7L2 9.2l7.1-.6z"/></svg>
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.7 7-6.3-3.9-6.3 3.9 1.7-7L2 9.2l7.1-.6z"/></svg>
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.7 7-6.3-3.9-6.3 3.9 1.7-7L2 9.2l7.1-.6z"/></svg>
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.7 7-6.3-3.9-6.3 3.9 1.7-7L2 9.2l7.1-.6z"/></svg>
-            </div>
-            <p>&ldquo;Spacious seating, relaxed music, and coffee that's worth the trip &mdash; one of PJ's better-kept secrets.&rdquo;</p>
-            <p class="review-card__meta">Google Review</p>
-          </article>
-          <article class="review-card">
-            <div class="review-card__stars" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.7 7-6.3-3.9-6.3 3.9 1.7-7L2 9.2l7.1-.6z"/></svg>
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.7 7-6.3-3.9-6.3 3.9 1.7-7L2 9.2l7.1-.6z"/></svg>
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.7 7-6.3-3.9-6.3 3.9 1.7-7L2 9.2l7.1-.6z"/></svg>
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.7 7-6.3-3.9-6.3 3.9 1.7-7L2 9.2l7.1-.6z"/></svg>
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.7 7-6.3-3.9-6.3 3.9 1.7-7L2 9.2l7.1-.6z"/></svg>
-            </div>
-            <p>&ldquo;Great space to bring a laptop and get work done over good coffee. Plenty of room, never feels cramped.&rdquo;</p>
-            <p class="review-card__meta">Google Review</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- ========================= INSTAGRAM / SOCIAL ========================= -->
-    <section class="section" id="gallery" aria-labelledby="social-heading">
-      <div class="container">
-        <div class="social-head" data-reveal>
-          <p class="eyebrow">Follow Along</p>
-          <h2 id="social-heading">Follow the Good Vibes</h2>
-          <p>Coffee, food and everyday moments from inside Kings Hall.</p>
-          <a class="social-handle" href="https://www.instagram.com/kingshallcafe/" target="_blank" rel="noopener">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.3" cy="6.7" r="1"></circle></svg>
-            @kingshallcafe
-          </a>
-        </div>
-
-        <div class="social-grid" data-reveal-group>
-          <a class="social-item" href="https://www.instagram.com/kingshallcafe/" target="_blank" rel="noopener">
-            <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=600&q=80" alt="Coffee cup on a wooden table at Kings Hall" loading="lazy" onerror="this.onerror=null;this.src='images/placeholder.svg';this.classList.add('img-fallback')">
-            <span class="social-item__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.3" cy="6.7" r="1"></circle></svg></span>
-          </a>
-          <a class="social-item" href="https://www.instagram.com/kingshallcafe/" target="_blank" rel="noopener">
-            <img src="https://images.unsplash.com/photo-1442512595331-e89e73853f31?auto=format&fit=crop&w=600&q=80" alt="Latte art poured at Kings Hall" loading="lazy" onerror="this.onerror=null;this.src='images/placeholder.svg';this.classList.add('img-fallback')">
-            <span class="social-item__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.3" cy="6.7" r="1"></circle></svg></span>
-          </a>
-          <a class="social-item" href="https://www.instagram.com/kingshallcafe/" target="_blank" rel="noopener">
-            <img src="https://images.unsplash.com/photo-1562376552-0d160a2f238d?auto=format&fit=crop&w=600&q=80" alt="Waffles served at Kings Hall" loading="lazy" onerror="this.onerror=null;this.src='images/placeholder.svg';this.classList.add('img-fallback')">
-            <span class="social-item__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.3" cy="6.7" r="1"></circle></svg></span>
-          </a>
-          <a class="social-item" href="https://www.instagram.com/kingshallcafe/" target="_blank" rel="noopener">
-            <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=600&q=80" alt="Guests seated inside Kings Hall" loading="lazy" onerror="this.onerror=null;this.src='images/placeholder.svg';this.classList.add('img-fallback')">
-            <span class="social-item__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.3" cy="6.7" r="1"></circle></svg></span>
-          </a>
-          <a class="social-item" href="https://www.instagram.com/kingshallcafe/" target="_blank" rel="noopener">
-            <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=600&q=80" alt="Cake slice served at Kings Hall" loading="lazy" onerror="this.onerror=null;this.src='images/placeholder.svg';this.classList.add('img-fallback')">
-            <span class="social-item__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.3" cy="6.7" r="1"></circle></svg></span>
-          </a>
-          <a class="social-item" href="https://www.instagram.com/kingshallcafe/" target="_blank" rel="noopener">
-            <img src="https://images.unsplash.com/photo-1461360370896-922624d12aa1?auto=format&fit=crop&w=600&q=80" alt="Vinyl record detail, a nod to the building's music history" loading="lazy" onerror="this.onerror=null;this.src='images/placeholder.svg';this.classList.add('img-fallback')">
-            <span class="social-item__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.3" cy="6.7" r="1"></circle></svg></span>
-          </a>
-        </div>
-
-        <p class="social-foot"><a class="link-underline" href="https://www.instagram.com/kingshallcafe/" target="_blank" rel="noopener">Follow @kingshallcafe on Instagram</a></p>
-      </div>
-    </section>
-
-    <!-- ============================== LOCATION ============================== -->
-    <section class="section section--dark" id="visit" aria-labelledby="location-heading">
-      <div class="container">
-        <div class="section-head" data-reveal>
-          <div class="section-head__text">
-            <p class="eyebrow">Visit Us</p>
-            <h2 id="location-heading">Find Your Way to Kings Hall</h2>
-            <p>Tucked into Section 13 — worth the short detour.</p>
-          </div>
-        </div>
-
-        <div class="location-grid" data-reveal>
-          <div class="location-map">
-            <div class="location-map__visual" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 21s-7-6.1-7-11.5A7 7 0 0 1 19 9.5C19 14.9 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>
-            </div>
-            <a class="icon-link location-map__link" href="https://www.google.com/maps/dir/?api=1&destination=5,+Jalan+13/2,+Section+13,+46200+Petaling+Jaya,+Selangor,+Malaysia" target="_blank" rel="noopener">
-              Open in Google Maps
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M7 17L17 7M9 7h8v8"/></svg>
-            </a>
+        <div class="visit-grid">
+          <div class="visit-map" data-unmask>
+            <iframe
+              src="https://www.google.com/maps?q=5,+Jalan+13/2,+Section+13,+46200+Petaling+Jaya,+Selangor,+Malaysia&output=embed"
+              title="Map showing the location of Kings Hall Cafe at 5, Jalan 13/2, Section 13, Petaling Jaya"
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              allowfullscreen>
+            </iframe>
           </div>
 
-          <div class="location-card">
-            <div class="location-block">
-              <h3>Address</h3>
-              <address>
-                5, Jalan 13/2, Section 13,<br>
-                46200 Petaling Jaya,<br>
-                Selangor, Malaysia
-              </address>
+          <div class="visit-data">
+            <div class="visit-data-block">
+              <span class="tag">Address</span>
+              <address>5, Jalan 13/2, Section 13,<br>46200 Petaling Jaya,<br>Selangor, Malaysia</address>
             </div>
-
-            <div class="location-block">
-              <h3>Opening Hours</h3>
-              <div class="location-hours-row">
-                <span>Mon &ndash; Fri</span>
-                <span>8:00 AM &ndash; 5:00 PM</span>
-              </div>
-              <div class="location-hours-row">
-                <span>Sat &ndash; Sun</span>
-                <span>9:00 AM &ndash; 5:00 PM</span>
-              </div>
-              <p class="location-hours-note">Hours may vary on public holidays.</p>
+            <div class="visit-data-block">
+              <span class="tag">Hours</span>
+              <p>Mon&ndash;Fri &nbsp; 8:00am &ndash; 5:00pm<br>Sat&ndash;Sun &nbsp; 9:00am &ndash; 5:00pm</p>
+              <p>Hours may vary on public holidays.</p>
             </div>
-
-            <div class="location-block">
-              <h3>Get in Touch</h3>
-              <div class="location-social">
-                <a class="icon-link" href="https://www.instagram.com/kingshallcafe/" target="_blank" rel="noopener">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.3" cy="6.7" r="1"></circle></svg>
-                  Instagram
-                </a>
-                <a class="icon-link" href="https://www.facebook.com/KingsHallCafe/" target="_blank" rel="noopener">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M15 8h-2a2 2 0 0 0-2 2v10M9 13h4"/><circle cx="12" cy="12" r="9"/></svg>
-                  Facebook
-                </a>
-              </div>
+            <div class="visit-data-block">
+              <span class="tag">Follow</span>
+              <p><a href="https://www.instagram.com/kingshallcafe/" target="_blank" rel="noopener">Instagram &mdash; @kingshallcafe</a><br>
+              <a href="https://www.facebook.com/KingsHallCafe/" target="_blank" rel="noopener">Facebook &mdash; Kings Hall Cafe</a></p>
             </div>
-
-            <div class="location-actions">
-              <a class="btn btn--primary btn--block" href="https://www.google.com/maps/dir/?api=1&destination=5,+Jalan+13/2,+Section+13,+46200+Petaling+Jaya,+Selangor,+Malaysia" target="_blank" rel="noopener">Get Directions</a>
+            <div class="visit-actions">
+              <a class="action is-primary" href="https://www.google.com/maps/dir/?api=1&destination=5,+Jalan+13/2,+Section+13,+46200+Petaling+Jaya,+Selangor,+Malaysia" target="_blank" rel="noopener">Get Directions</a>
+              <a class="action-line" href="#table">Today's Table &rarr;</a>
             </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============================== FINAL CTA ============================== -->
-    <section class="section final-cta" aria-labelledby="cta-heading">
-      <div class="container">
-        <div class="final-cta__inner" data-reveal>
-          <p class="eyebrow">Come Say Hello</p>
-          <h2 id="cta-heading">Your Next Coffee Break Starts Here.</h2>
-          <p>Come by Kings Hall, grab your favourite drink, settle in and stay awhile.</p>
-          <div class="final-cta__actions">
-            <a class="btn btn--dark" href="https://www.google.com/maps/dir/?api=1&destination=5,+Jalan+13/2,+Section+13,+46200+Petaling+Jaya,+Selangor,+Malaysia" target="_blank" rel="noopener">Get Directions</a>
-            <a class="btn btn--outline" href="#menu">View Menu</a>
-            <a class="btn btn--outline" href="https://www.instagram.com/kingshallcafe/" target="_blank" rel="noopener">Follow Instagram</a>
           </div>
         </div>
       </div>
     </section>
   </main>
 
-  <footer class="site-footer">
-    <div class="container footer-top">
-      <div class="footer-brand">
-        <p class="logo">
-          <span class="logo__mark">Kings Hall</span>
-        </p>
-        <p>Kings Hall Cafe @ Sec 13 &mdash; part of Kings Hall by Cafe In A Box. A spacious, relaxed cafe in the heart of Section 13, Petaling Jaya.</p>
-        <p class="footer-tagline">Good coffee. Good food. Good vibes.</p>
+  <!-- ============================== EDITORIAL FOOTER ============================== -->
+  <footer class="editorial-footer">
+    <div class="rail editorial-footer-row">
+      <a href="#cover" class="masthead-mark">Kings Hall<span>Good coffee. Good food. Good vibes.</span></a>
+      <div class="editorial-footer-meta">
+        <span>&copy; <span data-year>2026</span> Kings Hall Cafe @ Sec 13</span>
+        <a href="https://www.instagram.com/kingshallcafe/" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://www.facebook.com/KingsHallCafe/" target="_blank" rel="noopener">Facebook</a>
+        <a href="https://www.google.com/maps/dir/?api=1&destination=5,+Jalan+13/2,+Section+13,+46200+Petaling+Jaya,+Selangor,+Malaysia" target="_blank" rel="noopener">Directions</a>
       </div>
-
-      <div class="footer-cols">
-        <div class="footer-col">
-          <h4>Visit</h4>
-          <address>
-            5, Jalan 13/2, Section 13,<br>
-            46200 Petaling Jaya,<br>
-            Selangor, Malaysia
-          </address>
-        </div>
-
-        <div class="footer-col">
-          <h4>Hours</h4>
-          <ul>
-            <li>Mon &ndash; Fri: 8:00 AM &ndash; 5:00 PM</li>
-            <li>Sat &ndash; Sun: 9:00 AM &ndash; 5:00 PM</li>
-            <li>Hours may vary on public holidays.</li>
-          </ul>
-        </div>
-
-        <div class="footer-col">
-          <h4>Explore</h4>
-          <ul>
-            <li><a href="#menu">Menu</a></li>
-            <li><a href="#reviews">Reviews</a></li>
-            <li><a href="https://www.facebook.com/KingsHallCafe/" target="_blank" rel="noopener">Facebook</a></li>
-            <li><a href="https://www.instagram.com/kingshallcafe/" target="_blank" rel="noopener">Instagram</a></li>
-            <li><a href="https://www.google.com/maps/dir/?api=1&destination=5,+Jalan+13/2,+Section+13,+46200+Petaling+Jaya,+Selangor,+Malaysia" target="_blank" rel="noopener">Google Maps</a></li>
-          </ul>
-        </div>
-      </div>
-    </div>
-
-    <div class="container footer-bottom">
-      <p>&copy; <span data-year>2026</span> Kings Hall Cafe @ Sec 13. All rights reserved.</p>
-      <p>Good coffee. Good food. Good vibes.</p>
     </div>
   </footer>
 
-  <!-- ============================== MOBILE STICKY BAR ============================== -->
-  <nav class="mobile-bar" aria-label="Quick actions">
-    <a href="https://www.google.com/maps/dir/?api=1&destination=5,+Jalan+13/2,+Section+13,+46200+Petaling+Jaya,+Selangor,+Malaysia" target="_blank" rel="noopener">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s7-6.4 7-11.5A7 7 0 0 0 5 9.5C5 14.6 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>
-      Directions
-    </a>
-    <a href="#menu">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h10"/></svg>
-      Menu
-    </a>
-    <a href="https://www.instagram.com/kingshallcafe/" target="_blank" rel="noopener">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.3" cy="6.7" r="1"></circle></svg>
-      Instagram
-    </a>
-  </nav>
-
-  <script>document.body.classList.add('has-mobile-bar');</script>
   <script src="js/main.js"></script>
 </body>
 </html>
