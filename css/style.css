@@ -509,457 +509,195 @@ body.is-inner .eyebrow::before { background: var(--lime); }
 }
 
 /* ---------- Hero ----------
-   Single-canvas editorial composition (Phase 23F). Every prior pass
-   fought the fact that the shipped source asset
-   (images/hero/editorial-portrait.jpg) was ALREADY an aggressively
-   pre-cropped 550x1250 sliver of the real photograph -- fighting that
-   crop with transform:scale() only ever zoomed further into an
-   ever-smaller slice ("shoulder filling the screen"). The actual fix
-   was upstream of any CSS: the source asset itself has been replaced
-   with a far less-cropped export of the SAME photograph (1154x1536),
-   which shows the real scene -- the subject, the diagonal
-   architectural beams, genuine negative space -- instead of a tight
-   vertical strip of it. With that source, a plain object-fit:cover
-   full-bleed crop is naturally generous (no scale() anywhere in this
-   file), which is what finally makes a true single-canvas composition
-   possible: nav, headline and the project insert all layered directly
-   on ONE photograph, matching the reference, instead of a photo
-   column next to a solid text panel.
-   The site header itself is untouched (still position:sticky, still
-   transparent until scroll -- see the "Header / Nav" rules above):
-   this section just pulls up behind it with a negative margin equal
-   to the header's own rendered height, so the photo shows through the
-   header's transparent background instead of starting below it. That
-   keeps every other page's header behavior completely unchanged. */
+   Redesign (Phase 24): new positioning, new composition. The previous
+   version's core problem was structural, not cosmetic -- headline and
+   supporting copy sat directly on a full-bleed photograph, so text and
+   image permanently competed for the same visual value range no
+   matter how the mask/scrim curves were tuned. Replaced the layered
+   atmosphere/mid/subject crossfade with a plain asymmetric split: the
+   message lives on a flat ink field (guaranteed maximum, unconditional
+   contrast), the portrait lives in its own contained panel and is
+   toned to sit inside the same ink/cream/lime palette rather than
+   competing with it in full saturation. The portrait is demoted from
+   "the composition" to "supporting character" -- present, valuable,
+   but no longer the dominant visual value on the page; the headline
+   is. */
 .hero--full {
   position: relative;
   margin-top: -73px;
   min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
   overflow: hidden;
   /* Warm charcoal, not the sitewide --ink (#131316, slightly blue) --
-     the reference's dark tone reads warm, and this stays scoped to the
-     hero rather than changing --ink's cooler value everywhere else on
-     the site. */
+     kept from the previous hero: it's already warm/distinctive and
+     avoids the generic "flat black tech-agency" background the brief
+     explicitly warned against. */
   background: #17140f;
 }
 
-/* Calibration pass (Phase 23 -- negative-space correction). The prior
-   version made the photo box's own width equal the hero's full width
-   at every breakpoint, so the subject's footprint tracked the same
-   ~20%-90% span regardless of viewport -- too dominant, not
-   right-weighted, per the visual audit. Structure now:
-   1. ATMOSPHERE (.hero__photo-pic--soft): stays full-bleed, but is
-      pushed much closer to "almost pure background" -- heavier blur,
-      near-grayscale, and dark enough that architectural detail reads
-      as a quiet, low-contrast hint rather than a recognizable blurred
-      photograph. Masked to fade to nothing at the true left edge.
-   2. SUBJECT (.hero__photo-pic--sharp): no longer full width. A
-      narrower box pinned to the right (not just the <img> repositioned
-      inside an oversized box) is what actually makes the subject
-      right-weighted -- the hero's left ~38% now contains no subject
-      pixels at all, only the atmosphere layer above. A small top inset
-      also shrinks the image's effective display scale and opens
-      headroom above the head (the source has no headroom of its own
-      to crop into -- his head is already at the top pixel row of the
-      photo -- so it has to come from the layout, not the crop). */
-.hero__photo {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
+.hero__grid {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
-.hero__photo-pic { display: block; position: absolute; }
+/* Portrait panel: a contained block, not an atmospheric full-bleed
+   background -- this alone is most of the fix, since the headline no
+   longer has photo content anywhere behind it. Tonal grade (desaturated,
+   contrast lifted, brightness pulled down slightly) so the photo reads
+   as part of the same restrained ink/cream/lime palette as the rest of
+   the hero instead of a raw full-color photo dropped beside it. */
+.hero__portrait {
+  position: relative;
+  order: -1;
+  height: 44vh;
+  min-height: 260px;
+  overflow: hidden;
+  /* Explicit fill so the mask fade below (which makes the image's own
+     bottom edge transparent) reveals this exact color, not whatever
+     happens to sit behind it -- guarantees a seamless dissolve rather
+     than depending on ancestor backgrounds lining up by coincidence. */
+  background: #17140f;
+}
 
-.hero__photo-pic--soft { inset: 0; width: 100%; height: 100%; }
-
-.hero__photo-img {
+.hero__portrait picture,
+.hero__portrait img {
   display: block;
   width: 100%;
   height: 100%;
+}
+
+/* Bottom-edge dissolve, v2. The first pass (pure alpha mask, fading
+   only the last ~20% of the image to transparent) turned out to be
+   imperceptible -- pixel-sampled the render and found the crop's own
+   content in that zone is *already* near-black (close to #17140f)
+   before the mask does anything, since object-position 62%/10% puts
+   floor-level shadow there at every breakpoint. Fading transparency
+   alone can't make a visible dissolve when the source pixels already
+   match the destination color -- there's nothing to visibly recede.
+   Two changes fix this: the mask now starts higher up, in the zone
+   that still has real brightness/color (the subject's shirt, lit
+   floor) so there's an actual visible journey; and a second layer
+   (::after, painted in the exact background color, increasing in
+   opacity toward the bottom) forces convergence to the destination
+   color regardless of what the photo's own tone happens to be at any
+   given point -- the mechanism the alpha-only version was missing.
+   Both curves are eased (multiple stops, not one linear ramp) so the
+   photo holds its full strength through the top of the zone and only
+   visibly gives way in the second half, matching "strong until the
+   fade begins, then genuinely dissolving" rather than a uniform ramp
+   the whole way down. */
+/* Right-to-left dissolve (added on top of the bottom one above), v2.
+   The first version held the right 38% opaque and faded the remaining
+   62% -- overlaid on a grid at 10% increments, the subject's own body
+   in this crop actually runs from ~21% to ~62% of the panel's width
+   (measured directly on the render, not assumed), so that fade was
+   cutting straight across his head and torso. Re-measured against the
+   real render at every breakpoint: his head is the leftmost point that
+   matters, landing at roughly 92% from the right edge on mobile/
+   tablet's crop and 84% on desktop's. Hold zones below are set a few
+   points past those measured edges (safety margin, not the character's
+   literal edge) so the fade is now confined to the empty margin past
+   him -- only the last 6-8% (mobile/tablet) or ~14% (desktop, more
+   headroom before hitting him) actually dissolves. Same for the
+   vertical mask below: his feet extend to ~90% of the panel's height
+   at every breakpoint, so that hold zone moved from 58%/76% up to 90%
+   for the same reason -- protect the whole figure, fade only the
+   margin past his feet. */
+.hero__portrait img {
   object-fit: cover;
-  object-position: 68% 4%;
+  object-position: 62% 10%;
+  filter: grayscale(0.32) saturate(0.82) contrast(1.1) brightness(0.9);
+  -webkit-mask-image:
+    linear-gradient(to bottom, #000 0%, #000 90%, rgba(0, 0, 0, 0.7) 95%, transparent 100%),
+    linear-gradient(to left, #000 0%, #000 94%, rgba(0, 0, 0, 0.6) 97%, transparent 100%);
+  -webkit-mask-composite: source-in;
+  mask-image:
+    linear-gradient(to bottom, #000 0%, #000 90%, rgba(0, 0, 0, 0.7) 95%, transparent 100%),
+    linear-gradient(to left, #000 0%, #000 94%, rgba(0, 0, 0, 0.6) 97%, transparent 100%);
+  mask-composite: intersect;
 }
 
-/* Pushed further than the sample's own measured brightness: the goal
-   here is closer to "hint of atmosphere" than "blurred photograph." */
-.hero__photo-img--soft { filter: blur(46px) grayscale(0.95) saturate(0.18) brightness(0.32); }
-
-/* Blend-only fix: the seam between atmosphere and subject wasn't a
-   masking-shape problem, it was a MISSING-STEP problem -- opacity was
-   crossfading directly between "fully blurred/dark/desaturated" and
-   "fully sharp/normal," two very different image characters, with no
-   intermediate stage. That jump reads as a seam no matter how the
-   mask gradient itself is shaped. This third layer sits between them
-   at roughly the midpoint of blur/color/brightness, so the transition
-   passes through a visible intermediate state instead of jumping. */
-.hero__photo-img--mid { filter: blur(20px) grayscale(0.6) saturate(0.55) brightness(0.6); }
-
-/* True mobile only (<640px): the subject occupies just the upper
-   portion of the hero (top:0, confined height below), full width --
-   there's no room for a left/right split at this narrow a viewport.
-   A soft bottom feather on its own mask blends it into the
-   atmosphere/ink beneath rather than ending in a hard edge. */
-@media (max-width: 639px) {
-  /* Header-clearance correction: at top:0 the subject's head (already
-     at the top pixel row of the source, see the 900px+ note below)
-     rendered directly behind the sticky header with zero clearance --
-     confirmed by measuring the rendered boxes, not eyeballing (-73px
-     overlap before this fix). Top pushed down; bottom edge held
-     exactly where it was (height reduced by the same amount) so the
-     lower mask-fade into the headline area is unaffected -- this only
-     opens more of the existing blurred-atmosphere layer above the
-     subject, it doesn't add a blank margin. */
-  .hero__photo-pic--sharp {
-    top: 18%;
-    left: 0;
-    right: 0;
-    height: 36%;
-    width: 100%;
-    -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 38%, transparent 88%);
-    mask-image: linear-gradient(to bottom, #000 0%, #000 38%, transparent 88%);
-  }
-
-  /* Bridges the same gap vertically: fully visible for longer than
-     .soft fades in, and fading out gradually well before .sharp does,
-     so there's always an intermediate treatment under the crossfade. */
-  .hero__photo-pic--mid {
-    top: 18%;
-    left: 0;
-    right: 0;
-    height: 44%;
-    width: 100%;
-    -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 50%, transparent 92%);
-    mask-image: linear-gradient(to bottom, #000 0%, #000 50%, transparent 92%);
-  }
-
-  /* Atmosphere fades out vertically here too, so the lower hero
-     (subheading, CTA, card) sits on the page's own ink background
-     instead of a dimmed photograph.
-
-     Header-clearance correction: the soft layer was still full-bleed
-     from the header down (top:0, inherited from the base rule), so
-     even after .sharp/.mid moved down at top:12%, the header sat
-     directly on the atmosphere layer's own gradient with no breathing
-     room of its own. top:6%/height:94% keeps the bottom edge exactly
-     anchored (6% + 94% = 100%) while opening a quiet band under the
-     header before the atmosphere begins -- mask gradient unchanged. */
-  .hero__photo-pic--soft {
-    top: 14%;
-    height: 86%;
-    -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 42%, transparent 62%);
-    mask-image: linear-gradient(to bottom, #000 0%, #000 42%, transparent 62%);
-  }
-}
-
-/* Tablet portrait (640-899px, e.g. 768x1024): this was still using
-   the mobile top/bottom-band treatment, which put the subject at
-   nearly full width with no negative space -- confirmed as a genuine
-   failure against the same right-weighting/negative-space criteria
-   applied at desktop, not an acceptable "mobile-family" adaptation.
-   Same right-anchored-box technique as 900px+ below, but sized for a
-   taller/narrower box and using the tall image (<picture> doesn't
-   swap to the landscape crop until 900px -- the landscape crop's own
-   1.346 aspect is too wide to crop sensibly into a box this narrow
-   and tall; the tall crop's 0.751 aspect fits it far better). */
-@media (min-width: 640px) and (max-width: 899px) {
-  /* Header-clearance correction: top:10% left only ~29px between the
-     header and the subject's head (measured on the rendered page) --
-     pushed further down; bottom:0 keeps the box's lower edge anchored,
-     so only headroom opens up, nothing shifts at the bottom. */
-  .hero__photo-pic--sharp {
-    top: 22%;
-    left: auto;
-    right: 0;
-    bottom: 0;
-    height: auto;
-    width: 62%;
-    -webkit-mask-image: linear-gradient(to right, transparent 0%, rgba(0, 0, 0, 0.55) 10%, #000 20%);
-    mask-image: linear-gradient(to right, transparent 0%, rgba(0, 0, 0, 0.55) 10%, #000 20%);
-  }
-
-  /* Same box as .sharp but wider -- extends further left, INTO the
-     zone before .sharp's own box even begins, where .soft was
-     previously handing off directly to .sharp. That's where the
-     bridging needs to happen; .sharp's own fade-in (above) stays
-     short because the subject sits close to its box's left edge --
-     widening it further was tried and blurred the subject's own face,
-     confirmed by screenshot, so it's reverted. */
-  .hero__photo-pic--mid {
-    top: 22%;
-    left: auto;
-    right: 0;
-    bottom: 0;
-    height: auto;
-    width: 78%;
-    -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 22%);
-    mask-image: linear-gradient(to right, transparent 0%, #000 22%);
-  }
-
-  /* Same header-clearance correction as mobile above: the soft layer
-     was still full-bleed from top:0, so the header sat directly on
-     the atmosphere gradient. top:6%/height:94% anchors the bottom
-     edge exactly where it was (6% + 94% = 100%) and opens the same
-     quiet band under the header that .sharp/.mid already got at
-     top:16% -- mask gradient (horizontal, right-weighting) unchanged. */
-  .hero__photo-pic--soft {
-    top: 14%;
-    height: 86%;
-    -webkit-mask-image: linear-gradient(to right, transparent 0%, rgba(0, 0, 0, 0.4) 22%, #000 40%);
-    mask-image: linear-gradient(to right, transparent 0%, rgba(0, 0, 0, 0.4) 22%, #000 40%);
-  }
-
-  .hero__photo-img { object-position: 62% 4%; }
-
-  .hero__photo::after {
-    -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 24%, transparent 48%);
-    mask-image: linear-gradient(to bottom, #000 0%, #000 24%, transparent 48%);
-  }
-}
-
-/* Thin top-to-bottom band only, so the transparent nav stays legible
-   regardless of what's directly beneath it. */
-.hero__photo::before {
+.hero__portrait::after {
   content: "";
   position: absolute;
   inset: 0;
   z-index: 1;
   pointer-events: none;
   background:
-    linear-gradient(to bottom, rgba(4, 4, 4, 0.45) 0%, transparent 14%),
-    radial-gradient(ellipse 60% 32% at 16% 24%, rgba(232, 229, 220, 0.3), transparent 70%);
+    linear-gradient(to top, #17140f 0%, rgba(23, 20, 15, 0.85) 4%, transparent 10%),
+    linear-gradient(to right, #17140f 0%, rgba(23, 20, 15, 0.8) 3%, transparent 6%);
 }
 
-/* Dedicated masthead breathing-room band. Round 4 correction: the
-   soft/mid/sharp layers above create their quiet zone *emergently*,
-   from mask-gradient math -- accurate (pixel-verified against a
-   plain-background baseline) but approximate. This is a literal
-   opaque rectangle instead: a guaranteed, unambiguous quiet zone
-   directly under the header, painted above all three photo layers
-   and the scrim. Same solid tone as .hero--full's own background,
-   so the held zone is invisible as its own shape -- it reads as the
-   hero's own ground, not a separate box.
-
-   Round 5: sharp/mid have no vertical fade-in of their own (only a
-   horizontal mask) -- the moment their box starts, they're at full
-   opacity. A band that's already fading by the time it reaches that
-   edge can't hide it: a bright pixel at even 40% overlay strength
-   still reads as a jump (confirmed -- an early version of this fade
-   left a visible seam at the sharp/mid box boundary, full-width
-   pixel-scanned, not just eyeballed). So the hold here is sized to
-   extend slightly *past* each breakpoint's sharp/mid top (18/22/25%)
-   before the long fade-out begins -- the content stays hidden until
-   the band itself is ready to start revealing it, rather than the
-   box's own hard edge showing through mid-fade. Doing it here means
-   soft/mid/sharp underneath are completely untouched: one element's
-   own curve creates the whole masthead-to-atmosphere progression,
-   instead of layering a second mask system on top of theirs. */
-.hero__photo::after {
+/* Top scrim: the transparent sticky nav sits directly over this panel
+   at every breakpoint (mobile stacked-on-top and desktop full-height
+   alike), so its own legibility can't depend on where the photo's
+   tones happen to land -- this guarantees a dark band under the header
+   regardless. Unrelated to the bottom-edge dissolve above (top vs.
+   bottom of the same panel), left as its own overlay since it only
+   ever needs to darken, never fully reveal the background beneath. */
+.hero__portrait::before {
   content: "";
   position: absolute;
   inset: 0;
-  z-index: 2;
+  z-index: 1;
   pointer-events: none;
-  background: #17140f;
-  -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 20%, transparent 45%);
-  mask-image: linear-gradient(to bottom, #000 0%, #000 20%, transparent 45%);
-}
-
-/* 900px+: the subject becomes a narrower, right-anchored box instead
-   of the full hero width -- this, not object-position alone, is what
-   creates real left-hand negative space. The box is also height-
-   constrained against the landscape crop's own aspect ratio (0.89-1.18
-   vs the crop's 1.346), which is what restores object-position's X
-   value to having a real cropping effect again (12-34% of the crop's
-   width, depending on breakpoint) after it was inert at full-bleed. */
-@media (min-width: 900px) {
-  /* Header-clearance correction: top:13% left only 44px (1440) / 67px
-     (1920) between the header and the subject's head (measured on the
-     rendered page) -- pushed further down for a genuine editorial
-     pause; bottom:0 keeps the box's lower edge anchored, so only
-     headroom opens up, nothing shifts at the bottom. */
-  .hero__photo-pic--sharp {
-    top: 25%;
-    left: auto;
-    right: 0;
-    bottom: 0;
-    height: auto;
-    width: 58%;
-    -webkit-mask-image: linear-gradient(to right, transparent 0%, rgba(0, 0, 0, 0.5) 9%, #000 18%);
-    mask-image: linear-gradient(to right, transparent 0%, rgba(0, 0, 0, 0.5) 9%, #000 18%);
-  }
-
-  /* Same box as .sharp but wider -- extends further left, INTO the
-     zone before .sharp's own box even begins, where .soft was
-     previously handing off directly to .sharp. That's where the
-     bridging needs to happen; .sharp's own fade-in (above) stays
-     short because the subject sits close to its box's left edge --
-     widening it further was tried and blurred the subject's own face,
-     confirmed by screenshot, so it's reverted. */
-  .hero__photo-pic--mid {
-    top: 25%;
-    left: auto;
-    right: 0;
-    bottom: 0;
-    height: auto;
-    width: 72%;
-    -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 25%);
-    mask-image: linear-gradient(to right, transparent 0%, #000 25%);
-  }
-
-  /* Same header-clearance correction as mobile/tablet above: the soft
-     layer was still full-bleed from top:0, so the header sat directly
-     on the atmosphere gradient. top:8%/height:92% anchors the bottom
-     edge exactly where it was (8% + 92% = 100%) and opens the same
-     quiet band under the header that .sharp/.mid already got at
-     top:19% -- mask gradient (horizontal, right-weighting) unchanged. */
-  .hero__photo-pic--soft {
-    top: 16%;
-    height: 84%;
-    -webkit-mask-image: linear-gradient(to right, transparent 0%, rgba(0, 0, 0, 0.4) 22%, #000 40%);
-    mask-image: linear-gradient(to right, transparent 0%, rgba(0, 0, 0, 0.4) 22%, #000 40%);
-  }
-
-  .hero__photo-img { object-position: 56% 0%; }
-
-  .hero__photo::after {
-    -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 27%, transparent 55%);
-    mask-image: linear-gradient(to bottom, #000 0%, #000 27%, transparent 55%);
-  }
+  background: linear-gradient(to bottom, rgba(23, 20, 15, 0.68) 0%, rgba(23, 20, 15, 0) 32%);
 }
 
 .hero__overlay {
   position: relative;
   z-index: 2;
-  max-width: 24rem;
-  padding: 0 var(--space-5) var(--space-6);
+  padding: var(--space-6) var(--space-5) var(--space-7);
 }
 
-/* 640-1023px: the headline's mobile clamp hits its ceiling (4.8rem)
-   well before this range ends, so a fixed 24rem column starts
-   clipping single condensed words like "BUSINESS" -- confirmed with
-   a text-bounds measurement (Range.getClientRects()), not just visual
-   inspection, since overflow: hidden further up the tree hides real
-   clipping from a page-level scrollWidth check. */
-@media (min-width: 640px) {
-  .hero__overlay { max-width: 30rem; }
+/* Small kicker label: ties the hero into the same eyebrow-plus-lime-dot
+   language every other section on the site already uses (see .eyebrow)
+   -- the previous hero never referenced that pattern at all, so it
+   read as a different design system grafted onto the same page. */
+.hero__kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5em;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(243, 241, 236, 0.55);
 }
 
-/* Typography recomposition (round 6): the previous four uniform-size
-   lines read as one dense rectangular mass with no focal point --
-   confirmed against a real production screenshot, not just our own
-   renders. Restructured into a three-tier editorial hierarchy --
-   eyebrow / bridge / punchline -- sized off the same fluid clamp as
-   before (now the punchline's own basis, tiers below are em-relative
-   to it so they scale together at every breakpoint without separate
-   tablet/desktop overrides).
+.hero__kicker-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--lime); flex: none; }
 
-   Redesign round 7: the first pass (uniform gap, DESERVES flush to
-   the overlay's own right edge, dark-fill eyebrow) technically worked
-   but read as three unrelated lines rather than one composition --
-   DESERVES had no real relationship to anything, and the dark eyebrow
-   fill occasionally landed on the masthead band's own near-black
-   background, going patchy. Rebuilt around one deliberate anchor:
-   "Good Design." sizes its own box (the .hero__headline-anchor
-   wrapper below), and "Deserves" is pinned to THAT box's right edge
-   and tucked just above it -- not the header column's edge -- so the
-   relationship is real geometry, not proximity. All three tiers now
-   share one color family (cream) at three opacity steps instead of
-   three unrelated colors, so they read as one graduated statement.
-   Big Shoulders Display (800) replaces Bebas Neue: a heavier, more
-   idiosyncratic condensed face that reads as art-directed rather than
-   a stock template choice. */
+/* Two co-equal lines forming one statement -- not a tiered hierarchy
+   like the previous headline, since "Your Business." and "Online,
+   Properly." are one connected thought, not an eyebrow/bridge/
+   punchline structure. Sitting on the flat ink background (not a
+   photograph), so full-weight color and a light shadow are enough for
+   guaranteed contrast at any breakpoint. */
 .hero__headline {
+  margin-top: var(--space-4);
   font-family: "Big Shoulders Display", var(--font-display), sans-serif;
   font-weight: 800;
-  line-height: 0.88;
-  letter-spacing: 0.01em;
   text-transform: uppercase;
-  font-size: clamp(2.8rem, 1.6rem + 9vw, 4.8rem);
+  line-height: 0.92;
+  letter-spacing: 0.005em;
+  font-size: clamp(2.6rem, 1.6rem + 8.6vw, 4.4rem);
   color: #f3f1ec;
-  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.55), 0 8px 28px rgba(0, 0, 0, 0.4);
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 0.78em;
 }
 
-/* Punchline anchor: an inline-block shrunk to "Good Design."'s own
-   rendered width, not the overlay column's width -- this is what lets
-   "Deserves" lock its right edge to the punchline's actual right edge
-   (below) instead of floating against an unrelated container
-   boundary, which is what made it read as randomly placed rather than
-   a designed relationship. */
-.hero__headline-anchor { position: relative; display: inline-block; }
+.hero__headline-line { display: block; }
 
-.hero__headline-strong { position: relative; display: block; color: #f3f1ec; font-size: 1em; }
-
-/* Eyebrow tier ("Good Business") -- quiet editorial caption, not a
-   second headline. A translucent cream ghost in the same color family
-   as the rest of the headline (replacing the old dark-fill/light-glow
-   pairing) reads consistently whether it lands on the solid masthead
-   band or the photo itself -- the dark fill broke down right where
-   the band's own fade crosses the eyebrow's line height, patchy
-   contrast that read as a rendering glitch rather than intent. */
-.hero__headline-dark {
-  display: block;
-  color: #f3f1ec;
-  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
-  font-size: 0.26em;
-  opacity: 0.42;
-  letter-spacing: 0.14em;
-}
-
-/* Bridge tier ("Deserves") -- pulled out of flow and pinned to the
-   punchline's own box (not the headline column), right edge flush
-   with "Good Design."'s right edge and tucked in close enough to read
-   as one connected statement leading into the punchline rather than a
-   separately centered line. Same cream family as the other two tiers,
-   mid-value between the eyebrow's ghost and the punchline's full
-   weight, so the three read as one graduated composition instead of
-   three unrelated colors. */
-.hero__headline-soft {
-  position: absolute;
-  right: 0;
-  bottom: 100%;
-  margin-bottom: -0.03em;
-  display: block;
-  color: #f3f1ec;
-  opacity: 0.82;
-  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.55), 0 4px 10px rgba(0, 0, 0, 0.3);
-  font-size: 0.48em;
-  letter-spacing: 0.02em;
-  white-space: nowrap;
-}
-
-/* The lime full stop hangs just past "Good Design"'s own right edge
-   instead of counting toward it -- optical/hanging-punctuation, the
-   same reason quote marks and periods are let to hang past a text
-   column in edited typography. Without this, "Deserves" above was
-   locking to the period's edge (a few px past the word itself),
-   reading as a slight rightward overshoot rather than a clean
-   line-up with the word "DESIGN". */
-.hero__headline-mark {
-  position: absolute;
-  left: 100%;
-  bottom: 0;
-  color: var(--lime);
-}
+/* The one deliberate use of lime inside the headline itself: the word
+   that carries the actual promise ("Properly"), not a stray mark --
+   ties the accent color directly to meaning instead of decoration. */
+.hero__headline-mark { color: var(--lime); }
 
 .hero__sub {
   margin-top: var(--space-4);
-  font-size: 0.95rem;
-  color: rgba(243, 241, 236, 0.85);
-  max-width: 30ch;
-  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
+  font-size: 1rem;
+  color: rgba(243, 241, 236, 0.72);
+  max-width: 34ch;
 }
 
-.hero__sub-accent { color: var(--lime); font-weight: 600; }
-
-/* Outline/ghost button -- sits directly on the photo, so it doesn't
-   need an opaque fill to read; the border alone carries it. */
 .hero__cta {
   position: relative;
   display: inline-flex;
@@ -981,9 +719,6 @@ body.is-inner .eyebrow::before { background: var(--lime); }
 .hero__cta-arrow { display: inline-block; transition: transform var(--speed) var(--ease); }
 .hero__cta:hover .hero__cta-arrow { transform: translateX(3px); }
 
-/* Foot metadata: thin rule + 3-column row + a literal barcode graphic
-   with tagline -- matching the reference's actual bottom structure
-   (previously collapsed to a single line, which under-built it). */
 .hero__foot { margin-top: var(--space-6); }
 
 .hero__foot-rule { display: block; height: 1px; background: rgba(243, 241, 236, 0.3); margin-bottom: var(--space-3); }
@@ -998,7 +733,6 @@ body.is-inner .eyebrow::before { background: var(--lime); }
   letter-spacing: 0.06em;
   text-transform: uppercase;
   color: rgba(243, 241, 236, 0.7);
-  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.7);
 }
 
 .hero__foot-tag {
@@ -1009,7 +743,6 @@ body.is-inner .eyebrow::before { background: var(--lime); }
   font-size: 0.6rem;
   letter-spacing: 0.02em;
   color: rgba(243, 241, 236, 0.5);
-  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.7);
 }
 
 .hero__barcode {
@@ -1021,21 +754,17 @@ body.is-inner .eyebrow::before { background: var(--lime); }
 }
 
 /* ---------- Featured project ----------
-   No card, no border, no shadow: a small unframed thumbnail with a
-   two-line caption beneath it, like a printed photo credit set
-   directly on the page rather than a UI component. In normal document
-   flow below the headline block at mobile/tablet (stacked, so it can
-   never collide with the headline text -- see the earlier version's
-   bug where an absolutely-positioned card overlapped the lead-in
-   line); switches to overlapping the photo's lower-right corner only
-   at >=1024px, where there's room for it beside the text instead of
-   below it. */
+   Anchored to the portrait panel itself now (its own containing
+   block), bottom-left, overlapping the photo's own lower corner --
+   still no card/border/shadow, a printed-photo-credit treatment like
+   before. */
 .hero__featured {
   display: block;
-  position: relative;
+  position: absolute;
+  left: var(--space-5);
+  bottom: var(--space-5);
   z-index: 2;
-  width: 11rem;
-  margin: 0 var(--space-5) var(--space-7);
+  width: 8.5rem;
 }
 
 .hero__featured-frame { display: block; aspect-ratio: 1440 / 820; overflow: hidden; }
@@ -1058,18 +787,11 @@ body.is-inner .eyebrow::before { background: var(--lime); }
   border-top: 1px solid var(--lime);
 }
 
-/* Text-shadow, not a background box: the caption has no card behind
-   it by design, and removing the old heavy directional gradient (now
-   that the photo itself carries the composition on the right) left
-   this text sitting directly on whatever the photo shows at that
-   exact spot -- illegible over busier/brighter content. A shadow
-   guarantees contrast without adding the card chrome this treatment
-   deliberately avoids. */
 .hero__featured-title {
   display: block;
   font-family: var(--font-display);
   font-weight: 600;
-  font-size: 0.85rem;
+  font-size: 0.78rem;
   color: #f3f1ec;
   text-shadow: 0 1px 3px rgba(0, 0, 0, 0.85), 0 2px 10px rgba(0, 0, 0, 0.6);
 }
@@ -1078,47 +800,82 @@ body.is-inner .eyebrow::before { background: var(--lime); }
   display: block;
   margin-top: 0.2em;
   font-family: var(--font-mono);
-  font-size: 0.62rem;
+  font-size: 0.56rem;
   letter-spacing: 0.05em;
   text-transform: uppercase;
   color: rgba(243, 241, 236, 0.75);
   text-shadow: 0 1px 3px rgba(0, 0, 0, 0.85), 0 2px 10px rgba(0, 0, 0, 0.6);
 }
 
-/* Object-position for the 900px+ sharp box now lives with the rest of
-   that breakpoint's photo rules, above -- it's height-constrained
-   against the narrower box now (not full-bleed), so X has a real
-   cropping effect again without any scale/zoom. */
-@media (min-width: 1024px) {
-  .hero--full { height: calc(100vh - 73px); justify-content: flex-end; }
-
-  .hero__overlay {
-    max-width: 48vw;
-    padding: 0 clamp(var(--space-5), 5vw, 4.5rem) var(--space-8);
-  }
-
-  /* ~50% of the viewport height across the 4 lines at 1920px, matching
-     the reference mockup's own measured proportions. Growth rate
-     (vw coefficient) is tuned so the longest single word ("BUSINESS")
-     stays inside the 48vw column above -- verified with a text-bounds
-     measurement, not just a visual check, since the previous 4.8vw
-     rate overflowed its 42vw column by 60-117px at 1024-1440px. */
-  .hero__headline { font-size: clamp(4.6rem, 2.6rem + 3.6vw, 8.6rem); }
-
-  .hero__featured {
-    position: absolute;
-    right: clamp(var(--space-5), 5vw, 4.5rem);
-    bottom: var(--space-7);
-    width: min(60%, 13rem);
-    margin: 0;
-  }
+@media (min-width: 480px) {
+  .hero__featured { width: 9.5rem; }
 }
 
-/* No width cap needed past 1600px any more: the sharp box is already
-   a percentage of the viewport (58%), so its upscale factor against
-   the 1154px-wide source stays modest and roughly constant across
-   1024-1920 (~0.55x-1.03x) instead of climbing toward 1.7x the way a
-   100vw-wide box did. */
+@media (min-width: 640px) {
+  .hero__overlay { padding-inline: var(--space-6); }
+  .hero__portrait { height: 50vh; }
+}
+
+/* 1024px+: the stacked panel becomes a true side-by-side split --
+   text column vertically centered on a flat ink field, portrait column
+   filling the full hero height flush to the right edge. This is the
+   core structural change from the previous full-bleed-photo hero. */
+@media (min-width: 1024px) {
+  .hero--full { height: calc(100vh - 73px); min-height: unset; }
+
+  .hero__grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+    min-height: unset;
+    height: 100%;
+  }
+
+  .hero__overlay {
+    order: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: var(--space-8) clamp(var(--space-6), 5vw, 5rem);
+    max-width: 42rem;
+  }
+
+  .hero__headline { font-size: clamp(4.2rem, 2.2rem + 3.6vw, 7.2rem); }
+
+  .hero__portrait { order: 1; height: 100%; }
+
+  /* Same character-safety re-measurement as the base rule above, using
+     this breakpoint's own object-position (58%/6%, slightly different
+     crop than mobile/tablet's 62%/10%): his head lands at ~84% from
+     the right edge and his feet at ~90% of the panel's height here,
+     so the hold zones are set a few points past those, not the 38%/76%
+     the previous pass used. Desktop keeps a bit more fade room than
+     mobile/tablet (there's more empty margin past him at this crop)
+     but the principle is identical -- fade the margin, not him. */
+  .hero__portrait img {
+    object-position: 58% 6%;
+    -webkit-mask-image:
+      linear-gradient(to bottom, #000 0%, #000 90%, rgba(0, 0, 0, 0.7) 95%, transparent 100%),
+      linear-gradient(to left, #000 0%, #000 86%, rgba(0, 0, 0, 0.6) 93%, transparent 100%);
+    -webkit-mask-composite: source-in;
+    mask-image:
+      linear-gradient(to bottom, #000 0%, #000 90%, rgba(0, 0, 0, 0.7) 95%, transparent 100%),
+      linear-gradient(to left, #000 0%, #000 86%, rgba(0, 0, 0, 0.6) 93%, transparent 100%);
+    mask-composite: intersect;
+  }
+
+  .hero__portrait::after {
+    background:
+      linear-gradient(to top, #17140f 0%, rgba(23, 20, 15, 0.85) 4%, transparent 10%),
+      linear-gradient(to right, #17140f 0%, rgba(23, 20, 15, 0.8) 6%, transparent 14%);
+  }
+
+  .hero__featured {
+    left: auto;
+    right: var(--space-6);
+    bottom: var(--space-6);
+    width: min(60%, 12.5rem);
+  }
+}
 
 /* The header itself is untouched -- see the Header/Nav rules above --
    but its brand/link text color (var(--ink), near-black) assumes the
