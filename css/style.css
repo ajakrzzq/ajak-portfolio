@@ -759,20 +759,43 @@ body.is-inner .eyebrow::before { background: var(--lime); }
    Anchored to the portrait panel itself now (its own containing
    block), bottom-left, overlapping the photo's own lower corner --
    still no card/border/shadow, a printed-photo-credit treatment like
-   before. */
+   before.
+
+   Width below 1024px is deliberately narrower than the desktop rule --
+   the same bottom-left corner sits over empty background at the
+   1024px+ crop, but object-fit:cover reframes the same source image
+   very differently at the mobile/tablet stacked crop, where the
+   subject's own body runs much closer to that corner. Measured
+   directly on the render (not assumed): at the base (<480px) crop his
+   sleeve/arm falls at roughly 35% from the left, so the card is sized
+   to end well inside that; at the 480-1023px crop the nearest figure
+   (a background subject, not him) sits further out, so the card can
+   stay a little wider there. Position (left/bottom) is unchanged --
+   only width shrinks, at both tiers, to open real breathing room
+   instead of the card's edge landing flush against a person. */
 .hero__featured {
   display: block;
   position: absolute;
   left: var(--space-5);
   bottom: var(--space-5);
   z-index: 2;
-  width: 8.5rem;
+  width: 5.5rem;
 }
 
 .hero__featured-frame { display: block; aspect-ratio: 1440 / 820; overflow: hidden; }
 
+/* position:static explicitly undoes .hero__portrait picture, .hero__portrait
+   img's position:absolute;inset:0 (added in 7dd4e70 for the main portrait's
+   own height-circularity fix) -- that's a descendant selector, so it was
+   also matching this thumbnail img three levels deep inside .hero__portrait,
+   sizing it against .hero__featured (its nearest positioned ancestor once
+   absolute) instead of this frame, letting it escape the frame's
+   aspect-ratio/overflow:hidden box and bleed over the caption below. Back
+   to static, width/height:100% resolves normally against the frame's own
+   aspect-ratio-derived height instead. */
 .hero__featured-frame img {
   display: block;
+  position: static;
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -810,7 +833,7 @@ body.is-inner .eyebrow::before { background: var(--lime); }
 }
 
 @media (min-width: 480px) {
-  .hero__featured { width: 9.5rem; }
+  .hero__featured { width: 8rem; }
 }
 
 @media (min-width: 640px) {
