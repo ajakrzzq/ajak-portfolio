@@ -677,6 +677,11 @@ body.is-inner .eyebrow::before { background: var(--lime); }
   }
 
   .hero__photo-img { object-position: 62% 4%; }
+
+  .hero__photo::after {
+    -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 24%, transparent 48%);
+    mask-image: linear-gradient(to bottom, #000 0%, #000 24%, transparent 48%);
+  }
 }
 
 /* Thin top-to-bottom band only, so the transparent nav stays legible
@@ -690,6 +695,41 @@ body.is-inner .eyebrow::before { background: var(--lime); }
   background:
     linear-gradient(to bottom, rgba(4, 4, 4, 0.45) 0%, transparent 14%),
     radial-gradient(ellipse 60% 32% at 16% 24%, rgba(232, 229, 220, 0.3), transparent 70%);
+}
+
+/* Dedicated masthead breathing-room band. Round 4 correction: the
+   soft/mid/sharp layers above create their quiet zone *emergently*,
+   from mask-gradient math -- accurate (pixel-verified against a
+   plain-background baseline) but approximate. This is a literal
+   opaque rectangle instead: a guaranteed, unambiguous quiet zone
+   directly under the header, painted above all three photo layers
+   and the scrim. Same solid tone as .hero--full's own background,
+   so the held zone is invisible as its own shape -- it reads as the
+   hero's own ground, not a separate box.
+
+   Round 5: sharp/mid have no vertical fade-in of their own (only a
+   horizontal mask) -- the moment their box starts, they're at full
+   opacity. A band that's already fading by the time it reaches that
+   edge can't hide it: a bright pixel at even 40% overlay strength
+   still reads as a jump (confirmed -- an early version of this fade
+   left a visible seam at the sharp/mid box boundary, full-width
+   pixel-scanned, not just eyeballed). So the hold here is sized to
+   extend slightly *past* each breakpoint's sharp/mid top (18/22/25%)
+   before the long fade-out begins -- the content stays hidden until
+   the band itself is ready to start revealing it, rather than the
+   box's own hard edge showing through mid-fade. Doing it here means
+   soft/mid/sharp underneath are completely untouched: one element's
+   own curve creates the whole masthead-to-atmosphere progression,
+   instead of layering a second mask system on top of theirs. */
+.hero__photo::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  background: #17140f;
+  -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 20%, transparent 45%);
+  mask-image: linear-gradient(to bottom, #000 0%, #000 20%, transparent 45%);
 }
 
 /* 900px+: the subject becomes a narrower, right-anchored box instead
@@ -748,6 +788,11 @@ body.is-inner .eyebrow::before { background: var(--lime); }
   }
 
   .hero__photo-img { object-position: 56% 0%; }
+
+  .hero__photo::after {
+    -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 27%, transparent 55%);
+    mask-image: linear-gradient(to bottom, #000 0%, #000 27%, transparent 55%);
+  }
 }
 
 .hero__overlay {
