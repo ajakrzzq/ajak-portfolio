@@ -72,57 +72,48 @@
 
     <!-- HERO -->
     <section class="hero--full">
-      <div class="hero__photo">
-        <picture class="hero__photo-pic hero__photo-pic--soft" aria-hidden="true">
-          <source type="image/webp" media="(min-width: 900px)" srcset="images/hero/editorial-portrait-landscape.webp">
-          <source type="image/jpeg" media="(min-width: 900px)" srcset="images/hero/editorial-portrait-landscape.jpg">
-          <source type="image/webp" srcset="images/hero/editorial-portrait.webp">
-          <img class="hero__photo-img hero__photo-img--soft" src="images/hero/editorial-portrait.jpg" alt="" fetchpriority="high" loading="eager" decoding="async">
-        </picture>
-        <picture class="hero__photo-pic hero__photo-pic--mid" aria-hidden="true">
-          <source type="image/webp" media="(min-width: 900px)" srcset="images/hero/editorial-portrait-landscape.webp">
-          <source type="image/jpeg" media="(min-width: 900px)" srcset="images/hero/editorial-portrait-landscape.jpg">
-          <source type="image/webp" srcset="images/hero/editorial-portrait.webp">
-          <img class="hero__photo-img hero__photo-img--mid" src="images/hero/editorial-portrait.jpg" alt="" fetchpriority="high" loading="eager" decoding="async">
-        </picture>
-        <picture class="hero__photo-pic hero__photo-pic--sharp">
-          <source type="image/webp" media="(min-width: 900px)" srcset="images/hero/editorial-portrait-landscape.webp">
-          <source type="image/jpeg" media="(min-width: 900px)" srcset="images/hero/editorial-portrait-landscape.jpg">
-          <source type="image/webp" srcset="images/hero/editorial-portrait.webp">
-          <img class="hero__photo-img" src="images/hero/editorial-portrait.jpg"
-               width="1154" height="1536"
-               alt="Ajak, founder of Ajak.Web, laughing mid-conversation in a bright indoor space, wearing a white t-shirt"
-               fetchpriority="high" loading="eager" decoding="async">
-        </picture>
-      </div>
-
-      <div class="hero__overlay reveal">
-        <h1 class="hero__headline"><span class="hero__headline-dark">Good Business</span><span class="hero__headline-soft">Deserves</span><span class="hero__headline-strong">Good Design<span class="hero__headline-mark">.</span></span></h1>
-        <p class="hero__sub"><span class="hero__sub-accent">Websites</span> &amp; digital experiences for Malaysian businesses.</p>
-        <a class="hero__cta" href="work.html">View Selected Work<span class="hero__cta-arrow" aria-hidden="true">&rarr;</span></a>
-        <div class="hero__foot">
-          <span class="hero__foot-rule" aria-hidden="true"></span>
-          <div class="hero__foot-row">
-            <span>AJK / 001</span>
-            <span>Web Design / Development</span>
-            <span>Petaling Jaya, MY</span>
+      <div class="hero__grid">
+        <div class="hero__overlay reveal">
+          <p class="hero__kicker"><span class="hero__kicker-dot" aria-hidden="true"></span>Websites for Malaysian businesses</p>
+          <h1 class="hero__headline">
+            <span class="hero__headline-line">Your Business.</span>
+            <span class="hero__headline-line">Online, <span class="hero__headline-mark">Properly.</span></span>
+          </h1>
+          <p class="hero__sub">Modern websites built around your business, your customers, and how you actually work.</p>
+          <a class="hero__cta" href="work.html">View Selected Work<span class="hero__cta-arrow" aria-hidden="true">&rarr;</span></a>
+          <div class="hero__foot">
+            <span class="hero__foot-rule" aria-hidden="true"></span>
+            <div class="hero__foot-row">
+              <span>AJK / 001</span>
+              <span>Web Design / Development</span>
+              <span>Petaling Jaya, MY</span>
+            </div>
+            <p class="hero__foot-tag">
+              <span class="hero__barcode" aria-hidden="true"></span>
+              <span>Built to help businesses grow with confidence.</span>
+            </p>
           </div>
-          <p class="hero__foot-tag">
-            <span class="hero__barcode" aria-hidden="true"></span>
-            <span>Built to help businesses grow with confidence.</span>
-          </p>
+        </div>
+
+        <div class="hero__portrait reveal">
+          <picture>
+            <source type="image/webp" srcset="images/hero/editorial-portrait.webp">
+            <img src="images/hero/editorial-portrait.jpg" width="1154" height="1536"
+                 alt="Ajak, founder of Ajak.Web, laughing mid-conversation in a bright indoor space, wearing a white t-shirt"
+                 fetchpriority="high" loading="eager" decoding="async">
+          </picture>
+
+          <a class="hero__featured" href="work.html#safwa">
+            <span class="hero__featured-frame">
+              <img src="images/projects/safwa/safwa-home.jpg" alt="Safwa Umrah travel website homepage" width="1440" height="820" loading="eager" decoding="async">
+            </span>
+            <span class="hero__featured-caption">
+              <span class="hero__featured-title">Safwa Umrah</span>
+              <span class="hero__featured-meta">Featured Project &middot; 01/04</span>
+            </span>
+          </a>
         </div>
       </div>
-
-      <a class="hero__featured reveal" href="work.html#safwa">
-        <span class="hero__featured-frame">
-          <img src="images/projects/safwa/safwa-home.jpg" alt="Safwa Umrah travel website homepage" width="1440" height="820" loading="eager" decoding="async">
-        </span>
-        <span class="hero__featured-caption">
-          <span class="hero__featured-title">Safwa Umrah</span>
-          <span class="hero__featured-meta">Featured Project &middot; 01/04</span>
-        </span>
-      </a>
     </section>
 
     <!-- TRUST STRIP -->
@@ -286,6 +277,7 @@
 
         </div>
 
+        <p class="work-index__label">More Selected Work</p>
         <ul class="work-index">
           <li class="work-index__row">
             <span class="work-index__index" aria-hidden="true">05</span>
