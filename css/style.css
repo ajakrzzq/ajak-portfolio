@@ -5,6 +5,18 @@
    spacing here and the whole site updates.
    ========================================================= */
 
+/* Self-hosted rather than pulled from Google Fonts: this is the one
+   display face used only by the homepage hero headline, so shipping
+   it as a local asset removes any dependency on a third-party font
+   CDN being reachable for that one element. */
+@font-face {
+  font-family: "Bebas Neue";
+  src: url("../fonts/bebas-neue.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
 /* ---------- Design Tokens ---------- */
 :root {
   /* Color */
@@ -812,44 +824,65 @@ body.is-inner .eyebrow::before { background: var(--lime); }
   .hero__overlay { max-width: 30rem; }
 }
 
-/* Reference-matched headline: ONE four-line block ("Good/Business/
-   Deserves/Good Design.") with dark/light/dark color alternation for
-   hierarchy -- not a small lead-in plus a separate short punchline.
-   Sized to occupy roughly half the viewport height at desktop,
-   matching the reference's own proportions (measured directly from
-   the supplied mockup), not an invented smaller scale. */
+/* Typography recomposition (round 6): the previous four uniform-size
+   lines read as one dense rectangular mass with no focal point --
+   confirmed against a real production screenshot, not just our own
+   renders. Restructured into a three-tier editorial hierarchy instead
+   -- eyebrow / bridge / punchline -- each tier a flex child so it
+   stacks without manual <br> tags, sized off the same fluid clamp as
+   before (now the punchline's own basis, tiers below are em-relative
+   to it so they scale together at every breakpoint without separate
+   tablet/desktop overrides). Bebas Neue replaces Anton: comparable
+   scale and confidence, but more open counters that carry a large
+   punchline without the whole block reading as heavy/blocky. */
 .hero__headline {
-  font-family: "Anton", var(--font-display), sans-serif;
+  font-family: "Bebas Neue", var(--font-display), sans-serif;
   font-weight: 400;
-  line-height: 0.86;
-  letter-spacing: 0.005em;
+  line-height: 0.95;
+  letter-spacing: 0.01em;
   text-transform: uppercase;
   font-size: clamp(2.8rem, 1.6rem + 9vw, 4.8rem);
   color: #f3f1ec;
   text-shadow: 0 2px 6px rgba(0, 0, 0, 0.55), 0 8px 28px rgba(0, 0, 0, 0.4);
+  display: flex;
+  flex-direction: column;
+  gap: 0.08em;
 }
 
-.hero__headline-strong { color: #f3f1ec; }
+.hero__headline-strong { color: #f3f1ec; font-size: 1em; }
 
-/* Reference-matched: "Good Business" reads dark/near-black there,
-   not off-white like the rest of the headline. A light glow (instead
-   of the dark drop-shadow the other lines use) keeps it legible
-   against the photo regardless of exactly how light or dark that
-   specific patch renders -- paired with the radial highlight added to
-   .hero__photo::before, which lightens that same corner of the
-   atmosphere layer to actually support the dark fill, not just paper
-   over a mismatch with a shadow trick alone. */
+/* Eyebrow tier ("Good Business") -- supporting editorial caption, not
+   a second headline: scaled down to 0.34em of the punchline, tracked
+   wider and partly faded so it reads as discovered atmosphere rather
+   than competing with "Good Design." for attention. Still uses the
+   same dark fill + light glow as before, since that pairing is what
+   keeps it legible against the photo regardless of how light or dark
+   that corner renders. */
 .hero__headline-dark {
   color: #16140f;
   text-shadow: 0 1px 1px rgba(255, 255, 255, 0.35), 0 0 24px rgba(240, 236, 224, 0.3);
+  font-size: 0.34em;
+  opacity: 0.7;
+  letter-spacing: 0.08em;
 }
 
-/* Mid-gray against a similarly mid-toned blurred photo is the one
-   headline color that the shared text-shadow above doesn't fully
-   rescue (confirmed by screenshot -- "DESERVES" was reading as
-   nearly invisible). A tighter, darker shadow on top of the inherited
-   one adds the extra separation this specific color needs. */
-.hero__headline-soft { color: #a6a6a6; text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8), 0 4px 16px rgba(0, 0, 0, 0.6); }
+/* Bridge tier ("Deserves") -- sits between the eyebrow and the
+   punchline both in size (0.6em) and in position: right-indented via
+   align-self/margin so it breaks the block flush-left the other two
+   tiers share, the asymmetric relationship that makes this read as
+   composed rather than a stacked heading. Mid-gray against a
+   similarly mid-toned blurred photo is the one color the shared
+   text-shadow above doesn't fully rescue on its own (confirmed by
+   screenshot -- it was reading as nearly invisible); the tighter,
+   darker shadow on top adds the extra separation this specific color
+   needs. */
+.hero__headline-soft {
+  color: #a6a6a6;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8), 0 4px 16px rgba(0, 0, 0, 0.6);
+  font-size: 0.6em;
+  align-self: flex-end;
+  margin-right: 0.4em;
+}
 
 .hero__headline-mark { color: var(--lime); }
 
