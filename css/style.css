@@ -16,6 +16,16 @@
   --accent: #3b46f0;
   --accent-dark: #2a32c4;
   --accent-tint: #eaebff;
+  /* Hero-only accent (Phase 23B): a vivid neon lime, reserved for small
+     marks placed on an ink-black surface -- on the warm paper/paper-alt
+     backgrounds it measures ~1:1 contrast (functionally invisible), so
+     it is never used as running text color here, only as a fill behind
+     off-white/ink content. Kept as a token (not hardcoded) so it stays
+     available if a future phase wants it elsewhere, but nothing outside
+     the hero references it yet. Recalibrated to the reference's own
+     measured lime (~#E1E778-#E7FF4D, warmer/yellower than the previous
+     value) per the Phase 23 color-calibration pass. */
+  --lime: #e7ff4d;
   --muted: #6b6b74;
   --muted-2: #96959e;
   --border: #e5e2da;
@@ -135,6 +145,15 @@ h1, h2, h3, h4 {
   color: var(--paper);
 }
 
+/* Same warm charcoal as the approved hero (a literal value, not a
+   shared token -- the hero's CSS is a frozen baseline and isn't
+   touched to extract one). Used only by the Introduction section
+   directly below the hero, so the dark opening reads as two
+   deliberate beats before the page returns to paper for Services. */
+.section--charcoal { background: #17140f; }
+.section--charcoal .eyebrow { color: var(--lime); }
+.section--charcoal .eyebrow::before { background: var(--lime); }
+
 .grid {
   display: grid;
   gap: var(--space-6);
@@ -164,6 +183,31 @@ h1, h2, h3, h4 {
 
 .section--ink .eyebrow { color: #9aa3ff; }
 .section--ink .eyebrow::before { background: #9aa3ff; }
+
+/* Global color-system alignment: inner-page eyebrows (page-header,
+   founder title) sit on paper, where lime text measures near-invisible
+   -- text stays neutral, only the dot picks up the brand accent. Scoped
+   to body.is-inner (about/services/work/contact only) so this cannot
+   reach the homepage's own eyebrows, several of which are still on the
+   pre-lime system and out of scope for this phase. */
+body.is-inner .eyebrow { color: var(--muted-2); }
+body.is-inner .eyebrow::before { background: var(--lime); }
+
+/* The dark CTA band (About/Services/Work) is the one place an inner
+   page's eyebrow sits on ink instead of paper -- lime text is safe
+   there, same as the approved Introduction's own eyebrow treatment. */
+.cta-band.section--ink .eyebrow { color: var(--lime); }
+.cta-band.section--ink .eyebrow::before { background: var(--lime); }
+
+/* Selected Work (homepage) art-direction pass: this eyebrow sits on
+   paper and was still on the legacy blue -- the one piece of Selected
+   Work the color-system phase deliberately left alone. Same treatment
+   as the inner pages: neutral text for legibility, lime only on the
+   dot. Scoped to #selected-work specifically, not the shared .eyebrow
+   base rule, so the rest of the homepage (out of scope for this
+   phase) is untouched. */
+#selected-work .eyebrow { color: var(--muted-2); }
+#selected-work .eyebrow::before { background: var(--lime); }
 
 .section-head {
   max-width: 640px;
@@ -206,8 +250,14 @@ h1, h2, h3, h4 {
   transition: background var(--speed) var(--ease), border-color var(--speed) var(--ease), color var(--speed) var(--ease);
 }
 
-.btn--accent { --btn-bg: var(--accent); --btn-fg: #ffffff; }
-.btn--accent:hover { --btn-bg: var(--accent-dark); }
+/* Brand accent button (Global color-system alignment): lime fill with
+   dark ink text at rest -- a large solid fill reads fine in lime
+   (unlike small text on paper, which measures near-invisible), so
+   this is safe as the primary "Start a Project"/"Send Enquiry" style
+   sitewide. Hover inverts to ink-fill/lime-text, reusing the same
+   pattern already approved on the hero's own nav CTA hover state. */
+.btn--accent { --btn-bg: var(--lime); --btn-fg: var(--ink); }
+.btn--accent:hover { --btn-bg: var(--ink); --btn-fg: var(--lime); }
 
 .btn--ghost {
   --btn-bg: transparent;
@@ -270,7 +320,7 @@ h1, h2, h3, h4 {
 
 .brand:hover { opacity: 0.8; }
 
-.brand__dot { color: var(--accent); }
+.brand__dot { color: var(--lime); }
 
 .nav__links {
   display: none;
@@ -294,7 +344,7 @@ h1, h2, h3, h4 {
   bottom: -3px;
   width: 100%;
   height: 2px;
-  background: var(--accent);
+  background: var(--lime);
   transform: scaleX(0);
   transform-origin: left;
   transition: transform var(--speed) var(--ease);
@@ -374,7 +424,16 @@ h1, h2, h3, h4 {
   font-weight: 600;
 }
 
-.mobile-menu__links a[aria-current="page"] { color: var(--accent); }
+/* Text stays ink (the mobile menu sits on paper, where lime text
+   would be hard to read at this size) -- the current page is marked
+   with a lime underline instead. */
+.mobile-menu__links a[aria-current="page"] {
+  color: var(--ink);
+  text-decoration: underline;
+  text-decoration-color: var(--lime);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 4px;
+}
 
 .mobile-menu__links a {
   display: inline-block;
@@ -415,236 +474,387 @@ h1, h2, h3, h4 {
 }
 
 /* ---------- Hero ----------
-   Full-scale editorial hero: warm paper background keeps the left
-   column (headline/metadata) visually quiet, while the right column
-   carries the visual weight as a portrait (see .hero-portrait) plus a
-   smaller "Selected Work" insert (see .hero__featured) overlapping its
-   lower edge -- the magazine-cover + insert composition the redesign
-   brief asks for. min-height on desktop only (see below) gives the
-   90-100vh immersive first viewport; mobile stays content-height so it
-   never forces an oversized scroll before any real content appears. */
+   Single-canvas editorial composition (Phase 23F). Every prior pass
+   fought the fact that the shipped source asset
+   (images/hero/editorial-portrait.jpg) was ALREADY an aggressively
+   pre-cropped 550x1250 sliver of the real photograph -- fighting that
+   crop with transform:scale() only ever zoomed further into an
+   ever-smaller slice ("shoulder filling the screen"). The actual fix
+   was upstream of any CSS: the source asset itself has been replaced
+   with a far less-cropped export of the SAME photograph (1154x1536),
+   which shows the real scene -- the subject, the diagonal
+   architectural beams, genuine negative space -- instead of a tight
+   vertical strip of it. With that source, a plain object-fit:cover
+   full-bleed crop is naturally generous (no scale() anywhere in this
+   file), which is what finally makes a true single-canvas composition
+   possible: nav, headline and the project insert all layered directly
+   on ONE photograph, matching the reference, instead of a photo
+   column next to a solid text panel.
+   The site header itself is untouched (still position:sticky, still
+   transparent until scroll -- see the "Header / Nav" rules above):
+   this section just pulls up behind it with a negative margin equal
+   to the header's own rendered height, so the photo shows through the
+   header's transparent background instead of starting below it. That
+   keeps every other page's header behavior completely unchanged. */
 .hero--full {
   position: relative;
-  background: var(--paper-alt);
-  padding-top: var(--space-8);
-  padding-bottom: var(--space-9);
-  /* .hero__featured intentionally bleeds past its column at narrow
-     widths (see its max-width:639px rule below) -- clip that bleed at
-     the section edge instead of letting it create a page-wide
-     horizontal scrollbar. Purely a containment fix: it doesn't move or
-     resize anything that was actually visible. */
-  overflow-x: hidden;
-}
-
-@media (min-width: 1024px) {
-  .hero--full {
-    min-height: 94vh;
-    display: flex;
-    align-items: center;
-  }
-}
-
-.hero__inner {
-  display: grid;
-  gap: var(--space-8);
-}
-
-@media (min-width: 1024px) {
-  .hero__inner {
-    /* content column gets the edge (not an even split) so the stacked
-       three-line headline has real room, leaving the portrait at
-       roughly 40-45% of the composition rather than a plain 50/50
-       "photo on the right" split */
-    grid-template-columns: 1.15fr 1fr;
-    align-items: start;
-    gap: var(--space-7);
-  }
-
-  .hero__content { padding-top: var(--space-6); }
-}
-
-.hero__content { max-width: 560px; }
-
-.hero__headline {
-  font-family: var(--font-display);
-  font-weight: 700;
-  line-height: 1.02;
-  letter-spacing: -0.01em;
-  text-transform: uppercase;
-  font-size: clamp(2.6rem, 1.4rem + 4.2vw, 5.4rem);
-  color: var(--ink);
-}
-
-.hero__headline-accent { color: var(--accent); }
-
-.hero__lead {
-  margin-top: var(--space-5);
-  font-size: var(--fs-lead);
-  color: var(--muted);
-  max-width: 38ch;
-}
-
-.hero__actions {
-  margin-top: var(--space-6);
+  margin-top: -73px;
+  min-height: 100vh;
   display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: var(--space-5);
+  flex-direction: column;
+  justify-content: flex-end;
+  overflow: hidden;
+  /* Warm charcoal, not the sitewide --ink (#131316, slightly blue) --
+     the reference's dark tone reads warm, and this stays scoped to the
+     hero rather than changing --ink's cooler value everywhere else on
+     the site. */
+  background: #17140f;
 }
 
-/* Single hero CTA (per the redesign brief: no competing buttons here --
-   the nav bar and final CTA band already carry the direct "Start a
-   Project" conversion path). Editorial text-link treatment: uppercase,
-   tracked, underline-in on hover -- reuses the same interaction pattern
-   the old two-CTA row used for its secondary link. */
+/* Calibration pass (Phase 23 -- negative-space correction). The prior
+   version made the photo box's own width equal the hero's full width
+   at every breakpoint, so the subject's footprint tracked the same
+   ~20%-90% span regardless of viewport -- too dominant, not
+   right-weighted, per the visual audit. Structure now:
+   1. ATMOSPHERE (.hero__photo-pic--soft): stays full-bleed, but is
+      pushed much closer to "almost pure background" -- heavier blur,
+      near-grayscale, and dark enough that architectural detail reads
+      as a quiet, low-contrast hint rather than a recognizable blurred
+      photograph. Masked to fade to nothing at the true left edge.
+   2. SUBJECT (.hero__photo-pic--sharp): no longer full width. A
+      narrower box pinned to the right (not just the <img> repositioned
+      inside an oversized box) is what actually makes the subject
+      right-weighted -- the hero's left ~38% now contains no subject
+      pixels at all, only the atmosphere layer above. A small top inset
+      also shrinks the image's effective display scale and opens
+      headroom above the head (the source has no headroom of its own
+      to crop into -- his head is already at the top pixel row of the
+      photo -- so it has to come from the layout, not the crop). */
+.hero__photo {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.hero__photo-pic { display: block; position: absolute; }
+
+.hero__photo-pic--soft { inset: 0; width: 100%; height: 100%; }
+
+.hero__photo-img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 68% 4%;
+}
+
+/* Pushed further than the sample's own measured brightness: the goal
+   here is closer to "hint of atmosphere" than "blurred photograph." */
+.hero__photo-img--soft { filter: blur(46px) grayscale(0.95) saturate(0.18) brightness(0.32); }
+
+/* Blend-only fix: the seam between atmosphere and subject wasn't a
+   masking-shape problem, it was a MISSING-STEP problem -- opacity was
+   crossfading directly between "fully blurred/dark/desaturated" and
+   "fully sharp/normal," two very different image characters, with no
+   intermediate stage. That jump reads as a seam no matter how the
+   mask gradient itself is shaped. This third layer sits between them
+   at roughly the midpoint of blur/color/brightness, so the transition
+   passes through a visible intermediate state instead of jumping. */
+.hero__photo-img--mid { filter: blur(20px) grayscale(0.6) saturate(0.55) brightness(0.6); }
+
+/* True mobile only (<640px): the subject occupies just the upper
+   portion of the hero (top:0, confined height below), full width --
+   there's no room for a left/right split at this narrow a viewport.
+   A soft bottom feather on its own mask blends it into the
+   atmosphere/ink beneath rather than ending in a hard edge. */
+@media (max-width: 639px) {
+  .hero__photo-pic--sharp {
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 54%;
+    width: 100%;
+    -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 38%, transparent 88%);
+    mask-image: linear-gradient(to bottom, #000 0%, #000 38%, transparent 88%);
+  }
+
+  /* Bridges the same gap vertically: fully visible for longer than
+     .soft fades in, and fading out gradually well before .sharp does,
+     so there's always an intermediate treatment under the crossfade. */
+  .hero__photo-pic--mid {
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 62%;
+    width: 100%;
+    -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 50%, transparent 92%);
+    mask-image: linear-gradient(to bottom, #000 0%, #000 50%, transparent 92%);
+  }
+
+  /* Atmosphere fades out vertically here too, so the lower hero
+     (subheading, CTA, card) sits on the page's own ink background
+     instead of a dimmed photograph. */
+  .hero__photo-pic--soft {
+    -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 42%, transparent 62%);
+    mask-image: linear-gradient(to bottom, #000 0%, #000 42%, transparent 62%);
+  }
+}
+
+/* Tablet portrait (640-899px, e.g. 768x1024): this was still using
+   the mobile top/bottom-band treatment, which put the subject at
+   nearly full width with no negative space -- confirmed as a genuine
+   failure against the same right-weighting/negative-space criteria
+   applied at desktop, not an acceptable "mobile-family" adaptation.
+   Same right-anchored-box technique as 900px+ below, but sized for a
+   taller/narrower box and using the tall image (<picture> doesn't
+   swap to the landscape crop until 900px -- the landscape crop's own
+   1.346 aspect is too wide to crop sensibly into a box this narrow
+   and tall; the tall crop's 0.751 aspect fits it far better). */
+@media (min-width: 640px) and (max-width: 899px) {
+  .hero__photo-pic--sharp {
+    top: 10%;
+    left: auto;
+    right: 0;
+    bottom: 0;
+    height: auto;
+    width: 62%;
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, rgba(0, 0, 0, 0.55) 10%, #000 20%);
+    mask-image: linear-gradient(to right, transparent 0%, rgba(0, 0, 0, 0.55) 10%, #000 20%);
+  }
+
+  /* Same box as .sharp but wider -- extends further left, INTO the
+     zone before .sharp's own box even begins, where .soft was
+     previously handing off directly to .sharp. That's where the
+     bridging needs to happen; .sharp's own fade-in (above) stays
+     short because the subject sits close to its box's left edge --
+     widening it further was tried and blurred the subject's own face,
+     confirmed by screenshot, so it's reverted. */
+  .hero__photo-pic--mid {
+    top: 10%;
+    left: auto;
+    right: 0;
+    bottom: 0;
+    height: auto;
+    width: 78%;
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 22%);
+    mask-image: linear-gradient(to right, transparent 0%, #000 22%);
+  }
+
+  .hero__photo-pic--soft {
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, rgba(0, 0, 0, 0.4) 22%, #000 40%);
+    mask-image: linear-gradient(to right, transparent 0%, rgba(0, 0, 0, 0.4) 22%, #000 40%);
+  }
+
+  .hero__photo-img { object-position: 62% 4%; }
+}
+
+/* Thin top-to-bottom band only, so the transparent nav stays legible
+   regardless of what's directly beneath it. */
+.hero__photo::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background:
+    linear-gradient(to bottom, rgba(4, 4, 4, 0.45) 0%, transparent 14%),
+    radial-gradient(ellipse 60% 32% at 16% 24%, rgba(232, 229, 220, 0.3), transparent 70%);
+}
+
+/* 900px+: the subject becomes a narrower, right-anchored box instead
+   of the full hero width -- this, not object-position alone, is what
+   creates real left-hand negative space. The box is also height-
+   constrained against the landscape crop's own aspect ratio (0.89-1.18
+   vs the crop's 1.346), which is what restores object-position's X
+   value to having a real cropping effect again (12-34% of the crop's
+   width, depending on breakpoint) after it was inert at full-bleed. */
+@media (min-width: 900px) {
+  .hero__photo-pic--sharp {
+    top: 13%;
+    left: auto;
+    right: 0;
+    bottom: 0;
+    height: auto;
+    width: 58%;
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, rgba(0, 0, 0, 0.5) 9%, #000 18%);
+    mask-image: linear-gradient(to right, transparent 0%, rgba(0, 0, 0, 0.5) 9%, #000 18%);
+  }
+
+  /* Same box as .sharp but wider -- extends further left, INTO the
+     zone before .sharp's own box even begins, where .soft was
+     previously handing off directly to .sharp. That's where the
+     bridging needs to happen; .sharp's own fade-in (above) stays
+     short because the subject sits close to its box's left edge --
+     widening it further was tried and blurred the subject's own face,
+     confirmed by screenshot, so it's reverted. */
+  .hero__photo-pic--mid {
+    top: 13%;
+    left: auto;
+    right: 0;
+    bottom: 0;
+    height: auto;
+    width: 72%;
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 25%);
+    mask-image: linear-gradient(to right, transparent 0%, #000 25%);
+  }
+
+  .hero__photo-pic--soft {
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, rgba(0, 0, 0, 0.4) 22%, #000 40%);
+    mask-image: linear-gradient(to right, transparent 0%, rgba(0, 0, 0, 0.4) 22%, #000 40%);
+  }
+
+  .hero__photo-img { object-position: 56% 0%; }
+}
+
+.hero__overlay {
+  position: relative;
+  z-index: 2;
+  max-width: 24rem;
+  padding: 0 var(--space-5) var(--space-6);
+}
+
+/* 640-1023px: the headline's mobile clamp hits its ceiling (4.8rem)
+   well before this range ends, so a fixed 24rem column starts
+   clipping single condensed words like "BUSINESS" -- confirmed with
+   a text-bounds measurement (Range.getClientRects()), not just visual
+   inspection, since overflow: hidden further up the tree hides real
+   clipping from a page-level scrollWidth check. */
+@media (min-width: 640px) {
+  .hero__overlay { max-width: 30rem; }
+}
+
+/* Reference-matched headline: ONE four-line block ("Good/Business/
+   Deserves/Good Design.") with dark/light/dark color alternation for
+   hierarchy -- not a small lead-in plus a separate short punchline.
+   Sized to occupy roughly half the viewport height at desktop,
+   matching the reference's own proportions (measured directly from
+   the supplied mockup), not an invented smaller scale. */
+.hero__headline {
+  font-family: "Anton", var(--font-display), sans-serif;
+  font-weight: 400;
+  line-height: 0.86;
+  letter-spacing: 0.005em;
+  text-transform: uppercase;
+  font-size: clamp(2.8rem, 1.6rem + 9vw, 4.8rem);
+  color: #f3f1ec;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.55), 0 8px 28px rgba(0, 0, 0, 0.4);
+}
+
+.hero__headline-strong { color: #f3f1ec; }
+
+/* Reference-matched: "Good Business" reads dark/near-black there,
+   not off-white like the rest of the headline. A light glow (instead
+   of the dark drop-shadow the other lines use) keeps it legible
+   against the photo regardless of exactly how light or dark that
+   specific patch renders -- paired with the radial highlight added to
+   .hero__photo::before, which lightens that same corner of the
+   atmosphere layer to actually support the dark fill, not just paper
+   over a mismatch with a shadow trick alone. */
+.hero__headline-dark {
+  color: #16140f;
+  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.35), 0 0 24px rgba(240, 236, 224, 0.3);
+}
+
+/* Mid-gray against a similarly mid-toned blurred photo is the one
+   headline color that the shared text-shadow above doesn't fully
+   rescue (confirmed by screenshot -- "DESERVES" was reading as
+   nearly invisible). A tighter, darker shadow on top of the inherited
+   one adds the extra separation this specific color needs. */
+.hero__headline-soft { color: #a6a6a6; text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8), 0 4px 16px rgba(0, 0, 0, 0.6); }
+
+.hero__headline-mark { color: var(--lime); }
+
+.hero__sub {
+  margin-top: var(--space-4);
+  font-size: 0.95rem;
+  color: rgba(243, 241, 236, 0.85);
+  max-width: 30ch;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
+}
+
+.hero__sub-accent { color: var(--lime); font-weight: 600; }
+
+/* Outline/ghost button -- sits directly on the photo, so it doesn't
+   need an opaque fill to read; the border alone carries it. */
 .hero__cta {
   position: relative;
   display: inline-flex;
   align-items: center;
   gap: 0.6em;
-  padding-block: 0.5em;
+  margin-top: var(--space-5);
+  padding: 0.85em 1.6em;
+  border: 1.5px solid rgba(243, 241, 236, 0.55);
   font-weight: 600;
-  font-size: 0.95rem;
-  letter-spacing: 0.04em;
+  font-size: 0.85rem;
+  letter-spacing: 0.05em;
   text-transform: uppercase;
-  color: var(--ink);
-  transition: color var(--speed) var(--ease);
+  color: #f3f1ec;
+  transition: border-color var(--speed) var(--ease), color var(--speed) var(--ease);
 }
 
-.hero__cta::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  height: 2px;
-  background: currentColor;
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform var(--speed) var(--ease);
-}
-
-.hero__cta:hover::after { transform: scaleX(1); }
+.hero__cta:hover { border-color: var(--lime); color: var(--lime); }
 
 .hero__cta-arrow { display: inline-block; transition: transform var(--speed) var(--ease); }
 .hero__cta:hover .hero__cta-arrow { transform: translateX(3px); }
 
-/* Small masthead-style metadata block -- the "magazine issue info"
-   editorial detail. Reuses the same mono/tracked/uppercase treatment as
-   .eyebrow and .footer__heading elsewhere rather than inventing a new
-   label style. Kept to three short lines so it stays a quiet detail,
-   not a second block of copy competing with the headline. */
-.hero__metadata {
-  margin-top: var(--space-8);
+/* Foot metadata: thin rule + 3-column row + a literal barcode graphic
+   with tagline -- matching the reference's actual bottom structure
+   (previously collapsed to a single line, which under-built it). */
+.hero__foot { margin-top: var(--space-6); }
+
+.hero__foot-rule { display: block; height: 1px; background: rgba(243, 241, 236, 0.3); margin-bottom: var(--space-3); }
+
+.hero__foot-row {
   display: flex;
-  flex-direction: column;
-  gap: 0.4em;
-  font-family: var(--font-mono);
-  font-size: 0.7rem;
-  letter-spacing: 0.07em;
-  text-transform: uppercase;
-  color: var(--muted-2);
-}
-
-/* ---------- Hero visual (portrait + featured-work insert) ----------
-   .hero-portrait holds the real editorial portrait (images/hero/
-   editorial-portrait.{jpg,webp}, 550x1250, ratio 0.44): square
-   (unrounded) edges so it reads as a photograph bleeding into the page
-   rather than a generic rounded card, a soft left-edge mask into the
-   paper background instead of a hard box, and a taller near-full-body
-   crop per the redesign brief.
-   .hero__visual hosts both the portrait and the .hero__featured insert
-   that overlaps its lower edge, so it needs position:relative. */
-.hero__visual { width: 100%; position: relative; }
-
-.hero-portrait {
-  width: 100%;
-  /* capped relative to viewport (not just column width) so the portrait
-     stays a strong accent rather than stretching the hero tall on
-     narrow phones — see the "Mobile" responsive note above .hero--full */
-  max-width: min(340px, 64vw);
-  margin-inline: auto;
-  aspect-ratio: 550 / 1250;
-  -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 9%);
-  mask-image: linear-gradient(to right, transparent 0%, #000 9%);
-}
-
-.hero-portrait__img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center top;
-}
-
-@media (min-width: 640px) {
-  .hero-portrait {
-    /* Same height-vs-width reasoning as the ≥1024px rule below: at
-       tablet the layout is still single-column (stacked below the
-       text), so a 480px-wide box at this tall aspect-ratio would run
-       ~740px high and make the stacked hero excessively tall. */
-    width: auto;
-    max-width: 480px;
-    max-height: 58vh;
-  }
-}
-
-@media (min-width: 1024px) {
-  .hero-portrait {
-    /* The hero itself is height-constrained (min-height: 94vh on
-       .hero--full), so at desktop the portrait must be sized from
-       that available height rather than from column width -- a
-       width-driven tall aspect-ratio box can otherwise exceed the
-       viewport entirely and blow out the "one screen" hero. */
-    width: auto;
-    max-width: 620px;
-    max-height: min(70vh, 660px);
-    margin-left: auto;
-    margin-right: 0;
-  }
-}
-
-/* Featured-work insert: the "magazine insert" card overlapping the
-   portrait's lower edge, per the brief's hero visual hierarchy
-   (headline -> portrait -> featured project -> metadata -> CTA). A
-   real project screenshot in a plain bordered card -- no laptop
-   mockup, no extra chrome -- kept deliberately smaller than the
-   portrait so it reads as a supporting detail, not a second hero. */
-.hero__featured {
-  display: block;
-  position: absolute;
-  right: 4%;
-  bottom: -6%;
-  width: 60%;
-  max-width: 300px;
-  background: var(--surface);
-  border: 1px solid var(--border);
-  box-shadow: var(--shadow-lg);
-  padding: var(--space-3);
-  z-index: 2;
-  transition: transform var(--speed) var(--ease), box-shadow var(--speed) var(--ease);
-}
-
-.hero__featured:hover {
-  transform: translateY(-3px);
-  box-shadow: var(--shadow-md);
-}
-
-.hero__featured-label {
-  display: block;
-  margin-bottom: var(--space-2);
+  flex-wrap: wrap;
+  gap: var(--space-2) var(--space-4);
+  margin-bottom: var(--space-3);
   font-family: var(--font-mono);
   font-size: 0.62rem;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
-  color: var(--muted);
+  color: rgba(243, 241, 236, 0.7);
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.7);
 }
 
-.hero__featured-frame {
-  display: block;
-  aspect-ratio: 1440 / 820;
-  overflow: hidden;
+.hero__foot-tag {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.02em;
+  color: rgba(243, 241, 236, 0.5);
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.7);
 }
+
+.hero__barcode {
+  display: inline-block;
+  flex: none;
+  width: 46px;
+  height: 12px;
+  background-image: repeating-linear-gradient(to right, rgba(243, 241, 236, 0.8) 0 1px, transparent 1px 3px);
+}
+
+/* ---------- Featured project ----------
+   No card, no border, no shadow: a small unframed thumbnail with a
+   two-line caption beneath it, like a printed photo credit set
+   directly on the page rather than a UI component. In normal document
+   flow below the headline block at mobile/tablet (stacked, so it can
+   never collide with the headline text -- see the earlier version's
+   bug where an absolutely-positioned card overlapped the lead-in
+   line); switches to overlapping the photo's lower-right corner only
+   at >=1024px, where there's room for it beside the text instead of
+   below it. */
+.hero__featured {
+  display: block;
+  position: relative;
+  z-index: 2;
+  width: 11rem;
+  margin: 0 var(--space-5) var(--space-7);
+}
+
+.hero__featured-frame { display: block; aspect-ratio: 1440 / 820; overflow: hidden; }
 
 .hero__featured-frame img {
   display: block;
@@ -655,25 +865,110 @@ h1, h2, h3, h4 {
   transition: transform 0.5s var(--ease);
 }
 
-.hero__featured:hover .hero__featured-frame img { transform: scale(1.04); }
+.hero__featured:hover .hero__featured-frame img { transform: scale(1.05); }
 
-.hero__featured-link {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 0.5em;
+.hero__featured-caption {
+  display: block;
   margin-top: var(--space-2);
-  font-weight: 600;
-  font-size: 0.8rem;
-  color: var(--ink);
+  padding-top: var(--space-2);
+  border-top: 1px solid var(--lime);
 }
 
-.hero__featured-link svg,
-.hero__featured-link span[aria-hidden] { transition: transform var(--speed) var(--ease); }
-.hero__featured:hover .hero__featured-link span[aria-hidden] { transform: translateX(3px); }
+/* Text-shadow, not a background box: the caption has no card behind
+   it by design, and removing the old heavy directional gradient (now
+   that the photo itself carries the composition on the right) left
+   this text sitting directly on whatever the photo shows at that
+   exact spot -- illegible over busier/brighter content. A shadow
+   guarantees contrast without adding the card chrome this treatment
+   deliberately avoids. */
+.hero__featured-title {
+  display: block;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 0.85rem;
+  color: #f3f1ec;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.85), 0 2px 10px rgba(0, 0, 0, 0.6);
+}
 
-@media (max-width: 639px) {
-  .hero__featured { width: 72%; max-width: 240px; right: -4%; bottom: -8%; }
+.hero__featured-meta {
+  display: block;
+  margin-top: 0.2em;
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: rgba(243, 241, 236, 0.75);
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.85), 0 2px 10px rgba(0, 0, 0, 0.6);
+}
+
+/* Object-position for the 900px+ sharp box now lives with the rest of
+   that breakpoint's photo rules, above -- it's height-constrained
+   against the narrower box now (not full-bleed), so X has a real
+   cropping effect again without any scale/zoom. */
+@media (min-width: 1024px) {
+  .hero--full { height: calc(100vh - 73px); justify-content: flex-end; }
+
+  .hero__overlay {
+    max-width: 48vw;
+    padding: 0 clamp(var(--space-5), 5vw, 4.5rem) var(--space-8);
+  }
+
+  /* ~50% of the viewport height across the 4 lines at 1920px, matching
+     the reference mockup's own measured proportions. Growth rate
+     (vw coefficient) is tuned so the longest single word ("BUSINESS")
+     stays inside the 48vw column above -- verified with a text-bounds
+     measurement, not just a visual check, since the previous 4.8vw
+     rate overflowed its 42vw column by 60-117px at 1024-1440px. */
+  .hero__headline { font-size: clamp(4.6rem, 2.6rem + 3.6vw, 8.6rem); }
+
+  .hero__featured {
+    position: absolute;
+    right: clamp(var(--space-5), 5vw, 4.5rem);
+    bottom: var(--space-7);
+    width: min(60%, 13rem);
+    margin: 0;
+  }
+}
+
+/* No width cap needed past 1600px any more: the sharp box is already
+   a percentage of the viewport (58%), so its upscale factor against
+   the 1154px-wide source stays modest and roughly constant across
+   1024-1920 (~0.55x-1.03x) instead of climbing toward 1.7x the way a
+   100vw-wide box did. */
+
+/* The header itself is untouched -- see the Header/Nav rules above --
+   but its brand/link text color (var(--ink), near-black) assumes the
+   light backgrounds every other page has behind it. On the homepage,
+   before any scroll, the header sits transparent over the new dark
+   hero photo instead, which would make that text unreadable (near-
+   black on a near-black photo). This override only fires in that one
+   state -- body.is-home (index.html only) AND :not(.is-scrolled) --
+   and reverts automatically once .is-scrolled gives the header its
+   normal opaque light background back, at which point the original
+   dark text is correct again. */
+body.is-home .site-header:not(.is-scrolled) .brand,
+body.is-home .site-header:not(.is-scrolled) .nav__links a {
+  color: #f3f1ec;
+}
+
+body.is-home .site-header:not(.is-scrolled) .brand__dot { color: var(--lime); }
+
+body.is-home .site-header:not(.is-scrolled) .nav__links a::after { background: var(--lime); }
+
+/* Opaque ink fill, not a transparent outline: the header now often
+   sits over the bright/busy photo column (not a uniformly dark
+   surface), where a transparent button becomes illegible. An opaque
+   background keeps it readable regardless of what's behind it. */
+body.is-home .site-header:not(.is-scrolled) .nav__cta {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: #f3f1ec;
+}
+
+body.is-home .site-header:not(.is-scrolled) .nav__cta:hover {
+  background: var(--ink);
+  border-color: var(--lime);
+  color: var(--lime);
 }
 
 /* ---------- Trust strip (home page, directly under the hero) ----------
@@ -746,6 +1041,22 @@ h1, h2, h3, h4 {
   font-weight: 500;
 }
 
+/* Charcoal variant: required for the hero -> Introduction transition
+   (the homepage Introduction below is now dark too) -- left on its
+   light background, this strip would sit as a jarring pale band
+   between two dark sections. Colors only; layout is untouched. Same
+   warm charcoal literal as .section--charcoal and the hero for
+   visual continuity. */
+.trust-strip--charcoal {
+  background: #17140f;
+  border-top-color: rgba(243, 241, 236, 0.14);
+}
+
+.trust-strip--charcoal .trust-strip__item { border-left-color: rgba(243, 241, 236, 0.14); }
+.trust-strip--charcoal .trust-strip__index { color: rgba(243, 241, 236, 0.45); }
+.trust-strip--charcoal .trust-strip__item span { color: #a39d90; }
+.trust-strip--charcoal .trust-strip__item strong { color: #f3f1ec; }
+
 /* ---------- Manifesto (Introduction) ----------
    An editorial opening statement rather than a centered "about" blurb:
    the eyebrow numbering sits in its own narrow margin column (like a
@@ -784,55 +1095,11 @@ h1, h2, h3, h4 {
   max-width: 56ch;
 }
 
-/* ---------- Browser-frame (signature element, reused in Hero & My Work) ---------- */
-.browser-frame {
-  background: var(--surface);
-  border-radius: var(--radius-lg);
-  border: 1px solid var(--border);
-  box-shadow: var(--shadow-lg);
-  overflow: hidden;
-}
-
-.browser-frame__bar {
-  display: flex;
-  align-items: center;
-  gap: var(--space-3);
-  padding: 10px 14px;
-  background: var(--paper-alt);
-  border-bottom: 1px solid var(--border);
-}
-
-.browser-frame__dots {
-  display: flex;
-  gap: 6px;
-  flex: none;
-}
-
-.browser-frame__dots span {
-  width: 9px;
-  height: 9px;
-  border-radius: 50%;
-  background: var(--muted-2);
-  opacity: 0.55;
-}
-
-.browser-frame__url {
-  flex: 1;
-  min-width: 0;
-  font-family: var(--font-mono);
-  font-size: 0.7rem;
-  color: var(--muted);
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-full);
-  padding: 5px 12px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.browser-frame img,
-.browser-frame svg { display: block; width: 100%; height: auto; }
+/* Dark-charcoal context (.section--charcoal, homepage Introduction
+   only): off-white statement and a warm-toned muted gray for the
+   support line, rather than this pair's light-background colors. */
+.section--charcoal .manifesto__statement { color: #f3f1ec; }
+.section--charcoal .manifesto__support { color: #a39d90; }
 
 /* ---------- Cards ---------- */
 .card {
@@ -852,40 +1119,93 @@ a.card:hover {
 .card h3 { margin-bottom: var(--space-2); }
 .card p { color: var(--muted); font-size: var(--fs-small); }
 
-/* ---------- Services (lead tile + divided list) ---------- */
+/* ---------- Services (Phase: 02 -- What I Build) ----------
+   The site's deliberate dark-to-light hinge: Hero and Introduction are
+   dark editorial, Selected Work onward is paper again, and this
+   section is where that switch happens. Kept on the standard light
+   .section background (no --alt needed), but rebuilt so it reads as
+   the same design system as the approved dark sections -- an
+   editorial numbered sequence (echoing Trust Strip's 01-04 and
+   Introduction's own "01 --" folio mark) rather than a SaaS feature
+   grid. The previous version wrapped the lead item in the sitewide
+   .card component (white surface, border, radius, shadow) -- that's
+   removed entirely; hierarchy here comes from type scale, spacing and
+   a hairline column rule, not a UI container. Scoped under
+   .services-preview throughout so none of this reaches .section-head,
+   .eyebrow or .card as used on other pages. */
+.services-preview__heading {
+  margin-top: var(--space-3);
+  font-size: clamp(1.8rem, 1.3rem + 2vw, 2.6rem);
+}
+
+/* Small, restrained lime mark -- lime reads as near-invisible running
+   text on this light background (measured elsewhere in this system),
+   so it's used here only as a small decorative dot, not as text
+   color, mirroring how sparingly the hero itself uses solid lime
+   fills against its own bright zones. */
+.services-preview .eyebrow::before { background: var(--lime); }
+
 .services {
   display: grid;
-  gap: var(--space-6);
+  gap: var(--space-7);
 }
 
 @media (min-width: 860px) {
   .services {
     grid-template-columns: 1.05fr 1fr;
     align-items: start;
+    gap: var(--space-9);
   }
+
+  .services__list { border-left: 1px solid var(--border); padding-left: var(--space-8); }
 }
 
-.services__primary {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding-block: var(--space-7);
+.services__lead {
+  padding-top: var(--space-5);
+  border-top: 1px solid var(--ink);
 }
 
-.services__primary h3 { font-size: 1.7rem; }
+.services__lead h3 {
+  margin-top: var(--space-4);
+  font-size: clamp(2rem, 1.5rem + 2.2vw, 3rem);
+}
 
-/* Editorial index numbering instead of icons throughout Services --
-   reads as a contents-page list (01/WEB DESIGN, 02/...) rather than a
-   SaaS feature grid. Shared by the primary tile and each list row. */
+.services__lead p {
+  margin-top: var(--space-3);
+  color: var(--muted);
+  max-width: 42ch;
+}
+
+/* Editorial index numbering instead of icons -- reads as a
+   contents-page list (01/WEB DESIGN, 02/...) rather than a feature
+   grid. The lead's own number is sized up to carry real weight
+   without becoming a graphic element; list rows stay small. */
 .services__index {
   display: block;
-  margin-bottom: var(--space-4);
   font-family: var(--font-mono);
-  font-size: 0.85rem;
   letter-spacing: 0.04em;
   color: var(--muted-2);
   transition: color var(--speed) var(--ease);
 }
+
+.services__lead .services__index { font-size: 1rem; }
+
+.services__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5em;
+  margin-top: var(--space-6);
+  padding-bottom: 0.2em;
+  border-bottom: 1.5px solid var(--ink);
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--ink);
+  transition: border-color var(--speed) var(--ease);
+}
+
+.services__cta-arrow { display: inline-block; transition: transform var(--speed) var(--ease); }
+.services__cta:hover { border-color: var(--lime); }
+.services__cta:hover .services__cta-arrow { transform: translateX(3px); }
 
 .services__list {
   display: flex;
@@ -898,21 +1218,23 @@ a.card:hover {
   gap: var(--space-4);
   padding-block: var(--space-5);
   border-top: 1px solid var(--border);
-  transition: padding-left var(--speed) var(--ease);
+  border-left: 2px solid transparent;
+  padding-left: var(--space-3);
+  margin-left: calc(-1 * var(--space-3));
+  transition: border-color var(--speed) var(--ease);
 }
 
 .services__row:first-child { border-top: none; padding-top: 0; }
 .services__row:last-child { padding-bottom: 0; }
 
-.services__row .services__index { margin-bottom: 0; flex: none; width: 2ch; }
-.services__row h3 { margin-bottom: var(--space-1); font-size: 1.25rem; }
+.services__row .services__index { font-size: 0.85rem; flex: none; width: 2ch; padding-top: 0.2em; }
+.services__row h3 { margin-bottom: var(--space-1); font-size: 1.15rem; }
 .services__row p { color: var(--muted); font-size: var(--fs-small); margin: 0; }
 
-/* Subtle hover interaction (per the redesign brief): the row nudges
-   right and its index brightens, echoing a contents-page entry
-   responding to the cursor -- transform/color only, no layout shift. */
-.services__row:hover { padding-left: var(--space-2); }
-.services__row:hover .services__index { color: var(--accent); }
+/* Restrained hover: a lime rule grows in on the left rather than the
+   row shifting position or picking up the old blue accent color --
+   color-only elsewhere, no movement, no shadow. */
+.services__row:hover { border-left-color: var(--lime); }
 
 /* Standalone text-link style (e.g. "Explore My Services", "View All
    Work") -- shared across pages, so kept even though the card
@@ -986,9 +1308,15 @@ a.card:hover {
 /* Safwa opens the sequence right after the hero, so its number carries
    a quiet accent tint -- the one deliberate, restrained use of colour
    in the section, marking it as the lead case study rather than just
-   "spread one of four". */
+   "spread one of four". Was a leftover legacy-blue tint. Raw lime is
+   too close in lightness to the warm paper behind it to read as a
+   ghost numeral at any opacity (unlike a solid button fill, this is a
+   huge translucent glyph, so luminance -- not hue -- is what makes it
+   visible), so this uses a deepened, muted lime instead of var(--lime)
+   directly, tuned to sit at roughly the same quiet visual weight the
+   blue tint had. */
 .work-spreads > .work-spread:first-child .work-spread__number {
-  color: rgba(59, 70, 240, 0.32);
+  color: #c8d24a;
 }
 
 .work-spread__meta {
@@ -1092,6 +1420,44 @@ a.card:hover {
   gap: var(--space-4);
 }
 
+/* ---------- Selected Work -- per-project image art direction ----------
+   Each source screenshot has its own focal point; "cover + top" is
+   only correct where the strongest visual information genuinely sits
+   at the top of the frame. Decided per project, not inherited as one
+   sitewide default. */
+
+/* Safwa: nav, eyebrow, headline and both CTAs all sit in the upper
+   two-thirds of the frame; the only things near the left/right edges
+   are the logo and the WhatsApp pill, which can afford the small
+   horizontal trim this aspect-ratio change already produces. Center
+   top keeps the headline block centered under that trim either way. */
+.work-spread--safwa .work-spread__visual img { object-position: center top; }
+
+/* NOVAÉ: the original homepage screenshot (novae-home.jpg) was mostly
+   empty gradient with its headline sitting at the very bottom edge and
+   its subhead cut off -- a bad source crop, not something object-fit
+   could fix. Swapped to the New Arrivals screenshot (novae-products.jpg),
+   whose headline and product grid sit at the top of the frame like
+   every other spread in this section. */
+.work-spread--novae .work-spread__visual img { object-position: center top; }
+
+/* Klinik Ceria: cropping to this spread's wide aspect ratio trims
+   roughly the bottom quarter of the source. That's the "Need to visit
+   us?" info strip, not the hero -- headline, CTAs and the clinic
+   illustration all sit above it and survive fully intact. */
+.work-spread--klinik .work-spread__visual img { object-position: center top; }
+
+/* Below the two-column breakpoint every spread becomes a single
+   full-width column, which is where side and side-reverse start to
+   look identical. A slight right-inset on the reversed spread's image
+   echoes its "flipped" desktop identity without a second grid column. */
+@media (max-width: 899px) {
+  .work-spread--side-reverse .work-spread__visual {
+    width: 92%;
+    margin-left: auto;
+  }
+}
+
 @media (min-width: 720px) {
   .work-spread--stacked .work-spread__foot { grid-template-columns: 200px 1fr; gap: var(--space-6); }
 }
@@ -1142,7 +1508,7 @@ a.card:hover {
 .work-index__link svg { width: 15px; height: 15px; transition: transform var(--speed) var(--ease); }
 .work-index__row:hover .work-index__link svg { transform: translateX(3px); }
 
-/* ---------- Checklist ---------- */
+/* ---------- Why Ajak -- founder line ---------- */
 /* Founder line: a first-person statement inside the "Why Ajak" section
    head, sitting between the h2 and the checklist. Deliberately not the
    shared .section-head p (muted, same weight as every other section's
@@ -1168,6 +1534,28 @@ a.card:hover {
 @media (min-width: 860px) {
   .why-ajak__grid { grid-template-columns: 1.1fr 0.9fr; gap: var(--space-8); align-items: start; }
 }
+
+/* This section's heading previously had no font-size rule of its own
+   and was silently falling back to the browser's default <h2> size
+   (a flat 24px at every viewport) -- the same gap Services and
+   Introduction each avoided by giving their own heading a dedicated
+   class. Scale follows that precedent: a bit more assertive than
+   Services' clamp(1.8rem, 1.3rem + 2vw, 2.6rem) since this is framed
+   as a standalone statement (like the Introduction manifesto) rather
+   than a preview heading, but capped well short of Introduction's own
+   scale so it doesn't compete with it. font-family/weight/line-height
+   still come from the shared h1,h2,h3,h4 rule -- only font-size is set
+   here. */
+.why-ajak__statement {
+  font-size: clamp(1.9rem, 1.3rem + 2.4vw, 2.9rem);
+}
+
+/* Eyebrow dot only: Why Ajak's own accent-system correction, scoped to
+   this section so it can't reach the shared .eyebrow/.eyebrow::before
+   rule used elsewhere. The eyebrow text already renders neutral here
+   (the more-specific .section-head p rule already outranks the plain
+   .eyebrow color), so only the dot needs to move off the legacy blue. */
+.why-ajak__grid .eyebrow::before { background: var(--lime); }
 
 .why-ajak__list { display: flex; flex-direction: column; }
 
@@ -1202,7 +1590,7 @@ a.card:hover {
 .step__num {
   font-family: var(--font-mono);
   font-size: 0.85rem;
-  color: var(--accent);
+  color: var(--muted-2);
   margin-bottom: var(--space-3);
 }
 
@@ -1216,9 +1604,31 @@ a.card:hover {
   text-align: center;
 }
 
+/* Global color-system alignment: same warm charcoal as the approved
+   Hero/Introduction/Services, not the cooler sitewide --ink. Scoped to
+   the .cta-band + .section--ink combination specifically (the only
+   place the two classes are ever paired) rather than changing bare
+   .section--ink, which stays available at its original value for any
+   other use. */
+.cta-band.section--ink { background: #17140f; }
+
 .cta-band .eyebrow { justify-content: center; margin-bottom: var(--space-4); }
 
 .cta-band h2 { max-width: 20ch; margin-inline: auto; }
+
+/* This heading had no font-size rule of its own and was falling back
+   to the browser's default <h2> size (a flat 24px at every viewport),
+   the same gap already found and fixed on Why Ajak -- here it also
+   let the "WhatsApp Me" link's own responsive clamp grow past it from
+   768px up, an inversion where the action reads louder than the
+   statement above it. Reuses Why Ajak's exact scale rather than a new
+   one, since both are the same "closing statement" weight in this
+   system. Shared with .cta-band, so this corrects About/Services/
+   Work's identical CTA bands at the same time. */
+.cta-band__statement {
+  font-size: clamp(1.9rem, 1.3rem + 2.4vw, 2.9rem);
+}
+
 .cta-band p {
   margin-top: var(--space-4);
   color: rgba(250, 249, 245, 0.75);
@@ -1273,7 +1683,11 @@ a.card:hover {
 
 /* ---------- Footer ---------- */
 .site-footer {
-  background: var(--ink);
+  /* Warm charcoal, not the sitewide --ink (#131316, slightly cool) --
+     matches the CTA band directly above it (same literal value as
+     .section--charcoal, the hero and .trust-strip--charcoal) instead
+     of ending the page on a different, cooler dark tone. */
+  background: #17140f;
   color: rgba(250, 249, 245, 0.82);
   padding-block: var(--space-8) var(--space-6);
 }
@@ -1359,28 +1773,11 @@ a.card:hover {
 }
 
 /* ---------- Hero entrance sequence ---------- */
-.hero__headline.reveal { animation-delay: 0.05s; }
-.hero__lead.reveal { animation-delay: 0.2s; }
-.hero__actions.reveal { animation-delay: 0.34s; }
-.hero__metadata.reveal { animation-delay: 0.46s; }
-
-.hero__visual.reveal {
-  animation-name: reveal-in-right;
-  animation-delay: 0.3s;
-}
-
-.hero__featured.reveal {
-  animation-name: reveal-in-right;
-  animation-delay: 0.5s;
-}
-
-@keyframes reveal-in-right {
-  from { opacity: 0; transform: translateX(28px); }
-  to { opacity: 1; transform: translateX(0); }
-}
+.hero__overlay.reveal { animation-delay: 0.15s; }
+.hero__featured.reveal { animation-delay: 0.35s; }
 
 /* ---------- Work page entrance sequence ---------- */
-.work-filter.reveal { animation-delay: 0.32s; }
+.work-toc.reveal { animation-delay: 0.32s; }
 
 .work-feature__head.reveal { animation-delay: 0.05s; }
 .work-feature__visual.reveal { animation-delay: 0.14s; }
@@ -1494,7 +1891,7 @@ a.card:hover {
   object-position: center top;
 }
 
-.founder__title { color: var(--accent); margin-bottom: var(--space-2); }
+.founder__title { color: var(--muted-2); margin-bottom: var(--space-2); }
 .founder h3.founder__name { font-size: var(--fs-h2); margin-bottom: var(--space-4); }
 .founder p { color: var(--muted); }
 .founder p + p { margin-top: var(--space-4); }
@@ -1565,60 +1962,61 @@ a.card:hover {
   color: var(--ink-soft);
 }
 
-.feature-list svg { width: 16px; height: 16px; flex: none; margin-top: 4px; color: var(--accent); }
+.feature-list svg { width: 16px; height: 16px; flex: none; margin-top: 4px; color: var(--lime); }
 
-/* ---------- Portfolio filter (typography + rules, not pills) ----------
-   A row of plain mono labels with an underline-in for the active
-   filter, closer to a magazine contents-page section switcher than a
-   SaaS filter-pill row. Same .filter-bar/.filter-btn/data-filter
-   markup and js/script.js logic as before -- presentation only. */
-.filter-bar {
+/* ---------- Portfolio project index (editorial anchor nav) ----------
+   Replaces the old client-side filter: a magazine contents-page list
+   of every project below, each entry a real #anchor link rather than
+   a JS show/hide filter. Same plain-mono, underline-in visual language
+   the old .filter-bar used. */
+.work-toc-section { padding-bottom: var(--space-7); }
+.work-selected-head { padding-top: var(--space-9); }
+
+.work-toc {
   display: flex;
   flex-wrap: wrap;
-  align-items: center;
-  gap: var(--space-5);
-  margin-bottom: var(--space-7);
+  align-items: baseline;
+  gap: var(--space-2) var(--space-6);
   padding-bottom: var(--space-4);
   border-bottom: 1px solid var(--border);
 }
 
-.filter-btn {
-  font-family: var(--font-mono);
-  font-size: 0.78rem;
-  font-weight: 500;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  padding-block: 0.3em;
-  border: none;
-  background: none;
+.work-toc__item {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.6em;
+  font-size: 0.9rem;
+  font-weight: 600;
   color: var(--muted);
-  cursor: pointer;
   position: relative;
+  padding-block: 0.3em;
   transition: color var(--speed) var(--ease);
 }
 
-.filter-btn::after {
+.work-toc__item::after {
   content: "";
   position: absolute;
   left: 0;
   right: 0;
   bottom: -1px;
   height: 2px;
-  background: var(--accent);
+  background: var(--lime);
   transform: scaleX(0);
   transform-origin: left;
   transition: transform var(--speed) var(--ease);
 }
 
-.filter-btn:hover { color: var(--ink); }
+.work-toc__item:hover { color: var(--ink); }
+.work-toc__item:hover::after { transform: scaleX(1); }
 
-.filter-btn.is-active { color: var(--ink); }
-.filter-btn.is-active::after { transform: scaleX(1); }
+.work-toc__index {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+  color: var(--muted-2);
+}
 
-.work-filter-section { padding-bottom: var(--space-7); }
-.work-selected-head { padding-top: var(--space-9); }
-
-/* ---------- Portfolio visual gallery grid (reused by the flagship visual story) ---------- */
+/* ---------- Portfolio visual gallery grid (reused by every case study's visual story) ---------- */
 .project__gallery {
   display: grid;
   gap: var(--space-4);
@@ -1629,26 +2027,40 @@ a.card:hover {
 
 @media (min-width: 720px) {
   .project__gallery { grid-template-columns: repeat(2, 1fr); }
-  .project__gallery > .browser-frame:first-child { grid-column: 1 / -1; }
 }
 
-.project__gallery button.browser-frame {
+.project__gallery button.work-story-item__frame {
   padding: 0;
   border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
   background: var(--surface);
+  box-shadow: var(--shadow-lg);
   cursor: zoom-in;
   text-align: left;
   width: 100%;
-  transition: box-shadow var(--speed) var(--ease);
+  transition: box-shadow var(--speed) var(--ease), transform var(--speed) var(--ease);
 }
 
-.project__gallery button.browser-frame:hover { box-shadow: var(--shadow-md); }
+.project__gallery button.work-story-item__frame:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
 
-.project__gallery button.browser-frame img { transition: transform 0.5s var(--ease); }
-.project__gallery button.browser-frame:hover img { transform: scale(1.03); }
+.project__gallery button.work-story-item__frame img,
+.project__gallery button.work-story-item__frame svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  transition: transform 0.5s var(--ease);
+}
 
-/* ---------- NOVAÉ gallery: mixed landscape/portrait screenshots, scoped so Madani's gallery is unaffected ---------- */
-#novae .project__gallery {
+.project__gallery button.work-story-item__frame:hover img { transform: scale(1.03); }
+
+/* ---------- NOVAÉ / King's Hall galleries: mixed aspect-ratio screenshots,
+   scoped so the default (matched-ratio) galleries elsewhere are unaffected ---------- */
+#novae .project__gallery,
+#kingshall .project__gallery {
   align-items: start;
 }
 
@@ -1672,7 +2084,7 @@ a.card:hover {
 
 /* ---------- Work page — flagship case study (Madani) ---------- */
 .work-feature {
-  --navy: #0b1220;
+  --navy: var(--ink); /* Global color-system alignment: unified with the warm ink family per direction; kept as --navy so its ~7 heading consumers below don't need individual edits. */
   padding-block: var(--space-9);
   border-bottom: 1px solid var(--border);
 }
@@ -1685,7 +2097,7 @@ a.card:hover {
   font-size: 0.72rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--accent);
+  color: var(--muted-2);
   margin-bottom: var(--space-4);
 }
 
@@ -1707,18 +2119,45 @@ a.card:hover {
 
 .work-feature__intro { font-size: var(--fs-lead); color: var(--muted); max-width: 56ch; }
 
+/* Mounted-print treatment: the hero screenshot sits inset on a card
+   rather than bleeding edge-to-edge. Madani's own hero source is a
+   short, wide banner crop (~3.2:1) that would otherwise read as a
+   thin strip next to King's Hall's tall photograph -- padding gives
+   both feature-tier heroes real presence without cropping or
+   distorting either image. */
 .work-feature__visual {
   margin-bottom: var(--space-7);
+  padding: clamp(1.25rem, 3vw, 2.25rem);
+  background: var(--surface);
   border-radius: var(--radius-lg);
   overflow: hidden;
   box-shadow: var(--shadow-lg);
   transition: transform 0.5s var(--ease);
 }
 
+.work-feature__visual img,
+.work-feature__visual svg { border-radius: var(--radius-sm); }
+
 .work-feature__visual:hover { transform: translateY(-4px); }
-.work-feature__visual .browser-frame { border-radius: 0; border: none; box-shadow: none; }
+.work-feature__visual img,
+.work-feature__visual svg { display: block; width: 100%; height: auto; }
 .work-feature__visual img { transition: transform 0.6s var(--ease); }
 .work-feature__visual:hover img { transform: scale(1.02); }
+
+/* King's Hall's own honest-defect disclosure -- required wherever the
+   concept appears, so it can't be missed by scanning past the intro. */
+.work-feature__disclosure {
+  margin-top: var(--space-4);
+  padding: var(--space-3) var(--space-4);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  background: var(--paper-alt);
+  font-size: 0.85rem;
+  color: var(--muted);
+  max-width: 56ch;
+}
+
+.work-feature__disclosure strong { color: var(--ink); }
 
 .work-feature__meta {
   margin-bottom: var(--space-8);
@@ -1764,6 +2203,15 @@ a.card:hover {
 .work-feature__story h3 { font-size: var(--fs-h3); margin-bottom: var(--space-5); color: var(--navy); }
 .work-feature__story .project__gallery { gap: var(--space-6); }
 
+/* Madani's 6-image gallery renders at generic 2-up scale otherwise --
+   large enough to visually compete with the hero above it instead of
+   supporting it. A tighter 3-up grid keeps every screenshot legible
+   while clearly reading as secondary. Scoped to Madani only -- King's
+   Hall's 2-image gallery is deliberately spacious. */
+@media (min-width: 900px) {
+  #oil-gas .project__gallery { grid-template-columns: repeat(3, 1fr); }
+}
+
 .work-feature__summary {
   margin-bottom: var(--space-9);
   border-top: 1px solid var(--border);
@@ -1799,7 +2247,7 @@ a.card:hover {
 .numbered-list__index {
   font-family: var(--font-mono);
   font-size: 0.85rem;
-  color: var(--accent);
+  color: var(--muted-2);
   flex: none;
 }
 
@@ -1807,7 +2255,7 @@ a.card:hover {
 
 /* ---------- Work page — selected projects (alternating editorial layout) ---------- */
 .work-project {
-  --navy: #0b1220;
+  --navy: var(--ink); /* Global color-system alignment: unified with the warm ink family per direction; kept as --navy so its ~7 heading consumers below don't need individual edits. */
   padding-block: var(--space-9);
   border-bottom: 1px solid var(--border);
 }
@@ -1825,6 +2273,14 @@ a.card:hover {
   .work-project--reverse .work-project__grid { grid-template-columns: 0.9fr 1.1fr; }
   .work-project--reverse .work-project__visual { order: 2; }
   .work-project--reverse .work-project__body { order: 1; }
+
+  /* Medium tier: Chicken Rice keeps the default ratio; Safwa and NOVAÉ
+     each get a genuinely different image/text balance rather than
+     just a mirrored copy of the same column split -- Safwa's own copy
+     is deliberately restrained ("without leaning on heavy imagery"),
+     NOVAÉ's is the most visual-forward of the three. */
+  #safwa .work-project__grid { grid-template-columns: 1.2fr 0.8fr; }
+  #novae .work-project__grid { grid-template-columns: 1.3fr 0.7fr; }
 }
 
 .work-project__visual {
@@ -1835,7 +2291,8 @@ a.card:hover {
 }
 
 .work-project__visual:hover { transform: translateY(-4px); }
-.work-project__visual .browser-frame { border-radius: 0; border: none; box-shadow: none; }
+.work-project__visual img,
+.work-project__visual svg { display: block; width: 100%; height: auto; }
 .work-project__visual img { transition: transform 0.6s var(--ease); }
 .work-project__visual:hover img { transform: scale(1.03); }
 
@@ -1847,7 +2304,7 @@ a.card:hover {
   font-size: 0.72rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--accent);
+  color: var(--muted-2);
   margin-bottom: var(--space-4);
 }
 
@@ -1923,6 +2380,42 @@ a.card:hover {
 .info-row:last-child { border-bottom: none; }
 .info-row dt { color: var(--muted); }
 .info-row dd { font-weight: 600; text-align: right; }
+
+/* ---------- Work page — archive tier (lighter visual weight) ----------
+   Klinik Ceria, Royale Chesterfield and Lumi\00e8re carry the same full
+   case-study markup as the medium tier, but read as a lighter "more
+   projects" pass: a smaller, constrained image and tighter spacing
+   rather than a fourth full-width spread. */
+.work-project--compact {
+  padding-block: var(--space-7);
+}
+
+@media (min-width: 900px) {
+  .work-project--compact .work-project__visual {
+    max-width: 420px;
+  }
+
+  .work-project--compact .work-project__grid {
+    grid-template-columns: 0.8fr 1.2fr;
+  }
+
+  .work-project--compact.work-project--reverse .work-project__grid {
+    grid-template-columns: 1.2fr 0.8fr;
+  }
+}
+
+.work-project--compact .work-project__story {
+  margin-top: var(--space-5);
+}
+
+.work-project--compact .project__gallery {
+  gap: var(--space-3);
+}
+
+@media (min-width: 900px) {
+  .work-project--compact .project__gallery { max-width: 640px; }
+  .work-project--compact.work-project--reverse .project__gallery { margin-left: auto; }
+}
 
 /* ---------- Lightbox ---------- */
 .lightbox {
@@ -2038,7 +2531,7 @@ a.card:hover {
   right: 0;
   bottom: 0;
   height: 3px;
-  background: var(--accent);
+  background: var(--lime);
   transform: scaleX(0);
   transform-origin: left;
   transition: transform var(--speed) var(--ease);
@@ -2063,7 +2556,14 @@ a.card:hover {
 }
 
 .contact-card__value { font-weight: 600; }
-.contact-card__value a:hover { color: var(--accent); }
+/* Text stays ink at this size (small label text); the lime accent
+   shows as an underline on hover instead of a color swap. */
+.contact-card__value a:hover {
+  text-decoration: underline;
+  text-decoration-color: var(--lime);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+}
 
 .form-panel {
   background: var(--surface);
@@ -2101,7 +2601,7 @@ a.card:hover {
 .field input:focus,
 .field select:focus,
 .field textarea:focus {
-  border-color: var(--accent);
+  border-color: var(--lime);
   outline: none;
 }
 
@@ -2119,7 +2619,7 @@ a.card:hover {
   margin-bottom: var(--space-5);
 }
 
-.form-note svg { width: 17px; height: 17px; flex: none; margin-top: 1px; color: var(--accent); }
+.form-note svg { width: 17px; height: 17px; flex: none; margin-top: 1px; color: var(--lime); }
 
 .form-status {
   margin-top: var(--space-4);

@@ -22,10 +22,10 @@
   <link rel="icon" type="image/svg+xml" href="images/brand/favicon.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
+<body class="is-home">
   <a class="skip-link" href="#main">Skip to content</a>
 
   <header class="site-header">
@@ -69,44 +69,61 @@
 
     <!-- HERO -->
     <section class="hero--full">
-      <div class="wrap hero__inner">
-        <div class="hero__content">
-          <h1 class="hero__headline reveal">Good business<br>deserves<br><span class="hero__headline-accent">good design.</span></h1>
-          <p class="hero__lead reveal">Websites &amp; digital experiences for businesses ready to stand out.</p>
-          <div class="hero__actions reveal">
-            <a class="hero__cta" href="work.html">View Selected Work<span class="hero__cta-arrow" aria-hidden="true">&rarr;</span></a>
-          </div>
-          <div class="hero__metadata reveal">
-            <span>Ajak.Web&reg; &mdash; Digital Studio</span>
+      <div class="hero__photo">
+        <picture class="hero__photo-pic hero__photo-pic--soft" aria-hidden="true">
+          <source type="image/webp" media="(min-width: 900px)" srcset="images/hero/editorial-portrait-landscape.webp">
+          <source type="image/jpeg" media="(min-width: 900px)" srcset="images/hero/editorial-portrait-landscape.jpg">
+          <source type="image/webp" srcset="images/hero/editorial-portrait.webp">
+          <img class="hero__photo-img hero__photo-img--soft" src="images/hero/editorial-portrait.jpg" alt="" fetchpriority="high" loading="eager" decoding="async">
+        </picture>
+        <picture class="hero__photo-pic hero__photo-pic--mid" aria-hidden="true">
+          <source type="image/webp" media="(min-width: 900px)" srcset="images/hero/editorial-portrait-landscape.webp">
+          <source type="image/jpeg" media="(min-width: 900px)" srcset="images/hero/editorial-portrait-landscape.jpg">
+          <source type="image/webp" srcset="images/hero/editorial-portrait.webp">
+          <img class="hero__photo-img hero__photo-img--mid" src="images/hero/editorial-portrait.jpg" alt="" fetchpriority="high" loading="eager" decoding="async">
+        </picture>
+        <picture class="hero__photo-pic hero__photo-pic--sharp">
+          <source type="image/webp" media="(min-width: 900px)" srcset="images/hero/editorial-portrait-landscape.webp">
+          <source type="image/jpeg" media="(min-width: 900px)" srcset="images/hero/editorial-portrait-landscape.jpg">
+          <source type="image/webp" srcset="images/hero/editorial-portrait.webp">
+          <img class="hero__photo-img" src="images/hero/editorial-portrait.jpg"
+               width="1154" height="1536"
+               alt="Ajak, founder of Ajak.Web, laughing mid-conversation in a bright indoor space, wearing a white t-shirt"
+               fetchpriority="high" loading="eager" decoding="async">
+        </picture>
+      </div>
+
+      <div class="hero__overlay reveal">
+        <h1 class="hero__headline"><span class="hero__headline-dark">Good<br>Business</span><br><span class="hero__headline-soft">Deserves</span><br><span class="hero__headline-strong">Good Design<span class="hero__headline-mark">.</span></span></h1>
+        <p class="hero__sub"><span class="hero__sub-accent">Websites</span> &amp; digital experiences for Malaysian businesses.</p>
+        <a class="hero__cta" href="work.html">View Selected Work<span class="hero__cta-arrow" aria-hidden="true">&rarr;</span></a>
+        <div class="hero__foot">
+          <span class="hero__foot-rule" aria-hidden="true"></span>
+          <div class="hero__foot-row">
+            <span>AJK / 001</span>
             <span>Web Design / Development</span>
-            <span>Petaling Jaya, Malaysia</span>
+            <span>Petaling Jaya, MY</span>
           </div>
-        </div>
-
-        <div class="hero__visual reveal">
-          <figure class="hero-portrait">
-            <picture>
-              <source type="image/webp" srcset="images/hero/editorial-portrait.webp">
-              <img class="hero-portrait__img" src="images/hero/editorial-portrait.jpg"
-                   width="550" height="1250"
-                   alt="Ajak, founder of Ajak.Web, walking indoors mid-conversation, wearing a white t-shirt and jeans"
-                   fetchpriority="high" loading="eager" decoding="async">
-            </picture>
-          </figure>
-
-          <a class="hero__featured reveal" href="work.html#safwa">
-            <span class="hero__featured-label">01 / Selected Work &mdash; Safwa Umrah</span>
-            <span class="hero__featured-frame">
-              <img src="images/projects/safwa/safwa-home.jpg" alt="Safwa Umrah travel website homepage" width="1440" height="820" loading="eager" decoding="async">
-            </span>
-            <span class="hero__featured-link">Explore Project<span aria-hidden="true">&rarr;</span></span>
-          </a>
+          <p class="hero__foot-tag">
+            <span class="hero__barcode" aria-hidden="true"></span>
+            <span>Built to help businesses grow with confidence.</span>
+          </p>
         </div>
       </div>
+
+      <a class="hero__featured reveal" href="work.html#safwa">
+        <span class="hero__featured-frame">
+          <img src="images/projects/safwa/safwa-home.jpg" alt="Safwa Umrah travel website homepage" width="1440" height="820" loading="eager" decoding="async">
+        </span>
+        <span class="hero__featured-caption">
+          <span class="hero__featured-title">Safwa Umrah</span>
+          <span class="hero__featured-meta">Featured Project &middot; 01/04</span>
+        </span>
+      </a>
     </section>
 
     <!-- TRUST STRIP -->
-    <section class="trust-strip reveal" aria-label="ajak.Web at a glance">
+    <section class="trust-strip trust-strip--charcoal reveal" aria-label="ajak.Web at a glance">
       <div class="wrap">
         <ul class="trust-strip__list">
           <li class="trust-strip__item">
@@ -130,7 +147,7 @@
     </section>
 
     <!-- INTRODUCTION -->
-    <section class="section section--tight section--alt reveal" aria-label="Introduction">
+    <section class="section section--charcoal reveal" aria-label="Introduction">
       <div class="wrap manifesto__grid">
         <div class="manifesto__index">
           <p class="eyebrow">01 — Introduction</p>
@@ -143,18 +160,19 @@
     </section>
 
     <!-- SERVICES PREVIEW -->
-    <section class="section reveal">
+    <section class="section services-preview reveal">
       <div class="wrap">
         <div class="section-head mt-0">
           <p class="eyebrow">02 — What I build</p>
-          <h2>Services built around your business</h2>
+          <h2 class="services-preview__heading">Services built around your business</h2>
         </div>
 
         <div class="services">
-          <div class="card services__primary">
+          <div class="services__lead">
             <span class="services__index" aria-hidden="true">01</span>
             <h3>Website Design</h3>
             <p>Modern and professional website designs created around your business.</p>
+            <a class="services__cta" href="services.html">Explore My Services<span class="services__cta-arrow" aria-hidden="true">&rarr;</span></a>
           </div>
 
           <ul class="services__list">
@@ -181,13 +199,6 @@
             </li>
           </ul>
         </div>
-
-        <p style="margin-top: var(--space-7);">
-          <a class="work-card__link" href="services.html">
-            Explore My Services
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="13 6 19 12 13 18"/></svg>
-          </a>
-        </p>
       </div>
     </section>
 
@@ -203,7 +214,7 @@
         <div class="work-spreads">
 
           <!-- 01 — Safwa Umrah -->
-          <article class="work-spread work-spread--side">
+          <article class="work-spread work-spread--side work-spread--safwa">
             <a class="work-spread__visual" href="work.html#safwa">
               <img src="images/projects/safwa/safwa-home.jpg" alt="Safwa Umrah travel website homepage with the headline 'Your Sacred Journey Begins Here.'" loading="lazy" width="1440" height="820">
             </a>
@@ -219,9 +230,9 @@
           </article>
 
           <!-- 02 — NOVAÉ -->
-          <article class="work-spread work-spread--side-reverse">
+          <article class="work-spread work-spread--side-reverse work-spread--novae">
             <a class="work-spread__visual" href="work.html#novae">
-              <img src="images/projects/novae/novae-home.jpg" alt="NOVAÉ fashion e-commerce concept homepage with the headline 'The Everyday Edit'" loading="lazy" width="1440" height="820">
+              <img src="images/projects/novae/novae-products.jpg" alt="NOVAÉ fashion e-commerce concept new-arrivals grid with the headline 'New Arrivals'" loading="lazy" width="1440" height="818">
             </a>
             <div class="work-spread__body">
               <span class="work-spread__number" aria-hidden="true">02</span>
@@ -251,7 +262,7 @@
           </article>
 
           <!-- 04 — Klinik Ceria -->
-          <article class="work-spread work-spread--stacked">
+          <article class="work-spread work-spread--stacked work-spread--klinik">
             <a class="work-spread__visual" href="work.html#klinik-ceria">
               <img src="images/projects/klinik-ceria/klinik-ceria-home.jpg" alt="Klinik Ceria family clinic website concept homepage with the headline 'Everyday Healthcare for You &amp; Your Family'" loading="lazy" width="1440" height="820">
             </a>
@@ -307,7 +318,7 @@
       <div class="wrap why-ajak__grid">
         <div class="section-head mt-0">
           <p class="eyebrow">04 — Why Ajak</p>
-          <h2>Built for small businesses, not big agencies</h2>
+          <h2 class="why-ajak__statement">Built for small businesses, not big agencies</h2>
           <p class="founder-line">I'm Ajak. I work directly with each business owner from planning to launch, creating websites that are clear, practical and built around the business.</p>
         </div>
 
@@ -327,7 +338,7 @@
       <div class="wrap">
         <div class="cta-band section--ink">
           <p class="eyebrow">05 — Let's Talk</p>
-          <h2>Ready to Build Your Online Presence?</h2>
+          <h2 class="cta-band__statement">Ready to Build Your Online Presence?</h2>
           <p>Tell me about your business and what you need — I'll recommend the right approach and next steps, with no pressure to decide on the spot.</p>
           <div class="cta-band__actions">
             <a class="cta-band__primary" href="https://wa.me/60176146502?text=Hi%20ajak.Web%2C%20I%27m%20interested%20in%20a%20website%20for%20my%20business." target="_blank" rel="noopener">WhatsApp Me<span aria-hidden="true">&rarr;</span></a>

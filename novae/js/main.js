@@ -17,6 +17,17 @@
    * Small dialog helper: shared focus-trap + escape-to-close behaviour
    * used by the mobile menu, quick view modal and cart drawer.
    * ------------------------------------------------------------------ */
+  var dialogBackgroundEls = Array.prototype.slice.call(
+    document.querySelectorAll('#main, .site-footer')
+  );
+  var openDialogCount = 0;
+
+  function setBackgroundInert(isInert) {
+    dialogBackgroundEls.forEach(function (el) {
+      el.inert = isInert;
+    });
+  }
+
   function createDialog(panelEl, opts) {
     opts = opts || {};
     var lastFocused = null;
@@ -49,6 +60,8 @@
       }
     }
 
+    var isDialogOpen = false;
+
     function open(triggerEl) {
       lastFocused = triggerEl || document.activeElement;
       document.documentElement.classList.add('no-scroll');
@@ -56,6 +69,9 @@
       panelEl.classList.add('is-open');
       if (opts.backdrop) opts.backdrop.classList.add('is-open');
       document.addEventListener('keydown', handleKeydown);
+      isDialogOpen = true;
+      openDialogCount += 1;
+      setBackgroundInert(true);
       window.setTimeout(function () {
         var focusable = getFocusable();
         (opts.initialFocus || focusable[0] || panelEl).focus();
@@ -69,6 +85,11 @@
       document.documentElement.classList.remove('no-scroll');
       document.body.style.overflow = '';
       document.removeEventListener('keydown', handleKeydown);
+      if (isDialogOpen) {
+        isDialogOpen = false;
+        openDialogCount = Math.max(0, openDialogCount - 1);
+        if (openDialogCount === 0) setBackgroundInert(false);
+      }
       if (lastFocused && typeof lastFocused.focus === 'function') {
         lastFocused.focus();
       }

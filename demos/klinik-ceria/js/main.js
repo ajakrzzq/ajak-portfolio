@@ -20,6 +20,8 @@
    * ------------------------------------------------------------------ */
   var menuToggle = document.querySelector('[data-menu-toggle]');
   var mobileMenu = document.querySelector('[data-mobile-menu]');
+  var menuMain = document.getElementById('main');
+  var menuFooter = document.querySelector('.site-footer');
 
   function closeMenu() {
     if (!mobileMenu) return;
@@ -27,6 +29,8 @@
     if (header) header.classList.remove('is-open');
     if (menuToggle) menuToggle.setAttribute('aria-expanded', 'false');
     document.body.classList.remove('menu-open');
+    if (menuMain) menuMain.inert = false;
+    if (menuFooter) menuFooter.inert = false;
   }
 
   function openMenu() {
@@ -35,6 +39,8 @@
     if (header) header.classList.add('is-open');
     if (menuToggle) menuToggle.setAttribute('aria-expanded', 'true');
     document.body.classList.add('menu-open');
+    if (menuMain) menuMain.inert = true;
+    if (menuFooter) menuFooter.inert = true;
   }
 
   if (menuToggle && mobileMenu) {

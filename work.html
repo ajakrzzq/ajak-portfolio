@@ -25,7 +25,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
+<body class="is-inner">
   <a class="skip-link" href="#main">Skip to content</a>
 
   <header class="site-header">
@@ -78,24 +78,24 @@
       </div>
     </section>
 
-    <!-- FILTER -->
-    <section class="work-filter-section">
+    <!-- PROJECT INDEX -->
+    <section class="work-toc-section">
       <div class="wrap">
-        <div class="filter-bar work-filter reveal" role="group" aria-label="Filter projects by category">
-          <button class="filter-btn is-active" data-filter="all" aria-pressed="true">All</button>
-          <button class="filter-btn" data-filter="corporate" aria-pressed="false">Corporate</button>
-          <button class="filter-btn" data-filter="food-beverage" aria-pressed="false">Food &amp; Beverage</button>
-          <button class="filter-btn" data-filter="business" aria-pressed="false">Business</button>
-          <button class="filter-btn" data-filter="ecommerce" aria-pressed="false">E-commerce</button>
-          <button class="filter-btn" data-filter="beauty" aria-pressed="false">Beauty &amp; Wellness</button>
-          <button class="filter-btn" data-filter="travel" aria-pressed="false">Travel &amp; Hospitality</button>
-          <button class="filter-btn" data-filter="healthcare" aria-pressed="false">Healthcare</button>
-        </div>
+        <nav class="work-toc reveal" aria-label="Jump to a project">
+          <a class="work-toc__item" href="#oil-gas"><span class="work-toc__index">01</span>Madani Sdn. Bhd.</a>
+          <a class="work-toc__item" href="#kingshall"><span class="work-toc__index">02</span>King&rsquo;s Hall Cafe</a>
+          <a class="work-toc__item" href="#restaurant"><span class="work-toc__index">03</span>Chicken Rice Syukran</a>
+          <a class="work-toc__item" href="#safwa"><span class="work-toc__index">04</span>Safwa Umrah</a>
+          <a class="work-toc__item" href="#novae"><span class="work-toc__index">05</span>NOVAÉ</a>
+          <a class="work-toc__item" href="#klinik-ceria"><span class="work-toc__index">06</span>Klinik Ceria</a>
+          <a class="work-toc__item" href="#furniture"><span class="work-toc__index">07</span>Royale Chesterfield</a>
+          <a class="work-toc__item" href="#lumiere"><span class="work-toc__index">08</span>Lumi&egrave;re Hair Studio</a>
+        </nav>
       </div>
     </section>
 
     <!-- FLAGSHIP CASE STUDY — MADANI SDN. BHD. -->
-    <section class="work-feature" id="oil-gas" data-category="corporate">
+    <section class="work-feature" id="oil-gas">
       <div class="wrap">
 
         <div class="work-feature__head reveal">
@@ -106,13 +106,7 @@
         </div>
 
         <div class="work-feature__visual reveal">
-          <div class="browser-frame">
-            <div class="browser-frame__bar">
-              <div class="browser-frame__dots"><span></span><span></span><span></span></div>
-              <div class="browser-frame__url">Madani Sdn. Bhd. — Home</div>
-            </div>
-            <img src="images/projects/oilgas/oilgas-home-clean.jpg" alt="Madani Sdn. Bhd. corporate website homepage with the headline 'Powering Malaysia &amp; Brunei's Energy Future' over refinery photography" width="1344" height="423" loading="eager" fetchpriority="high">
-          </div>
+          <img src="images/projects/oilgas/oilgas-home-clean.jpg" alt="Madani Sdn. Bhd. corporate website homepage with the headline 'Powering Malaysia &amp; Brunei's Energy Future' over refinery photography" width="1344" height="423" loading="eager" fetchpriority="high">
         </div>
 
         <dl class="work-feature__meta reveal">
@@ -173,44 +167,117 @@
           <div class="project__gallery">
             <div class="work-story-item reveal">
               <span class="work-story-item__label">Projects</span>
-              <button class="browser-frame" data-lightbox="images/projects/oilgas/oilgas-projects.jpg" data-caption="Madani Sdn. Bhd. — Projects, filterable by industry">
-                <div class="browser-frame__bar"><div class="browser-frame__dots"><span></span><span></span><span></span></div><div class="browser-frame__url">Madani Sdn. Bhd. — Projects</div></div>
+              <button class="work-story-item__frame" data-lightbox="images/projects/oilgas/oilgas-projects.jpg" data-caption="Madani Sdn. Bhd. — Projects, filterable by industry">
                 <img src="images/projects/oilgas/oilgas-projects.jpg" alt="Madani Sdn. Bhd. projects page with filterable case study cards for Oil &amp; Gas, Marine and Industrial work" loading="lazy" width="1335" height="603">
               </button>
             </div>
             <div class="work-story-item reveal">
               <span class="work-story-item__label">Services</span>
-              <button class="browser-frame" data-lightbox="images/projects/oilgas/oilgas-services.jpg" data-caption="Madani Sdn. Bhd. — Services, laid out with icons and short descriptions">
-                <div class="browser-frame__bar"><div class="browser-frame__dots"><span></span><span></span><span></span></div><div class="browser-frame__url">Madani Sdn. Bhd. — Services</div></div>
+              <button class="work-story-item__frame" data-lightbox="images/projects/oilgas/oilgas-services.jpg" data-caption="Madani Sdn. Bhd. — Services, laid out with icons and short descriptions">
                 <img src="images/projects/oilgas/oilgas-services.jpg" alt="Madani Sdn. Bhd. services page listing engineering, procurement, construction and fabrication" loading="lazy" width="1326" height="612">
               </button>
             </div>
             <div class="work-story-item reveal">
               <span class="work-story-item__label">About</span>
-              <button class="browser-frame" data-lightbox="images/projects/oilgas/oilgas-about.jpg" data-caption="Madani Sdn. Bhd. — About, covering company history and regional presence">
-                <div class="browser-frame__bar"><div class="browser-frame__dots"><span></span><span></span><span></span></div><div class="browser-frame__url">Madani Sdn. Bhd. — About</div></div>
+              <button class="work-story-item__frame" data-lightbox="images/projects/oilgas/oilgas-about.jpg" data-caption="Madani Sdn. Bhd. — About, covering company history and regional presence">
                 <img src="images/projects/oilgas/oilgas-about.jpg" alt="Madani Sdn. Bhd. about page describing the company's history and regional presence across Malaysia and Brunei" loading="lazy" width="1346" height="611">
               </button>
             </div>
             <div class="work-story-item reveal">
               <span class="work-story-item__label">Industries</span>
-              <button class="browser-frame" data-lightbox="images/projects/oilgas/oilgas-industries.jpg" data-caption="Madani Sdn. Bhd. — Industries served, from Oil &amp; Gas to Petrochemical">
-                <div class="browser-frame__bar"><div class="browser-frame__dots"><span></span><span></span><span></span></div><div class="browser-frame__url">Madani Sdn. Bhd. — Industries</div></div>
+              <button class="work-story-item__frame" data-lightbox="images/projects/oilgas/oilgas-industries.jpg" data-caption="Madani Sdn. Bhd. — Industries served, from Oil &amp; Gas to Petrochemical">
                 <img src="images/projects/oilgas/oilgas-industries.jpg" alt="Madani Sdn. Bhd. industries page showcasing Oil &amp; Gas, Marine and Petrochemical sectors" loading="lazy" width="1344" height="609">
               </button>
             </div>
             <div class="work-story-item reveal">
               <span class="work-story-item__label">Careers</span>
-              <button class="browser-frame" data-lightbox="images/projects/oilgas/oilgas-careers.jpg" data-caption="Madani Sdn. Bhd. — Careers, with location and employment type">
-                <div class="browser-frame__bar"><div class="browser-frame__dots"><span></span><span></span><span></span></div><div class="browser-frame__url">Madani Sdn. Bhd. — Careers</div></div>
+              <button class="work-story-item__frame" data-lightbox="images/projects/oilgas/oilgas-careers.jpg" data-caption="Madani Sdn. Bhd. — Careers, with location and employment type">
                 <img src="images/projects/oilgas/oilgas-careers.jpg" alt="Madani Sdn. Bhd. careers page listing open positions with location and employment type" loading="lazy" width="1340" height="519">
               </button>
             </div>
             <div class="work-story-item reveal">
               <span class="work-story-item__label">Contact</span>
-              <button class="browser-frame" data-lightbox="images/projects/oilgas/oilgas-contact.jpg" data-caption="Madani Sdn. Bhd. — Contact, with office details and an enquiry form">
-                <div class="browser-frame__bar"><div class="browser-frame__dots"><span></span><span></span><span></span></div><div class="browser-frame__url">Madani Sdn. Bhd. — Contact</div></div>
+              <button class="work-story-item__frame" data-lightbox="images/projects/oilgas/oilgas-contact.jpg" data-caption="Madani Sdn. Bhd. — Contact, with office details and an enquiry form">
                 <img src="images/projects/oilgas/oilgas-contact.jpg" alt="Madani Sdn. Bhd. contact page with office details for Malaysia and Brunei and an enquiry form" loading="lazy" width="1342" height="611">
+              </button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- FEATURE CASE STUDY — KING'S HALL CAFE (independent concept) -->
+    <section class="work-feature" id="kingshall">
+      <div class="wrap">
+
+        <div class="work-feature__head reveal">
+          <span class="work-feature__label">Independent Concept</span>
+          <h2>King&rsquo;s Hall Cafe</h2>
+          <p class="work-feature__category">Food &amp; Beverage / Caf&eacute;</p>
+          <p class="work-feature__intro">A self-directed redesign concept exploring a warm, editorial identity for a neighbourhood caf&eacute; — built to test a bespoke design system rather than to fulfil a client brief.</p>
+          <p class="work-feature__disclosure"><strong>Concept Website</strong> — Independent redesign concept by ajak.Web. Not affiliated with King&rsquo;s Hall Cafe.</p>
+        </div>
+
+        <div class="work-feature__visual reveal">
+          <img src="images/projects/kingshallcafe/kh-hero.png" alt="King's Hall Cafe concept homepage hero with a full-bleed interior photograph and a warm brass-and-charcoal palette" width="1440" height="901" loading="eager">
+        </div>
+
+        <dl class="work-feature__meta reveal">
+          <div class="work-feature__meta-item">
+            <dt>Industry</dt>
+            <dd>Food &amp; Beverage / Caf&eacute;</dd>
+          </div>
+          <div class="work-feature__meta-item">
+            <dt>Type</dt>
+            <dd>Independent Concept, No Client</dd>
+          </div>
+          <div class="work-feature__meta-item">
+            <dt>Technology</dt>
+            <dd>HTML, CSS, JavaScript</dd>
+          </div>
+        </dl>
+
+        <div class="work-feature__grid">
+          <div class="reveal">
+            <h3>The Objective</h3>
+            <p>Design a complete bespoke identity for a caf&eacute; concept from the ground up — not a template pass — to explore how a warm, editorial art direction could feel distinct from the generic "coffee shop" website look.</p>
+          </div>
+          <div class="reveal">
+            <h3>The Approach</h3>
+            <p>A dedicated brass-and-charcoal palette, a paired Playfair Display and Inter type system, and a fluid type scale run through every section — hero, menu, favourites, reviews and location — so the concept reads as one considered system rather than a stock layout with swapped colours.</p>
+          </div>
+        </div>
+
+        <div class="work-feature__summary reveal">
+          <div>
+            <h3>Project Summary</h3>
+            <dl class="info-rows">
+              <div class="info-row"><dt>Client</dt><dd>None — Independent Concept</dd></div>
+              <div class="info-row"><dt>Industry</dt><dd>Food &amp; Beverage / Caf&eacute;</dd></div>
+              <div class="info-row"><dt>Services</dt><dd>Web Design, UI/UX, Frontend Development</dd></div>
+              <div class="info-row"><dt>Status</dt><dd>Concept Project — Not Commissioned</dd></div>
+            </dl>
+          </div>
+          <div class="work-feature__ctas">
+            <a class="work-project__cta" href="#kingshall">View Project <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="13 6 19 12 13 18"/></svg></a>
+            <a class="work-project__cta" href="kingshallcafe/" target="_blank" rel="noopener">Live Demo ↗</a>
+          </div>
+        </div>
+
+        <div class="work-feature__story">
+          <h3>A Closer Look</h3>
+          <div class="project__gallery">
+            <div class="work-story-item reveal">
+              <span class="work-story-item__label">About</span>
+              <button class="work-story-item__frame" data-lightbox="images/projects/kingshallcafe/kh-about.png" data-caption="King's Hall Cafe — About section">
+                <img src="images/projects/kingshallcafe/kh-about.png" alt="King's Hall Cafe concept about section describing the caf&eacute;'s story and atmosphere" loading="lazy" width="1440" height="982">
+              </button>
+            </div>
+            <div class="work-story-item reveal">
+              <span class="work-story-item__label">Experience</span>
+              <button class="work-story-item__frame" data-lightbox="images/projects/kingshallcafe/kh-experience.png" data-caption="King's Hall Cafe — Experience highlights">
+                <img src="images/projects/kingshallcafe/kh-experience.png" alt="King's Hall Cafe concept experience section highlighting the caf&eacute;'s atmosphere and offerings" loading="lazy" width="1264" height="399">
               </button>
             </div>
           </div>
@@ -230,17 +297,11 @@
     </section>
 
     <!-- CHICKEN RICE SYUKRAN -->
-    <article class="work-project" id="restaurant" data-category="food-beverage">
+    <article class="work-project" id="restaurant">
       <div class="wrap">
         <div class="work-project__grid">
           <div class="work-project__visual reveal">
-            <div class="browser-frame">
-              <div class="browser-frame__bar">
-                <div class="browser-frame__dots"><span></span><span></span><span></span></div>
-                <div class="browser-frame__url">Chicken Rice Syukran — Home</div>
-              </div>
-              <img src="images/projects/restaurant/restaurant-home.jpg" alt="Chicken Rice Syukran restaurant website homepage with the headline 'Chicken rice, the way Singapore taught us.'" loading="lazy" width="1440" height="646">
-            </div>
+            <img src="images/projects/restaurant/restaurant-home.jpg" alt="Chicken Rice Syukran restaurant website homepage with the headline 'Chicken rice, the way Singapore taught us.'" loading="lazy" width="1440" height="646">
           </div>
           <div class="work-project__body reveal">
             <span class="work-project__label">Selected Project</span>
@@ -283,29 +344,25 @@
           <div class="project__gallery">
             <div class="work-story-item reveal">
               <span class="work-story-item__label">About</span>
-              <button class="browser-frame" data-lightbox="images/projects/restaurant/restaurant-about.jpg" data-caption="Chicken Rice Syukran — About, with an at-a-glance summary">
-                <div class="browser-frame__bar"><div class="browser-frame__dots"><span></span><span></span><span></span></div><div class="browser-frame__url">Chicken Rice Syukran — About</div></div>
+              <button class="work-story-item__frame" data-lightbox="images/projects/restaurant/restaurant-about.jpg" data-caption="Chicken Rice Syukran — About, with an at-a-glance summary">
                 <img src="images/projects/restaurant/restaurant-about.jpg" alt="Chicken Rice Syukran about page telling the restaurant's story, with an 'At a Glance' summary of cuisine, location and reservation details" loading="lazy" width="1344" height="602">
               </button>
             </div>
             <div class="work-story-item reveal">
               <span class="work-story-item__label">Menu</span>
-              <button class="browser-frame" data-lightbox="images/projects/restaurant/restaurant-menu.jpg" data-caption="Chicken Rice Syukran — Menu, tabbed by category with pricing">
-                <div class="browser-frame__bar"><div class="browser-frame__dots"><span></span><span></span><span></span></div><div class="browser-frame__url">Chicken Rice Syukran — Menu</div></div>
+              <button class="work-story-item__frame" data-lightbox="images/projects/restaurant/restaurant-menu.jpg" data-caption="Chicken Rice Syukran — Menu, tabbed by category with pricing">
                 <img src="images/projects/restaurant/restaurant-menu.jpg" alt="Chicken Rice Syukran category-tabbed menu page with dish cards, two with photography-ready imagery, and pricing" loading="lazy" width="1440" height="646">
               </button>
             </div>
             <div class="work-story-item reveal">
               <span class="work-story-item__label">Reviews</span>
-              <button class="browser-frame" data-lightbox="images/projects/restaurant/restaurant-reviews.jpg" data-caption="Chicken Rice Syukran — Reviews, star-rated customer cards">
-                <div class="browser-frame__bar"><div class="browser-frame__dots"><span></span><span></span><span></span></div><div class="browser-frame__url">Chicken Rice Syukran — Reviews</div></div>
+              <button class="work-story-item__frame" data-lightbox="images/projects/restaurant/restaurant-reviews.jpg" data-caption="Chicken Rice Syukran — Reviews, star-rated customer cards">
                 <img src="images/projects/restaurant/restaurant-reviews.jpg" alt="Chicken Rice Syukran reviews page with star-rated customer testimonial cards" loading="lazy" width="1347" height="604">
               </button>
             </div>
             <div class="work-story-item reveal">
               <span class="work-story-item__label">Location</span>
-              <button class="browser-frame" data-lightbox="images/projects/restaurant/restaurant-location.jpg" data-caption="Chicken Rice Syukran — Location, with map, hours and a reserve button">
-                <div class="browser-frame__bar"><div class="browser-frame__dots"><span></span><span></span><span></span></div><div class="browser-frame__url">Chicken Rice Syukran — Location</div></div>
+              <button class="work-story-item__frame" data-lightbox="images/projects/restaurant/restaurant-location.jpg" data-caption="Chicken Rice Syukran — Location, with map, hours and a reserve button">
                 <img src="images/projects/restaurant/restaurant-location.jpg" alt="Chicken Rice Syukran location page with an embedded map, opening hours and a Reserve Your Table button" loading="lazy" width="1324" height="612">
               </button>
             </div>
@@ -314,241 +371,12 @@
       </div>
     </article>
 
-    <!-- FURNITURE -->
-    <article class="work-project work-project--reverse" id="furniture" data-category="business">
-      <div class="wrap">
-        <div class="work-project__grid">
-          <div class="work-project__visual reveal">
-            <div class="browser-frame">
-              <div class="browser-frame__bar">
-                <div class="browser-frame__dots"><span></span><span></span><span></span></div>
-                <div class="browser-frame__url">Royale Chesterfield — Home</div>
-              </div>
-              <img src="images/projects/furniture/furniture-home.jpg" alt="Royale Chesterfield furniture website homepage with the headline 'Handcrafted luxury, built to last generations.'" loading="lazy" width="1440" height="646">
-            </div>
-          </div>
-          <div class="work-project__body reveal">
-            <span class="work-project__label">Selected Project</span>
-            <h3>Furniture Business Website</h3>
-            <p class="work-project__category">Furniture / Business</p>
-            <p class="work-project__desc">A premium showroom website for a handcrafted chesterfield sofa maker, built to present the product with the same craftsmanship it's made with.</p>
-
-            <div class="work-project__block">
-              <h4>Objective</h4>
-              <p>Present a handcrafted furniture brand as established and premium, and make it easy for a visitor to book a showroom appointment.</p>
-            </div>
-            <div class="work-project__block">
-              <h4>Approach</h4>
-              <p>A single continuously-scrolling page carries the visitor from collections through a custom-order journey, materials, a showroom gallery and FAQ. The hero pairs a dark charcoal-and-gold palette with a heritage stamp badge, staged on a photography-ready backdrop awaiting the brand's campaign shoot. A persistent top bar carries phone, WhatsApp and hours for both showrooms, and a single "Book a Showroom Visit" action repeats through the collections, custom-order and FAQ sections.</p>
-            </div>
-
-            <ul class="feature-list work-project__features">
-              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Two-step "Book a Showroom Visit" form separating personal details from visit details</li>
-              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Persistent top utility bar with phone, WhatsApp and hours for both showroom locations</li>
-              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>FAQ accordion covering manufacturing, customisation, materials, delivery and warranty</li>
-            </ul>
-
-            <div class="work-project__block" style="margin-top: var(--space-6);">
-              <h4>Project Summary</h4>
-              <dl class="info-rows">
-                <div class="info-row"><dt>Client</dt><dd>Royale Chesterfield</dd></div>
-                <div class="info-row"><dt>Industry</dt><dd>Furniture / Business</dd></div>
-                <div class="info-row"><dt>Services</dt><dd>Web Design, UI/UX, Frontend Development</dd></div>
-                <div class="info-row"><dt>Status</dt><dd>Concept Project</dd></div>
-              </dl>
-            </div>
-
-            <div class="work-feature__ctas">
-              <a class="work-project__cta" href="#furniture">View Project <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="13 6 19 12 13 18"/></svg></a>
-              <a class="work-project__cta" href="demos/royale-chesterfield/" target="_blank" rel="noopener">Live Demo &#8599;</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="work-project__story">
-          <h4>Website Visual Story</h4>
-          <div class="project__gallery">
-            <div class="work-story-item reveal">
-              <span class="work-story-item__label">Booking</span>
-              <button class="browser-frame" data-lightbox="images/projects/furniture/furniture-booking.jpg" data-caption="Royale Chesterfield — Book a Showroom Visit, a two-step appointment form">
-                <div class="browser-frame__bar"><div class="browser-frame__dots"><span></span><span></span><span></span></div><div class="browser-frame__url">Royale Chesterfield — Booking</div></div>
-                <img src="images/projects/furniture/furniture-booking.jpg" alt="Royale Chesterfield Book a Showroom Visit section with a two-step form for visitor details and showroom visit details" loading="lazy" width="1440" height="646">
-              </button>
-            </div>
-            <div class="work-story-item reveal">
-              <span class="work-story-item__label">Showroom</span>
-              <button class="browser-frame" data-lightbox="images/projects/furniture/furniture-contact.jpg" data-caption="Royale Chesterfield — Showroom, both locations with hours and a booking CTA">
-                <div class="browser-frame__bar"><div class="browser-frame__dots"><span></span><span></span><span></span></div><div class="browser-frame__url">Royale Chesterfield — Showroom</div></div>
-                <img src="images/projects/furniture/furniture-contact.jpg" alt="Royale Chesterfield showroom section listing both Shah Alam and Kuala Terengganu locations with hours and a Book a Showroom Visit button" loading="lazy" width="1440" height="646">
-              </button>
-            </div>
-            <div class="work-story-item reveal">
-              <span class="work-story-item__label">FAQ</span>
-              <button class="browser-frame" data-lightbox="images/projects/furniture/furniture-faq.jpg" data-caption="Royale Chesterfield — FAQ, covering manufacturing, customisation and materials">
-                <div class="browser-frame__bar"><div class="browser-frame__dots"><span></span><span></span><span></span></div><div class="browser-frame__url">Royale Chesterfield — FAQ</div></div>
-                <img src="images/projects/furniture/furniture-faq.jpg" alt="Royale Chesterfield FAQ section with an accordion of common questions on manufacturing, customisation, materials, delivery and warranty" loading="lazy" width="1440" height="646">
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </article>
-
-    <!-- NOVAÉ -->
-    <article class="work-project" id="novae" data-category="ecommerce">
-      <div class="wrap">
-        <div class="work-project__grid">
-          <div class="work-project__visual reveal">
-            <div class="browser-frame">
-              <div class="browser-frame__bar">
-                <div class="browser-frame__dots"><span></span><span></span><span></span></div>
-                <div class="browser-frame__url">NOVAÉ — Home</div>
-              </div>
-              <img src="images/projects/novae/novae-home.jpg" alt="NOVAÉ fashion e-commerce concept homepage with the headline 'The Everyday Edit' over a full-bleed hero" loading="lazy" width="1440" height="820">
-            </div>
-          </div>
-          <div class="work-project__body reveal">
-            <div class="work-project__labels">
-              <span class="work-project__label">Selected Project</span>
-              <span class="work-project__label">Concept Project</span>
-            </div>
-            <h3>NOVAÉ</h3>
-            <p class="work-project__category">Fashion / E-commerce</p>
-            <p class="work-project__desc">A premium fashion e-commerce concept exploring modern product presentation, a responsive shopping experience, and refined brand positioning for retail and boutique businesses.</p>
-
-            <div class="work-project__block">
-              <h4>Objective</h4>
-              <p>Show how a premium fashion retailer could present products through a clean, modern digital storefront — with easy product discovery, quick product previews and a persistent shopping bag, entirely on the front end.</p>
-            </div>
-            <div class="work-project__block">
-              <h4>Approach</h4>
-              <p>The homepage leads with an editorial hero and a serif display face, then moves into a New Arrivals grid, Shop by Category tiles and a Quick View modal for previewing colour, size and price without leaving the page. A warm neutral palette and generous whitespace keep the storefront feeling premium rather than templated, while the header collapses into a search panel and mobile menu on smaller screens.</p>
-            </div>
-
-            <ul class="feature-list work-project__features">
-              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Quick View modal for previewing colour, size and price without leaving the page</li>
-              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Persistent cart drawer and wishlist, saved with localStorage</li>
-              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Responsive navigation with a mobile menu, search panel and category browsing</li>
-            </ul>
-
-            <div class="work-feature__ctas">
-              <a class="work-project__cta" href="#novae">View Project <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="13 6 19 12 13 18"/></svg></a>
-              <a class="work-project__cta" href="novae/" target="_blank" rel="noopener">Live Demo ↗</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="work-project__story">
-          <h4>Website Visual Story</h4>
-          <div class="project__gallery">
-            <div class="work-story-item reveal">
-              <span class="work-story-item__label">New Arrivals</span>
-              <button class="browser-frame" data-lightbox="images/projects/novae/novae-products.jpg" data-caption="NOVAÉ — New Arrivals, with wishlist and Quick View on each card">
-                <div class="browser-frame__bar"><div class="browser-frame__dots"><span></span><span></span><span></span></div><div class="browser-frame__url">NOVAÉ — New Arrivals</div></div>
-                <img src="images/projects/novae/novae-products.jpg" alt="NOVAÉ New Arrivals product grid with wishlist and Quick View controls on each card" loading="lazy" width="1440" height="818">
-              </button>
-            </div>
-            <div class="work-story-item reveal">
-              <span class="work-story-item__label">Shop by Category</span>
-              <button class="browser-frame" data-lightbox="images/projects/novae/novae-category.jpg" data-caption="NOVAÉ — Shop by Category, Women / Men / Accessories tiles">
-                <div class="browser-frame__bar"><div class="browser-frame__dots"><span></span><span></span><span></span></div><div class="browser-frame__url">NOVAÉ — Shop by Category</div></div>
-                <img src="images/projects/novae/novae-category.jpg" alt="NOVAÉ Shop by Category section with Women, Men and Accessories tiles" loading="lazy" width="1440" height="1100">
-              </button>
-            </div>
-            <div class="work-story-item reveal">
-              <span class="work-story-item__label">Quick View</span>
-              <button class="browser-frame" data-lightbox="images/projects/novae/novae-quickview.jpg" data-caption="NOVAÉ — Quick View, colour, size and quantity without leaving the page">
-                <div class="browser-frame__bar"><div class="browser-frame__dots"><span></span><span></span><span></span></div><div class="browser-frame__url">NOVAÉ — Quick View</div></div>
-                <img src="images/projects/novae/novae-quickview.jpg" alt="NOVAÉ Quick View modal with colour, size and quantity selection and an Add to Bag button" loading="lazy" width="1440" height="900">
-              </button>
-            </div>
-            <div class="work-story-item reveal">
-              <span class="work-story-item__label">Mobile — Home</span>
-              <button class="browser-frame" data-lightbox="images/projects/novae/novae-mobile-home.jpg" data-caption="NOVAÉ — Mobile home, hero and New Arrivals on a phone screen">
-                <div class="browser-frame__bar"><div class="browser-frame__dots"><span></span><span></span><span></span></div><div class="browser-frame__url">NOVAÉ — Mobile</div></div>
-                <img src="images/projects/novae/novae-mobile-home.jpg" alt="NOVAÉ homepage on a mobile viewport with the hero and New Arrivals heading" loading="lazy" width="390" height="844">
-              </button>
-            </div>
-            <div class="work-story-item reveal">
-              <span class="work-story-item__label">Mobile — Navigation</span>
-              <button class="browser-frame" data-lightbox="images/projects/novae/novae-mobile-menu.jpg" data-caption="NOVAÉ — Mobile navigation, with a built-in product search">
-                <div class="browser-frame__bar"><div class="browser-frame__dots"><span></span><span></span><span></span></div><div class="browser-frame__url">NOVAÉ — Mobile Menu</div></div>
-                <img src="images/projects/novae/novae-mobile-menu.jpg" alt="NOVAÉ mobile menu open, listing New Arrivals, Women, Men, Accessories and About with a product search field" loading="lazy" width="390" height="844">
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </article>
-
-    <!-- LUMIÈRE HAIR STUDIO -->
-    <article class="work-project work-project--reverse" id="lumiere" data-category="beauty">
-      <div class="wrap">
-        <div class="work-project__grid">
-          <div class="work-project__visual reveal">
-            <div class="browser-frame">
-              <div class="browser-frame__bar">
-                <div class="browser-frame__dots"><span></span><span></span><span></span></div>
-                <div class="browser-frame__url">Lumi&egrave;re Hair Studio &mdash; Home</div>
-              </div>
-              <img src="images/projects/lumiere/lumiere-home.svg" alt="Lumi&egrave;re Hair Studio website concept" loading="lazy" width="1440" height="820">
-            </div>
-          </div>
-          <div class="work-project__body reveal">
-            <div class="work-project__labels">
-              <span class="work-project__label">Selected Project</span>
-              <span class="work-project__label">Concept Project</span>
-            </div>
-            <h3>Lumi&egrave;re Hair Studio</h3>
-            <p class="work-project__category">Beauty &amp; Wellness</p>
-            <p class="work-project__desc">A premium modern website concept for a hair and beauty salon, designed around services, visual presentation, appointments and WhatsApp contact.</p>
-
-            <div class="work-project__block">
-              <h4>Objective</h4>
-              <p>Explore how a hair and beauty salon could present its services and atmosphere online with the same polish as an in-salon experience — making it simple for a new client to see the work, understand the services on offer, and book without friction.</p>
-            </div>
-            <div class="work-project__block">
-              <h4>Approach</h4>
-              <p>The concept is built around a warm, premium palette and a services grid — haircut, colour, treatment, rebonding and scalp care — presented as clearly as a printed menu, backed by a short gallery so a visitor can see the studio's actual work. A WhatsApp "Book Appointment" action repeats in the header, hero and a sticky mobile button, keeping booking one tap away from anywhere on the page.</p>
-            </div>
-
-            <ul class="feature-list work-project__features">
-              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Services grid covering haircut, colour, treatment, wash &amp; blow, rebonding and scalp care</li>
-              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>A gallery section showing the studio's work</li>
-              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>WhatsApp booking repeated in the header, hero and a sticky mobile button</li>
-            </ul>
-
-            <div class="work-project__block" style="margin-top: var(--space-6);">
-              <h4>Project Summary</h4>
-              <dl class="info-rows">
-                <div class="info-row"><dt>Client</dt><dd>Lumi&egrave;re Hair Studio</dd></div>
-                <div class="info-row"><dt>Industry</dt><dd>Beauty &amp; Wellness</dd></div>
-                <div class="info-row"><dt>Services</dt><dd>Web Design, UI/UX, Frontend Development</dd></div>
-                <div class="info-row"><dt>Status</dt><dd>Concept Project</dd></div>
-              </dl>
-            </div>
-
-            <div class="work-feature__ctas">
-              <a class="work-project__cta" href="#lumiere">View Project <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="13 6 19 12 13 18"/></svg></a>
-              <a class="work-project__cta" href="lumiere-hair-studio/" target="_blank" rel="noopener">Live Demo &#8599;</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </article>
-
     <!-- SAFWA UMRAH -->
-    <article class="work-project" id="safwa" data-category="travel">
+    <article class="work-project work-project--reverse" id="safwa">
       <div class="wrap">
         <div class="work-project__grid">
           <div class="work-project__visual reveal">
-            <div class="browser-frame">
-              <div class="browser-frame__bar">
-                <div class="browser-frame__dots"><span></span><span></span><span></span></div>
-                <div class="browser-frame__url">Safwa Umrah — Home</div>
-              </div>
-              <img src="images/projects/safwa/safwa-home.jpg" alt="Safwa Umrah travel website homepage with the headline 'Your Sacred Journey Begins Here.' over an illustrated Makkah skyline" loading="lazy" width="1440" height="820">
-            </div>
+            <img src="images/projects/safwa/safwa-home.jpg" alt="Safwa Umrah travel website homepage with the headline 'Your Sacred Journey Begins Here.' over an illustrated Makkah skyline" loading="lazy" width="1440" height="820">
           </div>
           <div class="work-project__body reveal">
             <div class="work-project__labels">
@@ -591,18 +419,98 @@
       </div>
     </article>
 
-    <!-- KLINIK CERIA -->
-    <article class="work-project" id="klinik-ceria" data-category="healthcare">
+    <!-- NOVAÉ -->
+    <article class="work-project" id="novae">
       <div class="wrap">
         <div class="work-project__grid">
           <div class="work-project__visual reveal">
-            <div class="browser-frame">
-              <div class="browser-frame__bar">
-                <div class="browser-frame__dots"><span></span><span></span><span></span></div>
-                <div class="browser-frame__url">Klinik Ceria &mdash; Home</div>
-              </div>
-              <img src="images/projects/klinik-ceria/klinik-ceria-home.jpg" alt="Klinik Ceria family clinic website concept homepage with the headline 'Everyday Healthcare for You &amp; Your Family'" loading="lazy" width="1440" height="820">
+            <img src="images/projects/novae/novae-home.jpg" alt="NOVAÉ fashion e-commerce concept homepage with the headline 'The Everyday Edit' over a full-bleed hero" loading="lazy" width="1440" height="820">
+          </div>
+          <div class="work-project__body reveal">
+            <div class="work-project__labels">
+              <span class="work-project__label">Selected Project</span>
+              <span class="work-project__label">Concept Project</span>
             </div>
+            <h3>NOVAÉ</h3>
+            <p class="work-project__category">Fashion / E-commerce</p>
+            <p class="work-project__desc">A premium fashion e-commerce concept exploring modern product presentation, a responsive shopping experience, and refined brand positioning for retail and boutique businesses.</p>
+
+            <div class="work-project__block">
+              <h4>Objective</h4>
+              <p>Show how a premium fashion retailer could present products through a clean, modern digital storefront — with easy product discovery, quick product previews and a persistent shopping bag, entirely on the front end.</p>
+            </div>
+            <div class="work-project__block">
+              <h4>Approach</h4>
+              <p>The homepage leads with an editorial hero and a serif display face, then moves into a New Arrivals grid, Shop by Category tiles and a Quick View modal for previewing colour, size and price without leaving the page. A warm neutral palette and generous whitespace keep the storefront feeling premium rather than templated, while the header collapses into a search panel and mobile menu on smaller screens.</p>
+            </div>
+
+            <ul class="feature-list work-project__features">
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Quick View modal for previewing colour, size and price without leaving the page</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Persistent cart drawer and wishlist, saved with localStorage</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Responsive navigation with a mobile menu, search panel and category browsing</li>
+            </ul>
+
+            <div class="work-feature__ctas">
+              <a class="work-project__cta" href="#novae">View Project <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="13 6 19 12 13 18"/></svg></a>
+              <a class="work-project__cta" href="novae/" target="_blank" rel="noopener">Live Demo ↗</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="work-project__story">
+          <h4>Website Visual Story</h4>
+          <div class="project__gallery">
+            <div class="work-story-item reveal">
+              <span class="work-story-item__label">New Arrivals</span>
+              <button class="work-story-item__frame" data-lightbox="images/projects/novae/novae-products.jpg" data-caption="NOVAÉ — New Arrivals, with wishlist and Quick View on each card">
+                <img src="images/projects/novae/novae-products.jpg" alt="NOVAÉ New Arrivals product grid with wishlist and Quick View controls on each card" loading="lazy" width="1440" height="818">
+              </button>
+            </div>
+            <div class="work-story-item reveal">
+              <span class="work-story-item__label">Shop by Category</span>
+              <button class="work-story-item__frame" data-lightbox="images/projects/novae/novae-category.jpg" data-caption="NOVAÉ — Shop by Category, Women / Men / Accessories tiles">
+                <img src="images/projects/novae/novae-category.jpg" alt="NOVAÉ Shop by Category section with Women, Men and Accessories tiles" loading="lazy" width="1440" height="1100">
+              </button>
+            </div>
+            <div class="work-story-item reveal">
+              <span class="work-story-item__label">Quick View</span>
+              <button class="work-story-item__frame" data-lightbox="images/projects/novae/novae-quickview.jpg" data-caption="NOVAÉ — Quick View, colour, size and quantity without leaving the page">
+                <img src="images/projects/novae/novae-quickview.jpg" alt="NOVAÉ Quick View modal with colour, size and quantity selection and an Add to Bag button" loading="lazy" width="1440" height="900">
+              </button>
+            </div>
+            <div class="work-story-item reveal">
+              <span class="work-story-item__label">Mobile — Home</span>
+              <button class="work-story-item__frame" data-lightbox="images/projects/novae/novae-mobile-home.jpg" data-caption="NOVAÉ — Mobile home, hero and New Arrivals on a phone screen">
+                <img src="images/projects/novae/novae-mobile-home.jpg" alt="NOVAÉ homepage on a mobile viewport with the hero and New Arrivals heading" loading="lazy" width="390" height="844">
+              </button>
+            </div>
+            <div class="work-story-item reveal">
+              <span class="work-story-item__label">Mobile — Navigation</span>
+              <button class="work-story-item__frame" data-lightbox="images/projects/novae/novae-mobile-menu.jpg" data-caption="NOVAÉ — Mobile navigation, with a built-in product search">
+                <img src="images/projects/novae/novae-mobile-menu.jpg" alt="NOVAÉ mobile menu open, listing New Arrivals, Women, Men, Accessories and About with a product search field" loading="lazy" width="390" height="844">
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- ARCHIVE -->
+    <section class="work-selected-head">
+      <div class="wrap">
+        <div class="section-head mt-0 reveal">
+          <p class="eyebrow">Archive</p>
+          <h2>More Projects</h2>
+        </div>
+      </div>
+    </section>
+
+    <!-- KLINIK CERIA -->
+    <article class="work-project work-project--compact" id="klinik-ceria">
+      <div class="wrap">
+        <div class="work-project__grid">
+          <div class="work-project__visual reveal">
+            <img src="images/projects/klinik-ceria/klinik-ceria-home.jpg" alt="Klinik Ceria family clinic website concept homepage with the headline 'Everyday Healthcare for You &amp; Your Family'" loading="lazy" width="1440" height="820">
           </div>
           <div class="work-project__body reveal">
             <div class="work-project__labels">
@@ -648,12 +556,133 @@
       </div>
     </article>
 
+    <!-- FURNITURE -->
+    <article class="work-project work-project--reverse work-project--compact" id="furniture">
+      <div class="wrap">
+        <div class="work-project__grid">
+          <div class="work-project__visual reveal">
+            <img src="images/projects/furniture/furniture-home.jpg" alt="Royale Chesterfield furniture website homepage with the headline 'Handcrafted luxury, built to last generations.'" loading="lazy" width="1440" height="646">
+          </div>
+          <div class="work-project__body reveal">
+            <span class="work-project__label">Selected Project</span>
+            <h3>Furniture Business Website</h3>
+            <p class="work-project__category">Furniture / Business</p>
+            <p class="work-project__desc">A premium showroom website for a handcrafted chesterfield sofa maker, built to present the product with the same craftsmanship it's made with.</p>
+
+            <div class="work-project__block">
+              <h4>Objective</h4>
+              <p>Present a handcrafted furniture brand as established and premium, and make it easy for a visitor to book a showroom appointment.</p>
+            </div>
+            <div class="work-project__block">
+              <h4>Approach</h4>
+              <p>A single continuously-scrolling page carries the visitor from collections through a custom-order journey, materials, a showroom gallery and FAQ. The hero pairs a dark charcoal-and-gold palette with a heritage stamp badge, staged on a photography-ready backdrop awaiting the brand's campaign shoot. A persistent top bar carries phone, WhatsApp and hours for both showrooms, and a single "Book a Showroom Visit" action repeats through the collections, custom-order and FAQ sections.</p>
+            </div>
+
+            <ul class="feature-list work-project__features">
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Two-step "Book a Showroom Visit" form separating personal details from visit details</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Persistent top utility bar with phone, WhatsApp and hours for both showroom locations</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>FAQ accordion covering manufacturing, customisation, materials, delivery and warranty</li>
+            </ul>
+
+            <div class="work-project__block" style="margin-top: var(--space-6);">
+              <h4>Project Summary</h4>
+              <dl class="info-rows">
+                <div class="info-row"><dt>Client</dt><dd>Royale Chesterfield</dd></div>
+                <div class="info-row"><dt>Industry</dt><dd>Furniture / Business</dd></div>
+                <div class="info-row"><dt>Services</dt><dd>Web Design, UI/UX, Frontend Development</dd></div>
+                <div class="info-row"><dt>Status</dt><dd>Concept Project</dd></div>
+              </dl>
+            </div>
+
+            <div class="work-feature__ctas">
+              <a class="work-project__cta" href="#furniture">View Project <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="13 6 19 12 13 18"/></svg></a>
+              <a class="work-project__cta" href="demos/royale-chesterfield/" target="_blank" rel="noopener">Live Demo &#8599;</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="work-project__story">
+          <h4>Website Visual Story</h4>
+          <div class="project__gallery">
+            <div class="work-story-item reveal">
+              <span class="work-story-item__label">Booking</span>
+              <button class="work-story-item__frame" data-lightbox="images/projects/furniture/furniture-booking.jpg" data-caption="Royale Chesterfield — Book a Showroom Visit, a two-step appointment form">
+                <img src="images/projects/furniture/furniture-booking.jpg" alt="Royale Chesterfield Book a Showroom Visit section with a two-step form for visitor details and showroom visit details" loading="lazy" width="1440" height="646">
+              </button>
+            </div>
+            <div class="work-story-item reveal">
+              <span class="work-story-item__label">Showroom</span>
+              <button class="work-story-item__frame" data-lightbox="images/projects/furniture/furniture-contact.jpg" data-caption="Royale Chesterfield — Showroom, both locations with hours and a booking CTA">
+                <img src="images/projects/furniture/furniture-contact.jpg" alt="Royale Chesterfield showroom section listing both Shah Alam and Kuala Terengganu locations with hours and a Book a Showroom Visit button" loading="lazy" width="1440" height="646">
+              </button>
+            </div>
+            <div class="work-story-item reveal">
+              <span class="work-story-item__label">FAQ</span>
+              <button class="work-story-item__frame" data-lightbox="images/projects/furniture/furniture-faq.jpg" data-caption="Royale Chesterfield — FAQ, covering manufacturing, customisation and materials">
+                <img src="images/projects/furniture/furniture-faq.jpg" alt="Royale Chesterfield FAQ section with an accordion of common questions on manufacturing, customisation, materials, delivery and warranty" loading="lazy" width="1440" height="646">
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- LUMIÈRE HAIR STUDIO -->
+    <article class="work-project work-project--compact" id="lumiere">
+      <div class="wrap">
+        <div class="work-project__grid">
+          <div class="work-project__visual reveal">
+            <img src="images/projects/lumiere/lumiere-home.svg" alt="Lumi&egrave;re Hair Studio website concept" loading="lazy" width="1440" height="820">
+          </div>
+          <div class="work-project__body reveal">
+            <div class="work-project__labels">
+              <span class="work-project__label">Selected Project</span>
+              <span class="work-project__label">Concept Project</span>
+            </div>
+            <h3>Lumi&egrave;re Hair Studio</h3>
+            <p class="work-project__category">Beauty &amp; Wellness</p>
+            <p class="work-project__desc">A premium modern website concept for a hair and beauty salon, designed around services, visual presentation, appointments and WhatsApp contact.</p>
+
+            <div class="work-project__block">
+              <h4>Objective</h4>
+              <p>Explore how a hair and beauty salon could present its services and atmosphere online with the same polish as an in-salon experience — making it simple for a new client to see the work, understand the services on offer, and book without friction.</p>
+            </div>
+            <div class="work-project__block">
+              <h4>Approach</h4>
+              <p>The concept is built around a warm, premium palette and a services grid — haircut, colour, treatment, rebonding and scalp care — presented as clearly as a printed menu, backed by a short gallery so a visitor can see the studio's actual work. A WhatsApp "Book Appointment" action repeats in the header, hero and a sticky mobile button, keeping booking one tap away from anywhere on the page.</p>
+            </div>
+
+            <ul class="feature-list work-project__features">
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Services grid covering haircut, colour, treatment, wash &amp; blow, rebonding and scalp care</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>A gallery section showing the studio's work</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>WhatsApp booking repeated in the header, hero and a sticky mobile button</li>
+            </ul>
+
+            <div class="work-project__block" style="margin-top: var(--space-6);">
+              <h4>Project Summary</h4>
+              <dl class="info-rows">
+                <div class="info-row"><dt>Client</dt><dd>Lumi&egrave;re Hair Studio</dd></div>
+                <div class="info-row"><dt>Industry</dt><dd>Beauty &amp; Wellness</dd></div>
+                <div class="info-row"><dt>Services</dt><dd>Web Design, UI/UX, Frontend Development</dd></div>
+                <div class="info-row"><dt>Status</dt><dd>Concept Project</dd></div>
+              </dl>
+            </div>
+
+            <div class="work-feature__ctas">
+              <a class="work-project__cta" href="#lumiere">View Project <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="13 6 19 12 13 18"/></svg></a>
+              <a class="work-project__cta" href="lumiere-hair-studio/" target="_blank" rel="noopener">Live Demo &#8599;</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </article>
+
     <!-- FINAL CTA -->
     <section class="section reveal">
       <div class="wrap">
         <div class="cta-band section--ink">
           <p class="eyebrow">03 / Let's Talk</p>
-          <h2>Have a business that needs a better website?</h2>
+          <h2 class="cta-band__statement">Have a business that needs a better website?</h2>
           <p>Tell me about it and I'll recommend the right approach and next steps — with no pressure to decide on the spot.</p>
           <div class="cta-band__actions">
             <a class="btn btn--accent" href="contact.html">Start a Project<span class="btn__arrow" aria-hidden="true">&rarr;</span></a>
