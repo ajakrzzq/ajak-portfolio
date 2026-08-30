@@ -16,6 +16,16 @@
   font-style: normal;
   font-display: swap;
 }
+/* Replaces Bebas Neue as the hero headline face (redesign round 7):
+   a heavier, more idiosyncratic condensed display face reads as
+   art-directed rather than a stock template choice. */
+@font-face {
+  font-family: "Big Shoulders Display";
+  src: url("../fonts/big-shoulders-800.ttf") format("truetype");
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
 
 /* ---------- Design Tokens ---------- */
 :root {
@@ -827,18 +837,31 @@ body.is-inner .eyebrow::before { background: var(--lime); }
 /* Typography recomposition (round 6): the previous four uniform-size
    lines read as one dense rectangular mass with no focal point --
    confirmed against a real production screenshot, not just our own
-   renders. Restructured into a three-tier editorial hierarchy instead
-   -- eyebrow / bridge / punchline -- each tier a flex child so it
-   stacks without manual <br> tags, sized off the same fluid clamp as
+   renders. Restructured into a three-tier editorial hierarchy --
+   eyebrow / bridge / punchline -- sized off the same fluid clamp as
    before (now the punchline's own basis, tiers below are em-relative
    to it so they scale together at every breakpoint without separate
-   tablet/desktop overrides). Bebas Neue replaces Anton: comparable
-   scale and confidence, but more open counters that carry a large
-   punchline without the whole block reading as heavy/blocky. */
+   tablet/desktop overrides).
+
+   Redesign round 7: the first pass (uniform gap, DESERVES flush to
+   the overlay's own right edge, dark-fill eyebrow) technically worked
+   but read as three unrelated lines rather than one composition --
+   DESERVES had no real relationship to anything, and the dark eyebrow
+   fill occasionally landed on the masthead band's own near-black
+   background, going patchy. Rebuilt around one deliberate anchor:
+   "Good Design." sizes its own box (the .hero__headline-anchor
+   wrapper below), and "Deserves" is pinned to THAT box's right edge
+   and tucked just above it -- not the header column's edge -- so the
+   relationship is real geometry, not proximity. All three tiers now
+   share one color family (cream) at three opacity steps instead of
+   three unrelated colors, so they read as one graduated statement.
+   Big Shoulders Display (800) replaces Bebas Neue: a heavier, more
+   idiosyncratic condensed face that reads as art-directed rather than
+   a stock template choice. */
 .hero__headline {
-  font-family: "Bebas Neue", var(--font-display), sans-serif;
-  font-weight: 400;
-  line-height: 0.95;
+  font-family: "Big Shoulders Display", var(--font-display), sans-serif;
+  font-weight: 800;
+  line-height: 0.88;
   letter-spacing: 0.01em;
   text-transform: uppercase;
   font-size: clamp(2.8rem, 1.6rem + 9vw, 4.8rem);
@@ -846,45 +869,71 @@ body.is-inner .eyebrow::before { background: var(--lime); }
   text-shadow: 0 2px 6px rgba(0, 0, 0, 0.55), 0 8px 28px rgba(0, 0, 0, 0.4);
   display: flex;
   flex-direction: column;
-  gap: 0.08em;
+  align-items: flex-start;
+  gap: 0.78em;
 }
 
-.hero__headline-strong { color: #f3f1ec; font-size: 1em; }
+/* Punchline anchor: an inline-block shrunk to "Good Design."'s own
+   rendered width, not the overlay column's width -- this is what lets
+   "Deserves" lock its right edge to the punchline's actual right edge
+   (below) instead of floating against an unrelated container
+   boundary, which is what made it read as randomly placed rather than
+   a designed relationship. */
+.hero__headline-anchor { position: relative; display: inline-block; }
 
-/* Eyebrow tier ("Good Business") -- supporting editorial caption, not
-   a second headline: scaled down to 0.34em of the punchline, tracked
-   wider and partly faded so it reads as discovered atmosphere rather
-   than competing with "Good Design." for attention. Still uses the
-   same dark fill + light glow as before, since that pairing is what
-   keeps it legible against the photo regardless of how light or dark
-   that corner renders. */
+.hero__headline-strong { position: relative; display: block; color: #f3f1ec; font-size: 1em; }
+
+/* Eyebrow tier ("Good Business") -- quiet editorial caption, not a
+   second headline. A translucent cream ghost in the same color family
+   as the rest of the headline (replacing the old dark-fill/light-glow
+   pairing) reads consistently whether it lands on the solid masthead
+   band or the photo itself -- the dark fill broke down right where
+   the band's own fade crosses the eyebrow's line height, patchy
+   contrast that read as a rendering glitch rather than intent. */
 .hero__headline-dark {
-  color: #16140f;
-  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.35), 0 0 24px rgba(240, 236, 224, 0.3);
-  font-size: 0.34em;
-  opacity: 0.7;
-  letter-spacing: 0.08em;
+  display: block;
+  color: #f3f1ec;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
+  font-size: 0.26em;
+  opacity: 0.42;
+  letter-spacing: 0.14em;
 }
 
-/* Bridge tier ("Deserves") -- sits between the eyebrow and the
-   punchline both in size (0.6em) and in position: right-indented via
-   align-self/margin so it breaks the block flush-left the other two
-   tiers share, the asymmetric relationship that makes this read as
-   composed rather than a stacked heading. Mid-gray against a
-   similarly mid-toned blurred photo is the one color the shared
-   text-shadow above doesn't fully rescue on its own (confirmed by
-   screenshot -- it was reading as nearly invisible); the tighter,
-   darker shadow on top adds the extra separation this specific color
-   needs. */
+/* Bridge tier ("Deserves") -- pulled out of flow and pinned to the
+   punchline's own box (not the headline column), right edge flush
+   with "Good Design."'s right edge and tucked in close enough to read
+   as one connected statement leading into the punchline rather than a
+   separately centered line. Same cream family as the other two tiers,
+   mid-value between the eyebrow's ghost and the punchline's full
+   weight, so the three read as one graduated composition instead of
+   three unrelated colors. */
 .hero__headline-soft {
-  color: #a6a6a6;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8), 0 4px 16px rgba(0, 0, 0, 0.6);
-  font-size: 0.6em;
-  align-self: flex-end;
-  margin-right: 0.4em;
+  position: absolute;
+  right: 0;
+  bottom: 100%;
+  margin-bottom: -0.03em;
+  display: block;
+  color: #f3f1ec;
+  opacity: 0.82;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.55), 0 4px 10px rgba(0, 0, 0, 0.3);
+  font-size: 0.48em;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
 }
 
-.hero__headline-mark { color: var(--lime); }
+/* The lime full stop hangs just past "Good Design"'s own right edge
+   instead of counting toward it -- optical/hanging-punctuation, the
+   same reason quote marks and periods are let to hang past a text
+   column in edited typography. Without this, "Deserves" above was
+   locking to the period's edge (a few px past the word itself),
+   reading as a slight rightward overshoot rather than a clean
+   line-up with the word "DESIGN". */
+.hero__headline-mark {
+  position: absolute;
+  left: 100%;
+  bottom: 0;
+  color: var(--lime);
+}
 
 .hero__sub {
   margin-top: var(--space-4);
