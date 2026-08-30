@@ -231,6 +231,19 @@ body.is-inner .eyebrow::before { background: var(--lime); }
 #selected-work .eyebrow { color: var(--muted-2); }
 #selected-work .eyebrow::before { background: var(--lime); }
 
+/* Selected Work is the site's flagship section -- the "second act"
+   right after the hero's own poster moment -- so its own heading
+   carries more scale and confidence than the shared .section-head h2
+   every other section uses. Scoped to #selected-work only, same
+   pattern as the eyebrow override above, so About/Services/Why Ajak
+   and every other section keep their existing heading size. */
+#selected-work .section-head { max-width: 42rem; }
+#selected-work .section-head h2 {
+  font-size: clamp(2.4rem, 1.6vw + 1.9rem, 3.6rem);
+  line-height: 1.04;
+  max-width: 15ch;
+}
+
 .section-head {
   max-width: 640px;
   margin-bottom: var(--space-7);
