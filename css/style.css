@@ -602,8 +602,18 @@ body.is-inner .eyebrow::before { background: var(--lime); }
 
   /* Atmosphere fades out vertically here too, so the lower hero
      (subheading, CTA, card) sits on the page's own ink background
-     instead of a dimmed photograph. */
+     instead of a dimmed photograph.
+
+     Header-clearance correction: the soft layer was still full-bleed
+     from the header down (top:0, inherited from the base rule), so
+     even after .sharp/.mid moved down at top:12%, the header sat
+     directly on the atmosphere layer's own gradient with no breathing
+     room of its own. top:6%/height:94% keeps the bottom edge exactly
+     anchored (6% + 94% = 100%) while opening a quiet band under the
+     header before the atmosphere begins -- mask gradient unchanged. */
   .hero__photo-pic--soft {
+    top: 6%;
+    height: 94%;
     -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 42%, transparent 62%);
     mask-image: linear-gradient(to bottom, #000 0%, #000 42%, transparent 62%);
   }
@@ -653,7 +663,15 @@ body.is-inner .eyebrow::before { background: var(--lime); }
     mask-image: linear-gradient(to right, transparent 0%, #000 22%);
   }
 
+  /* Same header-clearance correction as mobile above: the soft layer
+     was still full-bleed from top:0, so the header sat directly on
+     the atmosphere gradient. top:6%/height:94% anchors the bottom
+     edge exactly where it was (6% + 94% = 100%) and opens the same
+     quiet band under the header that .sharp/.mid already got at
+     top:16% -- mask gradient (horizontal, right-weighting) unchanged. */
   .hero__photo-pic--soft {
+    top: 6%;
+    height: 94%;
     -webkit-mask-image: linear-gradient(to right, transparent 0%, rgba(0, 0, 0, 0.4) 22%, #000 40%);
     mask-image: linear-gradient(to right, transparent 0%, rgba(0, 0, 0, 0.4) 22%, #000 40%);
   }
@@ -716,7 +734,15 @@ body.is-inner .eyebrow::before { background: var(--lime); }
     mask-image: linear-gradient(to right, transparent 0%, #000 25%);
   }
 
+  /* Same header-clearance correction as mobile/tablet above: the soft
+     layer was still full-bleed from top:0, so the header sat directly
+     on the atmosphere gradient. top:8%/height:92% anchors the bottom
+     edge exactly where it was (8% + 92% = 100%) and opens the same
+     quiet band under the header that .sharp/.mid already got at
+     top:19% -- mask gradient (horizontal, right-weighting) unchanged. */
   .hero__photo-pic--soft {
+    top: 8%;
+    height: 92%;
     -webkit-mask-image: linear-gradient(to right, transparent 0%, rgba(0, 0, 0, 0.4) 22%, #000 40%);
     mask-image: linear-gradient(to right, transparent 0%, rgba(0, 0, 0, 0.4) 22%, #000 40%);
   }
