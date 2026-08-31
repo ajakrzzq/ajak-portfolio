@@ -86,12 +86,12 @@
 
   if (giftFinder) {
     var products = [
-      { id: 'cardholder', name: 'The Slim Card Holder', price: 49, budget: 'under100', recipients: ['him', 'her', 'special'], occasions: ['thankyou', 'justbecause', 'birthday'], blurb: 'A quiet, useful gift that fits any bag or pocket — and never feels like an afterthought.' },
-      { id: 'keychain', name: 'The Keychain Fob', price: 59, budget: 'under100', recipients: ['him', 'her', 'special'], occasions: ['birthday', 'thankyou', 'justbecause', 'graduation'], blurb: 'Small enough to feel spontaneous, personal enough to feel considered.' },
-      { id: 'wallet', name: 'The Bifold Wallet', price: 119, budget: '100to200', recipients: ['him', 'special'], occasions: ['birthday', 'graduation', 'anniversary'], blurb: 'The everyday item he’ll actually retire the old one for.' },
-      { id: 'sling', name: 'The Everyday Sling', price: 189, budget: '100to200', recipients: ['her', 'special'], occasions: ['birthday', 'graduation', 'anniversary'], blurb: 'Considered enough for dinner, practical enough for every day after.' },
-      { id: 'giftset', name: 'The Wallet & Card Set', price: 239, budget: '200plus', recipients: ['special', 'him', 'her'], occasions: ['anniversary', 'graduation'], blurb: 'Two matched pieces, boxed together — for when one gift needs to feel like enough.' },
-      { id: 'weekender', name: 'The Weekender Companion', price: 259, budget: '200plus', recipients: ['him', 'her', 'special'], occasions: ['graduation', 'anniversary'], blurb: 'For the next trip, the next chapter — built to be used, not shelved.' }
+      { id: 'cardholder', name: 'The Card Case', price: 49, image: 'images/products/card-case.jpg', budget: 'under100', recipients: ['him', 'her', 'special'], occasions: ['thankyou', 'justbecause', 'birthday'], blurb: 'A quiet, useful gift that fits any bag or pocket — and never feels like an afterthought.' },
+      { id: 'keychain', name: 'Keychain Fob', price: 59, image: 'images/products/keychain.jpg', budget: 'under100', recipients: ['him', 'her', 'special'], occasions: ['birthday', 'thankyou', 'justbecause', 'graduation'], blurb: 'Small enough to feel spontaneous, personal enough to feel considered.' },
+      { id: 'wallet', name: 'The Bifold', price: 119, image: 'images/products/bifold.jpg', budget: '100to200', recipients: ['him', 'special'], occasions: ['birthday', 'graduation', 'anniversary'], blurb: 'The everyday item he’ll actually retire the old one for.' },
+      { id: 'sling', name: 'Everyday Sling', price: 189, image: 'images/products/everyday-sling.jpg', budget: '100to200', recipients: ['her', 'special'], occasions: ['birthday', 'graduation', 'anniversary'], blurb: 'Considered enough for dinner, practical enough for every day after.' },
+      { id: 'giftset', name: 'Wallet & Card Set', price: 239, image: 'images/products/gift-set.jpg', budget: '200plus', recipients: ['special', 'him', 'her'], occasions: ['anniversary', 'graduation'], blurb: 'Two matched pieces, boxed together — for when one gift needs to feel like enough.' },
+      { id: 'weekender', name: 'Weekender Companion', price: 259, image: 'images/products/weekender.jpg', budget: '200plus', recipients: ['him', 'her', 'special'], occasions: ['graduation', 'anniversary'], blurb: 'For the next trip, the next chapter — built to be used, not shelved.' }
     ];
 
     var occasionLabels = {
@@ -134,9 +134,10 @@
       resultsEl.innerHTML = matches.map(function (m) {
         return (
           '<article class="gf-result-card">' +
+          '<div class="gf-result-card__image"><img src="' + m.product.image + '" onerror="this.onerror=null;this.src=\'images/product-placeholder.svg\';" alt="' + m.product.name + '" width="400" height="300" loading="lazy"></div>' +
           '<span class="gf-result-card__chip">Great for ' + occasionText + '</span>' +
           '<h4>' + m.product.name + '</h4>' +
-          '<strong>RM' + m.product.price + '</strong>' +
+          '<p class="gf-result-card__price"><span class="product-card__price-label">Concept price</span>RM' + m.product.price + '</p>' +
           '<p>' + m.product.blurb + '</p>' +
           '<a class="btn btn--outline btn--sm" href="#signature">View in Signature Pieces</a>' +
           '</article>'
@@ -175,6 +176,8 @@
     var engraveOutputs = personalise.querySelectorAll('[data-engrave-output]');
     var targetBtns = personalise.querySelectorAll('[data-engrave-target]');
     var stages = personalise.querySelectorAll('[data-pz-stage]');
+    var buyName = personalise.querySelector('[data-pz-buy-name]');
+    var buyPrice = personalise.querySelector('[data-pz-buy-price]');
 
     function updateEngraving() {
       var value = (engraveInput.value || 'AJK').toUpperCase().slice(0, 4);
@@ -192,6 +195,8 @@
         stages.forEach(function (stage) {
           stage.hidden = stage.getAttribute('data-pz-stage') !== target;
         });
+        if (buyName) buyName.textContent = btn.getAttribute('data-pz-name');
+        if (buyPrice) buyPrice.textContent = btn.getAttribute('data-pz-price');
       });
     });
   }
@@ -275,4 +280,22 @@
       });
     }
   }
+
+  /* ------------------------------------------------------------------ *
+   * Product card colour swatches — genuinely change the selected
+   * colour state (and its visible label), not decorative-only dots.
+   * ------------------------------------------------------------------ */
+  document.querySelectorAll('.product-card').forEach(function (card) {
+    var swatches = card.querySelectorAll('.swatch');
+    var label = card.querySelector('[data-swatch-label]');
+    swatches.forEach(function (swatch) {
+      swatch.addEventListener('click', function () {
+        swatches.forEach(function (s) {
+          s.classList.toggle('is-active', s === swatch);
+          s.setAttribute('aria-pressed', String(s === swatch));
+        });
+        if (label) label.textContent = 'Colour: ' + swatch.getAttribute('data-swatch-color');
+      });
+    });
+  });
 })();

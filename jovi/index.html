@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>JOVI — Give Something That Stays</title>
-  <meta name="description" content="JOVI is a leather goods gifting studio — considered wallets, sling bags and keychains, personalised and priced from RM49. Good design, good materials, good price.">
+  <meta name="description" content="An independent concept redesign for JOVI Leather — considered wallets, sling bags and keychains, personalised and priced from RM49 (concept pricing). Not affiliated with JOVI Leather.">
 
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
 
@@ -17,8 +17,8 @@
   <a class="skip-link" href="#main">Skip to content</a>
 
   <p class="concept-banner">
-    <span class="banner-text-full"><strong>Concept Website</strong> &mdash; Demo by <a href="../work.html#jovi">ajak.Web</a>, not a real operating store.</span>
-    <span class="banner-text-short"><strong>Concept Website</strong> &mdash; Demo by <a href="../work.html#jovi">ajak.Web</a></span>
+    <span class="banner-text-full"><strong>Concept Website</strong> &mdash; Independent redesign by <a href="../work.html#jovi">ajak.Web</a>, not affiliated with JOVI Leather.</span>
+    <span class="banner-text-short"><strong>Concept Website</strong> &mdash; by <a href="../work.html#jovi">ajak.Web</a>, not affiliated with JOVI Leather.</span>
   </p>
 
   <header class="site-header" data-site-header>
@@ -68,28 +68,34 @@
     <section class="hero" aria-label="JOVI — Give something that stays">
       <div class="hero__field" aria-hidden="true">
         <svg class="hero__ribbon" viewBox="0 0 600 600" fill="none">
-          <path d="M60 420 C 180 280, 260 520, 360 380 S 560 220, 540 80" stroke="#F7F1E4" stroke-width="3" stroke-linecap="round" opacity="0.55"/>
-          <circle cx="540" cy="80" r="7" fill="#F7F1E4" opacity="0.55"/>
-        </svg>
-        <svg class="hero__box" viewBox="0 0 220 220" fill="none">
-          <rect x="20" y="70" width="180" height="130" rx="4" fill="#F0B23E"/>
-          <rect x="20" y="70" width="180" height="34" rx="4" fill="#E39A20"/>
-          <rect x="98" y="20" width="24" height="180" fill="#8C232E"/>
-          <rect x="20" y="94" width="180" height="24" fill="#8C232E"/>
-          <path d="M98 20 C 60 20, 60 60, 98 60 C 60 60, 60 20, 98 20 Z" fill="#8C232E"/>
-          <path d="M122 20 C 160 20, 160 60, 122 60 C 160 60, 160 20, 122 20 Z" fill="#8C232E"/>
+          <path d="M60 420 C 180 280, 260 520, 360 380 S 560 220, 540 80" stroke="#F7F1E4" stroke-width="3" stroke-linecap="round" opacity="0.4"/>
+          <circle cx="540" cy="80" r="7" fill="#F7F1E4" opacity="0.4"/>
         </svg>
       </div>
 
       <div class="container hero__inner">
-        <p class="hero__eyebrow reveal">A Leather Gifting Studio</p>
-        <h1 class="reveal">Give something<br>that <em>stays.</em></h1>
-        <p class="hero__sub reveal">Wallets, sling bags and keychains made from considered leather &mdash; personalised in minutes, priced like they were never meant to be a splurge.</p>
-        <div class="hero__actions reveal">
-          <a class="btn btn--primary" href="#gift-finder">Start the Gift Finder</a>
-          <a class="btn btn--ghost-light" href="#signature">See Signature Pieces</a>
+        <div class="hero__copy">
+          <p class="hero__eyebrow reveal">A Leather Gifting Studio</p>
+          <h1 class="reveal">Give something<br>that <em>stays.</em></h1>
+          <p class="hero__sub reveal">Wallets, sling bags and keychains made from considered leather &mdash; personalised in minutes, priced like they were never meant to be a splurge.</p>
+          <div class="hero__actions reveal">
+            <a class="btn btn--primary" href="#gift-finder">Start the Gift Finder</a>
+            <a class="btn btn--ghost-light" href="#signature">See Signature Pieces</a>
+          </div>
+          <p class="hero__price-signal reveal"><span>From RM49*</span> &middot; personalisation included</p>
+          <p class="hero__price-note reveal">*Concept pricing, for illustration only.</p>
         </div>
-        <p class="hero__price-signal reveal"><span>From RM49</span> &middot; personalisation included</p>
+
+        <div class="hero__product reveal">
+          <div class="hero__product-frame">
+            <img src="images/products/everyday-sling.jpg" data-photo-slot onerror="this.onerror=null;this.src='images/product-placeholder.svg';" alt="Everyday Sling" width="400" height="300" loading="eager">
+          </div>
+          <div class="hero__product-meta">
+            <p class="hero__product-name">Everyday Sling</p>
+            <p class="hero__product-price">Concept price &mdash; RM189</p>
+            <a class="hero__product-link" href="#personalise">Personalise <span aria-hidden="true">&rarr;</span></a>
+          </div>
+        </div>
       </div>
 
       <div class="hero__scroll-cue" aria-hidden="true">
@@ -100,9 +106,9 @@
 
     <!-- ========================== BRAND STATEMENT ========================== -->
     <section class="statement" aria-labelledby="statement-heading">
-      <div class="container">
-        <p class="eyebrow reveal">The Idea</p>
-        <h2 id="statement-heading" class="reveal">Beautiful things don&rsquo;t have to be unaffordable. <em>Neither does giving them.</em></h2>
+      <div class="container statement__inner">
+        <p class="eyebrow reveal statement__eyebrow">The Idea</p>
+        <h2 id="statement-heading" class="reveal statement__headline">Beautiful things don&rsquo;t have to be unaffordable. <em>Neither does giving them.</em></h2>
         <p class="statement__body reveal">JOVI started with a small complaint: everything worth gifting was either mass-produced or priced for people who don&rsquo;t need to check the receipt. We wanted the middle &mdash; leather that feels considered, a name pressed into it that makes it theirs, at a price that lets you actually send it.</p>
       </div>
     </section>
@@ -197,120 +203,129 @@
         <div class="section-head reveal">
           <p class="eyebrow">The Line-Up</p>
           <h2 id="rail-heading">Signature Pieces</h2>
+          <p class="section-head__sub">Concept pricing shown for illustration only &mdash; not JOVI Leather&rsquo;s actual prices.</p>
         </div>
 
         <div class="rail__grid" data-reveal-group>
 
-          <article class="product-card product-card--lg reveal" data-product="wallet">
+          <article class="product-card product-card--lg product-card--hero reveal" data-product="wallet">
             <div class="product-card__frame product-card__frame--maroon">
-              <svg viewBox="0 0 200 140" aria-hidden="true"><rect x="14" y="20" width="172" height="100" rx="10" fill="none" stroke="#F7F1E4" stroke-width="2.5"/><path d="M100 20 V120" stroke="#F7F1E4" stroke-width="2"/><rect x="30" y="40" width="55" height="38" rx="4" fill="none" stroke="#F7F1E4" stroke-width="1.6"/><rect x="115" y="40" width="55" height="38" rx="4" fill="none" stroke="#F7F1E4" stroke-width="1.6"/></svg>
+              <img src="images/products/bifold.jpg" data-photo-slot onerror="this.onerror=null;this.src='images/product-placeholder.svg';" alt="The Bifold" width="400" height="300" loading="lazy">
+              <div class="product-card__overlay">
+                <p class="product-card__name">The Bifold</p>
+                <p class="product-card__meta">Espresso &amp; Maroon &middot; Full-grain leather</p>
+              </div>
             </div>
             <div class="product-card__body">
-              <p class="product-card__name">The Bifold Wallet</p>
-              <p class="product-card__meta">Espresso &amp; Maroon &middot; Full-grain leather</p>
               <div class="product-card__row">
-                <p class="product-card__price">RM119</p>
-                <span class="swatches" aria-label="Available colours">
-                  <span class="swatch" style="--sw:#3A2A22" title="Espresso"></span>
-                  <span class="swatch" style="--sw:#8C232E" title="Maroon"></span>
+                <p class="product-card__price"><span class="product-card__price-label">Concept price</span>RM119</p>
+                <span class="swatches" role="group" aria-label="Choose a colour">
+                  <button type="button" class="swatch is-active" style="--sw:#3A2A22" data-swatch-color="Espresso" aria-pressed="true" aria-label="Espresso"></button>
+                  <button type="button" class="swatch" style="--sw:#8C232E" data-swatch-color="Maroon" aria-pressed="false" aria-label="Maroon"></button>
                 </span>
               </div>
+              <p class="product-card__color-label" data-swatch-label>Colour: Espresso</p>
               <p class="product-card__stock">In stock</p>
-              <button type="button" class="btn btn--outline btn--sm" aria-disabled="true" title="Concept store — not a working cart">Add to Bag</button>
+              <button type="button" class="btn btn--outline btn--sm" aria-disabled="true" title="Concept demo — checkout not implemented">Add to Bag</button>
             </div>
           </article>
 
           <article class="product-card reveal" data-product="sling">
             <div class="product-card__frame product-card__frame--pistachio">
-              <svg viewBox="0 0 160 160" aria-hidden="true"><path d="M40 60 Q40 30 80 30 Q120 30 120 60 V120 Q120 132 108 132 H52 Q40 132 40 120 Z" fill="none" stroke="#241712" stroke-width="2.5"/><path d="M80 30 V10" stroke="#241712" stroke-width="2.5"/><circle cx="80" cy="8" r="4" fill="#241712"/></svg>
+              <img src="images/products/everyday-sling.jpg" data-photo-slot onerror="this.onerror=null;this.src='images/product-placeholder.svg';" alt="Everyday Sling" width="400" height="300" loading="lazy">
             </div>
             <div class="product-card__body">
-              <p class="product-card__name">The Everyday Sling</p>
+              <p class="product-card__name">Everyday Sling</p>
               <p class="product-card__meta">Espresso leather &middot; Brass hardware</p>
               <div class="product-card__row">
-                <p class="product-card__price">RM189</p>
-                <span class="swatches" aria-label="Available colours">
-                  <span class="swatch" style="--sw:#3A2A22" title="Espresso"></span>
-                  <span class="swatch" style="--sw:#A7B98C" title="Pistachio trim"></span>
+                <p class="product-card__price"><span class="product-card__price-label">Concept price</span>RM189</p>
+                <span class="swatches" role="group" aria-label="Choose a colour">
+                  <button type="button" class="swatch is-active" style="--sw:#3A2A22" data-swatch-color="Espresso" aria-pressed="true" aria-label="Espresso"></button>
+                  <button type="button" class="swatch" style="--sw:#A7B98C" data-swatch-color="Pistachio trim" aria-pressed="false" aria-label="Pistachio trim"></button>
                 </span>
               </div>
+              <p class="product-card__color-label" data-swatch-label>Colour: Espresso</p>
               <p class="product-card__stock">In stock</p>
-              <button type="button" class="btn btn--outline btn--sm" aria-disabled="true" title="Concept store — not a working cart">Add to Bag</button>
+              <button type="button" class="btn btn--outline btn--sm" aria-disabled="true" title="Concept demo — checkout not implemented">Add to Bag</button>
             </div>
           </article>
 
           <article class="product-card reveal" data-product="cardholder">
             <div class="product-card__frame product-card__frame--butter">
-              <svg viewBox="0 0 160 120" aria-hidden="true"><rect x="24" y="30" width="112" height="70" rx="8" fill="none" stroke="#241712" stroke-width="2.5"/><rect x="24" y="30" width="112" height="18" fill="none" stroke="#241712" stroke-width="1.6"/></svg>
+              <img src="images/products/card-case.jpg" data-photo-slot onerror="this.onerror=null;this.src='images/product-placeholder.svg';" alt="The Card Case" width="400" height="300" loading="lazy">
             </div>
             <div class="product-card__body">
-              <p class="product-card__name">The Slim Card Holder</p>
+              <p class="product-card__name">The Card Case</p>
               <p class="product-card__meta">Maroon leather &middot; Holds 6 cards</p>
               <div class="product-card__row">
-                <p class="product-card__price">RM49</p>
-                <span class="swatches" aria-label="Available colours">
-                  <span class="swatch" style="--sw:#8C232E" title="Maroon"></span>
-                  <span class="swatch" style="--sw:#3A2A22" title="Espresso"></span>
+                <p class="product-card__price"><span class="product-card__price-label">Concept price</span>RM49</p>
+                <span class="swatches" role="group" aria-label="Choose a colour">
+                  <button type="button" class="swatch is-active" style="--sw:#8C232E" data-swatch-color="Maroon" aria-pressed="true" aria-label="Maroon"></button>
+                  <button type="button" class="swatch" style="--sw:#3A2A22" data-swatch-color="Espresso" aria-pressed="false" aria-label="Espresso"></button>
                 </span>
               </div>
+              <p class="product-card__color-label" data-swatch-label>Colour: Maroon</p>
               <p class="product-card__stock">In stock</p>
-              <button type="button" class="btn btn--outline btn--sm" aria-disabled="true" title="Concept store — not a working cart">Add to Bag</button>
+              <button type="button" class="btn btn--outline btn--sm" aria-disabled="true" title="Concept demo — checkout not implemented">Add to Bag</button>
             </div>
           </article>
 
           <article class="product-card reveal" data-product="keychain">
             <div class="product-card__frame product-card__frame--powder">
-              <svg viewBox="0 0 120 140" aria-hidden="true"><circle cx="60" cy="24" r="14" fill="none" stroke="#241712" stroke-width="2.5"/><rect x="38" y="46" width="44" height="70" rx="10" fill="none" stroke="#241712" stroke-width="2.5"/></svg>
+              <img src="images/products/keychain.jpg" data-photo-slot onerror="this.onerror=null;this.src='images/product-placeholder.svg';" alt="Keychain Fob" width="400" height="300" loading="lazy">
             </div>
             <div class="product-card__body">
-              <p class="product-card__name">The Keychain Fob</p>
+              <p class="product-card__name">Keychain Fob</p>
               <p class="product-card__meta">Terracotta leather &middot; Brass ring</p>
               <div class="product-card__row">
-                <p class="product-card__price">RM59</p>
-                <span class="swatches" aria-label="Available colours">
-                  <span class="swatch" style="--sw:#C1663B" title="Terracotta"></span>
-                  <span class="swatch" style="--sw:#8C232E" title="Maroon"></span>
+                <p class="product-card__price"><span class="product-card__price-label">Concept price</span>RM59</p>
+                <span class="swatches" role="group" aria-label="Choose a colour">
+                  <button type="button" class="swatch is-active" style="--sw:#C1663B" data-swatch-color="Terracotta" aria-pressed="true" aria-label="Terracotta"></button>
+                  <button type="button" class="swatch" style="--sw:#8C232E" data-swatch-color="Maroon" aria-pressed="false" aria-label="Maroon"></button>
                 </span>
               </div>
+              <p class="product-card__color-label" data-swatch-label>Colour: Terracotta</p>
               <p class="product-card__stock">In stock</p>
-              <button type="button" class="btn btn--outline btn--sm" aria-disabled="true" title="Concept store — not a working cart">Add to Bag</button>
+              <button type="button" class="btn btn--outline btn--sm" aria-disabled="true" title="Concept demo — checkout not implemented">Add to Bag</button>
             </div>
           </article>
 
-          <article class="product-card product-card--wide reveal" data-product="giftset">
+          <article class="product-card product-card--wide product-card--split reveal" data-product="giftset">
             <div class="product-card__frame product-card__frame--terracotta">
-              <svg viewBox="0 0 220 120" aria-hidden="true"><rect x="20" y="30" width="90" height="64" rx="8" fill="none" stroke="#F7F1E4" stroke-width="2.5"/><rect x="120" y="20" width="80" height="80" rx="8" fill="none" stroke="#F7F1E4" stroke-width="2.5"/><path d="M120 60 H90" stroke="#F7F1E4" stroke-width="2" stroke-dasharray="4 5"/></svg>
+              <img src="images/products/gift-set.jpg" data-photo-slot onerror="this.onerror=null;this.src='images/product-placeholder.svg';" alt="Wallet &amp; Card Set" width="400" height="300" loading="lazy">
             </div>
             <div class="product-card__body">
-              <p class="product-card__name">The Wallet &amp; Card Set</p>
+              <p class="product-card__name">Wallet &amp; Card Set</p>
               <p class="product-card__meta">Matched pair &middot; Gift-boxed together</p>
               <div class="product-card__row">
-                <p class="product-card__price">RM239 <span class="product-card__was">RM168 saved</span></p>
-                <span class="swatches" aria-label="Available colours">
-                  <span class="swatch" style="--sw:#3A2A22" title="Espresso"></span>
-                  <span class="swatch" style="--sw:#8C232E" title="Maroon"></span>
+                <p class="product-card__price"><span class="product-card__price-label">Concept price</span>RM239 <span class="product-card__was">RM168 saved</span></p>
+                <span class="swatches" role="group" aria-label="Choose a colour">
+                  <button type="button" class="swatch is-active" style="--sw:#3A2A22" data-swatch-color="Espresso" aria-pressed="true" aria-label="Espresso"></button>
+                  <button type="button" class="swatch" style="--sw:#8C232E" data-swatch-color="Maroon" aria-pressed="false" aria-label="Maroon"></button>
                 </span>
               </div>
+              <p class="product-card__color-label" data-swatch-label>Colour: Espresso</p>
               <p class="product-card__stock">In stock</p>
-              <button type="button" class="btn btn--outline btn--sm" aria-disabled="true" title="Concept store — not a working cart">Add to Bag</button>
+              <button type="button" class="btn btn--outline btn--sm" aria-disabled="true" title="Concept demo — checkout not implemented">Add to Bag</button>
             </div>
           </article>
 
           <article class="product-card reveal" data-product="weekender">
             <div class="product-card__frame product-card__frame--maroon">
-              <svg viewBox="0 0 160 130" aria-hidden="true"><rect x="20" y="40" width="120" height="72" rx="14" fill="none" stroke="#F7F1E4" stroke-width="2.5"/><path d="M55 40 V26 Q55 16 80 16 Q105 16 105 26 V40" fill="none" stroke="#F7F1E4" stroke-width="2.5"/></svg>
+              <img src="images/products/weekender.jpg" data-photo-slot onerror="this.onerror=null;this.src='images/product-placeholder.svg';" alt="Weekender Companion" width="400" height="300" loading="lazy">
             </div>
             <div class="product-card__body">
-              <p class="product-card__name">The Weekender Companion</p>
+              <p class="product-card__name">Weekender Companion</p>
               <p class="product-card__meta">Espresso leather &middot; Detachable strap</p>
               <div class="product-card__row">
-                <p class="product-card__price">RM259</p>
-                <span class="swatches" aria-label="Available colours">
-                  <span class="swatch" style="--sw:#3A2A22" title="Espresso"></span>
+                <p class="product-card__price"><span class="product-card__price-label">Concept price</span>RM259</p>
+                <span class="swatches" role="group" aria-label="Choose a colour">
+                  <button type="button" class="swatch is-active" style="--sw:#3A2A22" data-swatch-color="Espresso" aria-pressed="true" aria-label="Espresso"></button>
                 </span>
               </div>
+              <p class="product-card__color-label" data-swatch-label>Colour: Espresso</p>
               <p class="product-card__stock">Low stock &mdash; 4 left</p>
-              <button type="button" class="btn btn--outline btn--sm" aria-disabled="true" title="Concept store — not a working cart">Add to Bag</button>
+              <button type="button" class="btn btn--outline btn--sm" aria-disabled="true" title="Concept demo — checkout not implemented">Add to Bag</button>
             </div>
           </article>
 
@@ -321,20 +336,17 @@
     <!-- ============================ MEN'S CHAPTER ============================ -->
     <section class="chapter chapter--men" id="men" aria-labelledby="men-heading">
       <div class="container chapter__inner">
-        <div class="chapter__figure reveal" aria-hidden="true">
-          <svg viewBox="0 0 260 320" class="chapter__silhouette">
-            <path d="M130 30 C 160 30 175 55 175 82 C 175 105 165 115 155 122 C 190 135 215 165 220 230 L215 300 H45 L40 230 C 45 165 70 135 105 122 C 95 115 85 105 85 82 C 85 55 100 30 130 30 Z" fill="#8C4526" opacity="0.55"/>
-          </svg>
-          <svg class="chapter__product" viewBox="0 0 160 130" aria-hidden="true"><rect x="20" y="40" width="120" height="72" rx="14" fill="none" stroke="#241712" stroke-width="3"/><path d="M55 40 V26 Q55 16 80 16 Q105 16 105 26 V40" fill="none" stroke="#241712" stroke-width="3"/></svg>
+        <div class="chapter__figure chapter__figure--men reveal" aria-hidden="true">
+          <img class="chapter__photo" src="images/lifestyle/men-edit.jpg" data-photo-slot-hide onerror="this.hidden=true;" alt="">
         </div>
         <div class="chapter__text">
           <p class="eyebrow reveal">Chapter One</p>
           <h2 id="men-heading" class="reveal">For Him</h2>
           <p class="chapter__body reveal">Pieces built for the pockets he actually uses &mdash; slim, sturdy, and quietly good-looking. Nothing that needs explaining, everything that ages well.</p>
           <ul class="chapter__picks reveal" data-reveal-group>
-            <li><span>The Bifold Wallet</span><span>RM119</span></li>
-            <li><span>The Weekender Companion</span><span>RM259</span></li>
-            <li><span>The Keychain Fob</span><span>RM59</span></li>
+            <li><span>The Bifold</span><span>RM119</span></li>
+            <li><span>Weekender Companion</span><span>RM259</span></li>
+            <li><span>Keychain Fob</span><span>RM59</span></li>
           </ul>
           <a class="link-underline reveal" href="#signature">Shop the edit &rarr;</a>
         </div>
@@ -349,17 +361,14 @@
           <h2 id="women-heading" class="reveal">For Her</h2>
           <p class="chapter__body reveal">Considered shapes, colour that isn&rsquo;t an afterthought, and just enough room for the essentials &mdash; built to move from the studio to dinner without a second bag.</p>
           <ul class="chapter__picks reveal" data-reveal-group>
-            <li><span>The Everyday Sling</span><span>RM189</span></li>
-            <li><span>The Slim Card Holder</span><span>RM49</span></li>
-            <li><span>The Wallet &amp; Card Set</span><span>RM239</span></li>
+            <li><span>Everyday Sling</span><span>RM189</span></li>
+            <li><span>The Card Case</span><span>RM49</span></li>
+            <li><span>Wallet &amp; Card Set</span><span>RM239</span></li>
           </ul>
           <a class="link-underline reveal" href="#signature">Shop the edit &rarr;</a>
         </div>
-        <div class="chapter__figure reveal" aria-hidden="true">
-          <svg viewBox="0 0 260 320" class="chapter__silhouette">
-            <path d="M130 26 C 158 26 172 50 172 76 C 172 98 163 108 152 115 C 148 118 148 124 156 128 C 200 145 224 180 226 240 L232 300 H28 L34 240 C 36 180 60 145 104 128 C 112 124 112 118 108 115 C 97 108 88 98 88 76 C 88 50 102 26 130 26 Z" fill="#5C7444" opacity="0.5"/>
-          </svg>
-          <svg class="chapter__product" viewBox="0 0 160 160" aria-hidden="true"><path d="M40 60 Q40 30 80 30 Q120 30 120 60 V120 Q120 132 108 132 H52 Q40 132 40 120 Z" fill="none" stroke="#241712" stroke-width="3"/><path d="M80 30 V10" stroke="#241712" stroke-width="3"/></svg>
+        <div class="chapter__figure chapter__figure--women reveal" aria-hidden="true">
+          <img class="chapter__photo" src="images/lifestyle/women-edit.jpg" data-photo-slot-hide onerror="this.hidden=true;" alt="">
         </div>
       </div>
     </section>
@@ -377,27 +386,39 @@
             <input type="text" id="engrave-input" class="personalise__input" maxlength="4" placeholder="A J K" autocomplete="off" data-engrave-input>
 
             <div class="personalise__targets" role="group" aria-label="Choose a product to personalise">
-              <button type="button" class="pz-target is-active" data-engrave-target="cardholder">Card Holder</button>
-              <button type="button" class="pz-target" data-engrave-target="keychain">Keychain</button>
-              <button type="button" class="pz-target" data-engrave-target="wallet">Wallet</button>
+              <button type="button" class="pz-target is-active" data-engrave-target="cardholder" data-pz-name="The Card Case" data-pz-price="RM49">Card Case</button>
+              <button type="button" class="pz-target" data-engrave-target="keychain" data-pz-name="Keychain Fob" data-pz-price="RM59">Keychain</button>
+              <button type="button" class="pz-target" data-engrave-target="wallet" data-pz-name="The Bifold" data-pz-price="RM119">Wallet</button>
             </div>
           </div>
         </div>
 
         <div class="personalise__preview reveal">
           <div class="pz-stage" data-pz-stage="cardholder">
-            <svg viewBox="0 0 300 200" class="pz-illustration"><rect x="20" y="30" width="260" height="140" rx="14" fill="#8C232E"/><rect x="20" y="30" width="260" height="30" fill="#6E1B24"/></svg>
+            <div class="pz-image">
+              <img src="images/products/card-case.jpg" data-photo-slot onerror="this.onerror=null;this.src='images/product-placeholder.svg';" alt="The Card Case" width="400" height="300" loading="lazy">
+            </div>
             <p class="pz-engrave" data-engrave-output>AJK</p>
           </div>
           <div class="pz-stage" data-pz-stage="keychain" hidden>
-            <svg viewBox="0 0 220 260" class="pz-illustration"><circle cx="110" cy="40" r="24" fill="none" stroke="#8C232E" stroke-width="8"/><rect x="60" y="70" width="100" height="150" rx="20" fill="#8C232E"/></svg>
+            <div class="pz-image">
+              <img src="images/products/keychain.jpg" data-photo-slot onerror="this.onerror=null;this.src='images/product-placeholder.svg';" alt="Keychain Fob" width="400" height="300" loading="lazy">
+            </div>
             <p class="pz-engrave pz-engrave--fob" data-engrave-output>AJK</p>
           </div>
           <div class="pz-stage" data-pz-stage="wallet" hidden>
-            <svg viewBox="0 0 320 220" class="pz-illustration"><rect x="20" y="20" width="280" height="180" rx="16" fill="#3A2A22"/><rect x="20" y="108" width="280" height="4" fill="#251A13"/></svg>
+            <div class="pz-image">
+              <img src="images/products/bifold.jpg" data-photo-slot onerror="this.onerror=null;this.src='images/product-placeholder.svg';" alt="The Bifold" width="400" height="300" loading="lazy">
+            </div>
             <p class="pz-engrave" data-engrave-output>AJK</p>
           </div>
           <p class="pz-caption">Live preview &middot; actual emboss depth may vary slightly by leather grain</p>
+
+          <div class="pz-buy">
+            <p class="pz-buy__name" data-pz-buy-name>The Card Case</p>
+            <p class="pz-buy__price"><span class="product-card__price-label">Concept price</span><span data-pz-buy-price>RM49</span></p>
+            <button type="button" class="btn btn--primary btn--sm" aria-disabled="true" title="Concept demo — checkout not implemented">Add to Bag</button>
+          </div>
         </div>
       </div>
     </section>
@@ -407,7 +428,7 @@
       <div class="container">
         <div class="section-head reveal">
           <p class="eyebrow eyebrow--light">Under the Stitching</p>
-          <h2 id="storytelling-heading">Why the Bifold Wallet is worth RM119</h2>
+          <h2 id="storytelling-heading">Why The Bifold is worth its concept price of RM119</h2>
         </div>
 
         <div class="storytelling__panel reveal" data-storytelling>
@@ -422,7 +443,9 @@
 
           <div class="storytelling__panels">
             <div class="st-panel is-active" role="tabpanel" data-st-panel="material">
-              <svg viewBox="0 0 200 140" class="st-vignette" aria-hidden="true"><rect width="200" height="140" fill="#8C232E"/><path d="M0 20 Q50 40 100 20 T200 20" stroke="#6E1B24" stroke-width="6" fill="none"/><path d="M0 60 Q50 80 100 60 T200 60" stroke="#6E1B24" stroke-width="6" fill="none"/><path d="M0 100 Q50 120 100 100 T200 100" stroke="#6E1B24" stroke-width="6" fill="none"/></svg>
+              <div class="st-vignette st-vignette--material" aria-hidden="true">
+                <img src="images/materials/leather-grain.jpg" data-photo-slot-hide onerror="this.hidden=true;" alt="">
+              </div>
               <p><strong>Full-grain buffalo leather.</strong> Sourced whole-hide, not split &mdash; so the grain you see is the grain that wears in, not a printed layer that peels.</p>
             </div>
             <div class="st-panel" role="tabpanel" data-st-panel="construction" hidden>
@@ -454,24 +477,23 @@
     <section class="bag-demo" aria-labelledby="bag-demo-heading" data-bag-demo>
       <div class="container">
         <div class="section-head reveal">
-          <p class="eyebrow">The Everyday Sling, Tested</p>
+          <p class="eyebrow">Everyday Sling, Tested</p>
           <h2 id="bag-demo-heading">What&rsquo;s actually in the bag?</h2>
           <p class="section-head__sub">Tap each item to pack it in.</p>
         </div>
 
         <div class="bag-demo__panel reveal">
           <div class="bag-demo__stage">
-            <svg viewBox="0 0 260 260" class="bag-demo__outline" aria-hidden="true">
-              <path d="M60 90 Q60 40 130 40 Q200 40 200 90 V210 Q200 226 184 226 H76 Q60 226 60 210 Z" fill="none" stroke="#3A2A22" stroke-width="3"/>
-              <path d="M130 40 V10" stroke="#3A2A22" stroke-width="3"/>
-            </svg>
+            <div class="bag-demo__base">
+              <img src="images/products/everyday-sling.jpg" data-photo-slot onerror="this.onerror=null;this.src='images/product-placeholder.svg';" alt="Everyday Sling" width="400" height="300" loading="lazy">
+            </div>
             <div class="bag-demo__items" data-bag-items>
-              <span class="bag-item" data-bag-item="phone" style="--x:44%; --y:38%;">&#128241;</span>
-              <span class="bag-item" data-bag-item="wallet" style="--x:60%; --y:55%;">&#128365;</span>
-              <span class="bag-item" data-bag-item="keys" style="--x:36%; --y:60%;">&#128273;</span>
-              <span class="bag-item" data-bag-item="cards" style="--x:52%; --y:70%;">&#127183;</span>
-              <span class="bag-item" data-bag-item="earbuds" style="--x:66%; --y:36%;">&#127911;</span>
-              <span class="bag-item" data-bag-item="lipbalm" style="--x:40%; --y:75%;">&#128132;</span>
+              <span class="bag-item" data-bag-item="phone" style="--x:12%; --y:18%;">&#128241;</span>
+              <span class="bag-item" data-bag-item="wallet" style="--x:88%; --y:18%;">&#128365;</span>
+              <span class="bag-item" data-bag-item="keys" style="--x:10%; --y:85%;">&#128273;</span>
+              <span class="bag-item" data-bag-item="cards" style="--x:90%; --y:85%;">&#127183;</span>
+              <span class="bag-item" data-bag-item="earbuds" style="--x:50%; --y:14%;">&#127911;</span>
+              <span class="bag-item" data-bag-item="lipbalm" style="--x:50%; --y:82%;">&#128132;</span>
             </div>
             <p class="bag-demo__count"><span data-bag-count>0</span> / 6 items packed</p>
           </div>
@@ -547,32 +569,28 @@
     <!-- ============================== BRAND STORY ============================== -->
     <section class="story" id="story" aria-labelledby="story-heading">
       <div class="container story__inner">
-        <div class="story__text">
-          <p class="eyebrow eyebrow--light">Our Story</p>
-          <h2 id="story-heading">Made in Malaysia, priced like it.</h2>
-          <p class="story__body">JOVI began as a side table covered in offcuts &mdash; a cardholder cut for a friend&rsquo;s birthday because the shops nearby only sold logos, not leather. Word travelled faster than the workbench could keep up, so we built a proper one. The rule hasn&rsquo;t changed since: good hide, honest stitching, and a price a friend could actually afford to send another friend.</p>
-        </div>
-        <div class="story__figure" aria-hidden="true">
-          <svg viewBox="0 0 220 220"><circle cx="110" cy="110" r="100" fill="none" stroke="#F0B23E" stroke-width="3" stroke-dasharray="2 10"/><path d="M70 130 L100 100 L120 120 L150 80" stroke="#F0B23E" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </div>
+        <p class="eyebrow eyebrow--light">Our Story</p>
+        <h2 id="story-heading" class="story__quote">&ldquo;The shops nearby only sold logos. Not leather.&rdquo;</h2>
+        <p class="story__body">JOVI began as a side table covered in offcuts &mdash; a cardholder cut for a friend&rsquo;s birthday. Word travelled faster than the workbench could keep up, so we built a proper one. The rule hasn&rsquo;t changed since: good hide, honest stitching, and a price a friend could actually afford to send another friend.</p>
+        <p class="story__signoff">Made in Malaysia &mdash; still a small workbench, not a factory.</p>
       </div>
     </section>
 
     <!-- ================================= STORE ================================= -->
     <section class="store" id="visit" aria-labelledby="store-heading">
-      <div class="container store__inner">
-        <div class="store__text reveal">
+      <div class="container store__band reveal">
+        <div class="store__mark" aria-hidden="true">
+          <svg viewBox="0 0 40 80"><line x1="20" y1="0" x2="20" y2="56" stroke="#F0B23E" stroke-width="2"/><circle cx="20" cy="64" r="10" fill="none" stroke="#F0B23E" stroke-width="2"/><circle cx="20" cy="64" r="3" fill="#F0B23E"/></svg>
+        </div>
+        <div class="store__intro">
           <p class="eyebrow">Visit</p>
           <h2 id="store-heading">A small studio, not a showroom.</h2>
           <p>We keep a working corner where pieces get cut, stitched and personalised &mdash; drop by if you&rsquo;d rather see the leather before it&rsquo;s wrapped.</p>
-          <dl class="store__details">
-            <div><dt>Address</dt><dd>Concept Studio, Petaling Jaya, Selangor</dd></div>
-            <div><dt>Hours</dt><dd>Tue&ndash;Sun, 11am&ndash;7pm</dd></div>
-          </dl>
         </div>
-        <div class="store__figure reveal" aria-hidden="true">
-          <svg viewBox="0 0 240 200"><rect x="20" y="70" width="200" height="110" fill="none" stroke="#F7F1E4" stroke-width="3"/><path d="M20 70 L120 20 L220 70" fill="none" stroke="#F7F1E4" stroke-width="3"/><rect x="100" y="120" width="40" height="60" fill="none" stroke="#F7F1E4" stroke-width="3"/><circle cx="110" cy="110" r="16" fill="none" stroke="#F0B23E" stroke-width="3"/><text x="110" y="116" text-anchor="middle" font-family="Georgia, serif" font-style="italic" font-size="16" fill="#F0B23E">J</text></svg>
-        </div>
+        <dl class="store__details">
+          <div><dt>Address</dt><dd>Concept Studio, Petaling Jaya, Selangor</dd></div>
+          <div><dt>Hours</dt><dd>Tue&ndash;Sun, 11am&ndash;7pm</dd></div>
+        </dl>
       </div>
     </section>
 
@@ -603,8 +621,8 @@
         <a href="#visit">Visit</a>
       </nav>
       <div class="site-footer__meta">
-        <p>Concept Website &mdash; a design &amp; development demo by <a href="../work.html#jovi">ajak.Web</a>.</p>
-        <p>&copy; <span data-year></span> JOVI. Not a real operating store.</p>
+        <p>Independent concept redesign by <a href="../work.html#jovi">ajak.Web</a>.</p>
+        <p>&copy; <span data-year></span> &mdash; not affiliated with or endorsed by JOVI Leather.</p>
       </div>
     </div>
   </footer>
