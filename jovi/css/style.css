@@ -366,6 +366,42 @@ button[aria-disabled="true"] {
   justify-content: center;
   width: 2.4rem;
   height: 2.4rem;
+  position: relative;
+}
+
+.icon-btn svg {
+  width: 20px;
+  height: 20px;
+  stroke: currentColor;
+  fill: none;
+}
+
+.icon-btn__count {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  min-width: 15px;
+  height: 15px;
+  padding-inline: 3px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--jovi-maroon);
+  color: var(--jovi-paper);
+  font-size: 0.6rem;
+  font-weight: 700;
+  border-radius: 50%;
+  line-height: 1;
+}
+
+.icon-btn__count[hidden] {
+  display: none;
+}
+
+.header-icons {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
 }
 
 .menu-toggle {
@@ -1690,6 +1726,7 @@ button[aria-disabled="true"] {
 @media (max-width: 960px) {
   .primary-nav { display: none; }
   .menu-toggle { display: inline-flex; }
+  .header-icons { display: none; }
 
   .good-design__grid { grid-template-columns: 1fr; }
 
