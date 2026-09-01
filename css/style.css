@@ -2121,6 +2121,44 @@ a.card:hover {
   }
 }
 
+/* ---------- JOVI gallery: the six approved presentation captures vary
+   hugely in native proportion (a full-length rail screenshot next to a
+   phone frame), so the case study reads as a deliberate hierarchy --
+   product system as a tall centred panel, Gift Finder/Personalisation
+   paired, the lifestyle moment full-width, mobile a small closing
+   frame -- rather than six equal thumbnails. Every image keeps its own
+   intrinsic ratio (no cropping); span/max-width do the arranging. */
+#jovi .project__gallery {
+  align-items: start;
+}
+
+#jovi .work-story-item--product,
+#jovi .work-story-item--lifestyle,
+#jovi .work-story-item--mobile {
+  grid-column: 1 / -1;
+}
+
+#jovi .work-story-item--product .work-story-item__frame {
+  max-width: 520px;
+  margin-inline: auto;
+}
+
+#jovi .work-story-item--mobile .work-story-item__frame {
+  max-width: 280px;
+  margin-inline: auto;
+}
+
+@media (min-width: 900px) {
+  #jovi .project__gallery {
+    grid-template-columns: repeat(6, 1fr);
+  }
+
+  #jovi .work-story-item--giftfinder,
+  #jovi .work-story-item--personalise {
+    grid-column: span 3;
+  }
+}
+
 .work-story-item__label {
   display: block;
   margin-bottom: var(--space-3);
@@ -2166,6 +2204,17 @@ a.card:hover {
   text-transform: uppercase;
   color: var(--muted);
   margin-bottom: var(--space-4);
+}
+
+.work-feature__tags {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.06em;
+  /* real discipline-tag text, not decorative -- --muted-2 fails WCAG AA
+     at this size, --muted passes (matches .work-feature__meta-item dt
+     and .work-story-item__label just above/below). */
+  color: var(--muted);
+  margin-bottom: var(--space-3);
 }
 
 .work-feature__intro { font-size: var(--fs-lead); color: var(--muted); max-width: 56ch; }
