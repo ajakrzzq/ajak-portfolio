@@ -100,7 +100,7 @@
 
         <div class="hero__product reveal">
           <div class="hero__product-frame">
-            <img src="images/products/everyday-sling.jpg" data-photo-slot onerror="this.onerror=null;this.src='images/product-placeholder.svg';" alt="Everyday Sling" width="400" height="300" loading="eager">
+            <img src="images/products/everyday-sling.jpg" data-photo-slot onerror="this.onerror=null;this.src='images/product-placeholder.svg';" alt="Everyday Sling" width="400" height="500" loading="eager">
           </div>
           <div class="hero__product-meta">
             <p class="hero__product-name">Everyday Sling</p>
@@ -220,35 +220,15 @@
 
         <div class="rail__grid" data-reveal-group>
 
-          <article class="product-card product-card--lg product-card--hero reveal" data-product="wallet">
-            <div class="product-card__frame product-card__frame--maroon">
-              <img src="images/products/bifold.jpg" data-photo-slot onerror="this.onerror=null;this.src='images/product-placeholder.svg';" alt="The Bifold" width="400" height="300" loading="lazy">
-              <div class="product-card__overlay">
-                <p class="product-card__name">The Bifold</p>
-                <p class="product-card__meta">Espresso &amp; Maroon &middot; Full-grain leather</p>
-              </div>
-            </div>
-            <div class="product-card__body">
-              <div class="product-card__row">
-                <p class="product-card__price"><span class="product-card__price-label">Concept price</span>RM119</p>
-                <span class="swatches" role="group" aria-label="Choose a colour">
-                  <button type="button" class="swatch is-active" style="--sw:#3A2A22" data-swatch-color="Espresso" aria-pressed="true" aria-label="Espresso"></button>
-                  <button type="button" class="swatch" style="--sw:#8C232E" data-swatch-color="Maroon" aria-pressed="false" aria-label="Maroon"></button>
-                </span>
-              </div>
-              <p class="product-card__color-label" data-swatch-label>Colour: Espresso</p>
-              <p class="product-card__stock">In stock</p>
-              <button type="button" class="btn btn--outline btn--sm" aria-disabled="true" title="Concept demo — checkout not implemented">Add to Bag</button>
-            </div>
-          </article>
-
-          <article class="product-card reveal" data-product="sling">
+          <article class="product-card product-card--wide product-card--hero reveal" data-product="sling">
             <div class="product-card__frame product-card__frame--pistachio">
-              <img src="images/products/everyday-sling.jpg" data-photo-slot onerror="this.onerror=null;this.src='images/product-placeholder.svg';" alt="Everyday Sling" width="400" height="300" loading="lazy">
+              <img src="images/products/everyday-sling.jpg" data-photo-slot onerror="this.onerror=null;this.src='images/product-placeholder.svg';" alt="Everyday Sling" width="400" height="500" loading="lazy">
+              <div class="product-card__overlay">
+                <p class="product-card__name">Everyday Sling</p>
+                <p class="product-card__meta">Espresso leather &middot; Brass hardware</p>
+              </div>
             </div>
             <div class="product-card__body">
-              <p class="product-card__name">Everyday Sling</p>
-              <p class="product-card__meta">Espresso leather &middot; Brass hardware</p>
               <div class="product-card__row">
                 <p class="product-card__price"><span class="product-card__price-label">Concept price</span>RM189</p>
                 <span class="swatches" role="group" aria-label="Choose a colour">
@@ -262,29 +242,9 @@
             </div>
           </article>
 
-          <article class="product-card reveal" data-product="cardholder">
-            <div class="product-card__frame product-card__frame--butter">
-              <img src="images/products/card-case.jpg" data-photo-slot onerror="this.onerror=null;this.src='images/product-placeholder.svg';" alt="The Card Case" width="400" height="300" loading="lazy">
-            </div>
-            <div class="product-card__body">
-              <p class="product-card__name">The Card Case</p>
-              <p class="product-card__meta">Maroon leather &middot; Holds 6 cards</p>
-              <div class="product-card__row">
-                <p class="product-card__price"><span class="product-card__price-label">Concept price</span>RM49</p>
-                <span class="swatches" role="group" aria-label="Choose a colour">
-                  <button type="button" class="swatch is-active" style="--sw:#8C232E" data-swatch-color="Maroon" aria-pressed="true" aria-label="Maroon"></button>
-                  <button type="button" class="swatch" style="--sw:#3A2A22" data-swatch-color="Espresso" aria-pressed="false" aria-label="Espresso"></button>
-                </span>
-              </div>
-              <p class="product-card__color-label" data-swatch-label>Colour: Maroon</p>
-              <p class="product-card__stock">In stock</p>
-              <button type="button" class="btn btn--outline btn--sm" aria-disabled="true" title="Concept demo — checkout not implemented">Add to Bag</button>
-            </div>
-          </article>
-
           <article class="product-card reveal" data-product="keychain">
             <div class="product-card__frame product-card__frame--powder">
-              <img src="images/products/keychain.jpg" data-photo-slot onerror="this.onerror=null;this.src='images/product-placeholder.svg';" alt="Keychain Fob" width="400" height="300" loading="lazy">
+              <img src="images/products/keychain.jpg" data-photo-slot onerror="this.onerror=null;this.src='images/product-placeholder.svg';" alt="Keychain Fob" width="400" height="500" loading="lazy">
             </div>
             <div class="product-card__body">
               <p class="product-card__name">Keychain Fob</p>
@@ -302,9 +262,49 @@
             </div>
           </article>
 
+          <article class="product-card product-card--lg reveal" data-product="wallet">
+            <div class="product-card__frame product-card__frame--maroon">
+              <img src="images/products/bifold.jpg" data-photo-slot onerror="this.onerror=null;this.src='images/product-placeholder.svg';" alt="The Bifold" width="400" height="500" loading="lazy">
+            </div>
+            <div class="product-card__body">
+              <p class="product-card__name">The Bifold</p>
+              <p class="product-card__meta">Espresso &amp; Maroon &middot; Full-grain leather</p>
+              <div class="product-card__row">
+                <p class="product-card__price"><span class="product-card__price-label">Concept price</span>RM119</p>
+                <span class="swatches" role="group" aria-label="Choose a colour">
+                  <button type="button" class="swatch is-active" style="--sw:#3A2A22" data-swatch-color="Espresso" aria-pressed="true" aria-label="Espresso"></button>
+                  <button type="button" class="swatch" style="--sw:#8C232E" data-swatch-color="Maroon" aria-pressed="false" aria-label="Maroon"></button>
+                </span>
+              </div>
+              <p class="product-card__color-label" data-swatch-label>Colour: Espresso</p>
+              <p class="product-card__stock">In stock</p>
+              <button type="button" class="btn btn--outline btn--sm" aria-disabled="true" title="Concept demo — checkout not implemented">Add to Bag</button>
+            </div>
+          </article>
+
+          <article class="product-card product-card--lg reveal" data-product="cardholder">
+            <div class="product-card__frame product-card__frame--butter">
+              <img src="images/products/card-case.jpg" data-photo-slot onerror="this.onerror=null;this.src='images/product-placeholder.svg';" alt="The Card Case" width="400" height="500" loading="lazy">
+            </div>
+            <div class="product-card__body">
+              <p class="product-card__name">The Card Case</p>
+              <p class="product-card__meta">Black leather &middot; Holds 6 cards</p>
+              <div class="product-card__row">
+                <p class="product-card__price"><span class="product-card__price-label">Concept price</span>RM49</p>
+                <span class="swatches" role="group" aria-label="Choose a colour">
+                  <button type="button" class="swatch is-active" style="--sw:#221D1A" data-swatch-color="Black" aria-pressed="true" aria-label="Black"></button>
+                  <button type="button" class="swatch" style="--sw:#3A2A22" data-swatch-color="Espresso" aria-pressed="false" aria-label="Espresso"></button>
+                </span>
+              </div>
+              <p class="product-card__color-label" data-swatch-label>Colour: Black</p>
+              <p class="product-card__stock">In stock</p>
+              <button type="button" class="btn btn--outline btn--sm" aria-disabled="true" title="Concept demo — checkout not implemented">Add to Bag</button>
+            </div>
+          </article>
+
           <article class="product-card product-card--wide product-card--split reveal" data-product="giftset">
             <div class="product-card__frame product-card__frame--terracotta">
-              <img src="images/products/gift-set.jpg" data-photo-slot onerror="this.onerror=null;this.src='images/product-placeholder.svg';" alt="Wallet &amp; Card Set" width="400" height="300" loading="lazy">
+              <img src="images/products/gift-set.jpg" data-photo-slot onerror="this.onerror=null;this.src='images/product-placeholder.svg';" alt="Wallet &amp; Card Set" width="400" height="500" loading="lazy">
             </div>
             <div class="product-card__body">
               <p class="product-card__name">Wallet &amp; Card Set</p>
@@ -324,7 +324,7 @@
 
           <article class="product-card reveal" data-product="weekender">
             <div class="product-card__frame product-card__frame--maroon">
-              <img src="images/products/weekender.jpg" data-photo-slot onerror="this.onerror=null;this.src='images/product-placeholder.svg';" alt="Weekender Companion" width="400" height="300" loading="lazy">
+              <img src="images/products/weekender.jpg" data-photo-slot onerror="this.onerror=null;this.src='images/product-placeholder.svg';" alt="Weekender Companion" width="400" height="500" loading="lazy">
             </div>
             <div class="product-card__body">
               <p class="product-card__name">Weekender Companion</p>
@@ -408,19 +408,19 @@
         <div class="personalise__preview reveal">
           <div class="pz-stage" data-pz-stage="cardholder">
             <div class="pz-image">
-              <img src="images/products/card-case.jpg" data-photo-slot onerror="this.onerror=null;this.src='images/product-placeholder.svg';" alt="The Card Case" width="400" height="300" loading="lazy">
+              <img src="images/products/card-case.jpg" data-photo-slot onerror="this.onerror=null;this.src='images/product-placeholder.svg';" alt="The Card Case" width="400" height="500" loading="lazy">
             </div>
             <p class="pz-engrave" data-engrave-output>AJK</p>
           </div>
           <div class="pz-stage" data-pz-stage="keychain" hidden>
             <div class="pz-image">
-              <img src="images/products/keychain.jpg" data-photo-slot onerror="this.onerror=null;this.src='images/product-placeholder.svg';" alt="Keychain Fob" width="400" height="300" loading="lazy">
+              <img src="images/products/keychain.jpg" data-photo-slot onerror="this.onerror=null;this.src='images/product-placeholder.svg';" alt="Keychain Fob" width="400" height="500" loading="lazy">
             </div>
             <p class="pz-engrave pz-engrave--fob" data-engrave-output>AJK</p>
           </div>
           <div class="pz-stage" data-pz-stage="wallet" hidden>
             <div class="pz-image">
-              <img src="images/products/bifold.jpg" data-photo-slot onerror="this.onerror=null;this.src='images/product-placeholder.svg';" alt="The Bifold" width="400" height="300" loading="lazy">
+              <img src="images/products/bifold.jpg" data-photo-slot onerror="this.onerror=null;this.src='images/product-placeholder.svg';" alt="The Bifold" width="400" height="500" loading="lazy">
             </div>
             <p class="pz-engrave" data-engrave-output>AJK</p>
           </div>
@@ -486,39 +486,62 @@
     </section>
 
     <!-- ========================== WHAT'S IN THE BAG ========================== -->
-    <section class="bag-demo" aria-labelledby="bag-demo-heading" data-bag-demo>
+    <section class="bag-annotate" aria-labelledby="bag-annotate-heading">
       <div class="container">
         <div class="section-head reveal">
-          <p class="eyebrow">Everyday Sling, Tested</p>
-          <h2 id="bag-demo-heading">What&rsquo;s actually in the bag?</h2>
-          <p class="section-head__sub">Tap each item to pack it in.</p>
+          <p class="eyebrow">Everyday Sling</p>
+          <h2 id="bag-annotate-heading">Built around what you actually carry.</h2>
         </div>
 
-        <div class="bag-demo__panel reveal">
-          <div class="bag-demo__stage">
-            <div class="bag-demo__base">
-              <img src="images/products/everyday-sling.jpg" data-photo-slot onerror="this.onerror=null;this.src='images/product-placeholder.svg';" alt="Everyday Sling" width="400" height="300" loading="lazy">
+        <div class="bag-annotate__layout reveal">
+          <div class="bag-annotate__frame">
+            <img src="images/products/everyday-sling.jpg" data-photo-slot onerror="this.onerror=null;this.src='images/product-placeholder.svg';" alt="Everyday Sling worn cross-body" width="400" height="500" loading="lazy">
+            <div class="bag-annotate__markers" aria-hidden="true">
+              <span class="bag-annotate__marker" data-annotate-marker="1" style="--y:28%"><span class="bag-annotate__marker-dot"></span><span class="bag-annotate__marker-line"></span></span>
+              <span class="bag-annotate__marker" data-annotate-marker="2" style="--y:46%"><span class="bag-annotate__marker-dot"></span><span class="bag-annotate__marker-line"></span></span>
+              <span class="bag-annotate__marker" data-annotate-marker="3" style="--y:64%"><span class="bag-annotate__marker-dot"></span><span class="bag-annotate__marker-line"></span></span>
+              <span class="bag-annotate__marker" data-annotate-marker="4" style="--y:82%"><span class="bag-annotate__marker-dot"></span><span class="bag-annotate__marker-line"></span></span>
             </div>
-            <div class="bag-demo__items" data-bag-items>
-              <span class="bag-item" data-bag-item="phone" style="--x:12%; --y:18%;">&#128241;</span>
-              <span class="bag-item" data-bag-item="wallet" style="--x:88%; --y:18%;">&#128365;</span>
-              <span class="bag-item" data-bag-item="keys" style="--x:10%; --y:85%;">&#128273;</span>
-              <span class="bag-item" data-bag-item="cards" style="--x:90%; --y:85%;">&#127183;</span>
-              <span class="bag-item" data-bag-item="earbuds" style="--x:50%; --y:14%;">&#127911;</span>
-              <span class="bag-item" data-bag-item="lipbalm" style="--x:50%; --y:82%;">&#128132;</span>
-            </div>
-            <p class="bag-demo__count"><span data-bag-count>0</span> / 6 items packed</p>
           </div>
 
-          <div class="bag-demo__chips" role="group" aria-label="Everyday items">
-            <button type="button" class="bag-chip" data-bag-toggle="phone">Phone</button>
-            <button type="button" class="bag-chip" data-bag-toggle="wallet">Wallet</button>
-            <button type="button" class="bag-chip" data-bag-toggle="keys">Keys</button>
-            <button type="button" class="bag-chip" data-bag-toggle="cards">Cards</button>
-            <button type="button" class="bag-chip" data-bag-toggle="earbuds">Earbuds</button>
-            <button type="button" class="bag-chip" data-bag-toggle="lipbalm">Lip Balm</button>
-            <button type="button" class="bag-chip bag-chip--all" data-bag-pack-all>Pack It All</button>
-          </div>
+          <ol class="bag-annotate__list">
+            <li>
+              <button type="button" class="bag-annotate__row" data-annotate-target="1">
+                <span class="bag-annotate__index">01</span>
+                <span class="bag-annotate__copy">
+                  <span class="bag-annotate__name">The Card Case</span>
+                  <span class="bag-annotate__desc">Slim enough to disappear into the front pocket.</span>
+                </span>
+              </button>
+            </li>
+            <li>
+              <button type="button" class="bag-annotate__row" data-annotate-target="2">
+                <span class="bag-annotate__index">02</span>
+                <span class="bag-annotate__copy">
+                  <span class="bag-annotate__name">Keychain Fob</span>
+                  <span class="bag-annotate__desc">Clips to the interior ring so keys stay found.</span>
+                </span>
+              </button>
+            </li>
+            <li>
+              <button type="button" class="bag-annotate__row" data-annotate-target="3">
+                <span class="bag-annotate__index">03</span>
+                <span class="bag-annotate__copy">
+                  <span class="bag-annotate__name">The Bifold</span>
+                  <span class="bag-annotate__desc">Sits flat in the main compartment, no extra bulk.</span>
+                </span>
+              </button>
+            </li>
+            <li>
+              <button type="button" class="bag-annotate__row" data-annotate-target="4">
+                <span class="bag-annotate__index">04</span>
+                <span class="bag-annotate__copy">
+                  <span class="bag-annotate__name">Daily Essentials</span>
+                  <span class="bag-annotate__desc">Phone, earbuds, lip balm &mdash; the rest of the day, sorted.</span>
+                </span>
+              </button>
+            </li>
+          </ol>
         </div>
       </div>
     </section>

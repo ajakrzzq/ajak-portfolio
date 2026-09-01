@@ -237,48 +237,20 @@
   }
 
   /* ------------------------------------------------------------------ *
-   * What's in the Bag
+   * What's in the Bag — editorial annotation
+   * The marker/line highlight itself is pure CSS (:has()), so no JS is
+   * required for the core interaction; this only prevents the row's
+   * highlight from sticking after a touch/click on touchscreens that
+   * don't naturally clear :hover.
    * ------------------------------------------------------------------ */
-  var bagDemo = document.querySelector('[data-bag-demo]');
+  var bagAnnotate = document.querySelector('.bag-annotate__layout');
 
-  if (bagDemo) {
-    var chips = bagDemo.querySelectorAll('[data-bag-toggle]');
-    var packAllBtn = bagDemo.querySelector('[data-bag-pack-all]');
-    var countEl = bagDemo.querySelector('[data-bag-count]');
-
-    function updateCount() {
-      if (!countEl) return;
-      countEl.textContent = String(bagDemo.querySelectorAll('.bag-item.is-packed').length);
-    }
-
-    function toggleItem(name) {
-      var chip = bagDemo.querySelector('[data-bag-toggle="' + name + '"]');
-      var item = bagDemo.querySelector('[data-bag-item="' + name + '"]');
-      if (!chip || !item) return;
-      var packed = item.classList.toggle('is-packed');
-      chip.classList.toggle('is-active', packed);
-      updateCount();
-    }
-
-    chips.forEach(function (chip) {
-      chip.addEventListener('click', function () {
-        toggleItem(chip.getAttribute('data-bag-toggle'));
+  if (bagAnnotate) {
+    bagAnnotate.querySelectorAll('.bag-annotate__row').forEach(function (row) {
+      row.addEventListener('click', function () {
+        row.blur();
       });
     });
-
-    if (packAllBtn) {
-      packAllBtn.addEventListener('click', function () {
-        var allPacked = bagDemo.querySelectorAll('.bag-item.is-packed').length === chips.length;
-        chips.forEach(function (chip) {
-          var name = chip.getAttribute('data-bag-toggle');
-          var item = bagDemo.querySelector('[data-bag-item="' + name + '"]');
-          if (!item) return;
-          item.classList.toggle('is-packed', !allPacked);
-          chip.classList.toggle('is-active', !allPacked);
-        });
-        updateCount();
-      });
-    }
   }
 
   /* ------------------------------------------------------------------ *
