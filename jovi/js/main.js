@@ -1,8 +1,8 @@
 /* ==========================================================================
    JOVI — main.js
    Homepage interactivity: header/menu state, scroll reveal, the Gift
-   Finder quiz, live personalisation preview, product storytelling tabs,
-   and the What's in the Bag demo.
+   Finder quiz, live personalisation preview, and the What's in the Bag
+   demo.
 
    No external dependencies. Every lookup is null-checked so a missing
    element (or a future page reusing this file) fails quietly rather
@@ -49,6 +49,13 @@
     link.addEventListener('click', closeMenu);
   });
 
+  var desktopMql = window.matchMedia('(min-width: 961px)');
+  function onDesktopChange(e) {
+    if (e.matches && mobileMenu && mobileMenu.classList.contains('is-open')) closeMenu();
+  }
+  if (desktopMql.addEventListener) desktopMql.addEventListener('change', onDesktopChange);
+  else if (desktopMql.addListener) desktopMql.addListener(onDesktopChange);
+
   /* ------------------------------------------------------------------ *
    * Scroll reveal
    * ------------------------------------------------------------------ */
@@ -91,7 +98,10 @@
       { id: 'wallet', name: 'The Bifold', price: 119, image: 'images/products/bifold.jpg', budget: '100to200', recipients: ['him', 'special'], occasions: ['birthday', 'graduation', 'anniversary'], blurb: 'The everyday item he’ll actually retire the old one for.' },
       { id: 'sling', name: 'Everyday Sling', price: 189, image: 'images/products/everyday-sling.jpg', budget: '100to200', recipients: ['her', 'special'], occasions: ['birthday', 'graduation', 'anniversary'], blurb: 'Considered enough for dinner, practical enough for every day after.' },
       { id: 'giftset', name: 'Wallet & Card Set', price: 239, image: 'images/products/gift-set.jpg', budget: '200plus', recipients: ['special', 'him', 'her'], occasions: ['anniversary', 'graduation'], blurb: 'Two matched pieces, boxed together — for when one gift needs to feel like enough.' },
-      { id: 'weekender', name: 'Weekender Companion', price: 259, image: 'images/products/weekender.jpg', budget: '200plus', recipients: ['him', 'her', 'special'], occasions: ['graduation', 'anniversary'], blurb: 'For the next trip, the next chapter — built to be used, not shelved.' }
+      // TEMP: Weekender product photography not yet shot. Pointing straight at the
+      // placeholder graphic (images/products/weekender.jpg does not exist yet) to
+      // avoid a 404. Swap back to images/products/weekender.jpg once that photo lands.
+      { id: 'weekender', name: 'Weekender Companion', price: 259, image: 'images/product-placeholder.svg', budget: '200plus', recipients: ['him', 'her', 'special'], occasions: ['graduation', 'anniversary'], blurb: 'For the next trip, the next chapter — built to be used, not shelved.' }
     ];
 
     var occasionLabels = {
@@ -137,9 +147,9 @@
           '<div class="gf-result-card__image"><img src="' + m.product.image + '" onerror="this.onerror=null;this.src=\'images/product-placeholder.svg\';" alt="' + m.product.name + '" width="400" height="300" loading="lazy"></div>' +
           '<span class="gf-result-card__chip">Great for ' + occasionText + '</span>' +
           '<h4>' + m.product.name + '</h4>' +
-          '<p class="gf-result-card__price"><span class="product-card__price-label">Concept price</span>RM' + m.product.price + '</p>' +
+          '<p class="gf-result-card__price">Concept price &mdash; RM' + m.product.price + '</p>' +
           '<p>' + m.product.blurb + '</p>' +
-          '<a class="btn btn--outline btn--sm" href="#signature">View in Signature Pieces</a>' +
+          '<a class="link-underline" href="#objects">View in The Objects &rarr;</a>' +
           '</article>'
         );
       }).join('');
@@ -180,7 +190,9 @@
     var buyPrice = personalise.querySelector('[data-pz-buy-price]');
 
     function updateEngraving() {
-      var value = (engraveInput.value || 'AJK').toUpperCase().slice(0, 4);
+      var sanitized = engraveInput.value.toUpperCase().replace(/[^A-Z]/g, '').slice(0, 3);
+      if (sanitized !== engraveInput.value) engraveInput.value = sanitized;
+      var value = sanitized || 'AJK';
       engraveOutputs.forEach(function (el) { el.textContent = value; });
     }
 
@@ -199,41 +211,6 @@
         if (buyPrice) buyPrice.textContent = btn.getAttribute('data-pz-price');
       });
     });
-  }
-
-  /* ------------------------------------------------------------------ *
-   * Product storytelling tabs
-   * ------------------------------------------------------------------ */
-  var storytelling = document.querySelector('[data-storytelling]');
-
-  if (storytelling) {
-    var tabs = storytelling.querySelectorAll('[data-st-tab]');
-    var panels = storytelling.querySelectorAll('[data-st-panel]');
-
-    tabs.forEach(function (tab, i) {
-      tab.addEventListener('click', function () { activateTab(tab); });
-      tab.addEventListener('keydown', function (e) {
-        if (e.key !== 'ArrowRight' && e.key !== 'ArrowLeft') return;
-        e.preventDefault();
-        var next = e.key === 'ArrowRight' ? (i + 1) % tabs.length : (i - 1 + tabs.length) % tabs.length;
-        tabs[next].focus();
-        activateTab(tabs[next]);
-      });
-    });
-
-    function activateTab(tab) {
-      var name = tab.getAttribute('data-st-tab');
-      tabs.forEach(function (t) {
-        var active = t === tab;
-        t.classList.toggle('is-active', active);
-        t.setAttribute('aria-selected', String(active));
-      });
-      panels.forEach(function (p) {
-        var active = p.getAttribute('data-st-panel') === name;
-        p.classList.toggle('is-active', active);
-        p.hidden = !active;
-      });
-    }
   }
 
   /* ------------------------------------------------------------------ *

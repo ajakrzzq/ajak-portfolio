@@ -13,29 +13,25 @@
    8.  Concept banner
    9.  Header / navigation
    10. Mobile menu
-   11. Hero
+   11. Opening
    12. Section heading pattern
-   13. Brand statement
-   14. Good design / good price
-   15. Gift Finder
-   16. Signature products rail
-   17. Editorial chapters (men / women)
-   18. Personalisation
-   19. Product storytelling
-   20. What's in the bag
-   21. JOVI Wall
-   22. Packaging / unboxing
-   23. Brand story
-   24. Store
-   25. Final CTA
-   26. Footer
-   27. Reveal animation
-   28. Responsive tweaks
+   13. Origin
+   14. The Material
+   15. The Objects (curated edits + product list)
+   16. Personalisation
+   17. Gift It (gift finder / what's in the bag / packaging)
+   18. JOVI Wall
+   19. Visit & Close
+   20. Footer
+   21. Reveal animation
+   22. Responsive tweaks
    ========================================================================== */
 
 /* 1. Fonts
-   Instrument Serif — sharp, editorial display serif for headlines & emphasis
-   Hanken Grotesk — warm modern grotesk for commerce, navigation, body copy
+   Instrument Serif — the structural editorial display voice. Upright by
+   default; italic is reserved for genuine emotional emphasis (an <em> word,
+   a pull-quote), never the default treatment for labels or prices.
+   Hanken Grotesk — body copy, navigation, UI.
    Loaded via <link> in the <head> so the browser fetches them in parallel
    with this stylesheet.
    ========================================================================== */
@@ -101,43 +97,55 @@ ol {
   padding: 0;
 }
 
+blockquote {
+  margin: 0;
+}
+
 /* 3. Design tokens
    ========================================================================== */
 :root {
-  /* Brand colour palette */
+  /* Two canvases. Everything else is a surface tint of one of these two. */
   --jovi-paper: #F7F1E4;
   --jovi-paper-alt: #FCF9F2;
   --jovi-espresso: #241712;
   --jovi-espresso-soft: #4A362B;
+
+  /* The one accent. */
   --jovi-maroon: #8C232E;
   --jovi-maroon-deep: #6E1B24;
-  --jovi-butter: #F0B23E;
-  --jovi-butter-deep: #C97F14;
-  --jovi-powder: #AEC6CE;
-  --jovi-powder-deep: #4F7482;
-  --jovi-pink: #E9B7B3;
-  --jovi-pink-deep: #B5645C;
-  --jovi-pistachio: #A7B98C;
-  --jovi-pistachio-deep: #5C7444;
+
+  /* Literal leather/thread colours — used ONLY inside swatch dots to
+     represent a real product colourway. Never a section or card fill. */
   --jovi-terracotta: #C1663B;
-  --jovi-terracotta-deep: #8C4526;
+  --jovi-pistachio: #A7B98C;
+  --jovi-black: #221D1A;
 
   /* Semantic tokens */
   --color-bg: var(--jovi-paper);
-  --color-bg-alt: var(--jovi-paper-alt);
+  --color-bg-soft: var(--jovi-paper-alt);
   --color-ink: var(--jovi-espresso);
   --color-ink-soft: var(--jovi-espresso-soft);
   --color-accent: var(--jovi-maroon);
   --color-line: rgba(36, 23, 18, 0.14);
 
+  --color-on-dark: var(--jovi-paper);
+  --color-on-dark-soft: rgba(247, 241, 228, 0.82);
+  --color-on-dark-tertiary: rgba(247, 241, 228, 0.64);
+  --color-line-on-dark: rgba(247, 241, 228, 0.2);
+
   --font-display: 'Instrument Serif', Georgia, 'Times New Roman', serif;
   --font-sans: 'Hanken Grotesk', 'Helvetica Neue', Arial, sans-serif;
 
   --container-w: 1280px;
-  --radius-sm: 8px;
-  --radius-md: 16px;
-  --radius-lg: 28px;
+
+  /* Two radii: one functional, one for photographs/large surfaces. */
+  --radius-sm: 6px;
+  --radius-img: 20px;
+  --radius-pill: 999px;
+
   --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+
+  --space-section: clamp(5rem, 10vw, 9rem);
 
   --grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
 }
@@ -149,21 +157,23 @@ body {
   color: var(--color-ink);
   font-family: var(--font-sans);
   font-size: 1rem;
-  line-height: 1.55;
+  line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
 }
 
-h1, h2, h3 {
+h1, h2, h3, h4 {
   font-family: var(--font-display);
   font-weight: 400;
-  line-height: 1.05;
+  font-style: normal;
+  line-height: 1.02;
   letter-spacing: -0.01em;
 }
 
-h1 { font-size: clamp(2.75rem, 5vw + 1.2rem, 6.25rem); }
-h2 { font-size: clamp(2rem, 2.6vw + 1.1rem, 3.4rem); }
-h3 { font-size: clamp(1.2rem, 0.8vw + 0.9rem, 1.55rem); font-family: var(--font-sans); font-weight: 700; }
+h1 { font-size: clamp(3.25rem, 6vw + 1.5rem, 7.5rem); }
+h2 { font-size: clamp(2.25rem, 3.4vw + 1.1rem, 4.25rem); }
+h3 { font-size: clamp(1.5rem, 1.2vw + 1rem, 2rem); }
+h4 { font-family: var(--font-sans); font-weight: 700; font-size: clamp(1.1rem, 0.6vw + 0.9rem, 1.35rem); }
 
 em {
   font-style: italic;
@@ -171,7 +181,7 @@ em {
 }
 
 p {
-  max-width: 62ch;
+  max-width: 60ch;
 }
 
 .no-scroll {
@@ -187,7 +197,7 @@ p {
 }
 
 section {
-  padding-block: clamp(4rem, 8vw, 7.5rem);
+  padding-block: var(--space-section);
 }
 
 /* 6. Accessibility helpers
@@ -229,22 +239,24 @@ button[aria-disabled="true"] {
 }
 
 /* 7. Buttons
+   Two shapes only: the pill CTA, and a plain text link. No outline/ghost
+   variants are needed once "Add to Bag"-style secondary actions are gone.
    ========================================================================== */
 .btn {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
+  font-family: var(--font-sans);
   font-weight: 700;
   font-size: 0.95rem;
-  padding: 0.9rem 1.7rem;
-  border-radius: 999px;
-  transition: transform 0.25s var(--ease), background-color 0.25s var(--ease), color 0.25s var(--ease), box-shadow 0.25s var(--ease);
+  padding: 0.95rem 1.85rem;
+  border-radius: var(--radius-pill);
+  transition: transform 0.25s var(--ease), background-color 0.25s var(--ease);
 }
 
 .btn--primary {
   background: var(--jovi-maroon);
   color: var(--jovi-paper);
-  box-shadow: 0 8px 20px -8px rgba(140, 35, 46, 0.55);
 }
 
 .btn--primary:hover {
@@ -252,34 +264,21 @@ button[aria-disabled="true"] {
   transform: translateY(-2px);
 }
 
-.btn--ghost-light {
-  border: 1.5px solid rgba(247, 241, 228, 0.55);
-  color: var(--jovi-paper);
-}
-
-.btn--ghost-light:hover {
-  background: rgba(247, 241, 228, 0.12);
-  transform: translateY(-2px);
-}
-
-.btn--outline {
-  border: 1.5px solid var(--color-line);
-  color: var(--color-ink);
-}
-
-.btn--outline:hover {
-  border-color: var(--jovi-maroon);
-  color: var(--jovi-maroon);
-}
-
 .btn--sm {
-  padding: 0.55rem 1.15rem;
+  padding: 0.55rem 1.25rem;
   font-size: 0.85rem;
 }
 
 .btn--lg {
-  padding: 1.1rem 2.25rem;
+  padding: 1.15rem 2.4rem;
   font-size: 1.05rem;
+}
+
+.link-underline {
+  display: inline-block;
+  font-weight: 700;
+  border-bottom: 1.5px solid var(--jovi-maroon);
+  padding-bottom: 0.15rem;
 }
 
 /* 8. Concept banner
@@ -301,6 +300,8 @@ button[aria-disabled="true"] {
 .banner-text-short { display: none; }
 
 /* 9. Header / navigation
+   No search / account / cart icons — those weren't functional, and a
+   disabled affordance reads worse than no affordance at all.
    ========================================================================== */
 .site-header {
   position: sticky;
@@ -321,15 +322,14 @@ button[aria-disabled="true"] {
 
 .logo a {
   font-family: var(--font-display);
-  font-style: italic;
-  font-size: 1.7rem;
+  font-size: 1.8rem;
   color: var(--jovi-maroon);
 }
 
 .primary-nav {
   display: flex;
   align-items: center;
-  gap: clamp(1rem, 2vw, 2rem);
+  gap: clamp(1.25rem, 2.5vw, 2.5rem);
 }
 
 .nav-link {
@@ -357,7 +357,7 @@ button[aria-disabled="true"] {
 .header-actions {
   display: flex;
   align-items: center;
-  gap: 0.85rem;
+  gap: 1rem;
 }
 
 .icon-btn {
@@ -366,42 +366,6 @@ button[aria-disabled="true"] {
   justify-content: center;
   width: 2.4rem;
   height: 2.4rem;
-  position: relative;
-}
-
-.icon-btn svg {
-  width: 20px;
-  height: 20px;
-  stroke: currentColor;
-  fill: none;
-}
-
-.icon-btn__count {
-  position: absolute;
-  top: 4px;
-  right: 4px;
-  min-width: 15px;
-  height: 15px;
-  padding-inline: 3px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  background: var(--jovi-maroon);
-  color: var(--jovi-paper);
-  font-size: 0.6rem;
-  font-weight: 700;
-  border-radius: 50%;
-  line-height: 1;
-}
-
-.icon-btn__count[hidden] {
-  display: none;
-}
-
-.header-icons {
-  display: flex;
-  align-items: center;
-  gap: 0.25rem;
 }
 
 .menu-toggle {
@@ -419,7 +383,6 @@ button[aria-disabled="true"] {
   display: block;
   height: 2px;
   background: var(--jovi-espresso);
-  border-radius: 2px;
   transition: transform 0.25s var(--ease), opacity 0.25s var(--ease);
 }
 
@@ -461,7 +424,7 @@ button[aria-disabled="true"] {
 
 .mobile-menu__links a {
   font-family: var(--font-display);
-  font-size: 2rem;
+  font-size: 2.25rem;
   padding-block: 0.35rem;
 }
 
@@ -472,151 +435,67 @@ button[aria-disabled="true"] {
   color: var(--color-ink-soft);
 }
 
-/* 11. Hero
+/* 11. Opening
+   An editorial spread, not a storefront banner: one headline, one line,
+   one CTA, one large photograph. No gradient, no grain overlay, no
+   floating meta card, no second competing CTA.
    ========================================================================== */
-.hero {
-  position: relative;
+.opening {
+  padding-block: 0;
   min-height: 92vh;
   display: flex;
   align-items: center;
-  background: linear-gradient(165deg, var(--jovi-maroon) 0%, var(--jovi-maroon-deep) 52%, var(--jovi-espresso) 100%);
-  color: var(--jovi-paper);
+  position: relative;
   overflow: hidden;
-  isolation: isolate;
 }
 
-.hero::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background-image: var(--grain);
-  mix-blend-mode: overlay;
-  opacity: 0.35;
-  pointer-events: none;
+.opening__inner {
+  margin-inline: 0;
+  max-width: 34rem;
+  padding-block: clamp(3rem, 8vw, 5rem);
+  position: relative;
+  z-index: 1;
 }
 
-.hero__field {
-  position: absolute;
-  inset: 0;
-  z-index: -1;
-}
-
-.hero__ribbon {
-  position: absolute;
-  width: min(38vw, 480px);
-  top: 8%;
-  left: 4%;
-}
-
-.hero__inner {
-  padding-block: clamp(6rem, 12vw, 4rem);
-  display: grid;
-  grid-template-columns: 1.1fr 0.9fr;
-  gap: clamp(2rem, 5vw, 4rem);
-  align-items: center;
-}
-
-.hero__eyebrow {
-  text-transform: uppercase;
-  letter-spacing: 0.16em;
-  font-size: 0.8rem;
-  font-weight: 700;
-  color: var(--jovi-butter);
-  margin-bottom: 1.25rem;
-}
-
-.hero h1 {
-  max-width: 16ch;
+.opening__eyebrow,
+.opening .eyebrow {
   margin-bottom: 1.5rem;
 }
 
-.hero h1 em {
-  color: var(--jovi-butter);
+.opening h1 {
+  max-width: 13ch;
+  margin-bottom: 1.75rem;
 }
 
-.hero__sub {
-  max-width: 42ch;
-  font-size: clamp(1.05rem, 0.6vw + 0.9rem, 1.25rem);
-  color: rgba(247, 241, 228, 0.88);
+.opening__sub {
+  max-width: 34ch;
+  font-size: clamp(1.05rem, 0.6vw + 0.9rem, 1.2rem);
+  color: var(--color-ink-soft);
   margin-bottom: 2.25rem;
 }
 
-.hero__actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
-  margin-bottom: 2rem;
+.opening__figure {
+  position: absolute;
+  inset: 0;
+  left: 44%;
+  z-index: 0;
 }
 
-.hero__price-signal {
-  font-size: 0.95rem;
-  color: rgba(247, 241, 228, 0.75);
+.opening__figure::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to right, var(--jovi-paper) 0%, rgba(247, 241, 228, 0) 16%);
+  pointer-events: none;
 }
 
-.hero__price-signal span {
-  font-family: var(--font-display);
-  font-style: italic;
-  font-size: 1.3rem;
-  color: var(--jovi-butter);
-  margin-right: 0.4rem;
-}
-
-.hero__price-note {
-  margin-top: 0.4rem;
-  font-size: 0.72rem;
-  color: rgba(247, 241, 228, 0.5);
-}
-
-.hero__product {
-  position: relative;
-}
-
-.hero__product-frame {
-  border-radius: var(--radius-lg);
-  overflow: hidden;
-  aspect-ratio: 4 / 5;
-  box-shadow: 0 40px 70px -30px rgba(0, 0, 0, 0.5);
-}
-
-.hero__product-frame img {
+.opening__figure img {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
-.hero__product-meta {
-  position: absolute;
-  left: -1.5rem;
-  bottom: -1.5rem;
-  background: var(--jovi-paper-alt);
-  color: var(--jovi-espresso);
-  border-radius: var(--radius-md);
-  padding: 1.25rem 1.5rem;
-  box-shadow: 0 20px 40px -18px rgba(0, 0, 0, 0.4);
-  max-width: 14rem;
-}
-
-.hero__product-name {
-  font-family: var(--font-display);
-  font-size: 1.25rem;
-  margin-bottom: 0.2rem;
-}
-
-.hero__product-price {
-  font-size: 0.85rem;
-  color: var(--color-ink-soft);
-  margin-bottom: 0.6rem;
-}
-
-.hero__product-link {
-  display: inline-block;
-  font-weight: 700;
-  font-size: 0.85rem;
-  color: var(--jovi-maroon);
-  border-bottom: 1.5px solid currentColor;
-}
-
-.hero__scroll-cue {
+.opening__scroll-cue {
   position: absolute;
   bottom: 2rem;
   left: 50%;
@@ -628,13 +507,13 @@ button[aria-disabled="true"] {
   font-size: 0.72rem;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: rgba(247, 241, 228, 0.6);
+  color: var(--color-ink-soft);
 }
 
-.hero__scroll-cue .line {
+.opening__scroll-cue .line {
   width: 1px;
   height: 34px;
-  background: linear-gradient(rgba(247, 241, 228, 0.7), transparent);
+  background: linear-gradient(var(--color-ink-soft), transparent);
 }
 
 /* 12. Section heading pattern
@@ -649,7 +528,7 @@ button[aria-disabled="true"] {
 }
 
 .eyebrow--light {
-  color: var(--jovi-butter);
+  color: var(--color-on-dark-tertiary);
 }
 
 .section-head {
@@ -664,101 +543,460 @@ button[aria-disabled="true"] {
 }
 
 .section-head__sub--light {
-  color: rgba(247, 241, 228, 0.75);
+  color: var(--color-on-dark-soft);
 }
 
-.link-underline {
-  display: inline-block;
-  font-weight: 700;
-  border-bottom: 1.5px solid var(--jovi-maroon);
-  padding-bottom: 0.15rem;
-}
-
-/* 13. Brand statement
+/* 13. Origin
+   A reading moment. Single column, generous measure, one pull-quote.
    ========================================================================== */
-.statement {
-  background: var(--color-bg-alt);
-  text-align: left;
-  padding-block: clamp(5rem, 12vw, 10rem);
+.origin__inner {
+  max-width: 46rem;
+  margin-inline: auto;
 }
 
-.statement__inner {
-  display: grid;
-  grid-template-columns: 1fr;
+.origin__quote {
+  font-style: italic;
+  max-width: 15ch;
+  margin-bottom: clamp(2rem, 4vw, 3rem);
 }
 
-.statement__eyebrow {
-  grid-column: 1;
-}
-
-.statement__headline {
-  font-size: clamp(2.75rem, 5.5vw + 1rem, 5.5rem);
-  max-width: 18ch;
-  margin-bottom: 2.5rem;
-  letter-spacing: -0.02em;
-}
-
-.statement__body {
+.origin__body p {
   font-size: 1.1rem;
   color: var(--color-ink-soft);
-  max-width: 42ch;
-  margin-left: auto;
+  max-width: 56ch;
+  margin-bottom: 1.5rem;
 }
 
-/* 14. Good design / good price
+.origin__signoff {
+  margin-top: 1.5rem;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--jovi-maroon);
+}
+
+/* 14. The Material — signature moment
+   The photograph does the work. Text is minimal and sits below it.
    ========================================================================== */
-.good-design {
+.material {
+  padding-block: 0;
+  background: var(--jovi-espresso);
+}
+
+.material__figure {
+  position: relative;
+  width: 100%;
+  height: 88vh;
+  min-height: 480px;
+  max-height: 920px;
+  background-image: url("../images/materials/leather-grain-fallback.svg");
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: flex-end;
+}
+
+.material__scrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(36, 23, 18, 0.85) 0%, rgba(36, 23, 18, 0.4) 32%, transparent 62%);
+  pointer-events: none;
+}
+
+.material__caption {
+  position: relative;
+  z-index: 1;
+  padding-block: clamp(2.5rem, 6vw, 4.5rem);
+  color: var(--jovi-paper);
+  max-width: 42rem;
+}
+
+.material__caption h2 {
+  color: var(--jovi-paper);
+  max-width: 16ch;
+  margin-bottom: 1rem;
+}
+
+.material__caption p {
+  color: var(--color-on-dark-soft);
+  font-size: 1.05rem;
+  max-width: 46ch;
+}
+
+.material__caption .eyebrow { color: var(--color-on-dark-tertiary); }
+
+/* 15. The Objects
+   Curated edits (typographic only, no imagery until real lifestyle
+   photography exists) + an editorial object list — alternating,
+   photography-led, no dense card grid, no stock/scarcity chrome.
+   ========================================================================== */
+.edits {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(2rem, 4vw, 4rem);
+  margin-bottom: clamp(3rem, 6vw, 5rem);
+  padding-bottom: clamp(2.5rem, 5vw, 4rem);
+  border-bottom: 1px solid var(--color-line);
+}
+
+.edits__label {
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-ink-soft);
+  margin-bottom: 1rem;
+}
+
+.edits__list {
+  display: flex;
+  flex-direction: column;
+}
+
+.edits__list li {
+  display: flex;
+  justify-content: space-between;
+  padding-block: 0.65rem;
+  border-top: 1px solid var(--color-line);
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+}
+
+.edits__list li:last-child {
+  border-bottom: 1px solid var(--color-line);
+}
+
+.objects__list {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(4rem, 8vw, 7rem);
+}
+
+.product-card {
+  display: flex;
+  align-items: center;
+  gap: clamp(2rem, 5vw, 4.5rem);
+}
+
+.product-card--reverse {
+  flex-direction: row-reverse;
+}
+
+.product-card--hero .product-card__frame {
+  flex: 0 0 60%;
+}
+
+.product-card--hero .product-card__name {
+  font-size: clamp(2rem, 2vw + 1.2rem, 2.9rem);
+}
+
+/* Paired accessories — two small objects grouped tightly to break the
+   repeating hero rhythm. */
+.product-pair {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(1.75rem, 4vw, 3rem);
+}
+
+.product-card--compact {
+  flex-direction: column;
+  align-items: stretch;
+  gap: 1rem;
+}
+
+.product-card--compact .product-card__frame {
+  flex: none;
+  aspect-ratio: 1 / 1;
+}
+
+.product-card--compact .product-card__name {
+  font-size: clamp(1.25rem, 1vw + 1rem, 1.6rem);
+  margin-bottom: 0.5rem;
+}
+
+.product-card--compact .product-card__meta {
+  font-size: 0.92rem;
+  margin-bottom: 1rem;
+}
+
+.product-card--solo {
+  max-width: 22rem;
+  margin-inline: auto;
+  text-align: center;
+}
+
+.product-card--solo .product-card__frame {
+  aspect-ratio: 4 / 5;
+}
+
+.product-card--solo .product-card__row {
+  justify-content: center;
+}
+
+/* A dramatic full-width moment for the gift set — the photograph runs
+   the width of the section with the copy anchored beneath it. */
+.product-card--feature {
+  display: block;
+}
+
+.product-card--feature .product-card__frame {
+  width: 100%;
+  aspect-ratio: 21 / 10;
+  margin-bottom: clamp(1.5rem, 3vw, 2.25rem);
+}
+
+.product-card--feature .product-card__body {
+  max-width: 34rem;
+  margin-inline: auto;
+  text-align: center;
+}
+
+.product-card--feature .product-card__row {
+  justify-content: center;
+}
+
+.product-card__frame {
+  flex: 0 0 55%;
+  aspect-ratio: 4 / 5;
+  border-radius: var(--radius-img);
+  overflow: hidden;
+}
+
+.product-card__frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s var(--ease);
+}
+
+.product-card:hover .product-card__frame img {
+  transform: scale(1.03);
+}
+
+.product-card__body {
+  flex: 1;
+}
+
+.product-card__name {
+  font-family: var(--font-display);
+  font-size: clamp(1.75rem, 1.6vw + 1.1rem, 2.5rem);
+  margin-bottom: 0.75rem;
+}
+
+.product-card__meta {
+  font-size: 1.02rem;
+  color: var(--color-ink-soft);
+  max-width: 40ch;
+  margin-bottom: 1.5rem;
+}
+
+.product-card__row {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.product-card__price {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+}
+
+.swatches {
+  display: inline-flex;
+  gap: 0.5rem;
+}
+
+.swatch {
+  width: 1rem;
+  height: 1rem;
+  border-radius: 50%;
+  background: var(--sw);
+  border: 1px solid rgba(36, 23, 18, 0.15);
+  padding: 0;
+  transition: transform 0.2s var(--ease);
+}
+
+.swatch:hover {
+  transform: scale(1.15);
+}
+
+.swatch.is-active {
+  box-shadow: 0 0 0 2px var(--color-bg), 0 0 0 3px var(--jovi-espresso);
+}
+
+.product-card__color-label {
+  font-size: 0.85rem;
+  color: var(--color-ink-soft);
+}
+
+.objects__prompt {
+  margin-top: clamp(3rem, 6vw, 5rem);
+  padding-top: clamp(2.5rem, 5vw, 4rem);
+  border-top: 1px solid var(--color-line);
+  font-size: 1.1rem;
+  color: var(--color-ink-soft);
+  text-align: center;
+}
+
+/* 16. Personalisation — signature moment
+   The one deliberate polarity-flip on the page: dark canvas, generous
+   space, minimal controls. A subtle shadow is allowed here — it's one of
+   the two places on the site a major photograph earns it.
+   ========================================================================== */
+.personalise {
   background: var(--jovi-espresso);
   color: var(--jovi-paper);
 }
 
-.good-design h2 {
-  color: var(--jovi-paper);
-  margin-top: 0.5rem;
-}
-
-.good-design__grid {
+.personalise__inner {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 2rem;
-  margin-top: 3rem;
+  grid-template-columns: 0.9fr 1.25fr;
+  gap: clamp(2.5rem, 5vw, 5rem);
+  align-items: center;
 }
 
-.good-design__card svg {
-  width: 44px;
-  height: 44px;
-  margin-bottom: 1.25rem;
+.personalise h2 { color: var(--jovi-paper); }
+
+.personalise__body {
+  font-size: 1.1rem;
+  color: var(--color-on-dark-soft);
+  margin-block: 1.25rem;
+  max-width: 40ch;
 }
 
-.good-design__card h3 {
+.personalise__controls {
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+  margin-top: 1.5rem;
+}
+
+.personalise__input {
+  padding: 1rem 1.25rem;
+  border-radius: var(--radius-sm);
+  border: 1.5px solid var(--color-line-on-dark);
+  background: rgba(247, 241, 228, 0.06);
+  color: var(--jovi-paper);
   font-family: var(--font-display);
-  font-weight: 400;
-  font-size: 1.4rem;
-  margin-bottom: 0.6rem;
+  font-style: italic;
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  max-width: 20rem;
 }
 
-.good-design__card p {
-  color: rgba(247, 241, 228, 0.75);
-  font-size: 0.95rem;
+.personalise__input::placeholder {
+  color: var(--color-on-dark-soft);
 }
 
-/* 15. Gift Finder
+.personalise__targets {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+}
+
+.pz-target {
+  padding: 0.6rem 1.15rem;
+  border-radius: var(--radius-pill);
+  border: 1.5px solid var(--color-line-on-dark);
+  color: var(--color-on-dark-soft);
+  font-weight: 600;
+  font-size: 0.88rem;
+  transition: background-color 0.2s var(--ease), color 0.2s var(--ease), border-color 0.2s var(--ease);
+}
+
+.pz-target.is-active {
+  background: var(--jovi-maroon);
+  border-color: var(--jovi-maroon);
+  color: var(--jovi-paper);
+}
+
+.personalise__preview {
+  text-align: center;
+}
+
+.pz-stage {
+  position: relative;
+  max-width: 480px;
+  margin-inline: auto;
+}
+
+.pz-image {
+  border-radius: var(--radius-img);
+  overflow: hidden;
+  box-shadow: 0 30px 60px -25px rgba(0, 0, 0, 0.55);
+}
+
+.pz-image img {
+  width: 100%;
+  display: block;
+}
+
+.pz-engrave {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: clamp(1.4rem, 4vw, 2.6rem);
+  letter-spacing: 0.08em;
+  color: var(--jovi-espresso);
+  text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.5), -1px -1px 0 rgba(0, 0, 0, 0.15);
+  min-height: 1em;
+}
+
+.pz-engrave--fob {
+  top: 64%;
+  font-size: clamp(1.1rem, 3vw, 1.5rem);
+}
+
+.pz-caption {
+  margin-top: 1rem;
+  font-size: 0.78rem;
+  color: var(--color-on-dark-soft);
+}
+
+.pz-buy {
+  margin-top: 1.75rem;
+}
+
+.pz-buy__name {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+}
+
+.pz-buy__price {
+  font-size: 0.9rem;
+  color: var(--color-on-dark-soft);
+  margin-top: 0.25rem;
+}
+
+/* 17. Gift It
+   Three consolidated moments — a small quiz entry, the bag annotation,
+   and the packaging ritual — inside one narrative beat.
    ========================================================================== */
 .gift-finder {
-  background: var(--jovi-butter);
+  max-width: 40rem;
+  margin: 0 auto clamp(4rem, 8vw, 6rem);
+}
+
+.gift-finder__heading {
+  text-align: center;
+  margin-bottom: 2rem;
 }
 
 .gift-finder__panel {
-  background: var(--jovi-paper-alt);
-  border-radius: var(--radius-lg);
-  padding: clamp(1.75rem, 4vw, 3rem);
-  box-shadow: 0 30px 60px -30px rgba(36, 23, 18, 0.35);
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-img);
+  padding: clamp(1.75rem, 4vw, 2.5rem);
 }
 
 .gift-finder__progress {
   display: flex;
   gap: clamp(0.75rem, 2vw, 2rem);
-  margin-bottom: 2.5rem;
+  margin-bottom: 2rem;
   flex-wrap: wrap;
 }
 
@@ -807,33 +1045,34 @@ button[aria-disabled="true"] {
   to { opacity: 1; transform: translateY(0); }
 }
 
-.gift-finder__step h3 {
-  margin-bottom: 1.5rem;
+.gift-finder__step h4 {
+  margin-bottom: 1.25rem;
 }
 
 .gift-finder__options {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.9rem;
+  gap: 0.75rem;
 }
 
 .gf-option {
-  padding: 0.9rem 1.5rem;
-  border-radius: 999px;
+  padding: 0.8rem 1.35rem;
+  border-radius: var(--radius-pill);
   border: 1.5px solid var(--color-line);
   font-weight: 600;
-  transition: background-color 0.2s var(--ease), color 0.2s var(--ease), border-color 0.2s var(--ease), transform 0.2s var(--ease);
+  font-size: 0.92rem;
+  transition: border-color 0.2s var(--ease), color 0.2s var(--ease);
 }
 
 .gf-option:hover {
   border-color: var(--jovi-maroon);
   color: var(--jovi-maroon);
-  transform: translateY(-2px);
 }
 
 .gf-back {
-  margin-top: 1.5rem;
+  margin-top: 1.25rem;
   font-weight: 600;
+  font-size: 0.9rem;
   color: var(--color-ink-soft);
 }
 
@@ -843,34 +1082,27 @@ button[aria-disabled="true"] {
 
 .gift-finder__results {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 1.5rem;
-  margin-bottom: 1.75rem;
+  margin-bottom: 1.5rem;
 }
 
 .gf-result-card {
-  border: 1.5px solid var(--color-line);
-  border-radius: var(--radius-md);
-  overflow: hidden;
+  border-top: 1px solid var(--color-line);
+  padding-top: 1rem;
 }
 
 .gf-result-card__image {
   aspect-ratio: 4 / 5;
+  border-radius: var(--radius-img);
+  overflow: hidden;
+  margin-bottom: 1rem;
 }
 
 .gf-result-card__image img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-}
-
-.gf-result-card h4,
-.gf-result-card__chip,
-.gf-result-card__price,
-.gf-result-card > p,
-.gf-result-card > a {
-  margin-left: 1.5rem;
-  margin-right: 1.5rem;
 }
 
 .gf-result-card__chip {
@@ -880,493 +1112,39 @@ button[aria-disabled="true"] {
   text-transform: uppercase;
   letter-spacing: 0.06em;
   color: var(--jovi-maroon);
-  margin-top: 1.25rem;
-  margin-bottom: 0.6rem;
+  margin-bottom: 0.5rem;
 }
 
 .gf-result-card h4 {
   font-family: var(--font-display);
   font-weight: 400;
-  font-size: 1.5rem;
+  font-size: 1.4rem;
   margin-bottom: 0.3rem;
 }
 
 .gf-result-card__price {
-  font-family: var(--font-display);
-  font-style: italic;
-  font-size: 1.4rem;
-  color: var(--jovi-maroon);
+  font-size: 0.95rem;
+  font-weight: 700;
   margin-bottom: 0.6rem;
 }
 
 .gf-result-card p {
   font-size: 0.92rem;
   color: var(--color-ink-soft);
-  margin-bottom: 0.85rem;
-}
-
-.gf-result-card > a {
-  display: inline-block;
-  margin-bottom: 1.5rem;
+  margin-bottom: 0.75rem;
 }
 
 .gf-restart {
   font-weight: 700;
+  font-size: 0.9rem;
   color: var(--jovi-maroon);
   border-bottom: 1.5px solid currentColor;
 }
 
-/* 16. Signature products rail
-   ========================================================================== */
-.rail__grid {
-  display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  align-items: start;
-  gap: 1.75rem;
+.bag-annotate {
+  margin-bottom: clamp(4rem, 8vw, 6rem);
 }
 
-.product-card {
-  grid-column: span 2;
-  display: flex;
-  flex-direction: column;
-}
-
-.product-card--lg {
-  grid-column: span 3;
-}
-
-.product-card--wide {
-  grid-column: span 4;
-}
-
-.product-card__frame {
-  aspect-ratio: 4 / 5;
-  border-radius: var(--radius-md);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 2rem;
-  margin-bottom: 1.1rem;
-  transition: transform 0.35s var(--ease);
-}
-
-.product-card:hover .product-card__frame {
-  transform: translateY(-6px);
-}
-
-.product-card__frame img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: var(--radius-sm);
-}
-
-/* Hero card — the anchor piece of the rail bleeds its photo to the frame
-   edge with a floating name tag, echoing the hero section's treatment,
-   instead of the inset-photo-on-a-mat pattern the rest of the rail uses. */
-.product-card--hero .product-card__frame {
-  padding: 0;
-  position: relative;
-}
-
-.product-card--hero .product-card__frame img {
-  border-radius: 0;
-}
-
-.product-card__overlay {
-  position: absolute;
-  left: 1.5rem;
-  bottom: 1.5rem;
-  right: 1.5rem;
-  background: var(--jovi-paper-alt);
-  color: var(--jovi-espresso);
-  padding: 1rem 1.25rem;
-  border-radius: var(--radius-sm);
-  max-width: 16rem;
-  box-shadow: 0 16px 30px -14px rgba(0, 0, 0, 0.4);
-}
-
-.product-card__overlay .product-card__name {
-  margin-bottom: 0.15rem;
-}
-
-.product-card__overlay .product-card__meta {
-  margin-bottom: 0;
-  font-size: 0.8rem;
-}
-
-/* Split card — the gift set breaks from the stacked photo-over-text
-   pattern with a side-by-side editorial spread. */
-.product-card--split {
-  flex-direction: row;
-  gap: 1.75rem;
-}
-
-.product-card--split .product-card__frame {
-  flex: 0 0 52%;
-  aspect-ratio: auto;
-  margin-bottom: 0;
-}
-
-.product-card--split .product-card__body {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.product-card__frame--maroon { background: var(--jovi-maroon); }
-.product-card__frame--pistachio { background: var(--jovi-pistachio); }
-.product-card__frame--butter { background: var(--jovi-butter); }
-.product-card__frame--powder { background: var(--jovi-powder); }
-.product-card__frame--terracotta { background: var(--jovi-terracotta); }
-
-.product-card__name {
-  font-family: var(--font-display);
-  font-size: 1.3rem;
-  margin-bottom: 0.2rem;
-}
-
-.product-card__meta {
-  font-size: 0.85rem;
-  color: var(--color-ink-soft);
-  margin-bottom: 0.9rem;
-}
-
-.product-card__row {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 0.5rem;
-}
-
-.product-card__price {
-  font-weight: 700;
-  font-size: 1.05rem;
-}
-
-.product-card__price-label {
-  display: block;
-  font-size: 0.65rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: var(--color-ink-soft);
-  opacity: 0.7;
-}
-
-.product-card__was {
-  display: block;
-  font-size: 0.72rem;
-  font-weight: 600;
-  color: var(--jovi-maroon);
-}
-
-.swatches {
-  display: inline-flex;
-  gap: 0.4rem;
-}
-
-.swatch {
-  width: 1.1rem;
-  height: 1.1rem;
-  border-radius: 50%;
-  background: var(--sw);
-  border: 1.5px solid rgba(36, 23, 18, 0.15);
-  padding: 0;
-  transition: transform 0.2s var(--ease), box-shadow 0.2s var(--ease);
-}
-
-.swatch:hover {
-  transform: scale(1.15);
-}
-
-.swatch.is-active {
-  box-shadow: 0 0 0 2px var(--jovi-paper-alt), 0 0 0 3.5px var(--jovi-espresso);
-}
-
-.product-card__color-label {
-  font-size: 0.78rem;
-  color: var(--color-ink-soft);
-  margin-bottom: 0.5rem;
-}
-
-.product-card__stock {
-  font-size: 0.78rem;
-  color: var(--jovi-pistachio-deep);
-  margin-bottom: 1rem;
-}
-
-/* 17. Editorial chapters (men / women)
-   ========================================================================== */
-.chapter--men { background: var(--jovi-terracotta); color: var(--jovi-paper); }
-.chapter--women { background: var(--jovi-pistachio); color: var(--jovi-espresso); }
-
-.chapter__inner {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: clamp(2rem, 5vw, 5rem);
-  align-items: center;
-}
-
-.chapter__inner--reverse {
-  direction: rtl;
-}
-
-.chapter__inner--reverse > * {
-  direction: ltr;
-}
-
-.chapter__figure {
-  position: relative;
-  aspect-ratio: 1 / 1;
-  border-radius: var(--radius-lg);
-  overflow: hidden;
-  background-size: cover;
-  background-position: center;
-}
-
-.chapter__figure--men {
-  background-image: url("../images/lifestyle/men-edit-fallback.svg");
-}
-
-.chapter__figure--women {
-  background-image: url("../images/lifestyle/women-edit-fallback.svg");
-}
-
-.chapter__photo {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-
-.chapter__body {
-  font-size: 1.05rem;
-  margin-block: 1.5rem;
-  max-width: 42ch;
-}
-
-.chapter--men .chapter__body,
-.chapter--men .link-underline { color: rgba(247, 241, 228, 0.85); }
-.chapter--men .link-underline { border-color: rgba(247, 241, 228, 0.85); }
-.chapter--men .eyebrow { color: var(--jovi-espresso); }
-
-.chapter__picks {
-  display: flex;
-  flex-direction: column;
-  gap: 0.65rem;
-  margin-bottom: 1.75rem;
-  border-top: 1px solid rgba(36, 23, 18, 0.18);
-}
-
-.chapter__picks li {
-  display: flex;
-  justify-content: space-between;
-  padding-block: 0.65rem;
-  border-bottom: 1px solid rgba(36, 23, 18, 0.18);
-  font-weight: 600;
-}
-
-/* 18. Personalisation
-   ========================================================================== */
-.personalise {
-  background: var(--jovi-powder);
-}
-
-.personalise__inner {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: clamp(2rem, 5vw, 4rem);
-  align-items: center;
-}
-
-.personalise__body {
-  font-size: 1.05rem;
-  color: var(--jovi-espresso);
-  margin-block: 1.25rem;
-  max-width: 42ch;
-}
-
-.personalise__controls {
-  display: flex;
-  flex-direction: column;
-  gap: 1.25rem;
-}
-
-.personalise__input {
-  padding: 1rem 1.25rem;
-  border-radius: var(--radius-sm);
-  border: 1.5px solid var(--jovi-espresso);
-  background: var(--jovi-paper-alt);
-  font-family: var(--font-display);
-  font-style: italic;
-  font-size: 1.4rem;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  max-width: 20rem;
-}
-
-.personalise__targets {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.65rem;
-}
-
-.pz-target {
-  padding: 0.6rem 1.1rem;
-  border-radius: 999px;
-  border: 1.5px solid var(--jovi-espresso);
-  font-weight: 600;
-  font-size: 0.88rem;
-}
-
-.pz-target.is-active {
-  background: var(--jovi-espresso);
-  color: var(--jovi-paper);
-}
-
-.personalise__preview {
-  text-align: center;
-}
-
-.pz-stage {
-  position: relative;
-  max-width: 320px;
-  margin-inline: auto;
-}
-
-.pz-image {
-  border-radius: var(--radius-md);
-  overflow: hidden;
-  box-shadow: 0 20px 30px -10px rgba(36, 23, 18, 0.3);
-}
-
-.pz-image img {
-  width: 100%;
-  display: block;
-}
-
-.pz-engrave {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  font-family: var(--font-display);
-  font-style: italic;
-  font-size: clamp(1.4rem, 4vw, 2.1rem);
-  letter-spacing: 0.08em;
-  color: var(--jovi-espresso);
-  text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.5), -1px -1px 0 rgba(0, 0, 0, 0.15);
-  min-height: 1em;
-}
-
-.pz-engrave--fob {
-  top: 64%;
-  font-size: clamp(1.1rem, 3vw, 1.5rem);
-}
-
-.pz-caption {
-  margin-top: 1rem;
-  font-size: 0.78rem;
-  color: var(--jovi-espresso-soft);
-}
-
-.pz-buy {
-  margin-top: 1.5rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 1.25rem;
-  flex-wrap: wrap;
-  text-align: left;
-}
-
-.pz-buy__name {
-  font-family: var(--font-display);
-  font-size: 1.15rem;
-}
-
-.pz-buy__price {
-  font-size: 0.85rem;
-  color: var(--color-ink-soft);
-}
-
-/* 19. Product storytelling
-   ========================================================================== */
-.storytelling {
-  background: var(--jovi-espresso);
-  color: var(--jovi-paper);
-}
-
-.storytelling h2 { color: var(--jovi-paper); max-width: 26ch; }
-
-.storytelling__tabs {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  margin-bottom: 2.5rem;
-}
-
-.st-tab {
-  padding: 0.7rem 1.25rem;
-  border-radius: 999px;
-  border: 1.5px solid rgba(247, 241, 228, 0.3);
-  color: rgba(247, 241, 228, 0.75);
-  font-size: 0.88rem;
-  font-weight: 600;
-  transition: background-color 0.2s var(--ease), color 0.2s var(--ease);
-}
-
-.st-tab.is-active {
-  background: var(--jovi-paper);
-  color: var(--jovi-espresso);
-  border-color: var(--jovi-paper);
-}
-
-.storytelling__panels {
-  min-height: 260px;
-}
-
-.st-panel {
-  display: grid;
-  grid-template-columns: 200px 1fr;
-  gap: 2.5rem;
-  align-items: center;
-  animation: gf-fade 0.35s var(--ease);
-}
-
-.st-vignette {
-  width: 100%;
-  border-radius: var(--radius-md);
-}
-
-.st-vignette--material {
-  aspect-ratio: 10 / 7;
-  background-image: url("../images/materials/leather-grain-fallback.svg");
-  background-size: cover;
-  background-position: center;
-  overflow: hidden;
-}
-
-.st-vignette--material img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-
-.st-panel p {
-  font-size: 1.15rem;
-  max-width: 46ch;
-}
-
-.st-panel strong {
-  color: var(--jovi-butter);
-}
-
-/* 20. What's in the bag — editorial annotation
-   ========================================================================== */
 .bag-annotate__layout {
   display: grid;
   grid-template-columns: 1.15fr 1fr;
@@ -1377,9 +1155,8 @@ button[aria-disabled="true"] {
 .bag-annotate__frame {
   position: relative;
   aspect-ratio: 4 / 5;
-  border-radius: var(--radius-lg);
+  border-radius: var(--radius-img);
   overflow: hidden;
-  box-shadow: 0 24px 40px -20px rgba(36, 23, 18, 0.35);
 }
 
 .bag-annotate__frame img {
@@ -1453,10 +1230,9 @@ button[aria-disabled="true"] {
   flex: none;
   width: 2ch;
   font-family: var(--font-display);
-  font-style: italic;
   font-size: 1.5rem;
   line-height: 1.1;
-  color: var(--jovi-espresso-soft);
+  color: var(--color-ink-soft);
   transition: color 0.25s var(--ease);
 }
 
@@ -1478,10 +1254,6 @@ button[aria-disabled="true"] {
   color: var(--color-ink-soft);
 }
 
-/* Hovering or focusing a row lights up its matching marker on the photo.
-   Pure CSS (:has()) — no JS needed for the highlight itself. Purely
-   decorative: every row's name/description is always visible in the DOM,
-   so nothing here carries hover-only information. */
 .bag-annotate__layout:has(.bag-annotate__row[data-annotate-target="1"]:is(:hover, :focus-visible)) [data-annotate-marker="1"] .bag-annotate__marker-dot,
 .bag-annotate__layout:has(.bag-annotate__row[data-annotate-target="2"]:is(:hover, :focus-visible)) [data-annotate-marker="2"] .bag-annotate__marker-dot,
 .bag-annotate__layout:has(.bag-annotate__row[data-annotate-target="3"]:is(:hover, :focus-visible)) [data-annotate-marker="3"] .bag-annotate__marker-dot,
@@ -1498,97 +1270,6 @@ button[aria-disabled="true"] {
   background: var(--jovi-maroon);
 }
 
-/* 21. JOVI Wall
-   ========================================================================== */
-.wall {
-  background: var(--jovi-espresso);
-  color: var(--jovi-paper);
-  background-image: var(--grain);
-  background-blend-mode: overlay;
-}
-
-.wall h2, .wall .eyebrow--light { color: inherit; }
-
-.wall__board {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-auto-rows: 130px;
-  grid-auto-flow: dense;
-  gap: 1.25rem;
-}
-
-.wall__tile {
-  border-radius: var(--radius-md);
-  padding: 1.25rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  font-size: 0.9rem;
-  box-shadow: 0 16px 30px -14px rgba(0, 0, 0, 0.45);
-  transition: transform 0.3s var(--ease);
-}
-
-.wall__tile:hover {
-  transform: translateY(-4px) rotate(0deg) !important;
-}
-
-.wall__tile--a { grid-column: span 2; grid-row: span 2; transform: rotate(-2deg); }
-.wall__tile--b { grid-column: span 2; transform: rotate(1.5deg); }
-.wall__tile--c { grid-column: span 1; transform: rotate(-1deg); }
-.wall__tile--d { grid-column: span 1; transform: rotate(2deg); }
-.wall__tile--e { grid-column: span 2; grid-row: span 2; transform: rotate(1deg); }
-.wall__tile--f { grid-column: span 2; transform: rotate(-1.5deg); }
-.wall__tile--g { grid-column: span 1; transform: rotate(2.5deg); }
-.wall__tile--h { grid-column: span 1; grid-row: span 2; transform: rotate(-2deg); }
-
-.wall__tile--maroon { background: var(--jovi-maroon); }
-.wall__tile--pink { background: var(--jovi-pink); color: var(--jovi-espresso); }
-.wall__tile--note {
-  background: var(--jovi-paper-alt);
-  color: var(--jovi-espresso);
-  font-family: var(--font-display);
-  font-style: italic;
-  font-size: 1.15rem;
-  justify-content: center;
-}
-.wall__tile--texture {
-  background: var(--jovi-terracotta);
-  background-image: var(--grain);
-  background-blend-mode: soft-light;
-}
-.wall__tile--stat {
-  background: var(--jovi-butter);
-  color: var(--jovi-espresso);
-  justify-content: center;
-  text-align: center;
-}
-.wall__tile--stat strong {
-  font-family: var(--font-display);
-  font-size: 2rem;
-  display: block;
-}
-.wall__tile--tag {
-  background: var(--jovi-pistachio);
-  color: var(--jovi-espresso);
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  font-weight: 700;
-}
-
-.wall__icon {
-  font-size: 1.8rem;
-  margin-bottom: 0.5rem;
-}
-
-.wall__tile figcaption {
-  font-size: 0.8rem;
-  opacity: 0.85;
-  margin-top: 0.35rem;
-}
-
-/* 22. Packaging / unboxing
-   ========================================================================== */
 .packaging__steps {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -1596,15 +1277,13 @@ button[aria-disabled="true"] {
 }
 
 .packaging__steps svg {
-  width: 48px;
-  height: 48px;
+  width: 40px;
+  height: 40px;
   margin-bottom: 1.25rem;
+  color: var(--jovi-maroon);
 }
 
-.packaging__steps h3 {
-  font-family: var(--font-display);
-  font-weight: 400;
-  font-size: 1.3rem;
+.packaging__steps h4 {
   margin-bottom: 0.5rem;
 }
 
@@ -1613,111 +1292,176 @@ button[aria-disabled="true"] {
   color: var(--color-ink-soft);
 }
 
-/* 23. Brand story
+/* 18. JOVI Wall — an editorial contact sheet, not a pinboard.
+   No rotation, no emoji, no rainbow of pastel tiles.
    ========================================================================== */
-.story {
-  background: var(--jovi-maroon);
-  color: var(--jovi-paper);
-}
-
-.story__inner {
-  max-width: 42rem;
-  margin-inline: auto;
-  padding-left: clamp(0rem, 8vw, 6rem);
-}
-
-.story__quote {
-  color: var(--jovi-paper);
-  font-style: italic;
-  font-size: clamp(2rem, 3.4vw + 1rem, 3.2rem);
-  max-width: 16ch;
-  margin-bottom: 2rem;
-}
-
-.story__body {
-  font-size: 1.1rem;
-  color: rgba(247, 241, 228, 0.88);
-  max-width: 46ch;
-}
-
-.story__signoff {
-  margin-top: 1.5rem;
-  font-size: 0.85rem;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: var(--jovi-butter);
-}
-
-/* 24. Store
-   ========================================================================== */
-.store {
+.wall {
   background: var(--jovi-espresso);
   color: var(--jovi-paper);
 }
 
-.store h2 { color: var(--jovi-paper); max-width: 18ch; }
+.wall h2, .wall .eyebrow--light { color: inherit; }
 
-.store__band {
+.wall__board {
   display: grid;
-  grid-template-columns: auto 1.3fr 1fr;
-  gap: clamp(1.5rem, 4vw, 3rem);
-  align-items: center;
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: 160px;
+  gap: 1px;
+  background: var(--color-line-on-dark);
 }
 
-.store__mark svg {
-  width: 28px;
-  height: 56px;
-}
-
-.store__intro p {
-  margin-top: 1.25rem;
-  color: rgba(247, 241, 228, 0.8);
-  font-size: 0.98rem;
-}
-
-.store__details {
+.wall__tile {
+  background: var(--jovi-espresso);
+  padding: 1.5rem;
   display: flex;
   flex-direction: column;
-  gap: 0.85rem;
-  padding-left: clamp(1.5rem, 4vw, 3rem);
-  border-left: 1px solid rgba(247, 241, 228, 0.2);
+  justify-content: flex-end;
+  font-size: 0.9rem;
 }
 
-.store__details dt {
+.wall__tile--quote,
+.wall__tile--image {
+  grid-column: span 2;
+  grid-row: span 2;
+}
+
+.wall__tile--quote blockquote {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.35rem;
+  margin-bottom: 0.5rem;
+}
+
+.wall__tile--quote figcaption {
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--color-on-dark-tertiary);
+}
+
+.wall__tile--image {
+  position: relative;
+  padding: 0;
+  justify-content: flex-end;
+}
+
+.wall__tile--image img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.wall__tile--image figcaption {
+  position: relative;
+  z-index: 1;
+  padding: 1.25rem;
+  background: linear-gradient(to top, rgba(36, 23, 18, 0.75), transparent);
+  color: var(--jovi-paper);
+  font-size: 0.82rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  width: 100%;
+}
+
+.wall__tile--stat {
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+}
+
+.wall__tile--stat strong {
+  font-family: var(--font-display);
+  font-size: 2.25rem;
+  color: var(--jovi-maroon);
+  display: block;
+}
+
+.wall__tile--stat span {
+  font-size: 0.85rem;
+  color: var(--color-on-dark-tertiary);
+}
+
+.wall__tile--caption {
+  justify-content: center;
+  text-align: center;
+  font-size: 0.82rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--color-on-dark-tertiary);
+}
+
+.wall__tile--tag {
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.15rem;
+  color: var(--jovi-maroon);
+}
+
+/* 19. Visit & Close
+   ========================================================================== */
+.visit {
+  background: var(--jovi-espresso);
+  color: var(--jovi-paper);
+}
+
+.visit__inner {
+  max-width: 42rem;
+  margin-inline: auto;
+  text-align: center;
+}
+
+.visit h2 { color: var(--jovi-paper); }
+
+.visit__intro p {
+  margin-top: 1.25rem;
+  color: var(--color-on-dark-soft);
+  font-size: 1.05rem;
+}
+
+.visit__details {
+  display: flex;
+  justify-content: center;
+  gap: clamp(2rem, 6vw, 4rem);
+  margin-top: clamp(2.5rem, 5vw, 3.5rem);
+  padding-top: clamp(2.5rem, 5vw, 3.5rem);
+  border-top: 1px solid var(--color-line-on-dark);
+}
+
+.visit__details dt {
   font-size: 0.72rem;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  color: var(--jovi-butter);
+  color: var(--jovi-maroon);
+  margin-bottom: 0.35rem;
 }
 
-.store__details dd {
+.visit__details dd {
   margin: 0;
   font-weight: 600;
 }
 
-/* 25. Final CTA
-   ========================================================================== */
-.final-cta {
-  background: var(--jovi-butter);
-  text-align: center;
+.visit__close {
+  margin-top: clamp(3rem, 6vw, 4.5rem);
+  padding-top: clamp(2.5rem, 5vw, 3.5rem);
+  border-top: 1px solid var(--color-line-on-dark);
 }
 
-.final-cta h2 {
-  max-width: 18ch;
-  margin-inline: auto;
+.visit__close h3 {
+  color: var(--jovi-paper);
+  margin-bottom: 1.5rem;
 }
 
-.final-cta p {
-  margin: 1.25rem auto 2rem;
-  font-size: 1.1rem;
-}
-
-/* 26. Footer
+/* 20. Footer
    ========================================================================== */
 .site-footer {
   background: var(--jovi-espresso);
-  color: rgba(247, 241, 228, 0.75);
-  padding-block: 3.5rem;
+  color: var(--color-on-dark-soft);
+  padding-block: 3rem;
 }
 
 .site-footer__inner {
@@ -1728,17 +1472,19 @@ button[aria-disabled="true"] {
 
 .site-footer__brand .logo a {
   color: var(--jovi-paper);
+  font-size: 1.4rem;
 }
 
 .site-footer__brand p {
   margin-top: 0.5rem;
-  font-size: 0.88rem;
+  font-size: 0.85rem;
 }
 
 .site-footer__links {
   display: flex;
   flex-wrap: wrap;
-  gap: 1rem 1.5rem;
+  gap: 0.85rem 1.35rem;
+  font-size: 0.9rem;
 }
 
 .site-footer__links a:hover {
@@ -1746,7 +1492,7 @@ button[aria-disabled="true"] {
 }
 
 .site-footer__meta {
-  font-size: 0.8rem;
+  font-size: 0.78rem;
   text-align: right;
 }
 
@@ -1755,7 +1501,7 @@ button[aria-disabled="true"] {
   text-underline-offset: 2px;
 }
 
-/* 27. Reveal animation
+/* 21. Reveal animation
    ========================================================================== */
 .reveal {
   opacity: 0;
@@ -1782,75 +1528,112 @@ button[aria-disabled="true"] {
   }
 }
 
-/* 28. Responsive tweaks
+/* 22. Responsive tweaks
    ========================================================================== */
+@media (max-width: 1240px) and (min-width: 961px) {
+  .opening__figure { left: 50%; }
+  .opening__inner { max-width: 26rem; }
+}
+
 @media (max-width: 960px) {
   .primary-nav { display: none; }
   .menu-toggle { display: inline-flex; }
-  .header-icons { display: none; }
 
-  .good-design__grid { grid-template-columns: 1fr; }
+  .opening {
+    min-height: auto;
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .opening__inner {
+    max-width: none;
+    padding-block: clamp(2rem, 6vw, 3rem);
+  }
+  .opening__figure {
+    position: static;
+    aspect-ratio: 4 / 5;
+    width: 100%;
+  }
+  .opening__figure::after {
+    display: none;
+  }
 
-  .hero__inner,
-  .chapter__inner,
-  .chapter__inner--reverse,
-  .personalise__inner,
+  .personalise__inner {
+    grid-template-columns: 1fr;
+  }
+  .personalise__preview {
+    order: -1;
+    margin-bottom: 1rem;
+  }
+
+  .edits {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .product-card {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .product-card__frame {
+    flex: none;
+  }
+
+  .product-card--hero .product-card__frame {
+    flex: none;
+  }
+
+  .product-pair {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .product-card--feature .product-card__frame {
+    aspect-ratio: 4 / 5;
+  }
+
   .bag-annotate__layout {
     grid-template-columns: 1fr;
-    direction: ltr;
   }
-
   .bag-annotate__markers { display: none; }
-
-  .story__inner { padding-left: 0; }
-
-  .store__band {
-    grid-template-columns: 1fr;
-    gap: 1.75rem;
-  }
-
-  .store__mark { display: none; }
-
-  .store__details {
-    padding-left: 0;
-    border-left: none;
-    padding-top: 1.25rem;
-    border-top: 1px solid rgba(247, 241, 228, 0.2);
-  }
-
-  .chapter__figure { order: -1; }
-  .hero__product { order: -1; max-width: 22rem; margin-inline: auto; }
-  .hero__product-meta { left: -0.75rem; bottom: -1rem; }
-
-  .rail__grid { grid-template-columns: repeat(2, 1fr); }
-  .product-card, .product-card--lg, .product-card--wide { grid-column: span 2; }
-  .product-card--split { flex-direction: column; }
-  .product-card--split .product-card__frame { flex: none; aspect-ratio: 4 / 5; margin-bottom: 1.1rem; }
-
-  .st-panel { grid-template-columns: 1fr; }
-  .st-vignette { max-width: 220px; }
 
   .packaging__steps { grid-template-columns: repeat(2, 1fr); }
 
+  .wall__board { grid-template-columns: repeat(2, 1fr); }
+  .wall__tile--quote,
+  .wall__tile--image { grid-column: span 2; }
+
+  .visit__details { flex-direction: column; gap: 1.5rem; }
+
   .site-footer__inner { grid-template-columns: 1fr; text-align: left; }
   .site-footer__meta { text-align: left; }
+}
+
+/* Safety net: the mobile nav dialog is mobile-only. If a viewport resize
+   crosses back to desktop while it's open (JS listens for this too, but a
+   resize/matchMedia change isn't always observable — e.g. some automated
+   viewport changes), this guarantees it can never sit stuck over the
+   desktop layout. */
+@media (min-width: 961px) {
+  .mobile-menu.is-open {
+    transform: translateX(100%);
+    visibility: hidden;
+  }
 }
 
 @media (max-width: 640px) {
   .banner-text-full { display: none; }
   .banner-text-short { display: inline; }
 
-  .hero { min-height: 100svh; }
-  .hero__ribbon { width: min(50vw, 300px); }
-  .hero__product-meta { max-width: 11rem; padding: 1rem 1.15rem; }
+  .opening__figure { aspect-ratio: 4 / 5; }
 
-  .rail__grid { grid-template-columns: 1fr; }
-  .product-card, .product-card--lg, .product-card--wide { grid-column: span 1; }
-
-  .wall__board { grid-template-columns: repeat(2, 1fr); }
-  .wall__tile--a, .wall__tile--e, .wall__tile--h { grid-column: span 2; }
+  .material__figure { height: 62vh; min-height: 380px; }
 
   .packaging__steps { grid-template-columns: 1fr; }
+
+  .wall__board { grid-template-columns: 1fr; grid-auto-rows: 220px; }
+  .wall__tile--quote,
+  .wall__tile--image { grid-column: span 1; }
 
   .gift-finder__progress { gap: 0.75rem; }
 }
