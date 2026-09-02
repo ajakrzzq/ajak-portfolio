@@ -589,7 +589,7 @@ button[aria-disabled="true"] {
   height: 88vh;
   min-height: 480px;
   max-height: 920px;
-  background-image: url("../images/materials/leather-grain-fallback.svg");
+  background-image: url("../images/materials/leather-grain.png");
   background-size: cover;
   background-position: center;
   display: flex;
@@ -1627,7 +1627,15 @@ button[aria-disabled="true"] {
 
   .opening__figure { aspect-ratio: 4 / 5; }
 
-  .material__figure { height: 62vh; min-height: 380px; }
+  .material__figure {
+    height: 62vh;
+    min-height: 380px;
+    /* Narrow crop needs its own framing: centered default pulls the stitching
+       diagonal through the caption text. Shifting right keeps grain filling
+       the dark negative space behind the text and the stitching as a clear
+       accent above it, clear of the copy. */
+    background-position: 60% center;
+  }
 
   .packaging__steps { grid-template-columns: 1fr; }
 
