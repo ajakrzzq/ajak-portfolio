@@ -547,11 +547,26 @@ button[aria-disabled="true"] {
 }
 
 /* 13. Origin
-   A reading moment. Single column, generous measure, one pull-quote.
+   A reading moment, a documentary photograph bled to the edge beside it —
+   the workbench grounds the pull-quote in a real, small studio.
    ========================================================================== */
+.origin {
+  overflow: hidden;
+}
+
+.origin__layout {
+  display: flex;
+  align-items: stretch;
+  gap: clamp(2rem, 5vw, 4rem);
+}
+
 .origin__inner {
+  flex: 1 1 45%;
   max-width: 46rem;
-  margin-inline: auto;
+  padding-inline-start: clamp(1.25rem, 4vw, 3rem);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .origin__quote {
@@ -573,6 +588,20 @@ button[aria-disabled="true"] {
   text-transform: uppercase;
   letter-spacing: 0.08em;
   color: var(--jovi-maroon);
+}
+
+.origin__figure {
+  flex: 1 1 55%;
+  min-height: clamp(22rem, 34vw, 32rem);
+  overflow: hidden;
+}
+
+.origin__figure img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 65% 55%;
+  display: block;
 }
 
 /* 14. The Material — signature moment
@@ -1538,6 +1567,23 @@ button[aria-disabled="true"] {
 @media (max-width: 960px) {
   .primary-nav { display: none; }
   .menu-toggle { display: inline-flex; }
+
+  .origin__layout {
+    flex-direction: column;
+    gap: clamp(1.5rem, 6vw, 2.5rem);
+  }
+  .origin__inner {
+    max-width: none;
+    padding-inline: clamp(1.25rem, 4vw, 3rem);
+  }
+  .origin__figure {
+    order: -1;
+    min-height: 0;
+    aspect-ratio: 4 / 5;
+  }
+  .origin__figure img {
+    object-position: 62% 42%;
+  }
 
   .opening {
     min-height: auto;
