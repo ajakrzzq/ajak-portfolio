@@ -1414,6 +1414,13 @@ button[aria-disabled="true"] {
   object-fit: cover;
 }
 
+/* A second, smaller photo moment — same image treatment as .wall__tile--image,
+   but a single column wide so it reads as a quieter aside next to the Gift
+   Handover tile rather than a matching pair. */
+.wall__tile--compact {
+  grid-column: span 1;
+}
+
 .wall__tile--image figcaption {
   position: relative;
   z-index: 1;
