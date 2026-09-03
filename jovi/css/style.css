@@ -1470,6 +1470,40 @@ button[aria-disabled="true"] {
   color: var(--jovi-maroon);
 }
 
+/* At the 4-column desktop grid, the 7 tiles' spans leave the trust stat and
+   tag as lone 1x1 cells — the auto-placement algorithm (still sparse, DOM
+   order preserved throughout: no grid-auto-flow:dense, no explicit
+   grid-row/column-start) then strands Personal Leather Moment, the final
+   tile, alone in a fresh row, leaving a large empty trailing block. Widening
+   the stat into a banner, letting the tag grow to match Candid Unboxing's
+   height, and reshaping Personal into a low closing band lets the same 7
+   tiles tile the grid with zero gaps — while keeping Personal visually the
+   quietest of the three photos (a short band vs. Candid's tall portrait vs.
+   Gift Handover's full hero block) and leaving Gift Handover, Candid
+   Unboxing, and both quotes completely untouched.
+   ========================================================================== */
+@media (min-width: 961px) {
+  .wall__tile--stat {
+    grid-column: span 2;
+  }
+
+  .wall__tile--tag {
+    grid-row: span 2;
+  }
+
+  .wall__tile--compact:last-of-type {
+    grid-column: span 2;
+    grid-row: span 1;
+  }
+
+  /* Personal Leather Moment's source photo is square; reshaped into a wide
+     band, the default center crop pushes the hand and initials out of
+     frame, so re-center lower to keep both in view. */
+  .wall__tile--compact:last-of-type img {
+    object-position: center 68%;
+  }
+}
+
 /* 19. Visit & Close
    ========================================================================== */
 .visit {
@@ -1723,6 +1757,12 @@ button[aria-disabled="true"] {
   }
 
   .packaging__steps { grid-template-columns: 1fr; }
+
+  /* On a single column, the bag-contents list (What's in the Bag) and the
+     ritual steps list sit back-to-back with near-identical numbered-list
+     styling — extra room here reads them as separate chapters instead of
+     one repeated pattern. */
+  .packaging { margin-top: 1.5rem; }
 
   .wall__board { grid-template-columns: 1fr; grid-auto-rows: 220px; }
   .wall__tile--quote,
