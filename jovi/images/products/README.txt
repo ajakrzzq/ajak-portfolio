@@ -14,7 +14,7 @@ to the honest "product photography — concept placeholder" graphic.
   keychain.jpg        — used by: Signature Products, Personalisation
                                   (Keychain target), Gift Finder results
   gift-set.jpg        — used by: Signature Products, Gift Finder results
-  weekender.jpg       — used by: Signature Products, Gift Finder results
+  weekender.png       — LIVE. used by: Signature Products, Gift Finder results
 
 Recommended shoot spec (keep every shot on this spec so they read as one
 campaign, not six different sources):

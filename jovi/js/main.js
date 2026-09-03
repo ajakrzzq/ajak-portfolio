@@ -98,10 +98,7 @@
       { id: 'wallet', name: 'The Bifold', price: 119, image: 'images/products/bifold.jpg', budget: '100to200', recipients: ['him', 'special'], occasions: ['birthday', 'graduation', 'anniversary'], blurb: 'The everyday item he’ll actually retire the old one for.' },
       { id: 'sling', name: 'Everyday Sling', price: 189, image: 'images/products/everyday-sling.jpg', budget: '100to200', recipients: ['her', 'special'], occasions: ['birthday', 'graduation', 'anniversary'], blurb: 'Considered enough for dinner, practical enough for every day after.' },
       { id: 'giftset', name: 'Wallet & Card Set', price: 239, image: 'images/products/gift-set.jpg', budget: '200plus', recipients: ['special', 'him', 'her'], occasions: ['anniversary', 'graduation'], blurb: 'Two matched pieces, boxed together — for when one gift needs to feel like enough.' },
-      // TEMP: Weekender product photography not yet shot. Pointing straight at the
-      // placeholder graphic (images/products/weekender.jpg does not exist yet) to
-      // avoid a 404. Swap back to images/products/weekender.jpg once that photo lands.
-      { id: 'weekender', name: 'Weekender Companion', price: 259, image: 'images/product-placeholder.svg', budget: '200plus', recipients: ['him', 'her', 'special'], occasions: ['graduation', 'anniversary'], blurb: 'For the next trip, the next chapter — built to be used, not shelved.' }
+      { id: 'weekender', name: 'Weekender Companion', price: 259, image: 'images/products/weekender.png', budget: '200plus', recipients: ['him', 'her', 'special'], occasions: ['graduation', 'anniversary'], blurb: 'For the next trip, the next chapter — built to be used, not shelved.' }
     ];
 
     var occasionLabels = {

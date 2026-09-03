@@ -240,11 +240,7 @@
 
           <li class="product-card product-card--compact product-card--solo reveal" data-product="weekender">
             <div class="product-card__frame">
-              <!-- TEMP: Weekender product photography not yet shot. Using the placeholder
-                   graphic directly (instead of images/products/weekender.jpg, which does not
-                   exist yet) to avoid a 404. Swap src back to images/products/weekender.jpg
-                   once that photo is delivered. -->
-              <img src="images/product-placeholder.svg" data-photo-slot alt="Weekender Companion" loading="lazy">
+              <img src="images/products/weekender.png" data-photo-slot onerror="this.onerror=null;this.src='images/product-placeholder.svg';" alt="Weekender Companion" loading="lazy">
             </div>
             <div class="product-card__body">
               <p class="product-card__name">Weekender Companion</p>

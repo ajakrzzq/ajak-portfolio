@@ -91,7 +91,7 @@ resting partly atop the wallet, both sitting slightly off-centre in frame.
 Same stone-and-linen surface and lighting as the rest of the set, so it
 reads as part of the same shoot. No logo, no text, no watermark.
 
-## 6. Weekender Companion — `weekender.jpg`
+## 6. Weekender Companion — `weekender.png` (delivered)
 
 A soft leather weekender duffel with rolled top handles, standing upright at
 a slight angle, handles draped naturally. Wider shot to show full
