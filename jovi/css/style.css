@@ -1337,6 +1337,22 @@ button[aria-disabled="true"] {
   color: var(--color-ink-soft);
 }
 
+/* The ritual, photographed — a 3-panel triptych (prepare / wrap / give)
+   shown at its natural aspect ratio so all three stages stay intact at
+   any width, rather than cropped into a fixed frame. */
+.packaging__figure {
+  margin: 0;
+  margin-top: clamp(2.5rem, 5vw, 4rem);
+  border-radius: var(--radius-img);
+  overflow: hidden;
+}
+
+.packaging__figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
 /* 18. JOVI Wall — an editorial contact sheet, not a pinboard.
    No rotation, no emoji, no rainbow of pastel tiles.
    ========================================================================== */
