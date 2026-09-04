@@ -22,13 +22,20 @@
   var menuToggle = document.querySelector('[data-menu-toggle]');
   var menuClose = document.querySelector('[data-menu-close]');
   var mobileMenu = document.querySelector('[data-mobile-menu]');
+  var menuInertTargets = [document.querySelector('main'), document.querySelector('.site-footer')].filter(Boolean);
+
+  function getMenuFocusable() {
+    return Array.prototype.slice.call(mobileMenu.querySelectorAll('a[href], button:not([disabled])'));
+  }
 
   function openMenu() {
     if (!mobileMenu) return;
     mobileMenu.classList.add('is-open');
     document.documentElement.classList.add('no-scroll');
     if (menuToggle) menuToggle.setAttribute('aria-expanded', 'true');
+    menuInertTargets.forEach(function (el) { el.setAttribute('inert', ''); });
     document.addEventListener('keydown', onMenuKeydown);
+    if (menuClose) menuClose.focus();
   }
 
   function closeMenu() {
@@ -36,11 +43,25 @@
     mobileMenu.classList.remove('is-open');
     document.documentElement.classList.remove('no-scroll');
     if (menuToggle) menuToggle.setAttribute('aria-expanded', 'false');
+    menuInertTargets.forEach(function (el) { el.removeAttribute('inert'); });
     document.removeEventListener('keydown', onMenuKeydown);
+    if (menuToggle) menuToggle.focus();
   }
 
   function onMenuKeydown(e) {
-    if (e.key === 'Escape') closeMenu();
+    if (e.key === 'Escape') { closeMenu(); return; }
+    if (e.key !== 'Tab') return;
+    var focusable = getMenuFocusable();
+    if (!focusable.length) return;
+    var first = focusable[0];
+    var last = focusable[focusable.length - 1];
+    if (e.shiftKey && document.activeElement === first) {
+      e.preventDefault();
+      last.focus();
+    } else if (!e.shiftKey && document.activeElement === last) {
+      e.preventDefault();
+      first.focus();
+    }
   }
 
   if (menuToggle) menuToggle.addEventListener('click', openMenu);
@@ -97,8 +118,8 @@
       { id: 'keychain', name: 'Keychain Fob', price: 59, image: 'images/products/keychain.jpg', budget: 'under100', recipients: ['him', 'her', 'special'], occasions: ['birthday', 'thankyou', 'justbecause', 'graduation'], blurb: 'Small enough to feel spontaneous, personal enough to feel considered.' },
       { id: 'wallet', name: 'The Bifold', price: 119, image: 'images/products/bifold.jpg', budget: '100to200', recipients: ['him', 'special'], occasions: ['birthday', 'graduation', 'anniversary'], blurb: 'The everyday item he’ll actually retire the old one for.' },
       { id: 'sling', name: 'Everyday Sling', price: 189, image: 'images/products/everyday-sling.jpg', budget: '100to200', recipients: ['her', 'special'], occasions: ['birthday', 'graduation', 'anniversary'], blurb: 'Considered enough for dinner, practical enough for every day after.' },
-      { id: 'giftset', name: 'Wallet & Card Set', price: 239, image: 'images/products/gift-set.jpg', budget: '200plus', recipients: ['special', 'him', 'her'], occasions: ['anniversary', 'graduation'], blurb: 'Two matched pieces, boxed together — for when one gift needs to feel like enough.' },
-      { id: 'weekender', name: 'Weekender Companion', price: 259, image: 'images/products/weekender.png', budget: '200plus', recipients: ['him', 'her', 'special'], occasions: ['graduation', 'anniversary'], blurb: 'For the next trip, the next chapter — built to be used, not shelved.' }
+      { id: 'giftset', name: 'Wallet & Card Set', price: 159, image: 'images/products/gift-set.jpg', budget: '100to200', recipients: ['special', 'him', 'her'], occasions: ['anniversary', 'graduation'], blurb: 'Two matched pieces, boxed together — for when one gift needs to feel like enough.' },
+      { id: 'weekender', name: 'Weekender Companion', price: 259, image: 'images/products/weekender.webp', budget: '200plus', recipients: ['him', 'her', 'special'], occasions: ['graduation', 'anniversary'], blurb: 'For the next trip, the next chapter — built to be used, not shelved.' }
     ];
 
     var occasionLabels = {
@@ -117,8 +138,11 @@
       });
       progressEls.forEach(function (el) {
         var step = Number(el.getAttribute('data-step'));
-        el.classList.toggle('is-active', step === n);
+        var isActive = step === n;
+        el.classList.toggle('is-active', isActive);
         el.classList.toggle('is-done', step < n);
+        if (isActive) el.setAttribute('aria-current', 'step');
+        else el.removeAttribute('aria-current');
       });
       if (n === 4) renderResults();
     }

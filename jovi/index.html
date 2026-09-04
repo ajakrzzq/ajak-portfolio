@@ -57,12 +57,12 @@
     <p class="mobile-menu__meta">Good design. Good materials. Good price. From RM49.</p>
   </div>
 
-  <main id="main">
+  <main id="main" tabindex="-1">
 
     <!-- ============================== 01 — OPENING ============================== -->
     <section class="opening" id="opening" aria-label="JOVI — Give something that stays">
       <div class="opening__figure reveal">
-        <img src="images/products/everyday-sling.jpg" data-photo-slot onerror="this.onerror=null;this.src='images/product-placeholder.svg';" alt="The Everyday Sling, worn cross-body" loading="eager">
+        <img src="images/products/everyday-sling.jpg" data-photo-slot onerror="this.onerror=null;this.src='images/product-placeholder.svg';" alt="The Everyday Sling, worn cross-body" loading="eager" fetchpriority="high">
       </div>
 
       <div class="container opening__inner">
@@ -95,13 +95,13 @@
           <p class="origin__signoff reveal">Made in Malaysia &mdash; still a small workbench, not a factory.</p>
         </div>
         <div class="origin__figure reveal">
-          <img src="images/lifestyle/workbench.png" data-photo-slot alt="Leather offcuts, hand tools, brass hardware, and stitching thread laid out on a worn wooden workbench in natural daylight" loading="lazy">
+          <img src="images/lifestyle/workbench.webp" data-photo-slot alt="Leather offcuts, hand tools, brass hardware, and stitching thread laid out on a worn wooden workbench in natural daylight" loading="lazy">
         </div>
       </div>
     </section>
 
     <!-- ============================== 03 — THE MATERIAL ============================== -->
-    <!-- Live macro photograph: images/materials/leather-grain.png (see
+    <!-- Live macro photograph: images/materials/leather-grain.webp (see
          images/materials/README.txt). leather-grain-fallback.svg is kept on
          disk but no longer referenced — restore it as the background-image
          in style.css (.material__figure) if the photo ever needs pulling. -->
@@ -128,7 +128,7 @@
         <div class="edits reveal" data-reveal-group>
           <div class="edits__group">
             <div class="edits__figure">
-              <img src="images/lifestyle/lifestyle-him.png" data-photo-slot onerror="this.onerror=null;this.src='images/lifestyle/men-edit-fallback.svg';" alt="A man in a leather workshop, in warm natural daylight, carrying the Weekender Companion" loading="lazy">
+              <img src="images/lifestyle/lifestyle-him.webp" data-photo-slot onerror="this.onerror=null;this.src='images/lifestyle/men-edit-fallback.svg';" alt="A man in a leather workshop, in warm natural daylight, carrying the Weekender Companion" loading="lazy">
             </div>
             <p class="edits__label">For Him</p>
             <ul class="edits__list">
@@ -139,13 +139,13 @@
           </div>
           <div class="edits__group">
             <div class="edits__figure">
-              <img src="images/lifestyle/lifestyle-her.png" data-photo-slot onerror="this.onerror=null;this.src='images/lifestyle/women-edit-fallback.svg';" alt="A woman seated at a workbench in warm daylight, wearing the Everyday Sling" loading="lazy">
+              <img src="images/lifestyle/lifestyle-her.webp" data-photo-slot onerror="this.onerror=null;this.src='images/lifestyle/women-edit-fallback.svg';" alt="A woman seated at a workbench in warm daylight, wearing the Everyday Sling" loading="lazy">
             </div>
             <p class="edits__label">For Her</p>
             <ul class="edits__list">
               <li><span>Everyday Sling</span><span>RM189</span></li>
               <li><span>The Card Case</span><span>RM49</span></li>
-              <li><span>Wallet &amp; Card Set</span><span>RM239</span></li>
+              <li><span>Wallet &amp; Card Set</span><span>RM159</span></li>
             </ul>
           </div>
         </div>
@@ -234,7 +234,7 @@
               <p class="product-card__name">Wallet &amp; Card Set</p>
               <p class="product-card__meta">The Bifold and Card Case, matched and boxed together &mdash; two considered pieces, one gift.</p>
               <div class="product-card__row">
-                <p class="product-card__price">RM239</p>
+                <p class="product-card__price">RM159</p>
                 <span class="swatches" role="group" aria-label="Choose a colour">
                   <button type="button" class="swatch is-active" style="--sw:#3A2A22" data-swatch-color="Espresso" aria-pressed="true" aria-label="Espresso"></button>
                   <button type="button" class="swatch" style="--sw:#8C232E" data-swatch-color="Maroon" aria-pressed="false" aria-label="Maroon"></button>
@@ -246,7 +246,7 @@
 
           <li class="product-card product-card--compact product-card--solo reveal" data-product="weekender">
             <div class="product-card__frame">
-              <img src="images/products/weekender.png" data-photo-slot onerror="this.onerror=null;this.src='images/product-placeholder.svg';" alt="Weekender Companion" loading="lazy">
+              <img src="images/products/weekender.webp" data-photo-slot onerror="this.onerror=null;this.src='images/product-placeholder.svg';" alt="Weekender Companion" loading="lazy">
             </div>
             <div class="product-card__body">
               <p class="product-card__name">Weekender Companion</p>
@@ -282,7 +282,7 @@
             <div class="personalise__targets" role="group" aria-label="Choose a product to personalise">
               <button type="button" class="pz-target is-active" data-engrave-target="cardholder" data-pz-name="The Card Case" data-pz-price="RM49">Card Case</button>
               <button type="button" class="pz-target" data-engrave-target="keychain" data-pz-name="Keychain Fob" data-pz-price="RM59">Keychain</button>
-              <button type="button" class="pz-target" data-engrave-target="wallet" data-pz-name="The Bifold" data-pz-price="RM119">Wallet</button>
+              <button type="button" class="pz-target" data-engrave-target="wallet" data-pz-name="The Bifold" data-pz-price="RM119">The Bifold</button>
             </div>
           </div>
         </div>
@@ -370,7 +370,7 @@
 
             <div class="gift-finder__step gift-finder__step--result" data-gf-step="4">
               <h4>Our pick for you</h4>
-              <div class="gift-finder__results" data-gf-results></div>
+              <div class="gift-finder__results" data-gf-results aria-live="polite"></div>
               <button type="button" class="gf-restart" data-gf-restart>Start Over</button>
             </div>
           </div>
@@ -466,7 +466,7 @@
           </ol>
 
           <figure class="packaging__figure reveal">
-            <img src="images/packaging/packaging-set.png" data-photo-slot onerror="this.onerror=null;this.src='images/product-placeholder.svg';" alt="Three-panel sequence of the JOVI gifting ritual: initials stamped into the leather, the finished box tied with ribbon, and the personalised piece revealed inside" loading="lazy">
+            <img src="images/packaging/packaging-set.webp" data-photo-slot onerror="this.onerror=null;this.src='images/product-placeholder.svg';" alt="Three-panel sequence of the JOVI gifting ritual: initials stamped into the leather, the finished box tied with ribbon, and the personalised piece revealed inside" loading="lazy">
           </figure>
         </div>
       </div>
@@ -484,21 +484,21 @@
         <div class="wall__board reveal" data-reveal-group>
           <figure class="wall__tile wall__tile--quote"><blockquote>&ldquo;He didn&rsquo;t take it off for a week.&rdquo;</blockquote><figcaption>&mdash; L., Petaling Jaya</figcaption></figure>
           <figure class="wall__tile wall__tile--image">
-            <!-- LIVE: dedicated JOVI Wall photography (images/wall/wall-gift-handover.png). -->
-            <img src="images/wall/wall-gift-handover.png" data-photo-slot onerror="this.onerror=null;this.src='images/product-placeholder.svg';" alt="A wrapped JOVI gift box being handed from one person to another" loading="lazy">
+            <!-- LIVE: dedicated JOVI Wall photography (images/wall/wall-gift-handover.webp). -->
+            <img src="images/wall/wall-gift-handover.webp" data-photo-slot onerror="this.onerror=null;this.src='images/product-placeholder.svg';" alt="A wrapped JOVI gift box being handed from one person to another" loading="lazy">
             <figcaption>Handed over in person, not shipped</figcaption>
           </figure>
           <figure class="wall__tile wall__tile--stat"><strong>1,200+</strong><span>gifts given so far</span></figure>
           <figure class="wall__tile wall__tile--quote"><blockquote>&ldquo;Cheaper than I expected &mdash; better than I expected, too.&rdquo;</blockquote><figcaption>&mdash; A., Ipoh</figcaption></figure>
           <figure class="wall__tile wall__tile--image wall__tile--compact">
-            <!-- LIVE: dedicated JOVI Wall photography (images/wall/wall-candid-unboxing.png). -->
-            <img src="images/wall/wall-candid-unboxing.png" data-photo-slot onerror="this.onerror=null;this.src='images/product-placeholder.svg';" alt="A person opening a JOVI gift box with a leather piece inside" loading="lazy">
+            <!-- LIVE: dedicated JOVI Wall photography (images/wall/wall-candid-unboxing.webp). -->
+            <img src="images/wall/wall-candid-unboxing.webp" data-photo-slot onerror="this.onerror=null;this.src='images/product-placeholder.svg';" alt="A person opening a JOVI gift box with a leather piece inside" loading="lazy">
             <figcaption>Opened before the coffee went cold.</figcaption>
           </figure>
           <figure class="wall__tile wall__tile--tag">#GivenWithLove</figure>
           <figure class="wall__tile wall__tile--image wall__tile--compact">
-            <!-- LIVE: dedicated JOVI Wall photography (images/wall/wall-personal-leather-moment.png). -->
-            <img src="images/wall/wall-personal-leather-moment.png" data-photo-slot onerror="this.onerror=null;this.src='images/product-placeholder.svg';" alt="A hand holding a personalised leather card holder at a café table" loading="lazy">
+            <!-- LIVE: dedicated JOVI Wall photography (images/wall/wall-personal-leather-moment.webp). -->
+            <img src="images/wall/wall-personal-leather-moment.webp" data-photo-slot onerror="this.onerror=null;this.src='images/product-placeholder.svg';" alt="A hand holding a personalised leather card holder at a café table" loading="lazy">
             <figcaption>Made his, from the first day.</figcaption>
           </figure>
         </div>

@@ -618,7 +618,7 @@ button[aria-disabled="true"] {
   height: 88vh;
   min-height: 480px;
   max-height: 920px;
-  background-image: url("../images/materials/leather-grain.png");
+  background-image: url("../images/materials/leather-grain.webp");
   background-size: cover;
   background-position: center;
   display: flex;

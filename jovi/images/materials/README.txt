@@ -1,7 +1,7 @@
 JOVI concept — material photography drop-in slots
 ===================================================
 
-  leather-grain.png  — LIVE. Used by "03 — The Material" section
+  leather-grain.webp  — LIVE. Used by "03 — The Material" section
                         (.material__figure in style.css): a macro close-up
                         of leather grain and saddle stitching, 1672x941px.
 
