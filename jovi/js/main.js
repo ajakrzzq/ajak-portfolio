@@ -150,10 +150,10 @@
     function renderResults() {
       if (!resultsEl) return;
       var matches = products
+        .filter(function (p) { return state.who && p.recipients.indexOf(state.who) !== -1; })
         .filter(function (p) { return p.budget === state.budget; })
         .map(function (p) {
           var score = 0;
-          if (state.who && p.recipients.indexOf(state.who) !== -1) score += 2;
           if (state.occasion && p.occasions.indexOf(state.occasion) !== -1) score += 1;
           return { product: p, score: score };
         })
