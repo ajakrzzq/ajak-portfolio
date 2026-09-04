@@ -800,6 +800,17 @@ button[aria-disabled="true"] {
   justify-content: center;
 }
 
+/* .product-card__meta and .product-card__color-label are shared across
+   every card variant; only the centered ones (--solo, --feature) need
+   their own box centered to match the text-align:center already set on
+   their ancestor — left-aligned variants must stay untouched. */
+.product-card--solo .product-card__meta,
+.product-card--solo .product-card__color-label,
+.product-card--feature .product-card__meta,
+.product-card--feature .product-card__color-label {
+  margin-inline: auto;
+}
+
 .product-card__frame {
   flex: 0 0 55%;
   aspect-ratio: 4 / 5;
@@ -882,6 +893,7 @@ button[aria-disabled="true"] {
   font-size: 1.1rem;
   color: var(--color-ink-soft);
   text-align: center;
+  margin-inline: auto;
 }
 
 /* 16. Personalisation — signature moment
@@ -1001,6 +1013,7 @@ button[aria-disabled="true"] {
   margin-top: 1rem;
   font-size: 0.78rem;
   color: var(--color-on-dark-soft);
+  margin-inline: auto;
 }
 
 .pz-buy {
@@ -1010,12 +1023,14 @@ button[aria-disabled="true"] {
 .pz-buy__name {
   font-family: var(--font-display);
   font-size: 1.25rem;
+  margin-inline: auto;
 }
 
 .pz-buy__price {
   font-size: 0.9rem;
   color: var(--color-on-dark-soft);
   margin-top: 0.25rem;
+  margin-inline: auto;
 }
 
 /* 17. Gift It
