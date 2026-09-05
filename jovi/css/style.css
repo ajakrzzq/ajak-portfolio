@@ -1526,6 +1526,16 @@ button[aria-disabled="true"] {
   color: var(--jovi-paper);
 }
 
+/* Wall and Visit share the same dark background with no visual seam between
+   them, so stacking a full section padding on both sides reads as one
+   oversized empty block. Halve it on the Visit side, desktop only — mobile
+   keeps its existing (correct) rhythm. */
+@media (min-width: 961px) {
+  .wall + .visit {
+    padding-top: calc(var(--space-section) / 2);
+  }
+}
+
 .visit__inner {
   max-width: 42rem;
   margin-inline: auto;
@@ -1695,7 +1705,6 @@ button[aria-disabled="true"] {
     grid-template-columns: 1fr;
   }
   .personalise__preview {
-    order: -1;
     margin-bottom: 1rem;
   }
 
