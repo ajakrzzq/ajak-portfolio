@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 820" role="img" aria-label="Premium Pastry Landing Page website concept placeholder">
+  <rect width="1440" height="820" fill="#f1efe8"/>
+  <rect x="60" y="60" width="1320" height="700" fill="none" stroke="#e5e2da" stroke-width="1.5"/>
+  <text x="720" y="380" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="60" letter-spacing="4" fill="#131316">PREMIUM PASTRY</text>
+  <text x="720" y="425" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="16" font-weight="600" letter-spacing="8" fill="#6b6b74">LANDING PAGE CONCEPT</text>
+  <rect x="688" y="460" width="64" height="1" fill="#6b6b74"/>
+  <text x="720" y="496" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="14" letter-spacing="1" fill="#96959e">Screenshot placeholder — replace with a live demo capture</text>
+</svg>
