@@ -1,0 +1,880 @@
+[
+  {
+    "legacy_id": "oil-gas",
+    "slug": "madani",
+    "name": "Madani Sdn. Bhd.",
+    "categories": [
+      "Corporate"
+    ],
+    "type": "Independent concept",
+    "industry": "Corporate / Oil & Gas",
+    "overview": "A professional corporate website designed to present Madani's engineering and energy capabilities with a stronger digital presence.",
+    "disclosure": "",
+    "challenge": "Create a professional digital presence that clearly communicates Madani's engineering and energy capabilities, and presents the business with a credible corporate identity to clients, partners and candidates.",
+    "direction": "The homepage pairs a photo of refinery infrastructure with a confident headline and two direct paths — Explore Our Services or Talk to Us — for visitors who arrive already knowing what they need. A near-navy backdrop with a single emerald accent runs consistently through the logo mark, buttons and category badges, reading as safe, technical and credible. Deeper pages extend the same structure so services, projects and industries stay easy to scan on any device.",
+    "images": [
+      {
+        "src": "images/projects/oilgas/oilgas-home-clean.jpg",
+        "alt": "Madani Sdn. Bhd. corporate website homepage with the headline 'Powering Malaysia & Brunei's Energy Future' over refinery photography",
+        "caption": "Website overview",
+        "width": 1344,
+        "height": 423,
+        "responsive": [
+          {
+            "src": "images/projects/oilgas/oilgas-home-clean-640.webp",
+            "width": 639
+          },
+          {
+            "src": "images/projects/oilgas/oilgas-home-clean-1280.webp",
+            "width": 1280
+          }
+        ]
+      },
+      {
+        "src": "images/projects/oilgas/oilgas-projects.jpg",
+        "alt": "Madani Sdn. Bhd. projects page with filterable case study cards for Oil & Gas, Marine and Industrial work",
+        "caption": "Projects",
+        "width": 1335,
+        "height": 603,
+        "responsive": [
+          {
+            "src": "images/projects/oilgas/oilgas-projects-640.webp",
+            "width": 640
+          },
+          {
+            "src": "images/projects/oilgas/oilgas-projects-1280.webp",
+            "width": 1280
+          }
+        ]
+      },
+      {
+        "src": "images/projects/oilgas/oilgas-services.jpg",
+        "alt": "Madani Sdn. Bhd. services page listing engineering, procurement, construction and fabrication",
+        "caption": "Services",
+        "width": 1326,
+        "height": 612,
+        "responsive": [
+          {
+            "src": "images/projects/oilgas/oilgas-services-640.webp",
+            "width": 639
+          },
+          {
+            "src": "images/projects/oilgas/oilgas-services-1280.webp",
+            "width": 1280
+          }
+        ]
+      },
+      {
+        "src": "images/projects/oilgas/oilgas-about.jpg",
+        "alt": "Madani Sdn. Bhd. about page describing the company's history and regional presence across Malaysia and Brunei",
+        "caption": "About",
+        "width": 1346,
+        "height": 611,
+        "responsive": [
+          {
+            "src": "images/projects/oilgas/oilgas-about-640.webp",
+            "width": 640
+          },
+          {
+            "src": "images/projects/oilgas/oilgas-about-1280.webp",
+            "width": 1280
+          }
+        ]
+      },
+      {
+        "src": "images/projects/oilgas/oilgas-industries.jpg",
+        "alt": "Madani Sdn. Bhd. industries page showcasing Oil & Gas, Marine and Petrochemical sectors",
+        "caption": "Industries",
+        "width": 1344,
+        "height": 609,
+        "responsive": [
+          {
+            "src": "images/projects/oilgas/oilgas-industries-640.webp",
+            "width": 640
+          },
+          {
+            "src": "images/projects/oilgas/oilgas-industries-1280.webp",
+            "width": 1280
+          }
+        ]
+      },
+      {
+        "src": "images/projects/oilgas/oilgas-careers.jpg",
+        "alt": "Madani Sdn. Bhd. careers page listing open positions with location and employment type",
+        "caption": "Careers",
+        "width": 1340,
+        "height": 519,
+        "responsive": [
+          {
+            "src": "images/projects/oilgas/oilgas-careers-640.webp",
+            "width": 640
+          },
+          {
+            "src": "images/projects/oilgas/oilgas-careers-1280.webp",
+            "width": 1280
+          }
+        ]
+      },
+      {
+        "src": "images/projects/oilgas/oilgas-contact.jpg",
+        "alt": "Madani Sdn. Bhd. contact page with office details for Malaysia and Brunei and an enquiry form",
+        "caption": "Contact",
+        "width": 1342,
+        "height": 611,
+        "responsive": [
+          {
+            "src": "images/projects/oilgas/oilgas-contact-640.webp",
+            "width": 639
+          },
+          {
+            "src": "images/projects/oilgas/oilgas-contact-1280.webp",
+            "width": 1280
+          }
+        ]
+      }
+    ],
+    "features": [
+      "Corporate Visual System — a navy backdrop with a single emerald accent used consistently across the logo, buttons and badges",
+      "Structured Service Presentation — engineering, procurement, construction and fabrication laid out with icons and short descriptions",
+      "Filterable Project Case Cards tagged by category, location and year",
+      "Clear Contact Journey — a fixed \"Get in Touch\" CTA and a dedicated enquiry form with office details",
+      "Responsive Website — full navigation, careers listings and case studies laid out cleanly across desktop and mobile"
+    ],
+    "demo": "demos/madani/",
+    "source_metadata": {
+      "Industry": "Corporate / Oil & Gas",
+      "Services": "Web Design, UI/UX, Frontend Development",
+      "Technology": "HTML, CSS, JavaScript",
+      "Client": "Madani Sdn. Bhd.",
+      "Status": "Concept Project"
+    },
+    "one_line": "A clearer view of engineering capabilities."
+  },
+  {
+    "legacy_id": "jovi",
+    "slug": "jovi",
+    "name": "JOVI",
+    "categories": [
+      "Fashion",
+      "E-commerce"
+    ],
+    "type": "Independent concept",
+    "industry": "Leather Goods, Reframed",
+    "overview": "A premium ecommerce concept built around tactile product storytelling, personalisation, gifting and everyday carry.",
+    "disclosure": "Concept Website — Independent concept redesign by ajak.Web. This project is an unsolicited design concept and is not affiliated with or endorsed by JOVI Leather.",
+    "challenge": "Design a flagship e-commerce concept that avoids every \"luxury ecommerce\" cliché — no black-and-gold, no cold minimalism, no generic product-grid hero — while still landing the core idea: the site should feel expensive, and the products should feel like a pleasant surprise at the price.",
+    "direction": "A warm paper-and-espresso palette with a single JOVI maroon accent, one secondary editorial colour per section rather than a full palette at once, and an Instrument Serif / Hanken Grotesk pairing chosen specifically to avoid the Fraunces-and-Inter look already used elsewhere in this portfolio. Five of the six Signature Products now carry original concept photography shot to a single consistent art direction; the sixth, plus every supporting material and construction detail, still runs on the hand-built SVG line art and colour-blocked panels the concept launched with — so the real photography sits inside the same illustrated-editorial system rather than replacing it outright.",
+    "images": [
+      {
+        "src": "images/projects/jovi/jovi-hero.jpg",
+        "alt": "JOVI concept homepage hero with the headline 'Give something that stays.' over a deep maroon editorial colour-block, beside an editorial photograph of the Everyday Sling worn cross-body",
+        "caption": "Website overview",
+        "width": 1440,
+        "height": 900,
+        "responsive": [
+          {
+            "src": "images/projects/jovi/jovi-hero-640.webp",
+            "width": 640
+          },
+          {
+            "src": "images/projects/jovi/jovi-hero-1280.webp",
+            "width": 1280
+          }
+        ]
+      },
+      {
+        "src": "images/projects/jovi/jovi-product-system.jpg",
+        "alt": "JOVI Signature Products rail showing the Everyday Sling as the lead lifestyle photograph, paired product close-ups for the Bifold and Card Case, the Keychain Fob, and the gift set",
+        "caption": "Product System",
+        "width": 1440,
+        "height": 3302,
+        "responsive": [
+          {
+            "src": "images/projects/jovi/jovi-product-system-640.webp",
+            "width": 640
+          },
+          {
+            "src": "images/projects/jovi/jovi-product-system-1280.webp",
+            "width": 1280
+          }
+        ]
+      },
+      {
+        "src": "images/projects/jovi/jovi-giftfinder.jpg",
+        "alt": "JOVI Gift Finder quiz result step showing two curated leather goods recommendations with price and a short reason for the match",
+        "caption": "Gift Finder",
+        "width": 1440,
+        "height": 1621,
+        "responsive": [
+          {
+            "src": "images/projects/jovi/jovi-giftfinder-640.webp",
+            "width": 640
+          },
+          {
+            "src": "images/projects/jovi/jovi-giftfinder-1280.webp",
+            "width": 1280
+          }
+        ]
+      },
+      {
+        "src": "images/projects/jovi/jovi-personalise.jpg",
+        "alt": "JOVI personalisation section with initials typed into an input field appearing as an embossed monogram on a photograph of the leather bifold wallet",
+        "caption": "Personalisation",
+        "width": 1440,
+        "height": 829,
+        "responsive": [
+          {
+            "src": "images/projects/jovi/jovi-personalise-640.webp",
+            "width": 639
+          },
+          {
+            "src": "images/projects/jovi/jovi-personalise-1280.webp",
+            "width": 1280
+          }
+        ]
+      },
+      {
+        "src": "images/projects/jovi/jovi-lifestyle-bag.jpg",
+        "alt": "JOVI What's in the Bag section pairing a lifestyle photograph of the Everyday Sling worn cross-body with a numbered list of the Card Case, Keychain Fob, Bifold and Daily Essentials",
+        "caption": "Everyday Carry",
+        "width": 1440,
+        "height": 1180,
+        "responsive": [
+          {
+            "src": "images/projects/jovi/jovi-lifestyle-bag-640.webp",
+            "width": 639
+          },
+          {
+            "src": "images/projects/jovi/jovi-lifestyle-bag-1280.webp",
+            "width": 1280
+          }
+        ]
+      },
+      {
+        "src": "images/projects/jovi/jovi-mobile-home.jpg",
+        "alt": "JOVI homepage on a mobile viewport with the maroon campaign hero, headline 'Give something that stays.' and a photograph of the Everyday Sling",
+        "caption": "Mobile",
+        "width": 390,
+        "height": 844,
+        "responsive": [
+          {
+            "src": "images/projects/jovi/jovi-mobile-home-640.webp",
+            "width": 390
+          },
+          {
+            "src": "images/projects/jovi/jovi-mobile-home-1280.webp",
+            "width": 390
+          }
+        ]
+      }
+    ],
+    "features": [
+      "The Gift Finder — a three-question interactive quiz (recipient, occasion, budget) that recommends curated pieces instead of a filter sidebar",
+      "Live Personalisation Preview — typed initials render instantly as an embossed monogram on the chosen product",
+      "Product Storytelling Tabs — Material, Construction, Interior, Hardware, Personalisation and Packaging, each with its own illustrated vignette",
+      "\"What's in the Bag\" — an editorial annotation system pairing the Everyday Sling's lifestyle photograph with numbered callouts for the pieces it's built to carry",
+      "The JOVI Wall — a rotated, mixed-size collage of customer moments and quotes styled like a physical pinboard rather than an Instagram grid"
+    ],
+    "demo": "jovi/",
+    "source_metadata": {
+      "Industry": "Fashion / E-Commerce — Leather Goods",
+      "Type": "Independent Concept, No Client",
+      "Technology": "HTML, CSS, JavaScript",
+      "Client": "None — Independent Concept",
+      "Services": "Web Design, UI/UX, Frontend Development",
+      "Status": "Concept Project — Not Commissioned"
+    },
+    "one_line": "Leather goods, told through gifting and personalisation."
+  },
+  {
+    "legacy_id": "kingshall",
+    "slug": "kings-hall",
+    "name": "King’s Hall Cafe",
+    "categories": [
+      "Food & Beverage"
+    ],
+    "type": "Independent concept",
+    "industry": "Food & Beverage / Café",
+    "overview": "A self-directed redesign concept exploring a warm, editorial identity for a neighbourhood café — built to test a bespoke design system rather than to fulfil a client brief.",
+    "disclosure": "Concept Website — Independent redesign concept by ajak.Web. Not affiliated with King’s Hall Cafe.",
+    "challenge": "Design a complete bespoke identity for a café concept from the ground up — not a template pass — to explore how a warm, editorial art direction could feel distinct from the generic \"coffee shop\" website look.",
+    "direction": "A dedicated brass-and-charcoal palette, a paired Playfair Display and Inter type system, and a fluid type scale run through every section — hero, menu, favourites, reviews and location — so the concept reads as one considered system rather than a stock layout with swapped colours.",
+    "images": [
+      {
+        "src": "images/projects/kingshallcafe/kh-hero.png",
+        "alt": "King's Hall Cafe concept homepage hero with a full-bleed interior photograph and a warm brass-and-charcoal palette",
+        "caption": "Website overview",
+        "width": 1440,
+        "height": 901,
+        "responsive": [
+          {
+            "src": "images/projects/kingshallcafe/kh-hero-640.webp",
+            "width": 639
+          },
+          {
+            "src": "images/projects/kingshallcafe/kh-hero-1280.webp",
+            "width": 1280
+          }
+        ]
+      },
+      {
+        "src": "images/projects/kingshallcafe/kh-about.png",
+        "alt": "King's Hall Cafe concept about section describing the café's story and atmosphere",
+        "caption": "About",
+        "width": 1440,
+        "height": 982,
+        "responsive": [
+          {
+            "src": "images/projects/kingshallcafe/kh-about-640.webp",
+            "width": 639
+          },
+          {
+            "src": "images/projects/kingshallcafe/kh-about-1280.webp",
+            "width": 1280
+          }
+        ]
+      },
+      {
+        "src": "images/projects/kingshallcafe/kh-experience.png",
+        "alt": "King's Hall Cafe concept experience section highlighting the café's atmosphere and offerings",
+        "caption": "Experience",
+        "width": 1264,
+        "height": 399,
+        "responsive": [
+          {
+            "src": "images/projects/kingshallcafe/kh-experience-640.webp",
+            "width": 640
+          },
+          {
+            "src": "images/projects/kingshallcafe/kh-experience-1280.webp",
+            "width": 1264
+          }
+        ]
+      }
+    ],
+    "features": [],
+    "demo": "kingshallcafe/",
+    "source_metadata": {
+      "Industry": "Food & Beverage / Café",
+      "Type": "Independent Concept, No Client",
+      "Technology": "HTML, CSS, JavaScript",
+      "Client": "None — Independent Concept",
+      "Services": "Web Design, UI/UX, Frontend Development",
+      "Status": "Concept Project — Not Commissioned"
+    },
+    "one_line": "The café experience, brought online."
+  },
+  {
+    "legacy_id": "restaurant",
+    "slug": "chicken-rice-syukran",
+    "name": "Chicken Rice Syukran",
+    "categories": [
+      "Food & Beverage"
+    ],
+    "type": "Independent concept",
+    "industry": "Food & Beverage",
+    "overview": "A warm, appetite-led website for a Hainanese chicken rice restaurant in Shah Alam, built to help hungry visitors find the menu and reserve a table without friction.",
+    "disclosure": "",
+    "challenge": "Give the restaurant a customer-friendly website that communicates its menu and story clearly, with a fast path to reserving a table.",
+    "direction": "The homepage leads with a bold headline beside a photography-ready hero panel, staged and waiting on the restaurant's own food photography, backed by two direct actions — View Menu and Reserve via WhatsApp. A cream background, brick-red accent and rounded, soft-bordered cards run through the About, Menu, Gallery, Reviews and Contact sections of the one-page site, keeping it feeling home-cooked rather than corporate.",
+    "images": [
+      {
+        "src": "images/projects/restaurant/restaurant-home.jpg",
+        "alt": "Chicken Rice Syukran restaurant website homepage with the headline 'Chicken rice, the way Singapore taught us.'",
+        "caption": "Website overview",
+        "width": 1440,
+        "height": 646,
+        "responsive": [
+          {
+            "src": "images/projects/restaurant/restaurant-home-640.webp",
+            "width": 640
+          },
+          {
+            "src": "images/projects/restaurant/restaurant-home-1280.webp",
+            "width": 1280
+          }
+        ]
+      },
+      {
+        "src": "images/projects/restaurant/restaurant-about.jpg",
+        "alt": "Chicken Rice Syukran about page telling the restaurant's story, with an 'At a Glance' summary of cuisine, location and reservation details",
+        "caption": "About",
+        "width": 1344,
+        "height": 602,
+        "responsive": [
+          {
+            "src": "images/projects/restaurant/restaurant-about-640.webp",
+            "width": 640
+          },
+          {
+            "src": "images/projects/restaurant/restaurant-about-1280.webp",
+            "width": 1279
+          }
+        ]
+      },
+      {
+        "src": "images/projects/restaurant/restaurant-menu.jpg",
+        "alt": "Chicken Rice Syukran category-tabbed menu page with dish cards, two with photography-ready imagery, and pricing",
+        "caption": "Menu",
+        "width": 1440,
+        "height": 646,
+        "responsive": [
+          {
+            "src": "images/projects/restaurant/restaurant-menu-640.webp",
+            "width": 640
+          },
+          {
+            "src": "images/projects/restaurant/restaurant-menu-1280.webp",
+            "width": 1280
+          }
+        ]
+      },
+      {
+        "src": "images/projects/restaurant/restaurant-reviews.jpg",
+        "alt": "Chicken Rice Syukran reviews page with star-rated customer testimonial cards",
+        "caption": "Reviews",
+        "width": 1347,
+        "height": 604,
+        "responsive": [
+          {
+            "src": "images/projects/restaurant/restaurant-reviews-640.webp",
+            "width": 640
+          },
+          {
+            "src": "images/projects/restaurant/restaurant-reviews-1280.webp",
+            "width": 1280
+          }
+        ]
+      },
+      {
+        "src": "images/projects/restaurant/restaurant-location.jpg",
+        "alt": "Chicken Rice Syukran location page with an embedded map, opening hours and a Reserve Your Table button",
+        "caption": "Location",
+        "width": 1324,
+        "height": 612,
+        "responsive": [
+          {
+            "src": "images/projects/restaurant/restaurant-location-640.webp",
+            "width": 640
+          },
+          {
+            "src": "images/projects/restaurant/restaurant-location-1280.webp",
+            "width": 1280
+          }
+        ]
+      }
+    ],
+    "features": [
+      "Category-tabbed menu with dish descriptions and pricing",
+      "Contact section with an embedded map, hours and WhatsApp reservations",
+      "A floating WhatsApp button throughout the page"
+    ],
+    "demo": "demos/chicken-rice/",
+    "source_metadata": {
+      "Client": "Chicken Rice Syukran",
+      "Industry": "Food & Beverage",
+      "Services": "Web Design, UI/UX, Frontend Development",
+      "Status": "Concept Project"
+    },
+    "one_line": "From the first craving to a table reservation."
+  },
+  {
+    "legacy_id": "safwa",
+    "slug": "safwa-umrah",
+    "name": "Safwa Umrah",
+    "categories": [
+      "Travel"
+    ],
+    "type": "Independent concept",
+    "industry": "Travel & Hospitality",
+    "overview": "A refined Umrah travel website concept designed to make pilgrimage planning feel clear, trustworthy and effortless. The experience focuses on package discovery, itinerary information, accommodation details and easy WhatsApp enquiries.",
+    "disclosure": "",
+    "challenge": "Explore how a premium Malaysian Umrah travel agency could present its packages, guidance and preparation resources through a calm, trustworthy digital experience — with a clear path from browsing packages to reaching out on WhatsApp.",
+    "direction": "A deep emerald and warm ivory palette, paired with a serif display face and restrained gold accents, sets a premium, spiritual tone without leaning on heavy imagery or ornamentation. A quick package finder sits above the fold, a horizontal timeline walks through the journey from Malaysia to the Holy Land, and WhatsApp enquiry buttons stay within reach throughout — all built mobile-first, since most visitors would arrive from a shared link rather than a desktop search.",
+    "images": [
+      {
+        "src": "images/projects/safwa/safwa-home.jpg",
+        "alt": "Safwa Umrah travel website homepage with the headline 'Your Sacred Journey Begins Here.' over an illustrated Makkah skyline",
+        "caption": "Website overview",
+        "width": 1440,
+        "height": 820,
+        "responsive": [
+          {
+            "src": "images/projects/safwa/safwa-home-640.webp",
+            "width": 639
+          },
+          {
+            "src": "images/projects/safwa/safwa-home-1280.webp",
+            "width": 1280
+          }
+        ]
+      }
+    ],
+    "features": [
+      "Quick package finder that filters packages by budget, duration and travel period",
+      "Umrah journey timeline from preparation in Malaysia through Makkah, Madinah and return",
+      "Pre-filled WhatsApp enquiry links on every package for a fast, low-friction contact journey"
+    ],
+    "demo": "demos/safwa-umrah/",
+    "source_metadata": {
+      "Client": "Safwa Umrah & Travel",
+      "Industry": "Travel & Hospitality",
+      "Services": "Web Design, UI/UX, Frontend Development",
+      "Status": "Concept Project"
+    },
+    "one_line": "A considered path from discovery to enquiry."
+  },
+  {
+    "legacy_id": "novae",
+    "slug": "novae",
+    "name": "NOVAÉ",
+    "categories": [
+      "Fashion",
+      "E-commerce"
+    ],
+    "type": "Independent concept",
+    "industry": "Fashion / E-commerce",
+    "overview": "A premium fashion e-commerce concept exploring modern product presentation, a responsive shopping experience, and refined brand positioning for retail and boutique businesses.",
+    "disclosure": "",
+    "challenge": "Show how a premium fashion retailer could present products through a clean, modern digital storefront — with easy product discovery, quick product previews and a persistent shopping bag, entirely on the front end.",
+    "direction": "The homepage leads with an editorial hero and a serif display face, then moves into a New Arrivals grid, Shop by Category tiles and a Quick View modal for previewing colour, size and price without leaving the page. A warm neutral palette and generous whitespace keep the storefront feeling premium rather than templated, while the header collapses into a search panel and mobile menu on smaller screens.",
+    "images": [
+      {
+        "src": "images/projects/novae/novae-home.jpg",
+        "alt": "NOVAÉ fashion e-commerce concept homepage with the headline 'The Everyday Edit' over a full-bleed hero",
+        "caption": "Website overview",
+        "width": 1440,
+        "height": 820,
+        "responsive": [
+          {
+            "src": "images/projects/novae/novae-home-640.webp",
+            "width": 639
+          },
+          {
+            "src": "images/projects/novae/novae-home-1280.webp",
+            "width": 1280
+          }
+        ]
+      },
+      {
+        "src": "images/projects/novae/novae-products.jpg",
+        "alt": "NOVAÉ New Arrivals product grid with wishlist and Quick View controls on each card",
+        "caption": "New Arrivals",
+        "width": 1440,
+        "height": 818,
+        "responsive": [
+          {
+            "src": "images/projects/novae/novae-products-640.webp",
+            "width": 640
+          },
+          {
+            "src": "images/projects/novae/novae-products-1280.webp",
+            "width": 1280
+          }
+        ]
+      },
+      {
+        "src": "images/projects/novae/novae-category.jpg",
+        "alt": "NOVAÉ Shop by Category section with Women, Men and Accessories tiles",
+        "caption": "Shop by Category",
+        "width": 1440,
+        "height": 1100,
+        "responsive": [
+          {
+            "src": "images/projects/novae/novae-category-640.webp",
+            "width": 640
+          },
+          {
+            "src": "images/projects/novae/novae-category-1280.webp",
+            "width": 1280
+          }
+        ]
+      },
+      {
+        "src": "images/projects/novae/novae-quickview.jpg",
+        "alt": "NOVAÉ Quick View modal with colour, size and quantity selection and an Add to Bag button",
+        "caption": "Quick View",
+        "width": 1440,
+        "height": 900,
+        "responsive": [
+          {
+            "src": "images/projects/novae/novae-quickview-640.webp",
+            "width": 640
+          },
+          {
+            "src": "images/projects/novae/novae-quickview-1280.webp",
+            "width": 1280
+          }
+        ]
+      },
+      {
+        "src": "images/projects/novae/novae-mobile-home.jpg",
+        "alt": "NOVAÉ homepage on a mobile viewport with the hero and New Arrivals heading",
+        "caption": "Mobile — Home",
+        "width": 390,
+        "height": 844,
+        "responsive": [
+          {
+            "src": "images/projects/novae/novae-mobile-home-640.webp",
+            "width": 390
+          },
+          {
+            "src": "images/projects/novae/novae-mobile-home-1280.webp",
+            "width": 390
+          }
+        ]
+      },
+      {
+        "src": "images/projects/novae/novae-mobile-menu.jpg",
+        "alt": "NOVAÉ mobile menu open, listing New Arrivals, Women, Men, Accessories and About with a product search field",
+        "caption": "Mobile — Navigation",
+        "width": 390,
+        "height": 844,
+        "responsive": [
+          {
+            "src": "images/projects/novae/novae-mobile-menu-640.webp",
+            "width": 390
+          },
+          {
+            "src": "images/projects/novae/novae-mobile-menu-1280.webp",
+            "width": 390
+          }
+        ]
+      }
+    ],
+    "features": [
+      "Quick View modal for previewing colour, size and price without leaving the page",
+      "Persistent cart drawer and wishlist, saved with localStorage",
+      "Responsive navigation with a mobile menu, search panel and category browsing"
+    ],
+    "demo": "novae/",
+    "source_metadata": {},
+    "one_line": "Everyday fashion with an editorial point of view."
+  },
+  {
+    "legacy_id": "klinik-ceria",
+    "slug": "klinik-ceria",
+    "name": "Klinik Ceria",
+    "categories": [
+      "Healthcare"
+    ],
+    "type": "Independent concept",
+    "industry": "Healthcare",
+    "overview": "A modern, warm and responsive website concept designed for a local family general clinic.",
+    "disclosure": "",
+    "challenge": "Explore how a local family clinic could turn everyday visits into a simpler experience online — clear service information, visible opening hours, and a fast way to check in with the clinic before heading over.",
+    "direction": "The concept prioritises reassurance over persuasion: a warm, uncluttered layout leads with services and hours rather than a hard sell, with WhatsApp built into the header, hours and contact sections so a visitor can ask a quick question — including whether the clinic is open right now — without picking up the phone. A calm, family-friendly palette and a short photo gallery of the clinic are designed to make a first-time visitor feel comfortable before they've even walked in.",
+    "images": [
+      {
+        "src": "images/projects/klinik-ceria/klinik-ceria-home.jpg",
+        "alt": "Klinik Ceria family clinic website concept homepage with the headline 'Everyday Healthcare for You & Your Family'",
+        "caption": "Website overview",
+        "width": 1440,
+        "height": 820,
+        "responsive": [
+          {
+            "src": "images/projects/klinik-ceria/klinik-ceria-home-640.webp",
+            "width": 639
+          },
+          {
+            "src": "images/projects/klinik-ceria/klinik-ceria-home-1280.webp",
+            "width": 1280
+          }
+        ]
+      }
+    ],
+    "features": [
+      "WhatsApp built into the header, hours and contact sections",
+      "A dedicated hours section addressing \"are you open now?\" directly",
+      "Service categories covering general, family, women's, men's and preventive care",
+      "A short photo gallery giving a first look inside the clinic"
+    ],
+    "demo": "demos/klinik-ceria/",
+    "source_metadata": {
+      "Client": "Klinik Ceria",
+      "Industry": "Healthcare",
+      "Services": "Web Design, UI/UX, Frontend Development",
+      "Status": "Concept Project"
+    },
+    "one_line": "Everyday healthcare, easier to navigate."
+  },
+  {
+    "legacy_id": "furniture",
+    "slug": "royale-chesterfield",
+    "name": "Royale Chesterfield",
+    "categories": [
+      "Furniture"
+    ],
+    "type": "Independent concept",
+    "industry": "Furniture / Business",
+    "overview": "A premium showroom website for a handcrafted chesterfield sofa maker, built to present the product with the same craftsmanship it's made with.",
+    "disclosure": "",
+    "challenge": "Present a handcrafted furniture brand as established and premium, and make it easy for a visitor to book a showroom appointment.",
+    "direction": "A single continuously-scrolling page carries the visitor from collections through a custom-order journey, materials, a showroom gallery and FAQ. The hero pairs a dark charcoal-and-gold palette with a heritage stamp badge, staged on a photography-ready backdrop awaiting the brand's campaign shoot. A persistent top bar carries phone, WhatsApp and hours for both showrooms, and a single \"Book a Showroom Visit\" action repeats through the collections, custom-order and FAQ sections.",
+    "images": [
+      {
+        "src": "images/projects/furniture/furniture-home.jpg",
+        "alt": "Royale Chesterfield furniture website homepage with the headline 'Handcrafted luxury, built to last generations.'",
+        "caption": "Website overview",
+        "width": 1440,
+        "height": 646,
+        "responsive": [
+          {
+            "src": "images/projects/furniture/furniture-home-640.webp",
+            "width": 640
+          },
+          {
+            "src": "images/projects/furniture/furniture-home-1280.webp",
+            "width": 1280
+          }
+        ]
+      },
+      {
+        "src": "images/projects/furniture/furniture-booking.jpg",
+        "alt": "Royale Chesterfield Book a Showroom Visit section with a two-step form for visitor details and showroom visit details",
+        "caption": "Booking",
+        "width": 1440,
+        "height": 646,
+        "responsive": [
+          {
+            "src": "images/projects/furniture/furniture-booking-640.webp",
+            "width": 640
+          },
+          {
+            "src": "images/projects/furniture/furniture-booking-1280.webp",
+            "width": 1280
+          }
+        ]
+      },
+      {
+        "src": "images/projects/furniture/furniture-contact.jpg",
+        "alt": "Royale Chesterfield showroom section listing both Shah Alam and Kuala Terengganu locations with hours and a Book a Showroom Visit button",
+        "caption": "Showroom",
+        "width": 1440,
+        "height": 646,
+        "responsive": [
+          {
+            "src": "images/projects/furniture/furniture-contact-640.webp",
+            "width": 640
+          },
+          {
+            "src": "images/projects/furniture/furniture-contact-1280.webp",
+            "width": 1280
+          }
+        ]
+      },
+      {
+        "src": "images/projects/furniture/furniture-faq.jpg",
+        "alt": "Royale Chesterfield FAQ section with an accordion of common questions on manufacturing, customisation, materials, delivery and warranty",
+        "caption": "FAQ",
+        "width": 1440,
+        "height": 646,
+        "responsive": [
+          {
+            "src": "images/projects/furniture/furniture-faq-640.webp",
+            "width": 640
+          },
+          {
+            "src": "images/projects/furniture/furniture-faq-1280.webp",
+            "width": 1280
+          }
+        ]
+      }
+    ],
+    "features": [
+      "Two-step \"Book a Showroom Visit\" form separating personal details from visit details",
+      "Persistent top utility bar with phone, WhatsApp and hours for both showroom locations",
+      "FAQ accordion covering manufacturing, customisation, materials, delivery and warranty"
+    ],
+    "demo": "demos/royale-chesterfield/",
+    "source_metadata": {
+      "Client": "Royale Chesterfield",
+      "Industry": "Furniture / Business",
+      "Services": "Web Design, UI/UX, Frontend Development",
+      "Status": "Concept Project"
+    },
+    "one_line": "Craftsmanship with a clear path to the showroom."
+  },
+  {
+    "legacy_id": "lumiere",
+    "slug": "lumiere",
+    "name": "Lumière Hair Studio",
+    "categories": [
+      "Beauty"
+    ],
+    "type": "Independent concept",
+    "industry": "Beauty & Wellness",
+    "overview": "A premium modern website concept for a hair and beauty salon, designed around services, visual presentation, appointments and WhatsApp contact.",
+    "disclosure": "",
+    "challenge": "Explore how a hair and beauty salon could present its services and atmosphere online with the same polish as an in-salon experience — making it simple for a new client to see the work, understand the services on offer, and book without friction.",
+    "direction": "The concept is built around a warm, premium palette and a services grid — haircut, colour, treatment, rebonding and scalp care — presented as clearly as a printed menu, backed by a short gallery so a visitor can see the studio's actual work. A WhatsApp \"Book Appointment\" action repeats in the header, hero and a sticky mobile button, keeping booking one tap away from anywhere on the page.",
+    "images": [
+      {
+        "src": "images/projects/lumiere/lumiere-home.svg",
+        "alt": "Lumière Hair Studio website concept",
+        "caption": "Website overview",
+        "width": 1440,
+        "height": 820
+      }
+    ],
+    "features": [
+      "Services grid covering haircut, colour, treatment, wash & blow, rebonding and scalp care",
+      "A gallery section showing the studio's work",
+      "WhatsApp booking repeated in the header, hero and a sticky mobile button"
+    ],
+    "demo": "lumiere-hair-studio/",
+    "source_metadata": {
+      "Client": "Lumière Hair Studio",
+      "Industry": "Beauty & Wellness",
+      "Services": "Web Design, UI/UX, Frontend Development",
+      "Status": "Concept Project"
+    },
+    "one_line": "Services, atmosphere and appointments in one place."
+  },
+  {
+    "legacy_id": "pastry",
+    "slug": "atelier-miette",
+    "name": "Atelier Miette",
+    "categories": [
+      "Food & Beverage"
+    ],
+    "type": "Independent concept",
+    "industry": "Food & Beverage · Landing Page",
+    "overview": "A premium editorial landing page concept for a boutique pastry business, focused on product presentation, brand storytelling and a simple WhatsApp enquiry journey.",
+    "disclosure": "Concept Landing Page — Independent concept demo by ajak.Web, not commissioned by a real business. Atelier Miette is not a real client, and the products, prices and imagery shown in the demo are for illustration only and are not confirmed client content.",
+    "challenge": "Explore how a boutique pastry business could present its products and story through a single premium, editorial landing page — leading with strong product presentation and a fast, low-friction path to enquire.",
+    "direction": "A single-page editorial layout pairs product photography with short brand-story copy, keeping the page focused rather than spreading the concept across a full multi-page site. A WhatsApp enquiry link sits within easy reach throughout, so a visitor who's ready to ask about an order doesn't have to hunt for a contact form.",
+    "images": [
+      {
+        "src": "images/projects/pastry/pastry-home.jpg",
+        "alt": "Premium Pastry Landing Page concept homepage for Atelier Miette with the headline 'A little moment. Beautifully made.' beside a photograph of a croissant on a plate",
+        "caption": "Website overview",
+        "width": 1440,
+        "height": 1000,
+        "responsive": [
+          {
+            "src": "images/projects/pastry/pastry-home-640.webp",
+            "width": 639
+          },
+          {
+            "src": "images/projects/pastry/pastry-home-1280.webp",
+            "width": 1280
+          }
+        ]
+      }
+    ],
+    "features": [
+      "Editorial product presentation built around photography and brand storytelling",
+      "A simple WhatsApp enquiry journey in place of a checkout or contact form",
+      "Responsive single-page layout designed mobile-first for shared links"
+    ],
+    "demo": "https://pastry-client-landing.vercel.app",
+    "source_metadata": {
+      "Client": "None — Independent Concept",
+      "Industry": "Food & Beverage",
+      "Services": "Web Design, UI/UX, Frontend Development",
+      "Status": "Concept Landing Page — Not Commissioned"
+    },
+    "one_line": "A small bakery story with a strong first impression."
+  }
+]

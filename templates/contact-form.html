@@ -1,0 +1,45 @@
+<form id="enquiry-form" novalidate>
+              <div class="form-row form-row--2">
+                <div class="field">
+                  <label for="name">Name</label>
+                  <input type="text" id="name" name="name" autocomplete="name" required>
+                </div>
+                <div class="field">
+                  <label for="business">Business Name</label>
+                  <input type="text" id="business" name="business" autocomplete="organization">
+                </div>
+              </div>
+
+              <div class="form-row form-row--2">
+                <div class="field">
+                  <label for="email">Email</label>
+                  <input type="email" id="email" name="email" autocomplete="email" required>
+                </div>
+                <div class="field">
+                  <label for="phone">WhatsApp / Phone</label>
+                  <input type="tel" id="phone" name="phone" autocomplete="tel">
+                </div>
+              </div>
+
+              <div class="field">
+                <label for="websiteType">Website Type</label>
+                <select id="websiteType" name="websiteType">
+                  <option value="">Select an option</option>
+                  <option value="Business Website">Business Website</option>
+                  <option value="Restaurant Website">Restaurant Website</option>
+                  <option value="Corporate Website">Corporate Website</option>
+                  <option value="Landing Page">Landing Page</option>
+                  <option value="Website Redesign">Website Redesign</option>
+                  <option value="Other">Other</option>
+                </select>
+              </div>
+
+              <div class="field">
+                <label for="message">Message</label>
+                <textarea id="message" name="message" required placeholder="Tell me a little about your business and what you need."></textarea>
+              </div>
+
+              <button type="submit" class="btn btn--accent btn--block">Send Enquiry</button>
+
+              <p class="form-status" id="form-status" role="status"></p>
+            </form>

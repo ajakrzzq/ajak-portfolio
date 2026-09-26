@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://ajakweb.vercel.app/</loc>
-  </url>
-  <url>
-    <loc>https://ajakweb.vercel.app/about.html</loc>
-  </url>
-  <url>
-    <loc>https://ajakweb.vercel.app/services.html</loc>
-  </url>
-  <url>
-    <loc>https://ajakweb.vercel.app/work.html</loc>
-  </url>
-  <url>
-    <loc>https://ajakweb.vercel.app/contact.html</loc>
-  </url>
+  <url><loc>https://ajakweb.vercel.app/</loc></url>
+  <url><loc>https://ajakweb.vercel.app/about.html</loc></url>
+  <url><loc>https://ajakweb.vercel.app/services.html</loc></url>
+  <url><loc>https://ajakweb.vercel.app/work.html</loc></url>
+  <url><loc>https://ajakweb.vercel.app/contact.html</loc></url>
+  <url><loc>https://ajakweb.vercel.app/work/madani/</loc></url>
+  <url><loc>https://ajakweb.vercel.app/work/jovi/</loc></url>
+  <url><loc>https://ajakweb.vercel.app/work/kings-hall/</loc></url>
+  <url><loc>https://ajakweb.vercel.app/work/chicken-rice-syukran/</loc></url>
+  <url><loc>https://ajakweb.vercel.app/work/safwa-umrah/</loc></url>
+  <url><loc>https://ajakweb.vercel.app/work/novae/</loc></url>
+  <url><loc>https://ajakweb.vercel.app/work/klinik-ceria/</loc></url>
+  <url><loc>https://ajakweb.vercel.app/work/royale-chesterfield/</loc></url>
+  <url><loc>https://ajakweb.vercel.app/work/lumiere/</loc></url>
+  <url><loc>https://ajakweb.vercel.app/work/atelier-miette/</loc></url>
 </urlset>

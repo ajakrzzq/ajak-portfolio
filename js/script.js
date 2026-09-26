@@ -62,6 +62,7 @@ document.addEventListener("DOMContentLoaded", function () {
       if (footerRegion) footerRegion.inert = isInert;
     };
     var closeMenu = function (returnFocus) {
+      mobileMenu.inert = true;
       toggle.setAttribute("aria-expanded", "false");
       toggle.setAttribute("aria-label", "Open menu");
       mobileMenu.classList.remove("is-open");
@@ -71,6 +72,7 @@ document.addEventListener("DOMContentLoaded", function () {
       if (returnFocus) toggle.focus();
     };
     var openMenu = function () {
+      mobileMenu.inert = false;
       toggle.setAttribute("aria-expanded", "true");
       toggle.setAttribute("aria-label", "Close menu");
       mobileMenu.classList.add("is-open");
@@ -86,6 +88,9 @@ document.addEventListener("DOMContentLoaded", function () {
     toggle.addEventListener("click", function () {
       var isOpen = toggle.getAttribute("aria-expanded") === "true";
       isOpen ? closeMenu(true) : openMenu();
+    });
+    window.matchMedia("(min-width: 900px)").addEventListener("change", function (event) {
+      if (event.matches) closeMenu(false);
     });
     mobileMenu.querySelectorAll("a").forEach(function (link) {
       link.addEventListener("click", function () { closeMenu(false); });
@@ -187,6 +192,8 @@ document.addEventListener("DOMContentLoaded", function () {
      constant if the number ever changes. */
   var enquiryForm = document.getElementById("enquiry-form");
   if (enquiryForm) {
+    var enquirySubmit = enquiryForm.querySelector('[data-enquiry-submit]');
+    if (enquirySubmit) enquirySubmit.disabled = false;
     var WHATSAPP_NUMBER = "60176146502";
     var statusEl = document.getElementById("form-status");
 
@@ -225,7 +232,7 @@ document.addEventListener("DOMContentLoaded", function () {
       statusEl.className = "form-status is-visible is-success";
 
       window.open(url, "_blank", "noopener");
-      enquiryForm.reset();
+      // Keep the entered details so visitors can retry if WhatsApp is blocked.
     });
   }
 });

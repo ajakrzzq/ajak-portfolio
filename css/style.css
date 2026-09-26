@@ -33,7 +33,9 @@
   --ink: #131316;
   --ink-soft: #2b2b33;
   --paper: #faf9f5;
+  --bg-primary: var(--paper); /* unified site-wide background (Section 7) */
   --paper-alt: #f1efe8;
+  --bg-secondary: var(--paper-alt); /* contrast sections only (Section 11) */
   --surface: #ffffff;
   --accent: #3b46f0;
   --accent-dark: #2a32c4;
@@ -48,6 +50,8 @@
      measured lime (~#E1E778-#E7FF4D, warmer/yellower than the previous
      value) per the Phase 23 color-calibration pass. */
   --lime: #e7ff4d;
+  --text-primary: var(--ink);
+  --text-muted: var(--muted);
   --muted: #6b6b74;
   --muted-2: #96959e;
   --border: #e5e2da;
