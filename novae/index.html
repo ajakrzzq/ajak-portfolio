@@ -4,41 +4,41 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>NOVAÉ — Modern Essentials. Made for Everyday.</title>
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#faf7f1">
   <meta name="description" content="NOVAÉ is a contemporary fashion label creating modern essentials — considered fabrics, quiet colour, and pieces designed to move with everyday life.">
 
   <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="fonts/fonts.css">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
 
   <p class="concept-banner">
-    <span class="banner-text-full"><strong>Concept Website</strong> &mdash; Demo by <a href="../work.html#novae">ajak.Web</a>, not a real operating store.</span>
-    <span class="banner-text-short"><strong>Concept Website</strong> &mdash; Demo by <a href="../work.html#novae">ajak.Web</a></span>
+    <span class="banner-text-full"><strong>Concept Website</strong> &mdash; Demo by <a href="https://ajakweb.com/work/novae/">ajak.Web</a>, not a real operating store.</span>
+    <span class="banner-text-short"><strong>Demo Store · No orders</strong> &mdash; Demo by <a href="https://ajakweb.com/work/novae/">ajak.Web</a></span>
   </p>
 
   <div class="announcement">
-    <p class="announcement__track">Free shipping on orders over $150 &nbsp;—&nbsp; Easy 30-day returns</p>
+    <p class="announcement__track">The Everyday Edit &nbsp;—&nbsp; Considered pieces. Endless combinations.</p>
   </div>
 
   <header class="site-header" data-site-header>
     <div class="container site-header__inner">
       <nav class="nav-group primary-nav" aria-label="Shop navigation">
         <a class="nav-link" href="#new-arrivals">New Arrivals</a>
-        <a class="nav-link" aria-disabled="true">Women</a>
-        <a class="nav-link" aria-disabled="true">Men</a>
+        <a class="nav-link" href="#new-arrivals" data-shop-filter="women">Women</a>
+        <a class="nav-link" href="#new-arrivals" data-shop-filter="men">Men</a>
       </nav>
 
       <p class="logo"><a href="index.html">NOVAÉ</a></p>
 
       <div class="nav-group nav-group--end">
         <nav class="primary-nav" aria-label="Company navigation">
-          <a class="nav-link" aria-disabled="true">Accessories</a>
-          <a class="nav-link" aria-disabled="true">About</a>
+          <a class="nav-link" href="#new-arrivals" data-shop-filter="accessories">Accessories</a>
+          <a class="nav-link" href="#brand-story">About</a>
         </nav>
         <div class="header-icons">
           <button type="button" class="icon-btn icon-btn--search" data-search-toggle aria-expanded="false" aria-controls="nav-search-panel" aria-label="Search">
@@ -55,7 +55,8 @@
       </div>
     </div>
 
-    <div class="search-panel" data-search-panel id="nav-search-panel">
+    <div class="search-panel" data-search-panel id="nav-search-panel" role="dialog" aria-modal="true" aria-label="Search collection" tabindex="-1">
+      <button type="button" class="search-close icon-btn" data-search-close aria-label="Close search">&#215;</button>
       <form class="search-panel__form" role="search" data-search-form>
         <label class="visually-hidden" for="nav-search-input">Search products</label>
         <input id="nav-search-input" type="search" name="q" placeholder="Search products, styles, collections…" autocomplete="off">
@@ -74,10 +75,10 @@
     <div class="mobile-menu__body">
       <nav class="mobile-menu__links" aria-label="Primary">
         <a href="#new-arrivals">New Arrivals</a>
-        <a aria-disabled="true">Women</a>
-        <a aria-disabled="true">Men</a>
-        <a aria-disabled="true">Accessories</a>
-        <a aria-disabled="true">About</a>
+        <a href="#new-arrivals" data-shop-filter="women">Women</a>
+        <a href="#new-arrivals" data-shop-filter="men">Men</a>
+        <a href="#new-arrivals" data-shop-filter="accessories">Accessories</a>
+        <a href="#brand-story">About</a>
       </nav>
 
       <form class="search-panel__form" role="search" data-search-form>
@@ -87,7 +88,7 @@
       </form>
 
       <div class="mobile-menu__utility">
-        <a aria-disabled="true">Contact</a>
+        <button type="button" data-info="contact">Contact</button>
         <a href="#lookbook">Lookbook</a>
       </div>
 
@@ -99,10 +100,7 @@
     <!-- ============================== HERO ============================== -->
     <section class="hero" aria-label="Featured collection">
       <div class="hero__media">
-        <img
-          src="images/placeholder.svg"
-          alt="Model wearing a tailored neutral-tone coat from the NOVAÉ new collection"
-        >
+        <img src="images/hero.webp" alt="Fashion campaign featuring a woman in a burgundy coat carrying shopping bags" fetchpriority="high" width="1800" height="1200" srcset="images/hero-800.webp 800w, images/hero.webp 1800w" sizes="100vw">
         <div class="hero__scrim"></div>
       </div>
       <div class="hero__content">
@@ -110,8 +108,8 @@
         <h1>The Everyday Edit</h1>
         <p class="hero__sub">Modern essentials designed for everyday life.</p>
         <div class="hero__actions">
-          <a class="btn btn--primary" aria-disabled="true">Shop Women</a>
-          <a class="btn btn--ghost-light" aria-disabled="true">Shop Men</a>
+          <a class="btn btn--primary" href="#new-arrivals" data-shop-filter="women">Shop Women</a>
+          <a class="btn btn--ghost-light" href="#new-arrivals" data-shop-filter="men">Shop Men</a>
         </div>
       </div>
       <div class="hero__scroll-cue" aria-hidden="true">
@@ -127,27 +125,39 @@
           <div class="section-head__text">
             <p class="eyebrow">Just Landed</p>
             <h2 id="new-arrivals-heading">New Arrivals</h2>
-            <p>Fresh silhouettes and considered fabrics, arriving weekly — built to move from the studio to the street.</p>
+            <p>Fresh silhouettes and considered fabrics — built to move from the studio to the street.</p>
           </div>
-          <a class="link-underline" aria-disabled="true">View All</a>
+          <a class="link-underline" href="#new-arrivals" data-shop-filter="all">View All</a>
         </div>
 
-        <div class="product-grid" data-reveal-group>
+        <div class="collection-toolbar" data-collection-tools>
+          <div class="collection-filters" role="group" aria-label="Filter collection">
+            <button type="button" data-shop-filter="all" aria-pressed="true">All pieces</button>
+            <button type="button" data-shop-filter="women" aria-pressed="false">Women</button>
+            <button type="button" data-shop-filter="men" aria-pressed="false">Men</button>
+            <button type="button" data-shop-filter="accessories" aria-pressed="false">Accessories</button>
+            <button type="button" data-shop-filter="saved" aria-pressed="false">Saved</button>
+          </div>
+          <label class="collection-sort">Sort by <select data-sort aria-label="Sort collection"><option value="featured">Featured</option><option value="low">Price: low to high</option><option value="high">Price: high to low</option></select></label>
+        </div>
+        <div class="collection-result"><p data-results role="status" aria-live="polite">8 pieces · Prices in USD</p><button type="button" class="link-underline" data-reset hidden>Clear filters</button></div>
+        <div class="collection-empty" data-empty hidden><h3>No pieces found</h3><p data-empty-message>Try another search or explore all pieces.</p><button type="button" class="btn btn--outline" data-shop-filter="all">Explore all pieces</button></div>
+        <div class="product-grid" data-reveal-group data-collection-grid>
 
-          <article class="product-card" data-product-id="tailored-wool-coat" data-name="The Tailored Wool Coat" data-category="Outerwear" data-price="328" data-image="images/placeholder.svg" data-colors='[{"name":"Charcoal","hex":"#2E2B26"},{"name":"Beige","hex":"#EDE4D3"}]' data-sizes="XS,S,M,L,XL">
+          <article class="product-card" data-product-id="tailored-wool-coat" data-audience="women men" data-description="A clean, longline silhouette with notched lapels and room for your favourite knit." data-details="Sample composition: wool blend. Professional dry clean. Relaxed, layer-friendly fit." data-name="The Tailored Wool Coat" data-category="Outerwear" data-price="328" data-image="images/product-coat.webp" data-colors='[{"name":"Charcoal","hex":"#2E2B26"},{"name":"Beige","hex":"#EDE4D3"}]' data-sizes="XS,S,M,L,XL">
             <div class="product-card__frame">
               <span class="product-card__badge">New</span>
               <button type="button" class="product-card__wishlist" data-wishlist-toggle aria-label="Add The Tailored Wool Coat to wishlist" aria-pressed="false">
                 <svg viewBox="0 0 24 24" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7.5-4.7-10-9.6C.4 7.7 2 4 5.6 4c2 0 3.6 1.3 4.6 2.9C11.2 5.3 12.8 4 14.8 4 18.4 4 20 7.7 22 11.4 19.5 16.3 12 21 12 21z"></path></svg>
               </button>
-              <img src="images/placeholder.svg" alt="The Tailored Wool Coat in charcoal, styled open over a knit" loading="lazy">
+              <img src="images/product-coat.webp" alt="The Tailored Wool Coat — Charcoal" loading="lazy">
               <div class="product-card__quickview">
                 <button type="button" data-quickview-open>Quick View</button>
               </div>
             </div>
             <div class="product-card__body">
               <div>
-                <p class="product-card__name"><a aria-disabled="true">The Tailored Wool Coat</a></p>
+                <p class="product-card__name"><button type="button" data-quickview-open>The Tailored Wool Coat</button></p>
                 <p class="product-card__category">Outerwear</p>
                 <div class="product-card__swatches" aria-hidden="true">
                   <span class="swatch" style="background:#2E2B26"></span>
@@ -158,20 +168,20 @@
             </div>
           </article>
 
-          <article class="product-card" data-product-id="relaxed-cotton-shirt" data-name="Relaxed Cotton Shirt" data-category="Tops" data-price="98" data-image="images/placeholder.svg" data-colors='[{"name":"Warm White","hex":"#FAF7F1"},{"name":"Olive","hex":"#6B6B4F"},{"name":"Black","hex":"#16140F"}]' data-sizes="XS,S,M,L,XL">
+          <article class="product-card" data-product-id="relaxed-cotton-shirt" data-audience="women men" data-description="An easy button-down with a soft collar and a relaxed shape. Wear it tucked, open or layered." data-details="Sample composition: cotton. Cool wash with similar colours. Relaxed fit." data-name="Relaxed Cotton Shirt" data-category="Tops" data-price="98" data-image="images/product-shirt.webp" data-colors='[{"name":"Warm White","hex":"#FAF7F1"},{"name":"Olive","hex":"#6B6B4F"},{"name":"Black","hex":"#16140F"}]' data-sizes="XS,S,M,L,XL">
             <div class="product-card__frame">
               <span class="product-card__badge">New</span>
               <button type="button" class="product-card__wishlist" data-wishlist-toggle aria-label="Add Relaxed Cotton Shirt to wishlist" aria-pressed="false">
                 <svg viewBox="0 0 24 24" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7.5-4.7-10-9.6C.4 7.7 2 4 5.6 4c2 0 3.6 1.3 4.6 2.9C11.2 5.3 12.8 4 14.8 4 18.4 4 20 7.7 22 11.4 19.5 16.3 12 21 12 21z"></path></svg>
               </button>
-              <img src="images/placeholder.svg" alt="Relaxed Cotton Shirt in warm white, worn loosely tucked" loading="lazy">
+              <img src="images/product-shirt.webp" alt="Relaxed Cotton Shirt — Warm White" loading="lazy">
               <div class="product-card__quickview">
                 <button type="button" data-quickview-open>Quick View</button>
               </div>
             </div>
             <div class="product-card__body">
               <div>
-                <p class="product-card__name"><a aria-disabled="true">Relaxed Cotton Shirt</a></p>
+                <p class="product-card__name"><button type="button" data-quickview-open>Relaxed Cotton Shirt</button></p>
                 <p class="product-card__category">Tops</p>
                 <div class="product-card__swatches" aria-hidden="true">
                   <span class="swatch" style="background:#FAF7F1"></span>
@@ -183,19 +193,19 @@
             </div>
           </article>
 
-          <article class="product-card" data-product-id="ribbed-knit-sweater" data-name="Ribbed Knit Sweater" data-category="Knitwear" data-price="118" data-image="images/placeholder.svg" data-colors='[{"name":"Beige","hex":"#EDE4D3"},{"name":"Charcoal","hex":"#2E2B26"}]' data-sizes="XS,S,M,L,XL">
+          <article class="product-card" data-product-id="ribbed-knit-sweater" data-audience="women men" data-description="A softly textured crewneck that brings warmth without the weight. An everyday layering piece." data-details="Sample composition: cotton and wool blend. Hand wash cold and dry flat. Regular fit." data-name="Ribbed Knit Sweater" data-category="Knitwear" data-price="118" data-image="images/product-knit.webp" data-colors='[{"name":"Beige","hex":"#EDE4D3"},{"name":"Charcoal","hex":"#2E2B26"}]' data-sizes="XS,S,M,L,XL">
             <div class="product-card__frame">
               <button type="button" class="product-card__wishlist" data-wishlist-toggle aria-label="Add Ribbed Knit Sweater to wishlist" aria-pressed="false">
                 <svg viewBox="0 0 24 24" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7.5-4.7-10-9.6C.4 7.7 2 4 5.6 4c2 0 3.6 1.3 4.6 2.9C11.2 5.3 12.8 4 14.8 4 18.4 4 20 7.7 22 11.4 19.5 16.3 12 21 12 21z"></path></svg>
               </button>
-              <img src="images/placeholder.svg" alt="Ribbed Knit Sweater in beige, close-up texture detail" loading="lazy">
+              <img src="images/product-knit.webp" alt="Ribbed Knit Sweater — Beige" loading="lazy">
               <div class="product-card__quickview">
                 <button type="button" data-quickview-open>Quick View</button>
               </div>
             </div>
             <div class="product-card__body">
               <div>
-                <p class="product-card__name"><a aria-disabled="true">Ribbed Knit Sweater</a></p>
+                <p class="product-card__name"><button type="button" data-quickview-open>Ribbed Knit Sweater</button></p>
                 <p class="product-card__category">Knitwear</p>
                 <div class="product-card__swatches" aria-hidden="true">
                   <span class="swatch" style="background:#EDE4D3"></span>
@@ -206,19 +216,19 @@
             </div>
           </article>
 
-          <article class="product-card" data-product-id="wide-leg-trousers" data-name="Wide-Leg Trousers" data-category="Bottoms" data-price="148" data-image="images/placeholder.svg" data-colors='[{"name":"Black","hex":"#16140F"},{"name":"Brown","hex":"#9C7A54"}]' data-sizes="XS,S,M,L,XL">
+          <article class="product-card" data-product-id="wide-leg-trousers" data-audience="women men" data-description="A considered wide-leg cut with gentle front pleats and an effortless drape." data-details="Sample composition: woven suiting blend. Cool gentle wash. High rise, relaxed leg." data-name="Wide-Leg Trousers" data-category="Bottoms" data-price="148" data-image="images/product-trousers.webp" data-colors='[{"name":"Black","hex":"#16140F"},{"name":"Brown","hex":"#9C7A54"}]' data-sizes="XS,S,M,L,XL">
             <div class="product-card__frame">
               <button type="button" class="product-card__wishlist" data-wishlist-toggle aria-label="Add Wide-Leg Trousers to wishlist" aria-pressed="false">
                 <svg viewBox="0 0 24 24" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7.5-4.7-10-9.6C.4 7.7 2 4 5.6 4c2 0 3.6 1.3 4.6 2.9C11.2 5.3 12.8 4 14.8 4 18.4 4 20 7.7 22 11.4 19.5 16.3 12 21 12 21z"></path></svg>
               </button>
-              <img src="images/placeholder.svg" alt="Wide-Leg Trousers in black, full-length styled shot" loading="lazy">
+              <img src="images/product-trousers.webp" alt="Wide-Leg Trousers — Black" loading="lazy">
               <div class="product-card__quickview">
                 <button type="button" data-quickview-open>Quick View</button>
               </div>
             </div>
             <div class="product-card__body">
               <div>
-                <p class="product-card__name"><a aria-disabled="true">Wide-Leg Trousers</a></p>
+                <p class="product-card__name"><button type="button" data-quickview-open>Wide-Leg Trousers</button></p>
                 <p class="product-card__category">Bottoms</p>
                 <div class="product-card__swatches" aria-hidden="true">
                   <span class="swatch" style="background:#16140F"></span>
@@ -229,20 +239,20 @@
             </div>
           </article>
 
-          <article class="product-card" data-product-id="silk-slip-dress" data-name="Silk Slip Dress" data-category="Dresses" data-price="168" data-image="images/placeholder.svg" data-colors='[{"name":"Warm White","hex":"#FAF7F1"},{"name":"Black","hex":"#16140F"}]' data-sizes="XS,S,M,L">
+          <article class="product-card" data-product-id="silk-slip-dress" data-audience="women" data-description="A fluid midi silhouette with fine straps, designed to work alone or under a tailored layer." data-details="Sample composition: silk. Professional dry clean. Bias-cut fit." data-name="Silk Slip Dress" data-category="Dresses" data-price="168" data-image="images/product-dress.webp" data-colors='[{"name":"Warm White","hex":"#FAF7F1"},{"name":"Black","hex":"#16140F"}]' data-sizes="XS,S,M,L">
             <div class="product-card__frame">
               <span class="product-card__badge">New</span>
               <button type="button" class="product-card__wishlist" data-wishlist-toggle aria-label="Add Silk Slip Dress to wishlist" aria-pressed="false">
                 <svg viewBox="0 0 24 24" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7.5-4.7-10-9.6C.4 7.7 2 4 5.6 4c2 0 3.6 1.3 4.6 2.9C11.2 5.3 12.8 4 14.8 4 18.4 4 20 7.7 22 11.4 19.5 16.3 12 21 12 21z"></path></svg>
               </button>
-              <img src="images/placeholder.svg" alt="Silk Slip Dress in warm white, editorial studio shot" loading="lazy">
+              <img src="images/product-dress.webp" alt="Silk Slip Dress — Warm White" loading="lazy">
               <div class="product-card__quickview">
                 <button type="button" data-quickview-open>Quick View</button>
               </div>
             </div>
             <div class="product-card__body">
               <div>
-                <p class="product-card__name"><a aria-disabled="true">Silk Slip Dress</a></p>
+                <p class="product-card__name"><button type="button" data-quickview-open>Silk Slip Dress</button></p>
                 <p class="product-card__category">Dresses</p>
                 <div class="product-card__swatches" aria-hidden="true">
                   <span class="swatch" style="background:#FAF7F1"></span>
@@ -253,19 +263,19 @@
             </div>
           </article>
 
-          <article class="product-card" data-product-id="structured-blazer" data-name="Structured Blazer" data-category="Outerwear" data-price="228" data-image="images/placeholder.svg" data-colors='[{"name":"Black","hex":"#16140F"},{"name":"Charcoal","hex":"#2E2B26"}]' data-sizes="XS,S,M,L,XL">
+          <article class="product-card" data-product-id="structured-blazer" data-audience="women men" data-description="Sharp lapels, a clean shoulder and just enough structure to bring a whole outfit together." data-details="Sample composition: lined suiting blend. Professional dry clean. Tailored fit." data-name="Structured Blazer" data-category="Outerwear" data-price="228" data-image="images/product-blazer.webp" data-colors='[{"name":"Black","hex":"#16140F"},{"name":"Charcoal","hex":"#2E2B26"}]' data-sizes="XS,S,M,L,XL">
             <div class="product-card__frame">
               <button type="button" class="product-card__wishlist" data-wishlist-toggle aria-label="Add Structured Blazer to wishlist" aria-pressed="false">
                 <svg viewBox="0 0 24 24" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7.5-4.7-10-9.6C.4 7.7 2 4 5.6 4c2 0 3.6 1.3 4.6 2.9C11.2 5.3 12.8 4 14.8 4 18.4 4 20 7.7 22 11.4 19.5 16.3 12 21 12 21z"></path></svg>
               </button>
-              <img src="images/placeholder.svg" alt="Structured Blazer in black, tailored fit styled shot" loading="lazy">
+              <img src="images/product-blazer.webp" alt="Structured Blazer — Black" loading="lazy">
               <div class="product-card__quickview">
                 <button type="button" data-quickview-open>Quick View</button>
               </div>
             </div>
             <div class="product-card__body">
               <div>
-                <p class="product-card__name"><a aria-disabled="true">Structured Blazer</a></p>
+                <p class="product-card__name"><button type="button" data-quickview-open>Structured Blazer</button></p>
                 <p class="product-card__category">Outerwear</p>
                 <div class="product-card__swatches" aria-hidden="true">
                   <span class="swatch" style="background:#16140F"></span>
@@ -276,19 +286,19 @@
             </div>
           </article>
 
-          <article class="product-card" data-product-id="essential-crewneck-tee" data-name="Essential Crewneck Tee" data-category="Tops" data-price="48" data-image="images/placeholder.svg" data-colors='[{"name":"Black","hex":"#16140F"},{"name":"Warm White","hex":"#FAF7F1"},{"name":"Olive","hex":"#6B6B4F"}]' data-sizes="XS,S,M,L,XL">
+          <article class="product-card" data-product-id="essential-crewneck-tee" data-audience="women men" data-description="A clean crewneck in soft cotton. The understated foundation of a considered wardrobe." data-details="Sample composition: cotton jersey. Cool wash inside out. Regular fit." data-name="Essential Crewneck Tee" data-category="Tops" data-price="48" data-image="images/product-tee.webp" data-colors='[{"name":"Black","hex":"#16140F"},{"name":"Warm White","hex":"#FAF7F1"},{"name":"Olive","hex":"#6B6B4F"}]' data-sizes="XS,S,M,L,XL">
             <div class="product-card__frame">
               <button type="button" class="product-card__wishlist" data-wishlist-toggle aria-label="Add Essential Crewneck Tee to wishlist" aria-pressed="false">
                 <svg viewBox="0 0 24 24" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7.5-4.7-10-9.6C.4 7.7 2 4 5.6 4c2 0 3.6 1.3 4.6 2.9C11.2 5.3 12.8 4 14.8 4 18.4 4 20 7.7 22 11.4 19.5 16.3 12 21 12 21z"></path></svg>
               </button>
-              <img src="images/placeholder.svg" alt="Essential Crewneck Tee in black, minimal studio shot" loading="lazy">
+              <img src="images/product-tee.webp" alt="Essential Crewneck Tee — Black" loading="lazy">
               <div class="product-card__quickview">
                 <button type="button" data-quickview-open>Quick View</button>
               </div>
             </div>
             <div class="product-card__body">
               <div>
-                <p class="product-card__name"><a aria-disabled="true">Essential Crewneck Tee</a></p>
+                <p class="product-card__name"><button type="button" data-quickview-open>Essential Crewneck Tee</button></p>
                 <p class="product-card__category">Tops</p>
                 <div class="product-card__swatches" aria-hidden="true">
                   <span class="swatch" style="background:#16140F"></span>
@@ -300,20 +310,20 @@
             </div>
           </article>
 
-          <article class="product-card" data-product-id="leather-crossbody-bag" data-name="Leather Crossbody Bag" data-category="Accessories" data-price="198" data-image="images/placeholder.svg" data-colors='[{"name":"Brown","hex":"#9C7A54"},{"name":"Black","hex":"#16140F"}]' data-sizes="One Size">
+          <article class="product-card" data-product-id="leather-crossbody-bag" data-audience="accessories" data-description="A compact everyday companion with a simple flap and an adjustable crossbody strap." data-details="Sample material: leather. Wipe with a dry cloth and store in a dust bag. One size." data-name="Leather Crossbody Bag" data-category="Accessories" data-price="198" data-image="images/product-bag.webp" data-colors='[{"name":"Brown","hex":"#9C7A54"},{"name":"Black","hex":"#16140F"}]' data-sizes="One Size">
             <div class="product-card__frame">
               <span class="product-card__badge">New</span>
               <button type="button" class="product-card__wishlist" data-wishlist-toggle aria-label="Add Leather Crossbody Bag to wishlist" aria-pressed="false">
                 <svg viewBox="0 0 24 24" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7.5-4.7-10-9.6C.4 7.7 2 4 5.6 4c2 0 3.6 1.3 4.6 2.9C11.2 5.3 12.8 4 14.8 4 18.4 4 20 7.7 22 11.4 19.5 16.3 12 21 12 21z"></path></svg>
               </button>
-              <img src="images/placeholder.svg" alt="Leather Crossbody Bag in brown, flat-lay product detail" loading="lazy">
+              <img src="images/product-bag.webp" alt="Leather Crossbody Bag — Brown" loading="lazy">
               <div class="product-card__quickview">
                 <button type="button" data-quickview-open>Quick View</button>
               </div>
             </div>
             <div class="product-card__body">
               <div>
-                <p class="product-card__name"><a aria-disabled="true">Leather Crossbody Bag</a></p>
+                <p class="product-card__name"><button type="button" data-quickview-open>Leather Crossbody Bag</button></p>
                 <p class="product-card__category">Accessories</p>
                 <div class="product-card__swatches" aria-hidden="true">
                   <span class="swatch" style="background:#9C7A54"></span>
@@ -339,22 +349,22 @@
         </div>
 
         <div class="category-grid" data-reveal-group>
-          <a class="category-tile" aria-disabled="true">
-            <img src="images/placeholder.svg" alt="Woman wearing a NOVAÉ tailored outfit, walking city street" loading="lazy">
+          <a class="category-tile" href="#new-arrivals" data-shop-filter="women">
+            <img src="images/women.webp" alt="A bright fashion studio with a considered collection of clothes" loading="lazy" decoding="async" width="1200" height="1500">
             <div class="category-tile__content">
               <h3>Women</h3>
               <span class="link-underline">Shop Now</span>
             </div>
           </a>
-          <a class="category-tile" aria-disabled="true">
-            <img src="images/placeholder.svg" alt="Man wearing a NOVAÉ neutral-tone layered outfit" loading="lazy">
+          <a class="category-tile" href="#new-arrivals" data-shop-filter="men">
+            <img src="images/men.webp" alt="Portrait of a man wearing a white crewneck" loading="lazy" decoding="async" width="1200" height="1500">
             <div class="category-tile__content">
               <h3>Men</h3>
               <span class="link-underline">Shop Now</span>
             </div>
           </a>
-          <a class="category-tile" aria-disabled="true">
-            <img src="images/placeholder.svg" alt="Flat lay of NOVAÉ leather accessories" loading="lazy">
+          <a class="category-tile" href="#new-arrivals" data-shop-filter="accessories">
+            <img src="images/product-bag.webp" alt="Cognac leather crossbody bag" loading="lazy" decoding="async" width="1200" height="1500">
             <div class="category-tile__content">
               <h3>Accessories</h3>
               <span class="link-underline">Shop Now</span>
@@ -369,25 +379,25 @@
       <div class="container">
         <div class="editorial" data-reveal>
           <div class="editorial__media">
-            <img src="images/placeholder.svg" alt="Model wearing layered NOVAÉ outerwear in a muted autumn palette" loading="lazy">
+            <img src="images/layers.webp" alt="Man wearing a neutral layered outfit with a jacket and knit beanie" loading="lazy" decoding="async" width="1200" height="1500">
           </div>
           <div class="editorial__text">
             <p class="eyebrow">The Edit</p>
             <h2>Considered Layers for Cooler Days</h2>
             <p>Autumn calls for pieces that do more with less — outerwear cut for movement, knits that hold their shape, and a palette pulled straight from the season itself.</p>
-            <a class="link-underline" aria-disabled="true">Discover the Edit</a>
+            <a class="link-underline" href="#new-arrivals" data-shop-filter="layers">Discover the Edit</a>
           </div>
         </div>
 
         <div class="editorial" data-reveal>
           <div class="editorial__media">
-            <img src="images/placeholder.svg" alt="Close-up detail of natural fabric texture on a NOVAÉ garment" loading="lazy">
+            <img src="images/fabric.webp" alt="A flat lay of knitwear, denim and everyday accessories" loading="lazy" decoding="async" width="1200" height="1500">
           </div>
           <div class="editorial__text">
             <p class="eyebrow">In the Studio</p>
             <h2>Fabric First, Always</h2>
             <p>We start every piece with the hand-feel of the fabric — natural fibres, considered weights, finishes that soften with wear. It's a slower way to build a wardrobe, and it shows.</p>
-            <a class="link-underline" aria-disabled="true">Our Approach</a>
+            <a class="link-underline" href="#brand-story">Our Approach</a>
           </div>
         </div>
       </div>
@@ -398,29 +408,29 @@
       <div class="container">
         <div class="section-head" data-reveal>
           <div class="section-head__text">
-            <p class="eyebrow">Customer Favourites</p>
+            <p class="eyebrow">The Signature Selection</p>
             <h2 id="bestsellers-heading">Best Sellers</h2>
-            <p>The pieces our community keeps coming back for — quietly versatile, endlessly wearable.</p>
+            <p>Standout pieces from the collection — quietly versatile, endlessly wearable.</p>
           </div>
-          <a class="link-underline" aria-disabled="true">Shop Best Sellers</a>
+          <a class="link-underline" href="#new-arrivals" data-shop-filter="bestsellers">Shop Best Sellers</a>
         </div>
 
         <div class="product-grid" data-reveal-group>
 
-          <article class="product-card" data-product-id="tailored-wool-coat-bs" data-name="The Tailored Wool Coat" data-category="Outerwear" data-price="328" data-image="images/placeholder.svg" data-colors='[{"name":"Charcoal","hex":"#2E2B26"},{"name":"Beige","hex":"#EDE4D3"}]' data-sizes="XS,S,M,L,XL">
+          <article class="product-card" data-product-id="tailored-wool-coat" data-audience="women men" data-description="A clean, longline silhouette with notched lapels and room for your favourite knit." data-details="Sample composition: wool blend. Professional dry clean. Relaxed, layer-friendly fit." data-name="The Tailored Wool Coat" data-category="Outerwear" data-price="328" data-image="images/product-coat.webp" data-colors='[{"name":"Charcoal","hex":"#2E2B26"},{"name":"Beige","hex":"#EDE4D3"}]' data-sizes="XS,S,M,L,XL">
             <div class="product-card__frame">
               <span class="product-card__badge">Bestseller</span>
               <button type="button" class="product-card__wishlist" data-wishlist-toggle aria-label="Add The Tailored Wool Coat to wishlist" aria-pressed="false">
                 <svg viewBox="0 0 24 24" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7.5-4.7-10-9.6C.4 7.7 2 4 5.6 4c2 0 3.6 1.3 4.6 2.9C11.2 5.3 12.8 4 14.8 4 18.4 4 20 7.7 22 11.4 19.5 16.3 12 21 12 21z"></path></svg>
               </button>
-              <img src="images/placeholder.svg" alt="The Tailored Wool Coat in charcoal, styled open over a knit" loading="lazy">
+              <img src="images/product-coat.webp" alt="The Tailored Wool Coat — Charcoal" loading="lazy">
               <div class="product-card__quickview">
                 <button type="button" data-quickview-open>Quick View</button>
               </div>
             </div>
             <div class="product-card__body">
               <div>
-                <p class="product-card__name"><a aria-disabled="true">The Tailored Wool Coat</a></p>
+                <p class="product-card__name"><button type="button" data-quickview-open>The Tailored Wool Coat</button></p>
                 <p class="product-card__category">Outerwear</p>
                 <div class="product-card__swatches" aria-hidden="true">
                   <span class="swatch" style="background:#2E2B26"></span>
@@ -431,20 +441,20 @@
             </div>
           </article>
 
-          <article class="product-card" data-product-id="ribbed-knit-sweater-bs" data-name="Ribbed Knit Sweater" data-category="Knitwear" data-price="118" data-image="images/placeholder.svg" data-colors='[{"name":"Beige","hex":"#EDE4D3"},{"name":"Charcoal","hex":"#2E2B26"}]' data-sizes="XS,S,M,L,XL">
+          <article class="product-card" data-product-id="ribbed-knit-sweater" data-audience="women men" data-description="A softly textured crewneck that brings warmth without the weight. An everyday layering piece." data-details="Sample composition: cotton and wool blend. Hand wash cold and dry flat. Regular fit." data-name="Ribbed Knit Sweater" data-category="Knitwear" data-price="118" data-image="images/product-knit.webp" data-colors='[{"name":"Beige","hex":"#EDE4D3"},{"name":"Charcoal","hex":"#2E2B26"}]' data-sizes="XS,S,M,L,XL">
             <div class="product-card__frame">
               <span class="product-card__badge">Bestseller</span>
               <button type="button" class="product-card__wishlist" data-wishlist-toggle aria-label="Add Ribbed Knit Sweater to wishlist" aria-pressed="false">
                 <svg viewBox="0 0 24 24" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7.5-4.7-10-9.6C.4 7.7 2 4 5.6 4c2 0 3.6 1.3 4.6 2.9C11.2 5.3 12.8 4 14.8 4 18.4 4 20 7.7 22 11.4 19.5 16.3 12 21 12 21z"></path></svg>
               </button>
-              <img src="images/placeholder.svg" alt="Ribbed Knit Sweater in beige, close-up texture detail" loading="lazy">
+              <img src="images/product-knit.webp" alt="Ribbed Knit Sweater — Beige" loading="lazy">
               <div class="product-card__quickview">
                 <button type="button" data-quickview-open>Quick View</button>
               </div>
             </div>
             <div class="product-card__body">
               <div>
-                <p class="product-card__name"><a aria-disabled="true">Ribbed Knit Sweater</a></p>
+                <p class="product-card__name"><button type="button" data-quickview-open>Ribbed Knit Sweater</button></p>
                 <p class="product-card__category">Knitwear</p>
                 <div class="product-card__swatches" aria-hidden="true">
                   <span class="swatch" style="background:#EDE4D3"></span>
@@ -455,20 +465,20 @@
             </div>
           </article>
 
-          <article class="product-card" data-product-id="wide-leg-trousers-bs" data-name="Wide-Leg Trousers" data-category="Bottoms" data-price="148" data-image="images/placeholder.svg" data-colors='[{"name":"Black","hex":"#16140F"},{"name":"Brown","hex":"#9C7A54"}]' data-sizes="XS,S,M,L,XL">
+          <article class="product-card" data-product-id="wide-leg-trousers" data-audience="women men" data-description="A considered wide-leg cut with gentle front pleats and an effortless drape." data-details="Sample composition: woven suiting blend. Cool gentle wash. High rise, relaxed leg." data-name="Wide-Leg Trousers" data-category="Bottoms" data-price="148" data-image="images/product-trousers.webp" data-colors='[{"name":"Black","hex":"#16140F"},{"name":"Brown","hex":"#9C7A54"}]' data-sizes="XS,S,M,L,XL">
             <div class="product-card__frame">
               <span class="product-card__badge">Bestseller</span>
               <button type="button" class="product-card__wishlist" data-wishlist-toggle aria-label="Add Wide-Leg Trousers to wishlist" aria-pressed="false">
                 <svg viewBox="0 0 24 24" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7.5-4.7-10-9.6C.4 7.7 2 4 5.6 4c2 0 3.6 1.3 4.6 2.9C11.2 5.3 12.8 4 14.8 4 18.4 4 20 7.7 22 11.4 19.5 16.3 12 21 12 21z"></path></svg>
               </button>
-              <img src="images/placeholder.svg" alt="Wide-Leg Trousers in black, full-length styled shot" loading="lazy">
+              <img src="images/product-trousers.webp" alt="Wide-Leg Trousers — Black" loading="lazy">
               <div class="product-card__quickview">
                 <button type="button" data-quickview-open>Quick View</button>
               </div>
             </div>
             <div class="product-card__body">
               <div>
-                <p class="product-card__name"><a aria-disabled="true">Wide-Leg Trousers</a></p>
+                <p class="product-card__name"><button type="button" data-quickview-open>Wide-Leg Trousers</button></p>
                 <p class="product-card__category">Bottoms</p>
                 <div class="product-card__swatches" aria-hidden="true">
                   <span class="swatch" style="background:#16140F"></span>
@@ -479,20 +489,20 @@
             </div>
           </article>
 
-          <article class="product-card" data-product-id="essential-crewneck-tee-bs" data-name="Essential Crewneck Tee" data-category="Tops" data-price="48" data-image="images/placeholder.svg" data-colors='[{"name":"Black","hex":"#16140F"},{"name":"Warm White","hex":"#FAF7F1"},{"name":"Olive","hex":"#6B6B4F"}]' data-sizes="XS,S,M,L,XL">
+          <article class="product-card" data-product-id="essential-crewneck-tee" data-audience="women men" data-description="A clean crewneck in soft cotton. The understated foundation of a considered wardrobe." data-details="Sample composition: cotton jersey. Cool wash inside out. Regular fit." data-name="Essential Crewneck Tee" data-category="Tops" data-price="48" data-image="images/product-tee.webp" data-colors='[{"name":"Black","hex":"#16140F"},{"name":"Warm White","hex":"#FAF7F1"},{"name":"Olive","hex":"#6B6B4F"}]' data-sizes="XS,S,M,L,XL">
             <div class="product-card__frame">
               <span class="product-card__badge">Bestseller</span>
               <button type="button" class="product-card__wishlist" data-wishlist-toggle aria-label="Add Essential Crewneck Tee to wishlist" aria-pressed="false">
                 <svg viewBox="0 0 24 24" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7.5-4.7-10-9.6C.4 7.7 2 4 5.6 4c2 0 3.6 1.3 4.6 2.9C11.2 5.3 12.8 4 14.8 4 18.4 4 20 7.7 22 11.4 19.5 16.3 12 21 12 21z"></path></svg>
               </button>
-              <img src="images/placeholder.svg" alt="Essential Crewneck Tee in black, minimal studio shot" loading="lazy">
+              <img src="images/product-tee.webp" alt="Essential Crewneck Tee — Black" loading="lazy">
               <div class="product-card__quickview">
                 <button type="button" data-quickview-open>Quick View</button>
               </div>
             </div>
             <div class="product-card__body">
               <div>
-                <p class="product-card__name"><a aria-disabled="true">Essential Crewneck Tee</a></p>
+                <p class="product-card__name"><button type="button" data-quickview-open>Essential Crewneck Tee</button></p>
                 <p class="product-card__category">Tops</p>
                 <div class="product-card__swatches" aria-hidden="true">
                   <span class="swatch" style="background:#16140F"></span>
@@ -513,7 +523,7 @@
       <div class="container">
         <div class="brand-story__grid" data-reveal>
           <div class="brand-story__media">
-            <img src="images/placeholder.svg" alt="NOVAÉ design studio, fabric swatches and sketches on a worktable" loading="lazy">
+            <img src="images/studio.webp" alt="Clothes arranged by colour in a design studio" loading="lazy" decoding="async" width="1200" height="1500">
           </div>
           <div class="brand-story__text">
             <p class="eyebrow">Our Story</p>
@@ -521,7 +531,7 @@
             <blockquote>“NOVAÉ began with a simple idea — that everyday clothing deserves the same care as occasionwear.”</blockquote>
             <cite>Design Journal, NOVAÉ Studio</cite>
             <p class="brand-story__lede">We design in small batches, choose fabric over fast trends, and build pieces meant to outlast a season.</p>
-            <a class="btn btn--ghost-light" aria-disabled="true">Read Our Story</a>
+            <button type="button" class="btn btn--ghost-light" data-info="story">Read Our Story</button>
           </div>
         </div>
       </div>
@@ -539,23 +549,23 @@
 
         <div class="lookbook-grid" data-reveal-group>
           <div class="lookbook-item">
-            <img src="images/placeholder.svg" alt="Look 01 — tailored coat styled over a relaxed knit" loading="lazy">
-            <span class="lookbook-item__caption">Look 01 — Tailored &amp; Relaxed</span>
+            <img src="images/look-one.webp" alt="A tailored coat styled over a shirt and tie" loading="lazy" decoding="async" width="1200" height="1500">
+            <span class="lookbook-item__caption">Look 01 — City Tailoring</span>
           </div>
           <div class="lookbook-item">
-            <img src="images/placeholder.svg" alt="Look 02 — neutral studio look in beige and charcoal" loading="lazy">
-            <span class="lookbook-item__caption">Look 02 — Studio Neutrals</span>
+            <img src="images/look-two.webp" alt="A relaxed graphic tee with black trousers" loading="lazy" decoding="async" width="1200" height="1500">
+            <span class="lookbook-item__caption">Look 02 — Off Duty</span>
           </div>
           <div class="lookbook-item">
-            <img src="images/placeholder.svg" alt="Look 03 — evening styling in black" loading="lazy">
+            <img src="images/look-three.webp" alt="Evening styling with a fluid wide-leg silhouette" loading="lazy" decoding="async" width="1200" height="1500">
             <span class="lookbook-item__caption">Look 03 — After Hours</span>
           </div>
           <div class="lookbook-item">
-            <img src="images/placeholder.svg" alt="Look 04 — weekend layers in warm tones" loading="lazy">
+            <img src="images/look-four.webp" alt="Weekend layers with a neutral jacket and beanie" loading="lazy" decoding="async" width="1200" height="1500">
             <span class="lookbook-item__caption">Look 04 — Weekend Layers</span>
           </div>
           <div class="lookbook-item">
-            <img src="images/placeholder.svg" alt="Look 05 — the capsule wardrobe, full outfit" loading="lazy">
+            <img src="images/look-five.webp" alt="A considered rail of neutral wardrobe staples" loading="lazy" decoding="async" width="1200" height="1500">
             <span class="lookbook-item__caption">Look 05 — The Capsule</span>
           </div>
         </div>
@@ -566,39 +576,39 @@
     <section class="section section--alt" aria-labelledby="social-heading">
       <div class="container">
         <div class="social-head" data-reveal>
-          <p class="eyebrow">@novae.co</p>
-          <h2 id="social-heading">Styled by You</h2>
-          <p>Tag @novae.co to be featured across our channels.</p>
+          <p class="eyebrow">The NOVAÉ Moodboard</p>
+          <h2 id="social-heading">Everyday, Your Way</h2>
+          <p>A little inspiration for making the everyday your own.</p>
         </div>
 
         <div class="social-grid" data-reveal-group>
           <div class="social-item">
-            <img src="images/placeholder.svg" alt="Customer styled photo featuring NOVAÉ outerwear" loading="lazy">
+            <img src="images/look-one.webp" alt="Tailored city outfit inspiration" loading="lazy" decoding="async" width="1200" height="1500">
             <span class="social-item__icon" aria-hidden="true"><svg viewBox="0 0 24 24" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.3" cy="6.7" r="1"></circle></svg></span>
           </div>
           <div class="social-item">
-            <img src="images/placeholder.svg" alt="Customer styled photo featuring NOVAÉ trousers" loading="lazy">
+            <img src="images/product-trousers.webp" alt="Black wide-leg trousers" loading="lazy" decoding="async" width="1200" height="1500">
             <span class="social-item__icon" aria-hidden="true"><svg viewBox="0 0 24 24" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.3" cy="6.7" r="1"></circle></svg></span>
           </div>
           <div class="social-item">
-            <img src="images/placeholder.svg" alt="Customer styled photo, neutral tone outfit" loading="lazy">
+            <img src="images/look-two.webp" alt="Relaxed tee styling inspiration" loading="lazy" decoding="async" width="1200" height="1500">
             <span class="social-item__icon" aria-hidden="true"><svg viewBox="0 0 24 24" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.3" cy="6.7" r="1"></circle></svg></span>
           </div>
           <div class="social-item">
-            <img src="images/placeholder.svg" alt="Customer styled photo, layered autumn look" loading="lazy">
+            <img src="images/layers.webp" alt="Weekend layering inspiration" loading="lazy" decoding="async" width="1200" height="1500">
             <span class="social-item__icon" aria-hidden="true"><svg viewBox="0 0 24 24" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.3" cy="6.7" r="1"></circle></svg></span>
           </div>
           <div class="social-item">
-            <img src="images/placeholder.svg" alt="Customer styled photo featuring NOVAÉ dress" loading="lazy">
+            <img src="images/product-dress.webp" alt="Ivory slip dress" loading="lazy" decoding="async" width="1200" height="1500">
             <span class="social-item__icon" aria-hidden="true"><svg viewBox="0 0 24 24" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.3" cy="6.7" r="1"></circle></svg></span>
           </div>
           <div class="social-item">
-            <img src="images/placeholder.svg" alt="Customer styled photo, weekend look" loading="lazy">
+            <img src="images/fabric.webp" alt="Everyday outfit and accessories flat lay" loading="lazy" decoding="async" width="1200" height="1500">
             <span class="social-item__icon" aria-hidden="true"><svg viewBox="0 0 24 24" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.3" cy="6.7" r="1"></circle></svg></span>
           </div>
         </div>
 
-        <p class="social-cta">Follow @novae.co on Instagram</p>
+        <p class="social-cta">Campaign inspiration for this portfolio concept.</p>
       </div>
     </section>
 
@@ -615,7 +625,7 @@
               <button type="submit" class="btn btn--ghost-light">Subscribe</button>
             </div>
             <p class="newsletter-form__status" data-newsletter-status role="status" aria-live="polite"></p>
-            <p class="newsletter-form__note">By subscribing you agree to receive marketing emails. Unsubscribe anytime.</p>
+            <p class="newsletter-form__note">Demo form only. Your email is not sent or saved.</p>
           </form>
         </div>
       </div>
@@ -627,16 +637,16 @@
       <div class="footer-brand">
         <p class="logo"><a href="index.html">NOVAÉ</a></p>
         <p>Modern essentials. Made for everyday. Considered fabrics, quiet colour, and pieces designed to last beyond a season.</p>
-        <div class="footer-social" aria-hidden="true">
-          <span class="footer-social__icon" title="Instagram">
+        <div class="footer-social" aria-label="Social channels">
+          <button type="button" class="footer-social__icon" data-info="social" aria-label="Instagram demo information">
             <svg viewBox="0 0 24 24" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.3" cy="6.7" r="1"></circle></svg>
-          </span>
-          <span class="footer-social__icon" title="Pinterest">
+          </button>
+          <button type="button" class="footer-social__icon" data-info="social" aria-label="Pinterest demo information">
             <svg viewBox="0 0 24 24" stroke-width="1.6"><circle cx="12" cy="12" r="9"></circle><path d="M9.5 17c1-3.5 1.2-6.2 1.2-6.2a2.6 2.6 0 1 1 2.6 2.6c-.9 0-1.6-.4-1.9-1"></path></svg>
-          </span>
-          <span class="footer-social__icon" title="TikTok">
+          </button>
+          <button type="button" class="footer-social__icon" data-info="social" aria-label="TikTok demo information">
             <svg viewBox="0 0 24 24" stroke-width="1.6"><path d="M14 4v10.8a3.3 3.3 0 1 1-3.3-3.3"></path><path d="M14 4c.4 2.6 2.1 4.3 4.6 4.6"></path></svg>
-          </span>
+          </button>
         </div>
       </div>
 
@@ -646,19 +656,25 @@
           <ul>
             <li><a href="#new-arrivals">New Arrivals</a></li>
             <li><a href="#best-sellers">Best Sellers</a></li>
-            <li><a aria-disabled="true">Women</a></li>
-            <li><a aria-disabled="true">Men</a></li>
-            <li><a aria-disabled="true">Accessories</a></li>
+            <li><a href="#new-arrivals" data-shop-filter="women">Women</a></li>
+            <li><a href="#new-arrivals" data-shop-filter="men">Men</a></li>
+            <li><a href="#new-arrivals" data-shop-filter="accessories">Accessories</a></li>
           </ul>
         </div>
         <div class="footer-col">
           <h4>Company</h4>
           <ul>
-            <li><a aria-disabled="true">About NOVAÉ</a></li>
+            <li><a href="#brand-story">About NOVAÉ</a></li>
             <li><a href="#lookbook">Lookbook</a></li>
-            <li><a aria-disabled="true">Contact</a></li>
+            <li><button type="button" data-info="contact">Contact</button></li>
           </ul>
         </div>
+        <div class="footer-col"><h4>Customer Care</h4><ul>
+          <li><button type="button" data-info="shipping">Delivery</button></li>
+          <li><button type="button" data-info="returns">Returns</button></li>
+          <li><button type="button" data-info="privacy">Privacy</button></li>
+          <li><button type="button" data-info="terms">Terms</button></li>
+        </ul></div>
       </div>
     </div>
 
@@ -669,7 +685,7 @@
 
   <!-- ============================== QUICK VIEW ============================== -->
   <div class="overlay-backdrop" data-quickview-backdrop></div>
-  <div class="quickview" data-quickview role="dialog" aria-modal="true" aria-label="Quick view">
+  <div class="quickview" data-quickview role="dialog" aria-modal="true" aria-labelledby="qv-name" tabindex="-1">
     <button type="button" class="quickview__close" data-quickview-close aria-label="Close quick view">
       <svg viewBox="0 0 24 24" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><line x1="5" y1="5" x2="19" y2="19"></line><line x1="19" y1="5" x2="5" y2="19"></line></svg>
     </button>
@@ -679,18 +695,21 @@
       </div>
       <div class="quickview__body">
         <p class="quickview__category" data-qv-category></p>
-        <h3 class="quickview__name" data-qv-name></h3>
+        <h3 class="quickview__name" id="qv-name" data-qv-name></h3>
         <p class="quickview__price" data-qv-price></p>
+        <p class="quickview__description" data-qv-description></p>
+        <p class="demo-note">Concept product · Image shows the first colour.</p>
 
         <form data-qv-form>
           <div class="quickview__field">
             <p class="quickview__field-label">Colour <span class="selected" data-qv-selected-color></span></p>
-            <div class="quickview__swatches" data-qv-swatches></div>
+            <div class="quickview__swatches" data-qv-swatches role="group" aria-label="Choose colour"></div>
           </div>
 
           <div class="quickview__field">
-            <p class="quickview__field-label">Size</p>
-            <div class="quickview__sizes" data-qv-sizes></div>
+            <p class="quickview__field-label">Size <span class="selected">Select one</span></p>
+            <div class="quickview__sizes" data-qv-sizes role="group" aria-label="Choose size"></div>
+            <details class="size-guide"><summary>Size guide</summary><p>Sample body measurements in cm. Choose the nearest size; these are demo measurements.</p><table><caption class="visually-hidden">Sample clothing size guide</caption><thead><tr><th>Size</th><th>Chest</th><th>Waist</th></tr></thead><tbody><tr><th>XS</th><td>80–86</td><td>62–68</td></tr><tr><th>S</th><td>86–92</td><td>68–74</td></tr><tr><th>M</th><td>92–98</td><td>74–80</td></tr><tr><th>L</th><td>98–104</td><td>80–86</td></tr><tr><th>XL</th><td>104–110</td><td>86–92</td></tr></tbody></table></details>
           </div>
 
           <div class="quickview__field">
@@ -707,7 +726,7 @@
               <svg viewBox="0 0 24 24" width="16" height="16" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" stroke="currentColor" fill="none" aria-hidden="true"><path d="M6 8h12l-1 12.5a1 1 0 0 1-1 .9H8a1 1 0 0 1-1-.9L6 8z"></path><path d="M9 8V6.5a3 3 0 0 1 6 0V8"></path></svg>
               Add to Bag
             </button>
-            <a class="link-underline" aria-disabled="true">View Full Details</a>
+            <details class="product-details"><summary>Materials &amp; care</summary><p data-qv-details></p></details>
           </div>
           <p class="quickview__note" data-qv-note role="status" aria-live="polite"></p>
         </form>
@@ -730,10 +749,17 @@
         <span>Subtotal</span>
         <span data-cart-subtotal>$0.00</span>
       </div>
-      <a class="btn btn--primary btn--block" aria-disabled="true">Checkout</a>
+      <button type="button" class="btn btn--primary btn--block" data-checkout>Review Demo Order</button><p class="demo-note">Demo only · No payments or real orders.</p>
     </div>
   </aside>
 
+  <div class="overlay-backdrop" data-info-backdrop></div>
+  <section class="info-dialog" data-info-dialog role="dialog" aria-modal="true" aria-labelledby="info-title" tabindex="-1">
+    <button type="button" class="quickview__close" data-info-close aria-label="Close information">&#215;</button>
+    <p class="eyebrow">NOVAÉ Studio</p><h2 id="info-title" data-info-title></h2><div data-info-body></div>
+  </section>
+  <p class="visually-hidden" data-announcement role="status" aria-live="polite"></p>
+  <noscript><p class="no-script-note">Browse the collection above. Enable JavaScript to use filters, Quick View and the demo bag.</p></noscript>
   <script src="js/main.js"></script>
 </body>
 </html>
